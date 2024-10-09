@@ -1,4 +1,5 @@
-ï»¿#include <iostream>
+#pragma once
+#include <iostream>
 #include <string>
 #include <map>
 
@@ -10,7 +11,7 @@ private:
     map<string, string> changes;
 public:
     void RecordText() {
-        cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ñ‚ÐµÐºÑÑ‚: ";
+        cout << "Ââåäèòå òåêñò: ";
         getline(cin, text);
         cout << endl;
     }
@@ -26,12 +27,12 @@ public:
     void RecordChanges() {
         string variable_string, replacement_string;
         while (true) {
-            cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ ÑÑ‚Ñ€Ð¾ÐºÑƒ, ÐºÐ¾Ñ‚Ð¾Ñ€ÑƒÑŽ Ð¼ÐµÐ½ÑÐµÑ‚Ðµ (Ð²Ð²ÐµÐ´Ð¸Ñ‚Ðµ STOP, ÐµÑÐ»Ð¸ Ð·Ð°Ð²ÐµÑ€ÑˆÐ°ÐµÑ‚Ðµ Ð²Ð²Ð¾Ð´): ";
+            cout << "Ââåäèòå ñòðîêó, êîòîðóþ ìåíÿåòå (ââåäèòå STOP, åñëè çàâåðøàåòå ââîä): ";
             getline(cin, variable_string);
             if (variable_string == "STOP") {
                 break;
             }
-            cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ ÑÑ‚Ñ€Ð¾ÐºÑƒ, Ð½Ð° ÐºÐ¾Ñ‚Ð¾Ñ€ÑƒÑŽ Ð¼ÐµÐ½ÑÐµÑ‚Ðµ: ";
+            cout << "Ââåäèòå ñòðîêó, íà êîòîðóþ ìåíÿåòå: ";
             getline(cin, replacement_string);
             this->changes.insert(make_pair(variable_string, replacement_string));
         }
@@ -63,14 +64,3 @@ public:
         }
     }
 };
-
-int main() {
-    system("chcp 1251");
-    setlocale(LC_ALL, "RU");
-    Recording in;
-    in.RecordText();
-    in.RecordChanges();
-    Deduce out(in.SetText());
-    out.ApplicationOfMarkovAlgorithms(in.SetChanges());
-    return 0;
-}
