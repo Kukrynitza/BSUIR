@@ -1,13 +1,13 @@
 concept_sea
 	-> Baltic_sea; North_sea;;
-	Baltic_sea => rrel_flows_through_the_strait: North_sea;;
+	(* Baltic_sea => rrel_flows_through_the_strait: North_sea;; *);
 
 	=> nrel_main_identifer: [sea] 
 		(* <-concept_english_language;; *);
 				[море] 
-		(*<- concept_russian_language;; *);
+		(*<- concept_russian_language;; *);;
 
-	=> nrel_subdividing: ...
+	<= nrel_subdividing: ...
 		(*
 		<- sc_node_tuple;;
 		-> concept_coast;;
@@ -33,14 +33,14 @@ concept_sea
 			-> concept_landscape;;
 			-> concept_life_cycle_of_an_organism;
 			*);;
-		*);;  
+		*);
 
 	<- rrel_sc_key_element: ...
 		(* 
 		<- definition;; 
 	 	=> nrel_main_indentifier: [Опр.моря] 
 			(*-> concept_russian_language;; *);; 
-	 		=> nrel_constant_used: ... 
+	 		<= nrel_constant_used: ... 
 				(* 
 					<- sc_node_tuple;;
 					-> conscept_land;;
