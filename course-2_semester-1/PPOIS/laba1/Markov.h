@@ -1,60 +1,37 @@
 #pragma once
 #include <iostream>
+#include <vector>
+#include <algorithm>
+#include <fstream>
 #include <string>
+#include <math.h>
+#include <iomanip>
 #include <map>
+#include <sstream>
+#include "ReadInformationFromFile.h"
+#include "Markov.h"
+#include <unordered_map>
 
-using namespace std;
-
-class Recording {
-private:
-    string text;
-    map<string, string> changes;
-public:
-    void RecordText() {
-        cout << "¬ведите текст: ";
-        getline(cin, text);
-        cout << endl;
-    }
-
-    map<string, string> SetChanges() {
-        return this->changes;
-    }
-
-    string SetText() {
-        return this->text;
-    }
-
-    void RecordChanges() {
-        string variable_string, replacement_string;
-        while (true) {
-            cout << "¬ведите строку, которую мен€ете (введите STOP, если завершаете ввод): ";
-            getline(cin, variable_string);
-            if (variable_string == "STOP") {
-                break;
-            }
-            cout << "¬ведите строку, на которую мен€ете: ";
-            getline(cin, replacement_string);
-            this->changes.insert(make_pair(variable_string, replacement_string));
-        }
-    }
-};
 
 class Deduce {
 private:
     string text;
+    unordered_map<string, string> changes;
 public:
-    Deduce(string text) {
+    void getText(string text) {
         this->text = text;
     }
-
-    void ApplicationOfMarkovAlgorithms(map<string, string> changes) {
+    void getChanges(unordered_map<string, string> changes) {
+        this->changes = changes;
+    }
+    void applicationofmarkovalgorithms() {
         for (const auto& pair : changes) {
             size_t start = 0;
             while (true) {
                 start = text.find(pair.first, start);
                 if (start != string::npos) {
                     text.replace(start, pair.first.size(), pair.second);
-                    cout << text << endl;
+                    cout << text << endl <<endl;
                     start += pair.second.size();
                 }
                 else {
@@ -64,3 +41,5 @@ public:
         }
     }
 };
+
+//C:\Users\37533\Desktop\course-2_semester-1\PPOIS\laba1\PPOIS-laba-1.txt
