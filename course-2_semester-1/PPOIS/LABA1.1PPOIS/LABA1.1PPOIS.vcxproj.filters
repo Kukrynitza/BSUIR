@@ -18,6 +18,12 @@
     <ClCompile Include="Markov.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
+    <ClCompile Include="Menu.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="ReadInformationFromFile.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
     <ClCompile Include="test.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>

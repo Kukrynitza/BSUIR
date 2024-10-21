@@ -134,6 +134,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Markov.cpp" />
+    <ClCompile Include="Menu.cpp" />
+    <ClCompile Include="ReadInformationFromFile.cpp" />
     <ClCompile Include="test.cpp" />
   </ItemGroup>
   <ItemGroup>
