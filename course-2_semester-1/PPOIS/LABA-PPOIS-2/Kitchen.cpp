@@ -18,6 +18,7 @@ void Kitchen::cook() {
     for (auto& spice : spices) {
         if (spice == "pepper") {
             Pepper pepper;
+            pepper.setColor("черный");
             cout << pepper.getSpice() << endl;
         }
         if (spice == "salt") {
