@@ -372,130 +372,188 @@ int main() {
     int choice;
     string nodeName, from, to, newNodeName;
 
-    //do {
-    //    cout << "\n--- Меню ---\n";
-    //    cout << "1. Создать узел\n";
-    //    cout << "2. Добавить ориенторованную дугу\n";
-    //    cout << "3. Добавить неориенторованную дугу\n";
-    //    cout << "4. Удалить ориенторованную дугу\n";
-    //    cout << "5. Удалить неориенторованную дугу\n";
-    //    cout << "6. Удалить узел\n";
-    //    cout << "7. Переименовать узел\n";
-    //    cout << "8. Вывести граф\n";
-    //    cout << "9. Вывести информацию о графе\n";
-    //    cout << "0. Выход\n";
-    //    cout << "Ввод: ";
-    //    cin >> choice;
+    do {
+        cout << "\n--- Меню ---\n";
+        cout << "1. Создать узел\n";
+        cout << "2. Добавить ориенторованную дугу\n";
+        cout << "3. Добавить неориенторованную дугу\n";
+        cout << "4. Удалить ориенторованную дугу\n";
+        cout << "5. Удалить неориенторованную дугу\n";
+        cout << "6. Удалить узел\n";
+        cout << "7. Переименовать узел\n";
+        cout << "8. Вывести граф\n";
+        cout << "9. Вывести информацию о графе\n";
+        cout << "10. Назвать граф\n";
+        cout << "11. Вывести матрицу смежности\n";
+        cout << "12. Проверить граф на планарность\n";
+        cout << "13. Сделать граф планарным\n";
+        cout << "14. Проверить граф на наличае Эйлеровых циклов\n";
+        cout << "15. Поиск кратчайшего пути от вершины к вершине\n";
+        cout << "16. Поиск всех путей от вершины к вершине\n";
+        cout << "17. Расстояние между вершинами\n";
+        cout << "0. Выход\n";
+        cout << "Ввод: ";
+        cin >> choice;
 
-    //    switch (choice) {
-    //    case 1:
-    //        cout << "Введите название узла: ";
-    //        cin >> nodeName;
-    //        graph.createNode(nodeName);
-    //        break;
+        switch (choice) {
+        case 1:
+            cout << "Введите название узла: ";
+            cin >> nodeName;
+            graph.createNode(nodeName);
+            break;
 
-    //    case 2:
-    //        cout << "Введите название узла отправления: ";
-    //        cin >> from;
-    //        cout << "Введите название узла прибытия: ";
-    //        cin >> to;
-    //        graph.addOrientedEdge(from, to);
-    //        break;
+        case 2:
+            cout << "Введите название узла отправления: ";
+            cin >> from;
+            cout << "Введите название узла прибытия: ";
+            cin >> to;
+            graph.addOrientedEdge(from, to);
+            break;
 
-    //    case 3:
-    //        cout << "Введите название узла отправления: ";
-    //        cin >> from;
-    //        cout << "Введите название узла прибытия: ";
-    //        cin >> to;
-    //        graph.addUnorientedEdge(from, to);
-    //        break;
+        case 3:
+            cout << "Введите название узла отправления: ";
+            cin >> from;
+            cout << "Введите название узла прибытия: ";
+            cin >> to;
+            graph.addUnorientedEdge(from, to);
+            break;
 
-    //    case 4:
-    //        cout << "Введите название узла отправления: ";
-    //        cin >> from;
-    //        cout << "Введите название узла прибытия: ";
-    //        cin >> to;
-    //        graph.removeOrientedEdge(from, to);
-    //        break;
+        case 4:
+            cout << "Введите название узла отправления: ";
+            cin >> from;
+            cout << "Введите название узла прибытия: ";
+            cin >> to;
+            graph.removeOrientedEdge(from, to);
+            break;
 
-    //    case 5:
-    //        cout << "Введите название узла отправления:";
-    //        cin >> from;
-    //        cout << "Введите название узла прибытия: ";
-    //        cin >> to;
-    //        graph.removeUnorientedEdge(from, to);
-    //        break;
+        case 5:
+            cout << "Введите название узла отправления:";
+            cin >> from;
+            cout << "Введите название узла прибытия: ";
+            cin >> to;
+            graph.removeUnorientedEdge(from, to);
+            break;
 
-    //    case 6:
-    //        cout << "Введите название узла: ";
-    //        cin >> nodeName;
-    //        graph.removeNode(nodeName);
-    //        break;
+        case 6:
+            cout << "Введите название узла: ";
+            cin >> nodeName;
+            graph.removeNode(nodeName);
+            break;
 
-    //    case 7:
-    //        cout << "Введите старое название узла: ";
-    //        cin >> nodeName;
-    //        cout << "Введите новое название узла: ";
-    //        cin >> newNodeName;
-    //        graph.renameNode(nodeName, newNodeName);
-    //        break;
+        case 7:
+            cout << "Введите старое название узла: ";
+            cin >> nodeName;
+            cout << "Введите новое название узла: ";
+            cin >> newNodeName;
+            graph.renameNode(nodeName, newNodeName);
+            break;
 
-    //    case 8:
-    //        graph.printGraph();
-    //        break;
+        case 8:
+            graph.printGraph();
+            break;
 
-    //    case 9:
-    //        cout << "Введите название узла: ";
-    //        cin >> nodeName;
-    //        graph.printGraphInfo(nodeName);
-    //        break;
-    //    case 0:
-    //        cout << "Выход\n";
-    //        break;
+        case 9:
+            cout << "Введите название узла: ";
+            cin >> nodeName;
+            graph.printGraphInfo(nodeName);
+            break;
+        case 10:
+            cout << "Введите название графа: ";
+            cin >> nodeName;
+            graph.setName(nodeName);
+            break;
+        case 11:
+            graph.printAdjacencyMatrix();
+            break;
+        case 12:
+            graph.isPlanar();
+            break;
+        case 13:
+            graph.makePlanar();
+            break;
+        case 14:
+            if (graph.hasEulerianCycle()) {
+                graph.findEulerianCycle();
+            }
+            else {
+                cout << "Эйлеров цикл не найден.\n";
+            }
+            break;
+        case 15:
+            cout << "Введите название выршины отправления:";
+            cin >> from;
+            cout << "Введите название вершины прибытия: ";
+            cin >> to;
+            graph.findShortestPath(from, to);
+            break;
+        case 16:
+            cout << "Введите название выршины отправления:";
+            cin >> from;
+            cout << "Введите название вершины прибытия: ";
+            cin >> to;
+            graph.findAllPaths(from, to);
+            break;
+        case 17:
+        cout << "Введите название выршины отправления:";
+        cin >> from;
+        cout << "Введите название вершины прибытия: ";
+        cin >> to;
+        int distance;
+        distance = graph.findDistance(from, to);
+        if (distance != -1) {
+            cout << distance << " ребра\n";
+        }
+        else {
+            cout << "Путь не найден.\n";
+        }
+            break;
+        case 0:
+            cout << "Выход\n";
+            break;
 
-    //    default:
-    //        cout << "Неправильнный ввод. Повторите\n";
-    //        break;
-    //    }
-    //} while (choice != 0);
-    graph.setName("Граф Вурдаласку");
+        default:
+            cout << "Неправильнный ввод. Повторите\n";
+            break;
+        }
+    } while (choice != 0);
+    //graph.setName("Граф Вурдаласку");
 
-    graph.createNode("A");
-    graph.createNode("B");
-    graph.createNode("C");
-    graph.createNode("D");
+    //graph.createNode("A");
+    //graph.createNode("B");
+    //graph.createNode("C");
+    //graph.createNode("D");
 
-    graph.addOrientedEdge("A", "B");
-    graph.addOrientedEdge("A", "C");
-    graph.addOrientedEdge("B", "D");
-    graph.addUnorientedEdge("C", "D");
+    //graph.addOrientedEdge("A", "B");
+    //graph.addOrientedEdge("A", "C");
+    //graph.addOrientedEdge("B", "D");
+    //graph.addUnorientedEdge("C", "D");
 
-    graph.printGraph();
-    graph.printGraphInfo("");
-    graph.printGraphInfo("A");
-    graph.printAdjacencyMatrix();
+    //graph.printGraph();
+    //graph.printGraphInfo("");
+    //graph.printGraphInfo("A");
+    //graph.printAdjacencyMatrix();
 
-    graph.isPlanar();
-    graph.makePlanar();
-    if (graph.hasEulerianCycle()) {
-        graph.findEulerianCycle();
-    }
-    else {
-        cout << "Эйлеров цикл не найден.\n";
-    }
-    string start = "A", end = "D";
-    cout << "Поиск всех путей от " << start << " до " << end << ":\n";
-    graph.findAllPaths(start, end);
+    //graph.isPlanar();
+    //graph.makePlanar();
+    //if (graph.hasEulerianCycle()) {
+    //    graph.findEulerianCycle();
+    //}
+    //else {
+    //    cout << "Эйлеров цикл не найден.\n";
+    //}
+    //string start = "A", end = "D";
+    //cout << "Поиск всех путей от " << start << " до " << end << ":\n";
+    //graph.findAllPaths(start, end);
 
-    cout << "Поиск кратчайшего пути от " << start << " до " << end << ":\n";
-    graph.findShortestPath(start, end);
-    cout << "Расстояние от " << start << " до " << end << ": ";
-    int distance = graph.findDistance(start, end);
-    if (distance != -1) {
-        cout << distance << " ребра\n";
-    }
-    else {
-        cout << "Путь не найден.\n";
-    }
+    //cout << "Поиск кратчайшего пути от " << start << " до " << end << ":\n";
+    //graph.findShortestPath(start, end);
+    //cout << "Расстояние от " << start << " до " << end << ": ";
+    //int distance = graph.findDistance(start, end);
+    //if (distance != -1) {
+    //    cout << distance << " ребра\n";
+    //}
+    //else {
+    //    cout << "Путь не найден.\n";
+    //}
     return 0;
 }
