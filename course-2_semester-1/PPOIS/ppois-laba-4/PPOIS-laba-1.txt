@@ -1,0 +1,9 @@
+This is the first paragraph of text. This is the second paragraph of text, which continues over several lines.
+
+CHNG: <dfg> >> <f>
+CHNG: <at > >> <v>
+CHNG: <ov> >> <e>
+CHNG: <css> >> <as>
+CHNG: <as> >> <at>
+CHNG: <is> >> <at>
+CHNG: <at> >> <the>
