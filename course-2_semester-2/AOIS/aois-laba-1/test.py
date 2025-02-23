@@ -21,7 +21,7 @@ class MyTestCase(unittest.TestCase):
         self.assertEqual(multiplication_bin([0, 0, 0, 0, 0, 0, 1, 1], [0, 0, 0, 0, 0, 0, 1, 0]), [0, 0, 0, 0, 0, 1, 1, 0])
 
     def test_division_bin(self):
-        self.assertEqual(division_bin([0, 0, 0, 0, 0, 0, 1, 1], [0, 0, 0, 0, 0, 0, 1, 0]), '1.50000')
+        self.assertEqual(division_bin([0, 0, 0, 0, 0, 0, 1, 1], [0, 0, 0, 0, 0, 0, 1, 0]), '1.10000')
 
     def test_float_to_ieee754(self):
         ieee = float_to_ieee754(3.5)
@@ -33,10 +33,6 @@ class MyTestCase(unittest.TestCase):
     def test_addition_float(self):
         ieee_sum = addition_float(3.5, 2.5)
         self.assertAlmostEqual(ieee754_to_float(ieee_sum), 6.0, places=5)
-
-    def test_menu_addition(self, mock_input):
-        result = menu(1)
-        self.assertEqual(result, 8)
 
     @patch('builtins.input', side_effect=['5', '3'])
     def test_menu_subtraction(self, mock_input):
@@ -51,7 +47,9 @@ class MyTestCase(unittest.TestCase):
     @patch('builtins.input', side_effect=['6', '3'])
     def test_menu_division(self, mock_input):
         result = menu(4)
-        self.assertEqual(result, '2.00000')
+        self.assertEqual(result, 2.0)
 
 if __name__ == '__main__':
     unittest.main()
+# coverage run --source=main -m unittest discover
+# coverage report -m

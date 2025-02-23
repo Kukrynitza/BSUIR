@@ -11,6 +11,17 @@ def binary_to_decimal(binary_list):
     if(binary_list[0] == 1):
         decimal = -decimal
     return decimal
+
+
+def binary_to_decimal_str(binary_str):
+    integer_part, fractional_part = binary_str.split('.')
+
+    integer_value = sum(int(bit) * (2 ** (len(integer_part) - 1 - i)) for i, bit in enumerate(integer_part))
+
+    fractional_value = sum(int(bit) * (2 ** -(i + 1)) for i, bit in enumerate(fractional_part))
+
+    return integer_value + fractional_value
+
 def addition_bin(first, second):
     result = []
     next = 0
@@ -76,27 +87,70 @@ def to_bin_for_subtraction(num):
             inverse.append(0 if element == 1 else 1)
         additionally = addition_bin(inverse, [0, 0, 0, 0, 0, 0, 0, 1])
     return additionally
+def compare_binary(a, b):
+    while len(a) > 1 and a[0] == 0:
+        a.pop(0)
+    while len(b) > 1 and b[0] == 0:
+        b.pop(0)
+
+    if len(a) != len(b):
+        return len(a) > len(b)
+    return a >= b
+
+def subtract_binary(a, b):
+    a = a[:]
+    b = [0] * (len(a) - len(b)) + b
+    borrow = 0
+
+    for i in range(len(a) - 1, -1, -1):
+        a[i] = a[i] - b[i] - borrow
+        if a[i] < 0:
+            a[i] += 2
+            borrow = 1
+        else:
+            borrow = 0
+
+    while len(a) > 1 and a[0] == 0:
+        a.pop(0)
+
+    return a if a else [0]
 
 def division_bin(dividend, divisor):
-    result_sign = 0 if (dividend[0] == divisor[0]) else 1
+    if all(bit == 0 for bit in divisor):
+        return "Ошибка: Деление на ноль"
 
-    dividend_val = 0
-    divisor_val = 0
+    sign = '-' if (dividend[0] != divisor[0]) else ''
 
-    for i in range(1, 8):
-        dividend_val = dividend_val * 2 + dividend[i]
-        divisor_val = divisor_val * 2 + divisor[i]
+    abs_dividend = dividend[1:]
+    abs_divisor = divisor[1:]
 
-    if divisor_val == 0:
-        return [0] * 8
+    quotient = []
+    remainder = []
 
-    quotient_val = dividend_val / divisor_val
+    for bit in abs_dividend:
+        remainder.append(bit)
+        if compare_binary(remainder, abs_divisor):
+            quotient.append(1)
+            remainder = subtract_binary(remainder, abs_divisor)
+        else:
+            quotient.append(0)
 
+    while len(quotient) > 1 and quotient[0] == 0:
+        quotient.pop(0)
 
-    result = "{:.5f}".format(quotient_val)
+    quotient.append('.')
+    fractional_part = []
 
+    for _ in range(5):
+        remainder.append(0)
+        if compare_binary(remainder, abs_divisor):
+            fractional_part.append(1)
+            remainder = subtract_binary(remainder, abs_divisor)
+        else:
+            fractional_part.append(0)
+
+    result = sign + ''.join(map(str, quotient)) + ''.join(map(str, fractional_part))
     return result
-
 def multiplication_bin(first_num, second_num):
     sign = 0 if first_num[0] == second_num[0] else 1
     result = [0,0,0,0,0,0,0,0]
@@ -200,7 +254,7 @@ def menu(choise):
 
             result = division_bin(first_bin_num, second_bin_num)
             print(result)
-            return result
+            return binary_to_decimal_str(result)
         case 5:
             first_num = float(input('Введите первое положительное число: '))
             second_num = float(input('Введите второе положительное число: '))
