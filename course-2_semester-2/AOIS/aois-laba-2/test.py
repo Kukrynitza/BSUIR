@@ -6,10 +6,12 @@ class MyTestCase(unittest.TestCase):
 
 
     def test_process_expression_with_negation(self):
-        vars, rpn = process_expression("!a | b")
+        vars, rpn = process_expression("!a -> b")
         self.assertEqual(vars, ['!a', 'b'])
-        self.assertEqual(rpn, ['!a', 'b', '|'])
-
+        self.assertEqual(rpn, ['!a', 'b', '->'])
+    def test_to_bin(self):
+        num = to_bin(0, 2)
+        self.assertEqual(num, [0, 0])
     def test_process_expression_complex(self):
         vars, rpn = process_expression("(a & b) | c")
         self.assertEqual(vars, ['a', 'b', 'c'])
@@ -39,9 +41,9 @@ class MyTestCase(unittest.TestCase):
         vars, rpn = process_expression(expr)
         table = table_create(expr, rpn, vars)
 
-        self.assertEqual(table['index'], [0, 0, 0, 1])
-        self.assertEqual(table['pdnf'], [3])
-        self.assertEqual(table['pcnf'], [0, 1, 2])
+        self.assertEqual(table['index'], '0001')
+        self.assertEqual(table['pdnf'], '(3)&')
+        self.assertEqual(table['pcnf'], '(0, 1, 2)|')
 
 if __name__ == '__main__':
     unittest.main()
