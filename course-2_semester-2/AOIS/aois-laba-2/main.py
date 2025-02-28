@@ -78,15 +78,15 @@ def process_expression(expression):
 
 
 def to_bin(num, length):
+
     direct = []
     while num != 0:
-        direct.insert(-1, num % 2)
+        direct.insert(0, num % 2)
         num = math.trunc(num / 2)
-    direct.reverse()
-    if len(direct) < length:
-        direct = direct[:1] + [0] * (length - len(direct)) + direct[1:]
-    return direct
+    while len(direct) < length:
+        direct.insert(0, 0)
 
+    return direct
 
 def make_operation(first: int, second: int, operation: string):
     if operation == '&':
@@ -108,17 +108,22 @@ def make_operation(first: int, second: int, operation: string):
     else:
         return 0
 
-
 def rpn_check(rpn):
     vars: [string] = []
     for element in range(len(rpn)):
         if rpn[element] == 0 or rpn[element] == 1:
             vars.append(rpn[element])
             continue
-        el: int = make_operation(vars[-1], vars[-2], rpn[element])
-        vars.pop()
-        vars.pop()
-        vars.append(el)
+        if rpn[element] == '!':
+            if vars[-1] == 0:
+                vars[-1] = 1
+            else:
+                vars[-1] = 0
+        else:
+            el:int = make_operation(vars[-1], vars[-2], rpn[element])
+            vars.pop()
+            vars.pop()
+            vars.append(el)
     return vars[0]
 
 
@@ -148,30 +153,37 @@ def table_create(exp: string, rpn: [], vars: []):
             else:
                 bool_rpn[index] = bool_vars[f]
         check_info = rpn_check(bool_rpn)
-        index_form.append(check_info)
+        index_form.append(str(check_info))
         bool_vars_string = ' '.join(str_numbers) + '  ' + str(check_info)
-        result_exp = exp
+        result_exp = ''
         for f in range(len(vars)):
             if '!' in vars[f] and bool_vars[f] == 0:
                 continue
             elif '!' in vars[f] and bool_vars[f] == 1:
-                result_exp = result_exp.replace(vars[f], vars[f][1])
+                result_exp += str(vars[f][1])
+                print
             elif bool_vars[f] == 0:
-                result_exp = result_exp.replace(vars[f], '!' + vars[f])
+                result_exp += '!' + str(vars[f])
+            else:
+                result_exp += str(vars[f])
+            if check_info == 1:
+                result_exp += '&'
+            else:
+                result_exp += '|'
         if check_info == 1:
-            pdnf_list.append(i)
-            pdnf_exp_list += '(' + result_exp + ')∨'
+            pdnf_list.append(str(i))
+            pdnf_exp_list += '(' + result_exp + ')|'
 
         else:
-            pcnf_list.append(i)
-            pcnf_exp_list += '(' + result_exp + ')∨'
+            pcnf_list.append(str(i))
+            pcnf_exp_list += '(' + result_exp + ')&'
         # print(bool_rpn)
         print(bool_vars_string)
     if len(pdnf_exp_list) != 0:
         pdnf_exp_list = pdnf_exp_list[:-1]
     if len(pcnf_exp_list) != 0:
         pcnf_exp_list = pcnf_exp_list[:-1]
-    return {'index': index_form, 'pdnf': pdnf_list, 'pcnf': pcnf_list, 'pdnf_exp_list': pdnf_exp_list,
+    return {'index': ''.join(index_form), 'pdnf': '(' + ', '.join(pdnf_list) + ')&', 'pcnf': '(' + ', '.join(pcnf_list) + ')|', 'pdnf_exp_list': pdnf_exp_list,
             'pcnf_exp_list': pcnf_exp_list}
 
 
