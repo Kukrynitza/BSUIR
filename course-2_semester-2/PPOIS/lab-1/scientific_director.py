@@ -30,6 +30,6 @@ class ScientificDirector(Human):
         return self._surname
 
     def is_exist(self) -> bool:
-        if self._surname:
+        if self._surname != '':
             return True
         return False

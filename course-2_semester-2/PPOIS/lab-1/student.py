@@ -16,6 +16,10 @@ class Student(Human):
         self.add_human()
         print(f"Студент {self._last_name} {self._first_name} {self._surname} добавлен!")
 
+    def is_exist(self) -> bool:
+        if self._surname != '':
+            return True
+        return False
     def create_presentation(self):
         art = r"""
        __..._   _...__

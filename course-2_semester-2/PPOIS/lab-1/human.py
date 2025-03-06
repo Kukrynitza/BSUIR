@@ -13,15 +13,20 @@ class Schema(BaseModel):
             raise ValueError("Введите больше 2 символов!")
         if len(value) > 30:
             raise ValueError("Введите меньше 30 символов!")
-        if not re.match(r'^[А-ЯЁа-яё]+$', value):
-            raise ValueError("Можно вводить только русские буквы!")
+
+        if not re.match(r'^[А-ЯЁа-яё][а-яё]*(-[А-ЯЁа-яё][а-яё]*)?$', value):
+            raise ValueError(
+                            "Имя может содержать только русские буквы. "
+                            "После дефиса начинаться с заглавной буквы или маленькой, а дальше только маленькие."
+                             )
+
         return value
 
 
 class Human:
-    _first_name: str
-    _last_name: str
-    _surname: str
+    _first_name: str = ''
+    _last_name: str = ''
+    _surname: str = ''
 
     @staticmethod
     def _get_valid_input(field_name: str) -> str:

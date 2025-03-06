@@ -32,7 +32,9 @@ class Menu:
             '3 - Скорректировать доклад',
             '4 - Перейти к последнему этапу',
             '0 - Выход из программы'],
-        'submission_of_thesis': ['Вопрос:']
+        'submission_of_thesis': [
+            'Вопрос:'
+        ]
     }
     states = ['creation', 'preparation', 'rehearsal', 'submission_of_thesis']
 
@@ -65,11 +67,12 @@ class Menu:
                 self.__student.create_report()
             elif choice == 5:
                 if self.__student.get_diploma_project()['presentation'] != 0 and \
-                        self.__student.get_diploma_project()['report'] != 0 and \
-                        self.__scientific_director.is_exist():
+                    self.__student.get_diploma_project()['report'] != 0 and \
+                        self.__scientific_director.is_exist() and \
+                        self.__student.is_exist():
                     self.go_to_preparation()
                     self.menu()
-                    continue
+                    break
                 else:
                     print('Не выполнены все действия')
             elif choice == 0:
@@ -103,7 +106,7 @@ class Menu:
                 if verification and self.__commission.commission_is():
                     self.go_to_rehearsal()
                     self.menu()
-                    continue
+                    break
                 print('Не выполнены все действия')
             elif choice == 0:
                 return
@@ -132,6 +135,7 @@ class Menu:
                 if verification:
                     self.go_to_submission_of_thesis()
                     self.menu()
+                    break
                 print('Не выполнены все действия')
             elif choice == 0:
                 return
@@ -141,9 +145,6 @@ class Menu:
     def submission_of_thesis_menu(self):
         verification: bool = False
         while True:
-            for element in self.__menu_items[self.state]:
-                print(element)
-
             self.__student.set_mark(5)
             print('Вам повезло, вопросы сегодня простые')
             scientific_director_first_name: str = input('Напишите Имя вашего научного руководителя:').strip()
@@ -175,14 +176,14 @@ class Menu:
                 print('Ваша дипломная работа достойна пахлавы(дает пахлаву)')
             time.sleep(0.5)
             print(f'Ваша итоговая оценка {self.__student.get_mark()}, поздравляем!(хлопки из-за двери)')
-            return
+            break
 
     def menu(self):
         menu_functions = {
             'creation': self.creation_menu,
             'preparation': self.preparation_menu,
             'rehearsal': self.rehearsal_menu,
-            'submission_of_thesis': self.rehearsal_menu
+            'submission_of_thesis': self.submission_of_thesis_menu
         }
         current_menu = menu_functions[self.state]
         current_menu()
