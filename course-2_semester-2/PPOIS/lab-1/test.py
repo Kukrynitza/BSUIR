@@ -197,16 +197,16 @@ class TestStudent(unittest.TestCase):
     @patch('builtins.print')
     @patch('random.randrange', return_value=10)
     def test_presentation_revision(self, mock_rand, mock_print):
-        self.student.create_presentation()  # presentation=70
-        self.student.presentation_revision()  # +10
+        self.student.create_presentation()
+        self.student.presentation_revision()
         diploma = self.student.get_diploma_project()
         self.assertTrue(20 <= diploma['presentation'] <= 100)
 
     @patch('builtins.print')
     @patch('random.randrange', return_value=15)
     def test_report_revision(self, mock_rand, mock_print):
-        self.student.create_report()  # report=80
-        self.student.report_revision()  # +15
+        self.student.create_report()
+        self.student.report_revision()
         diploma = self.student.get_diploma_project()
         self.assertTrue(20 <= diploma['report'] <= 100)
 

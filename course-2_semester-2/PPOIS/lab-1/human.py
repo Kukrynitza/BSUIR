@@ -1,5 +1,7 @@
 from pydantic import BaseModel, Field, ValidationError, validator
 import re
+from cli_input import CliInput
+from cli_print import CliPrint
 
 
 class Schema(BaseModel):
@@ -24,20 +26,22 @@ class Schema(BaseModel):
 
 
 class Human:
+    __cli_input = CliInput()
     _first_name: str = ''
     _last_name: str = ''
     _surname: str = ''
+    __cli_print: CliPrint = CliPrint()
 
-    @staticmethod
-    def _get_valid_input(field_name: str) -> str:
+    def _get_valid_input(self, field_name: str) -> str:
         while True:
-            value = input(f"Введите {field_name}: ").strip()
+            self.__cli_input.set_input(f"Введите {field_name}: ")
+            value = self.__cli_input.get_input().strip()
             try:
                 validated_data = Schema(name=value)
                 return validated_data.name
             except ValidationError as e:
                 err = e.errors()[0]["msg"].split(', ')[1]
-                print(err)
+                self.__cli_print.print(err)
 
     def add_human(self):
         self._last_name: str = self._get_valid_input("Фамилия")

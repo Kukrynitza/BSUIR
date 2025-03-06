@@ -1,5 +1,6 @@
 from typing import TypedDict
 from human import Human
+from cli_print import CliPrint
 
 
 class DiplomaProjectDict(TypedDict):
@@ -8,19 +9,20 @@ class DiplomaProjectDict(TypedDict):
 
 
 class ScientificDirector(Human):
+    __cli_print: CliPrint = CliPrint()
+
     def add_scientific_director(self):
         self.add_human()
-        print(f"Научный руководитель {self._last_name} {self._first_name} {self._surname} добавлен!")
+        self.__cli_print.print(f"Научный руководитель {self._last_name} {self._first_name} {self._surname} добавлен!")
 
-    @staticmethod
-    def verification_of_the_graduation_project(diploma: DiplomaProjectDict) -> bool:
+    def verification_of_the_graduation_project(self, diploma: DiplomaProjectDict) -> bool:
         if diploma['presentation'] <= 75:
-            print(f'Надо доделать презентацию, полнота раскрытия темы {diploma['presentation']}%')
+            self.__cli_print.print(f'Надо доделать презентацию, полнота раскрытия темы {diploma['presentation']}%')
             return False
         if diploma['report'] <= 80:
-            print(f'Надо доделать доклад, полнота раскрытия темы {diploma['report']}% ')
+            self.__cli_print.print(f'Надо доделать доклад, полнота раскрытия темы {diploma['report']}% ')
             return False
-        print('Все хорошо, можно показывать')
+        self.__cli_print.print('Все хорошо, можно показывать')
         return True
 
     def get_first_name(self) -> str:

@@ -2,6 +2,7 @@ import time
 from typing import TypedDict
 from diploma_project import DiplomaProject
 from human import Human
+from cli_print import CliPrint
 
 
 class DiplomaProjectDict(TypedDict):
@@ -11,15 +12,17 @@ class DiplomaProjectDict(TypedDict):
 
 class Student(Human):
     __diploma_project = DiplomaProject()
+    __cli_print: CliPrint = CliPrint()
 
     def add_student(self):
         self.add_human()
-        print(f"Студент {self._last_name} {self._first_name} {self._surname} добавлен!")
+        self.__cli_print.print(f"Студент {self._last_name} {self._first_name} {self._surname} добавлен!")
 
     def is_exist(self) -> bool:
         if self._surname != '':
             return True
         return False
+
     def create_presentation(self):
         art = r"""
        __..._   _...__
@@ -31,7 +34,7 @@ class Student(Human):
     \\`_..---.Y.---.._`//
      '`               `'
         """
-        print(art)
+        self.__cli_print.print(art)
         time.sleep(2)
         self.__diploma_project.presentation_create()
 
@@ -52,7 +55,7 @@ class Student(Human):
    ==).      \__________\
   (__)       ()__________)
         """
-        print(art)
+        self.__cli_print.print(art)
         time.sleep(2)
         self.__diploma_project.report_create()
 

@@ -1,12 +1,17 @@
 import time
+
+import cli_input
 from student import Student
 from commission import Commission
 from scientific_director import ScientificDirector
 from transitions import Machine
+from cli_input import CliInput
+from cli_print import CliPrint
 
 
 class Menu:
-
+    __cli_print: CliPrint = CliPrint()
+    __cli_input: CliInput = CliInput()
     state: str
     __student = Student()
     __scientific_director = ScientificDirector()
@@ -47,13 +52,14 @@ class Menu:
     def creation_menu(self):
         while True:
             for element in self.__menu_items[self.state]:
-                print(element)
+                self.__cli_print.print(element)
             choice: int
-            input_str: str = input('Ввод: ')
+            self.__cli_input.set_input('Ввод: ')
+            input_str: str = self.__cli_input.get_input()
             try:
                 choice: int = int(input_str)
             except ValueError:
-                print("Ошибка: введите целое число.")
+                self.__cli_print.print("Ошибка: введите целое число.")
                 continue
             if '1 - Добавить студента' in self.__menu_items['creation'] and choice == 1:
                 self.__student.add_student()
@@ -74,7 +80,7 @@ class Menu:
                     self.menu()
                     break
                 else:
-                    print('Не выполнены все действия')
+                    self.__cli_print.print('Не выполнены все действия')
             elif choice == 0:
                 return
             else:
@@ -84,13 +90,14 @@ class Menu:
         verification: bool = False
         while True:
             for element in self.__menu_items[self.state]:
-                print(element)
+                self.__cli_print.print(element)
             choice: int
-            input_str: str = input('Ввод: ')
+            self.__cli_input.set_input('Ввод: ')
+            input_str: str = self.__cli_input.get_input()
             try:
                 choice: int = int(input_str)
             except ValueError:
-                print("Ошибка: введите целое число.")
+                self.__cli_print.print("Ошибка: введите целое число.")
                 continue
             if choice == 1:
                 verification = self.__scientific_director.verification_of_the_graduation_project(
@@ -107,7 +114,7 @@ class Menu:
                     self.go_to_rehearsal()
                     self.menu()
                     break
-                print('Не выполнены все действия')
+                self.__cli_print.print('Не выполнены все действия')
             elif choice == 0:
                 return
             else:
@@ -117,16 +124,19 @@ class Menu:
         verification: bool = False
         while True:
             for element in self.__menu_items[self.state]:
-                print(element)
+                self.__cli_print.print(element)
             choice: int
-            input_str: str = input('Ввод: ')
+            self.__cli_input.set_input('Ввод: ')
+            input_str: str = self.__cli_input.get_input()
             try:
                 choice: int = int(input_str)
             except ValueError:
-                print("Ошибка: введите целое число.")
+                self.__cli_print.print("Ошибка: введите целое число.")
                 continue
             if choice == 1:
-                verification = self.__commission.rehearsal_diploma_project(self.__student.get_diploma_project())
+                verification = self.__commission.rehearsal_diploma_project(
+                    self.__student.get_diploma_project()
+                )
             elif choice == 2:
                 self.__student.presentation_revision()
             elif choice == 3:
@@ -136,7 +146,7 @@ class Menu:
                     self.go_to_submission_of_thesis()
                     self.menu()
                     break
-                print('Не выполнены все действия')
+                self.__cli_print.print('Не выполнены все действия')
             elif choice == 0:
                 return
             else:
@@ -146,36 +156,46 @@ class Menu:
         verification: bool = False
         while True:
             self.__student.set_mark(5)
-            print('Вам повезло, вопросы сегодня простые')
-            scientific_director_first_name: str = input('Напишите Имя вашего научного руководителя:').strip()
+            self.__cli_print.print('Вам повезло, вопросы сегодня простые')
+            self.__cli_input.set_input('Напишите Имя вашего научного руководителя:')
+            scientific_director_first_name: str = self.__cli_input.get_input().strip()
             if scientific_director_first_name == self.__scientific_director.get_first_name():
                 self.__student.set_mark(self.__student.get_mark() + 1)
             else:
-                print('Вы даже не знаете как зовут вашего научного руководителя')
-            scientific_director_surname = input('Напишите Отчество вашего научного руководителя:').strip()
+                self.__cli_print.print('Вы даже не знаете как зовут вашего научного руководителя')
+            self.__cli_input.set_input('Напишите Отчество вашего научного руководителя:')
+            scientific_director_surname: str = self.__cli_input.get_input().strip()
             if scientific_director_surname == self.__scientific_director.get_surname():
                 self.__student.set_mark(self.__student.get_mark() + 1)
             else:
-                print('Вы даже не знаете отчества вашего научного руководителя')
-            future_work: str = input('Будете ли вы дальше работать по специальности?\n'
-                                     '1 - Да\n'
-                                     '2 - Нет\n'
-                                     'Ввод: '
-                                     )
-            self.__student.set_mark(self.__student.get_mark() + 1) if future_work == '1' else print('Жаль')
-            neural_network: str = input('Пользовались ли вы нейронными сетями при выполнении работы?\n'
-                                        '1 - Да \n'
-                                        '2 - Нет\n'
-                                        'Ввод: '
-                                        )
-            self.__student.set_mark(self.__student.get_mark() + 1) if neural_network == '1' else print('Сомневаюсь')
-            print('Мы посовещаемся и решим')
+                self.__cli_print.print('Вы даже не знаете отчества вашего научного руководителя')
+            self.__cli_input.set_input('Будете ли вы дальше работать по специальности?\n'
+                                       '1 - Да\n'
+                                       '2 - Нет\n'
+                                       'Ввод: '
+                                       )
+            future_work: str = self.__cli_input.get_input().strip()
+            self.__student.set_mark(self.__student.get_mark() + 1) if future_work == '1' else self.__cli_print.print(
+                'Жаль'
+            )
+            self.__cli_input.set_input('Пользовались ли вы нейронными сетями при выполнении работы?\n'
+                                       '1 - Да \n'
+                                       '2 - Нет\n'
+                                       'Ввод: '
+                                       )
+            neural_network: str = self.__cli_input.get_input().strip()
+            self.__student.set_mark(self.__student.get_mark() + 1) if neural_network == '1' else self.__cli_print.print(
+                'Сомневаюсь'
+            )
+            self.__cli_print.print('Мы посовещаемся и решим')
             time.sleep(2)
             if self.__commission.get_max_difficulty() < 95:
                 self.__student.set_mark(self.__student.get_mark() + 1)
-                print('Ваша дипломная работа достойна пахлавы(дает пахлаву)')
+                self.__cli_print.print('Ваша дипломная работа достойна пахлавы(дает пахлаву)')
             time.sleep(0.5)
-            print(f'Ваша итоговая оценка {self.__student.get_mark()}, поздравляем!(хлопки из-за двери)')
+            self.__cli_print.print(
+                f'Ваша итоговая оценка {self.__student.get_mark()}, поздравляем!(хлопки из-за двери)'
+            )
             break
 
     def menu(self):
