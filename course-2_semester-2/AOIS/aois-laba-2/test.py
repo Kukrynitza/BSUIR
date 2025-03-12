@@ -1,6 +1,6 @@
 import unittest
 from unittest.mock import patch
-from main import (table_create, rpn_check, make_operation, to_bin, process_expression)
+from main import (table_create, rpn_check, make_operation, to_bin, process_expression, binary_to_decimal)
 
 class MyTestCase(unittest.TestCase):
 
@@ -44,6 +44,10 @@ class MyTestCase(unittest.TestCase):
         self.assertEqual(table['index'], '0001')
         self.assertEqual(table['pdnf'], '(3)&')
         self.assertEqual(table['pcnf'], '(0, 1, 2)|')
+
+    def test_binary_to_decimal(self):
+        decimal = binary_to_decimal('0001')
+        self.assertEqual(decimal, 1)
 
 if __name__ == '__main__':
     unittest.main()

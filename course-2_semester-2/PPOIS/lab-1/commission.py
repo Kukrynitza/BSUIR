@@ -1,6 +1,6 @@
 import time
 from committeeman import Committeeman
-from typing import TypedDict
+from typing import TypedDict, List
 from cli_print import CliPrint
 
 
@@ -10,7 +10,7 @@ class DiplomaProjectDict(TypedDict):
 
 
 class Commission:
-    __commission: [Committeeman] = []
+    __commission: List[Committeeman] = []
     __max_difficulty: int = 0
     __upcoming_before_max_difficulty: int = 0
     __cli_print: CliPrint = CliPrint()

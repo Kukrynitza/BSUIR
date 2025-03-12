@@ -2,6 +2,17 @@ import math
 import string
 
 
+def binary_to_decimal(binary_str: str) -> int:
+    decimal_number = 0
+    power = len(binary_str) - 1
+
+    for digit in binary_str:
+        decimal_number += int(digit) * (2 ** power)
+        power -= 1
+
+    return decimal_number
+
+
 def process_expression(expression):
     def get_operator_priority(operator):
         priorities = {
@@ -88,6 +99,7 @@ def to_bin(num, length):
 
     return direct
 
+
 def make_operation(first: int, second: int, operation: string):
     if operation == '&':
         if first == 1 and second == 1:
@@ -107,6 +119,7 @@ def make_operation(first: int, second: int, operation: string):
         return 0
     else:
         return 0
+
 
 def rpn_check(rpn):
     vars: [string] = []
@@ -172,11 +185,11 @@ def table_create(exp: string, rpn: [], vars: []):
                 result_exp += '|'
         if check_info == 1:
             pdnf_list.append(str(i))
-            pdnf_exp_list += '(' + result_exp + ')|'
+            pdnf_exp_list += '(' + result_exp + ')&'
 
         else:
             pcnf_list.append(str(i))
-            pcnf_exp_list += '(' + result_exp + ')&'
+            pcnf_exp_list += '(' + result_exp + ')|'
         # print(bool_rpn)
         print(bool_vars_string)
     if len(pdnf_exp_list) != 0:
@@ -194,7 +207,8 @@ if __name__ == '__main__':
     print("Переменные:", vars)
     print("RPN:", rpn),
     table_info = table_create(expr, rpn, vars)
-    print(f"Индексная форма: {table_info['index']}")
+    decimal = binary_to_decimal(table_info['index'])
+    print(f"{decimal} - Индексная форма: {table_info['index']}")
     print(f"Числовая форма СДНФ: {table_info['pdnf']}")
     print(f"Числовая форма СКНФ: {table_info['pcnf']}")
     print(f"Совершенная дизъюнктивная нормальная форма (СДНФ): {table_info['pdnf_exp_list']}")
