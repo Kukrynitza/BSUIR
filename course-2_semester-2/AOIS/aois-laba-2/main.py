@@ -140,57 +140,53 @@ def rpn_check(rpn):
     return vars[0]
 
 
-def table_create(exp: string, rpn: [], vars: []):
+def table_create(exp: str, rpn: list, vars: list):
     vars_in_degree: int = 2 ** len(vars)
-    vars_string: string = ''
+    vars_string: str = ''
     for i in vars:
         vars_string += i + ' '
     vars_string += '' + exp
     print(vars_string)
-    index_form: [int] = []
+    index_form: list = []
     pdnf_exp_list: str = ''
     pcnf_exp_list: str = ''
-    pdnf_list: [int] = []
-    pcnf_list: [int] = []
+    pdnf_list: list = []
+    pcnf_list: list = []
     for i in range(vars_in_degree):
         bool_vars = to_bin(i, len(vars))
         str_numbers = [str(n) for n in bool_vars]
-        bool_rpn: [string] = rpn.copy()
+        bool_rpn: list = rpn.copy()
         for f in range(len(vars)):
-            index = bool_rpn.index(vars[f])
-            if '!' in vars[f]:
-                if (bool_vars[f] == 0):
-                    bool_rpn[index] = 1
+            indices = [index for index, val in enumerate(bool_rpn) if val == vars[f]]
+            for index in indices:
+                if '!' in vars[f]:
+                    bool_rpn[index] = 1 - bool_vars[f]
                 else:
-                    bool_rpn[index] = 0
-            else:
-                bool_rpn[index] = bool_vars[f]
+                    bool_rpn[index] = bool_vars[f]
         check_info = rpn_check(bool_rpn)
         index_form.append(str(check_info))
         bool_vars_string = ' '.join(str_numbers) + '  ' + str(check_info)
         result_exp = ''
-        for f in range(len(vars)):
-            if '!' in vars[f] and bool_vars[f] == 0:
-                continue
-            elif '!' in vars[f] and bool_vars[f] == 1:
-                result_exp += str(vars[f][1])
-                print
-            elif bool_vars[f] == 0:
-                result_exp += '!' + str(vars[f])
-            else:
-                result_exp += str(vars[f])
-            if check_info == 1:
-                result_exp += '&'
-            else:
-                result_exp += '|'
         if check_info == 1:
+            for f in range(len(vars)):
+                if bool_vars[f] == 1:
+                    result_exp += vars[f].replace('!', '')
+                else:
+                    result_exp += '!' + vars[f].replace('!', '')
+                if check_info == 1 and f + 1 != len(vars):
+                    result_exp += '&'
             pdnf_list.append(str(i))
-            pdnf_exp_list += '(' + result_exp + ')&'
-
+            pdnf_exp_list += '(' + result_exp + ')|'
         else:
+            for f in range(len(vars)):
+                if bool_vars[f] == 1:
+                    result_exp += '!' + vars[f].replace('!', '')
+                else:
+                    result_exp += vars[f].replace('!', '')
+                if check_info == 0 and f + 1 != len(vars):
+                    result_exp += '|'
             pcnf_list.append(str(i))
-            pcnf_exp_list += '(' + result_exp + ')|'
-        # print(bool_rpn)
+            pcnf_exp_list += '(' + result_exp + ')&'
         print(bool_vars_string)
     if len(pdnf_exp_list) != 0:
         pdnf_exp_list = pdnf_exp_list[:-1]
