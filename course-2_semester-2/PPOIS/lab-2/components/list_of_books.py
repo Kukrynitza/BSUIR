@@ -39,10 +39,15 @@ def list_of_books(page: ft.Page, books: List[Book], book_page: BookPage):
                     ft.Text(f"Томов: {book['volumes']}", color='#FDD3E8'),
                     ft.Text(f"Тираж: {book['copies']}", color='#FDD3E8'),
                     ft.Text(f"Итого томов: {book['total_volumes']}", color='#FDD3E8')
-                ]),
+                ],
+                    alignment=ft.MainAxisAlignment.START,
+                    spacing=3,
+                    scroll=ft.ScrollMode.AUTO,
+                ),
                 bgcolor='#4E1325',
                 padding=10,
-                border_radius=10
+                border_radius=10,
+                width=page.width
             )
             books_list.controls.append(book_card)
         books_list.controls.append(ft.Text(

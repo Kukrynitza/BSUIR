@@ -1,14 +1,15 @@
 import flet as ft
 from sorse.highlighted_books import HighlightedBooks
 from sorse.created_book import CreatedBooks
+from sorse.debouncer import Debouncer
 
 
 def create_input_form(
-        page: ft.Page,
         highlighted_books: HighlightedBooks,
         created_book: CreatedBooks,
         update_highlighted_books
             ):
+    debouncer = Debouncer(0.5)
     result_input_form = ft.Column(
         controls=[
             ft.Row(
@@ -18,15 +19,16 @@ def create_input_form(
                         on_change=lambda e: (
                             highlighted_books.set_title(e.control.value),
                             created_book.set_title(e.control.value),
-                            update_highlighted_books()
+                            debouncer.debounce(update_highlighted_books)
                         ),
                         label="Название книги",
                         hint_text="Название книги",
-                        # input_filter=ft.InputFilter(
-                        #     allow=True,
-                        #     regex_string=r"^[А-ЯЁ][а-яё]+([ -][А-ЯЁа-яё][а-яё;:\"',.!?]+){0,7}$",
-                        #     replacement_string=""
-                        # ),
+                        input_filter=ft.InputFilter(
+                            allow=True,
+                            regex_string=r"^[А-ЯЁа-яё\s-]*$",
+                            # regex_string=r"^[А-ЯЁ][а-яё]+([ -][А-ЯЁа-яё][а-яё;:\"',.!?]+){0,7}$",
+                            replacement_string=""
+                        ),
                         max_length=55,
                         color='#FDD3E8',
                         cursor_color='#FDD3E8',
@@ -39,15 +41,16 @@ def create_input_form(
                         on_change=lambda e: (
                             highlighted_books.set_author_first_name(e.control.value),
                             created_book.set_author_first_name(e.control.value),
-                            update_highlighted_books()
+                            debouncer.debounce(update_highlighted_books)
                         ),
                         label="Имя автора",
                         hint_text="Имя автора",
-                        # input_filter=ft.InputFilter(
-                        #     allow=True,
-                        #     regex_string=r"^[А-ЯЁ][а-яё]+([-][А-ЯЁ][а-яё]+){0,2}$",
-                        #     replacement_string=""
-                        # ),
+                        input_filter=ft.InputFilter(
+                            allow=True,
+                            regex_string=r"^[А-ЯЁа-яё\s-]*$",
+                            # regex_string=r"^[А-ЯЁ][а-яё]+([-][А-ЯЁ][а-яё]+){0,2}$",
+                            replacement_string=""
+                        ),
                         max_length=10,
                         color='#FDD3E8',
                         cursor_color='#FDD3E8',
@@ -59,16 +62,17 @@ def create_input_form(
                         on_change=lambda e: (
                             highlighted_books.set_author_last_name(e.control.value),
                             created_book.set_author_last_name(e.control.value),
-                            update_highlighted_books()
+                            debouncer.debounce(update_highlighted_books)
                         ),
                         label="Фамилия автора",
                         hint_text="Фамилия автора",
                         max_length=30,
-                        # input_filter=ft.InputFilter(
-                        #     allow=True,
-                        #     regex_string=r"^[А-ЯЁа-яё][а-яё]+([ -][А-ЯЁа-яё][а-яё]+){0,3}$",
-                        #     replacement_string=""
-                        # ),
+                        input_filter=ft.InputFilter(
+                            allow=True,
+                            regex_string=r"^[А-ЯЁа-яё\s-]*$",
+                            # regex_string=r"^[А-ЯЁа-яё][а-яё]+([ -][А-ЯЁа-яё][а-яё]+){0,3}$",
+                            replacement_string=""
+                        ),
                         color='#FDD3E8',
                         cursor_color='#FDD3E8',
                         width=200,
@@ -85,7 +89,7 @@ def create_input_form(
                             on_change=lambda e: (
                                 highlighted_books.set_min_volumes(e.control.value),
                                 created_book.set_volumes(e.control.value),
-                                update_highlighted_books()
+                                debouncer.debounce(update_highlighted_books)
                             ),
                             label="Количество томов",
                             hint_text="Количество томов",
@@ -102,15 +106,16 @@ def create_input_form(
                         on_change=lambda e: (
                             highlighted_books.set_publisher(e.control.value),
                             created_book.set_publisher(e.control.value),
-                            update_highlighted_books()
+                            debouncer.debounce(update_highlighted_books)
                         ),
                         label="Издательство",
                         hint_text="Издательство",
-                        # input_filter=ft.InputFilter(
-                        #     allow=True,
-                        #     regex_string=r"^[А-ЯЁ][а-яё]+([ -][А-ЯЁа-яё][а-яё]+){0,4}$",
-                        #     replacement_string=""
-                        # ),
+                        input_filter=ft.InputFilter(
+                            allow=True,
+                            regex_string=r"^[А-ЯЁа-яё\s-]*$",
+                            # regex_string=r"^[А-ЯЁ][а-яё]+([ -][А-ЯЁа-яё][а-яё]+){0,4}$",
+                            replacement_string=""
+                        ),
                         max_length=30,
                         color='#FDD3E8',
                         cursor_color='#FDD3E8',
@@ -124,7 +129,7 @@ def create_input_form(
                                     on_change=lambda e: (
                                         highlighted_books.set_min_copies(e.control.value),
                                         created_book.set_copies(e.control.value),
-                                        update_highlighted_books()
+                                        debouncer.debounce(update_highlighted_books)
                                     ),
                                     label="Тираж",
                                     hint_text="Тираж",

@@ -1,9 +1,10 @@
 import flet as ft
 from sorse.highlighted_books import HighlightedBooks
+from sorse.debouncer import Debouncer
 
 
 def input_form(page: ft.Page, highlighted_books: HighlightedBooks,  update_highlighted_books):
-
+    debouncer = Debouncer(0.5)
     result_input_form = ft.Column(
         controls=[
             ft.Row(
@@ -12,7 +13,7 @@ def input_form(page: ft.Page, highlighted_books: HighlightedBooks,  update_highl
                         value=highlighted_books.get_title(),
                         on_change=lambda e: (
                             highlighted_books.set_title(e.control.value),
-                            update_highlighted_books()
+                            debouncer.debounce(update_highlighted_books)
                         ),
                         label="Название книги",
                         hint_text="Название книги",
@@ -27,7 +28,7 @@ def input_form(page: ft.Page, highlighted_books: HighlightedBooks,  update_highl
                         value=highlighted_books.get_author_first_name(),
                         on_change=lambda e: (
                             highlighted_books.set_author_first_name(e.control.value),
-                            update_highlighted_books()
+                            debouncer.debounce(update_highlighted_books)
                         ),
                         label="Имя автора",
                         hint_text="Имя автора",
@@ -41,7 +42,7 @@ def input_form(page: ft.Page, highlighted_books: HighlightedBooks,  update_highl
                         value=highlighted_books.get_author_last_name(),
                         on_change=lambda e: (
                             highlighted_books.set_author_last_name(e.control.value),
-                            update_highlighted_books()
+                            debouncer.debounce(update_highlighted_books)
                         ),
                         label="Фамилия автора",
                         hint_text="Фамилия автора",
@@ -58,7 +59,7 @@ def input_form(page: ft.Page, highlighted_books: HighlightedBooks,  update_highl
                                     value=highlighted_books.get_min_volumes(),
                                     on_change=lambda e: (
                                         highlighted_books.set_min_volumes(e.control.value),
-                                        update_highlighted_books()
+                                        debouncer.debounce(update_highlighted_books)
                                     ),
                                     label="Количество томов, от",
                                     hint_text="Количество томов, от",
@@ -74,7 +75,7 @@ def input_form(page: ft.Page, highlighted_books: HighlightedBooks,  update_highl
                                     value=highlighted_books.get_max_volumes(),
                                     on_change=lambda e: (
                                         highlighted_books.set_max_volumes(e.control.value),
-                                        update_highlighted_books()
+                                        debouncer.debounce(update_highlighted_books)
                                     ),
                                     label="Количество глав, до",
                                     hint_text="до",
@@ -99,7 +100,7 @@ def input_form(page: ft.Page, highlighted_books: HighlightedBooks,  update_highl
                         value=highlighted_books.get_publisher(),
                         on_change=lambda e: (
                             highlighted_books.set_publisher(e.control.value),
-                            update_highlighted_books()
+                            debouncer.debounce(update_highlighted_books)
                         ),
                         label="Издательство",
                         hint_text="Издательство",
@@ -117,7 +118,7 @@ def input_form(page: ft.Page, highlighted_books: HighlightedBooks,  update_highl
                                     value=highlighted_books.get_min_copies(),
                                     on_change=lambda e: (
                                         highlighted_books.set_min_copies(e.control.value),
-                                        update_highlighted_books()
+                                        debouncer.debounce(update_highlighted_books)
                                     ),
                                     label="Тираж, от",
                                     hint_text="Тираж, от",
@@ -133,7 +134,7 @@ def input_form(page: ft.Page, highlighted_books: HighlightedBooks,  update_highl
                                     value=highlighted_books.get_max_copies(),
                                     on_change=lambda e: (
                                         highlighted_books.set_max_copies(e.control.value),
-                                        update_highlighted_books()
+                                        debouncer.debounce(update_highlighted_books)
                                     ),
                                     label="Тираж, до",
                                     hint_text="до",
@@ -156,7 +157,7 @@ def input_form(page: ft.Page, highlighted_books: HighlightedBooks,  update_highl
                                     value=highlighted_books.get_min_total_volumes(),
                                     on_change=lambda e: (
                                         highlighted_books.set_min_total_volumes(e.control.value),
-                                        update_highlighted_books()
+                                        debouncer.debounce(update_highlighted_books)
                                     ),
                                     label="Итоговый тираж, от",
                                     hint_text="Итоговый тираж, от",
@@ -172,7 +173,7 @@ def input_form(page: ft.Page, highlighted_books: HighlightedBooks,  update_highl
                                     value=highlighted_books.get_max_total_volumes(),
                                     on_change=lambda e: (
                                         highlighted_books.set_max_total_volumes(e.control.value),
-                                        update_highlighted_books()
+                                        debouncer.debounce(update_highlighted_books)
                                     ),
                                     label="Итоговый тираж, до",
                                     hint_text="до",

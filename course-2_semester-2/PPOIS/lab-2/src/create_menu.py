@@ -10,6 +10,7 @@ from sorse.create_book import create_book
 from components.create_input_form import create_input_form
 from sorse.created_book import CreatedBooks
 from sorse.delete_books import delete_books
+from sorse.validate_create_book import validate_create_book
 
 
 def create_menu(page: ft.Page, file_path: str):
@@ -79,13 +80,13 @@ def create_menu(page: ft.Page, file_path: str):
         page.update()
 
     result_input_form = ft.Column(
-        controls=[create_input_form(page, highlighted_books, created_book, update_highlighted_books)]
+        controls=[create_input_form(highlighted_books, created_book, update_highlighted_books)]
     )
 
     def update_input_form():
         result_input_form.controls.clear()
         result_input_form.controls.append(
-            create_input_form(page, highlighted_books, created_book, update_highlighted_books)
+            create_input_form(highlighted_books, created_book, update_highlighted_books)
         )
 
     def create_book_parameters_to_none():
@@ -116,6 +117,10 @@ def create_menu(page: ft.Page, file_path: str):
     def create_highlighted_books():
         nonlocal books, highlighted_books, created_book, error_value
         if created_book.get_book():
+            error_value = validate_create_book(created_book)
+            if error_value:
+                update_error()
+                return
             for book in books:
                 if (
                     created_book.get_author_first_name() in book['author'] and
@@ -124,7 +129,6 @@ def create_menu(page: ft.Page, file_path: str):
                     created_book.get_title() in book['title']
                 ):
                     delete_books(file_path, [created_book.get_book()])
-
             create_book(file_path, created_book.get_book())
             books = get_books(file_path)
             highlighted_books.books = books
@@ -133,6 +137,7 @@ def create_menu(page: ft.Page, file_path: str):
             return
         error_value = 'Не заполнены все поля'
         update_error()
+        return
 
     return ft.Column(
         controls=[
