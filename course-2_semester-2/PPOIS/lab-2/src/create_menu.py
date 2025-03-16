@@ -158,6 +158,7 @@ def create_menu(page: ft.Page, file_path: str):
             result_input_form,
             books_container
         ],
+        width=page.width,
         horizontal_alignment=ft.CrossAxisAlignment.CENTER,
         alignment=ft.MainAxisAlignment.CENTER,
         expand=True

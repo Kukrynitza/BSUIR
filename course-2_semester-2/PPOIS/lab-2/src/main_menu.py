@@ -34,11 +34,19 @@ def main_menu(page: ft.Page, file_path: str):
         alignment=ft.MainAxisAlignment.CENTER,
         scroll=ft.ScrollMode.AUTO,
     )
-    return ft.Container(
-        content=books_container,
-        alignment=ft.alignment.center,
-        padding=20,
-        border_radius=10,
-        margin=10,
+
+    return ft.Column(
+        controls=[
+            ft.Container(
+                content=ft.Text('Главное меню', size=24, color='#FDD3E8'),
+                alignment=ft.alignment.center,
+                width=page.width
+            ),
+            books_container,
+        ],
         width=page.width,
+        horizontal_alignment=ft.CrossAxisAlignment.CENTER,
+        alignment=ft.MainAxisAlignment.CENTER,
+        expand=True
     )
+

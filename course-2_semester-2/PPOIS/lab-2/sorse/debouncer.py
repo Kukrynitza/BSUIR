@@ -1,9 +1,8 @@
 from threading import Timer
-import asyncio
 
 
 class Debouncer:
-    def __init__(self, delay):
+    def __init__(self, delay: float):
         self.delay = delay
         self.timer = None
 
