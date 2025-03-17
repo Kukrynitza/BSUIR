@@ -133,7 +133,7 @@ def rpn_check(rpn):
             else:
                 vars[-1] = 0
         else:
-            el:int = make_operation(vars[-1], vars[-2], rpn[element])
+            el:int = make_operation(vars[-2], vars[-1], rpn[element])
             vars.pop()
             vars.pop()
             vars.append(el)
