@@ -52,5 +52,5 @@ def minimize_sknf_by_calculation_method(expression_str):
         ))
 
     minimized = " & ".join(f"({t})" for t in minimized_terms)
-    print('СДНФ расчетным методом, стадии склеивания', sknf)
+    print('СКНФ расчетным методом, стадии склеивания', sknf)
     return minimized

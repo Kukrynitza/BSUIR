@@ -1,47 +1,39 @@
 import unittest
 from unittest.mock import patch
-from main import (table_create, rpn_check, make_operation, to_bin, process_expression)
+from sorse.SDNF.minimized_pdnf_by_calculation_method import minimize_sdnf_by_calculation_method
+from sorse.SDNF.minimize_sdnf_by_spreadsheet_method import minimize_sdnf_by_spreadsheet_method
+from sorse.SDNF.minimize_sdnf_by_calculation_spreadsheet_method import minimize_sdnf_by_calculation_spreadsheet_method
+from sorse.SCNF.minimized_pcnf_by_calculation_method import minimize_sknf_by_calculation_method
+from sorse.SCNF.minimize_sсnf_by_spreadsheet_method import minimize_scnf_by_spreadsheet_method
+from sorse.SCNF.minimize_sсnf_by_calculation_spreadsheet_method import minimize_sсnf_by_calculation_spreadsheet_method
 
 class MyTestCase(unittest.TestCase):
 
+    def test_minimize_sdnf_by_calculation_method(self):
+        result = minimize_sdnf_by_calculation_method("(!a&!b&!c)|(!a&b&!c)|(a&b&!c)")
+        self.assertTrue(result == "b & !c | !a & !c" or result == "!a & !c | b & !c")
 
-    def test_process_expression_with_negation(self):
-        vars, rpn = process_expression("!a | b")
-        self.assertEqual(vars, ['!a', 'b'])
-        self.assertEqual(rpn, ['!a', 'b', '|'])
+    def test_minimize_sdnf_by_spreadsheet_method(self):
+        result = minimize_sdnf_by_spreadsheet_method("(!a&!b&!c)|(!a&b&!c)|(a&b&!c)")
+        self.assertTrue(result == "b & !c | !a & !c" or result == "!a & !c | b & !c")
 
-    def test_process_expression_complex(self):
-        vars, rpn = process_expression("(a & b) | c")
-        self.assertEqual(vars, ['a', 'b', 'c'])
-        self.assertEqual(rpn, ['a', 'b', '&', 'c', '|'])
+    def test_minimize_sdnf_by_calculation_spreadsheet_method(self):
+        result = minimize_sdnf_by_calculation_spreadsheet_method("(!a&!b&!c)|(!a&b&!c)|(a&b&!c)")
+        self.assertTrue(result == "b & !c | !a & !c" or result == "!a & !c | b & !c")
 
-    def test_make_operation_and(self):
-        self.assertEqual(make_operation(1, 1, '&'), 1)
-        self.assertEqual(make_operation(1, 0, '&'), 0)
-        self.assertEqual(make_operation(0, 0, '&'), 0)
+    def test_minimize_sknf_by_calculation_method(self):
+        result = minimize_sknf_by_calculation_method("(a|b|!c)&(a|!b|!c)&(!a|b|c)&(!a|b|!c)&(!a|!b|!c)")
+        self.assertTrue(result == "(!c) & (!a | b)" or result == "(!a | b) & (!c)")
 
-    def test_make_operation_or(self):
-        self.assertEqual(make_operation(1, 1, '|'), 1)
-        self.assertEqual(make_operation(1, 0, '|'), 1)
-        self.assertEqual(make_operation(0, 0, '|'), 0)
+    def test_minimize_scnf_by_spreadsheet_method(self):
+        result = minimize_scnf_by_spreadsheet_method("(a|b|!c)&(a|!b|!c)&(!a|b|c)&(!a|b|!c)&(!a|!b|!c)")
+        self.assertTrue(result == "(!c) & (!a | b)" or result == "(!a | b) & (!c)")
 
-    def test_make_operation_implication(self):
-        self.assertEqual(make_operation(1, 1, '->'), 1)
-        self.assertEqual(make_operation(1, 0, '->'), 0)
-        self.assertEqual(make_operation(0, 0, '->'), 1)
+    def test_minimize_minimize_sсnf_by_calculation_spreadsheet_method(self):
+        result = minimize_sсnf_by_calculation_spreadsheet_method("(a|b|!c)&(a|!b|!c)&(!a|b|c)&(!a|b|!c)&(!a|!b|!c)")
+        self.assertTrue(result == "(!c) & (!a | b)" or result == "(!a | b) & (!c)")
 
-    def test_make_operation_equivalence(self):
-        self.assertEqual(make_operation(1, 1, '~'), 1)
-        self.assertEqual(make_operation(1, 0, '~'), 0)
 
-    def test_table_create(self):
-        expr = "a & b"
-        vars, rpn = process_expression(expr)
-        table = table_create(expr, rpn, vars)
-
-        self.assertEqual(table['index'], [0, 0, 0, 1])
-        self.assertEqual(table['pdnf'], [3])
-        self.assertEqual(table['pcnf'], [0, 1, 2])
 
 if __name__ == '__main__':
     unittest.main()
