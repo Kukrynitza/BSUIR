@@ -1,7 +1,6 @@
 import itertools
 import re
 from functools import lru_cache
-from sorse.SCNF.minimized_pcnf_by_calculation_method import minimize_sknf_by_calculation_method
 
 
 def parse_expression(expression: str):
@@ -60,32 +59,43 @@ def merge_terms(a, b):
         return tuple(a[i] if i not in diff else '-' for i in range(len(a)))
     return None
 
-
 def minimize_karnaugh(terms, variables):
     groups = {i: [] for i in range(len(variables) + 1)}
     for term in terms:
         groups[sum(term)].append(term)
 
     prime_implicants = set()
-    checked = set()
     while True:
-        next_groups = {}
-        combined = set()
-        for i in range(len(groups) - 1):
-            if i not in groups or i + 1 not in groups:
+        next_groups = {i: [] for i in range(len(variables))}
+        combined_terms = set()
+        marked = set()
+
+        keys = sorted(groups.keys())
+        for i in keys:
+            if i + 1 not in groups:
                 continue
             for term1 in groups[i]:
                 for term2 in groups[i + 1]:
                     merged = merge_terms(term1, term2)
-                    if merged and merged not in combined:
-                        next_groups.setdefault(i, []).append(merged)
-                        combined.add(merged)
-                        checked.add(term1)
-                        checked.add(term2)
-        prime_implicants.update(set(sum(groups.values(), [])) - checked)
-        if not next_groups:
+                    if merged:
+                        next_groups[i].append(merged)
+                        combined_terms.add(merged)
+                        marked.add(term1)
+                        marked.add(term2)
+
+        # Добавляем только те, которые не были объединены
+        for group in groups.values():
+            for term in group:
+                if term not in marked:
+                    prime_implicants.add(term)
+
+        if not any(next_groups.values()):
             break
-        groups = next_groups
+        # Удаляем дубликаты
+        groups = {}
+        for term in combined_terms:
+            ones = sum(1 for x in term if x == 1)
+            groups.setdefault(ones, []).append(term)
 
     essential_prime_implicants = find_essential_prime_implicants(prime_implicants, terms)
     additional_implicants = cover_remaining_terms(essential_prime_implicants, prime_implicants, terms)
@@ -140,7 +150,7 @@ def minimize_sknf(expression: str):
 
     def term_to_sknf(term):
         return "(" + " | ".join(
-            f"{variables[i]}" if term[i] == 0 else f"!{variables[i]}" for i in range(len(term)) if term[i] != '-') + ")"
+            f"!{variables[i]}" if term[i] == 1 else f"{variables[i]}" for i in range(len(term)) if term[i] != '-') + ")"
 
     return " & ".join(term_to_sknf(term) for term in minimized)
 
@@ -150,4 +160,4 @@ def minimize_scnf_by_spreadsheet_method(expr):
     print_karnaugh_map(maxterms, variables)
     result = minimize_sknf(expr)
     print(f"Минимизированная форма (СКНФ) табличным методом: {result}")
-    return minimize_sknf_by_calculation_method(result)
+    return result
