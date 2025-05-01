@@ -1,9 +1,22 @@
-﻿#include <iostream>
+﻿// Вариант: F14
+//﻿ Лабораторная работа №1 по дисциплине Логические Основы Интеллектуальных Систем
+// Выполнена студентом группы 321701:Политыко Ильей Андреевичем
+//
+// 01.05.2025
+//
+// Задание:
+//  Проверить является ли формула КНФ
+//
+// Использованные источники:
+// Справочная система по дисциплине ЛОИС
+// Логические основы интеллектуальных систем. Практикум
+
+#include <iostream>
 #include <fstream>
 #include <string>
 #include <vector>
 #include <cctype>
-//Политыко Илья Андреевич
+
 using namespace std;
 
 bool isValidLiteral(const string& token) {
@@ -87,10 +100,10 @@ bool isCNF(const string& formula) {
             clauses.push_back(clause);
         }
         else if (formula[i] == '&') {
-            ++i; 
+            ++i;
         }
         else {
-            return false; 
+            return false;
         }
     }
 
@@ -130,7 +143,7 @@ int main() {
     }
     else if (choice == 3) {
         cout << "Политыко Илья Андреевич";
-
+        return 1;
     }
     else {
         cerr << "Неверный выбор.\n";
