@@ -16,7 +16,7 @@ def generate_bcd_conversion_table():
             for c in range(2):
                 for d in range(2):
                     decimal_input = (a << 3) | (b << 2) | (c << 1) | d
-                    if decimal_input > 9:
+                    if decimal_input > 7:
                         continue
                     a_out, b_out, c_out, d_out = bcd_to_bcd_plus_2(a, b, c, d)
                     table.append([a, b, c, d, a_out, b_out, c_out, d_out])
