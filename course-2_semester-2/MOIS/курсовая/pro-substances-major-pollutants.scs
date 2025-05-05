@@ -1,0 +1,792 @@
+subject_domain_of_major_pollutants <- sc_node_struct;;
+subject_domain_of_major_pollutants => nrel_main_idtf: [Предметная область основных загрязняющих веществ] (*<- lang_ru;;*);;
+concept_major_pollutants <- sc_node_class;
+              => nrel_main_idtf: [основные загрязняющие вещества](*<- lang_ru;;*);;
+
+subject_domain_of_major_pollutants
+                                => nrel_partition:
+                                                  concept_suspended_solids;
+                                                  concept_biochemical_oxygen_demand;
+                                                  concept_chemical_oxygen_demand;
+                                                  concept_ammonium_ion;
+                                                  concept_kjeldahl_nitrogen;
+                                                  concept_total_phosphorus;
+                                                  concept_phosphate_ion;
+                                                  concept_chloride_ion;
+                                                  concept_petroleum_products;
+                                                  concept_oils_and_fats;;
+
+
+
+
+concept_suspended_solids <- sc_node_class;
+              => nrel_main_idtf: [взвешенные вещества](*<- lang_ru;;*);
+              => sc_link_content: [сложные соединения органических и неорганических субстанций, находящиеся в воде во взвешенном состоянии.];;
+concept_suspended_solids -> rrel_maximum_studied_object_class: concept_major_pollutants;;
+concept_suspended_solids => nrel_partition:
+                                          concept_organic_suspended_solids;
+                                          concept_inorganic_suspended_solids;;
+
+concept_inorganic_suspended_solids <- sc_node_class;
+                                 => nrel_main_idtf: [неорганические: песок, глина, ржавчина](*<- lang_ru;;*);;
+                                 
+concept_organic_suspended_solids <- sc_node_class;
+                                 => nrel_main_idtf: [органические: остатки растений, бактерии](*<- lang_ru;;*);;                                 
+
+concept_suspended_solids => nrel_application:
+                                            concept_wastewater_treatment;
+                                            concept_water_quality_monitoring;;
+
+concept_suspended_solids => nrel_technical_parameter:
+    rrel_concentration;
+    rrel_particle_size;;
+
+    rrel_concentration <- sc_node_role_relation; 
+    => nrel_main_idtf: [мг/л](*<- lang_ru;;*);;
+
+    rrel_particle_size <- sc_node_role_relation; 
+    => nrel_main_idtf: [мкм](*<- lang_ru;;*);;
+
+concept_suspended_solids => nrel_operation_principle:
+                                            concept_sedimentation;
+                                            concept_filtration;
+                                            concept_coagulation;;
+
+    concept_wastewater_treatment <- sc_node_class; 
+    => nrel_main_idtf: [очистка сточных вод](*<- lang_ru;;*);;
+    concept_water_quality_monitoring <- sc_node_class; 
+    => nrel_main_idtf: [мониторинг качества воды](*<- lang_ru;;*);;
+
+    concept_sedimentation <- sc_node_class;
+    => nrel_main_idtf: [осаждение](*<- lang_ru;;*);;
+    concept_filtration <- sc_node_class;
+    => nrel_main_idtf: [фильтрация](*<- lang_ru;;*);;
+    concept_coagulation <- sc_node_class;
+    => nrel_main_idtf: [коагуляция](*<- lang_ru;;*);;
+
+
+
+
+
+concept_biochemical_oxygen_demand <- sc_node_class;
+    => nrel_main_idtf: [биохимическое потребление кислорода (БПК₅)](*<- lang_ru;;*);
+    => sc_link_content: [количество кислорода, необходимое для биохимического окисления органических веществ микроорганизмами в воде в течение 5 суток при температуре 20°с.];;
+concept_biochemical_oxygen_demand -> rrel_maximum_studied_object_class: concept_major_pollutants;;
+concept_biochemical_oxygen_demand => nrel_partition:
+    concept_BOD_total;
+    concept_BOD_5;
+    concept_BOD_1;;
+
+concept_biochemical_oxygen_demand => nrel_application:
+    concept_wastewater_quality_control;
+    concept_treatment_efficiency_evaluation;
+    concept_pollution_assessment;
+    concept_aeration_calculation;;
+
+concept_biochemical_oxygen_demand => nrel_technical_parameter:
+    rrel_unit;
+    rrel_standard_duration;
+    rrel_dependency_factors;;
+
+concept_biochemical_oxygen_demand => nrel_operation_principle:
+    concept_oxidation_by_microorganisms;
+    concept_oxygen_consumption;
+    concept_dissolved_oxygen_drop;;
+
+concept_biochemical_oxygen_demand => nrel_component:
+    concept_organic_pollutants;
+    concept_aerobic_microorganisms;
+    concept_dissolved_oxygen;;
+
+concept_biochemical_oxygen_demand => nrel_type:
+    concept_BOD_total_type;
+    concept_BOD_5_type;
+    concept_BOD_1_type;;
+
+concept_BOD_total <- sc_node_class;
+    => nrel_main_idtf: [БПК полного окисления (БПК∞)](*<- lang_ru;;*);;
+
+concept_BOD_5 <- sc_node_class;
+    => nrel_main_idtf: [БПК₅ — стандартное измерение за 5 суток](*<- lang_ru;;*);;
+
+concept_BOD_1 <- sc_node_class;
+    => nrel_main_idtf: [БПК₁ — краткосрочное измерение](*<- lang_ru;;*);;
+
+
+concept_wastewater_quality_control <- sc_node_class;
+    => nrel_main_idtf: [контроль качества сточных и природных вод](*<- lang_ru;;*);;
+
+concept_treatment_efficiency_evaluation <- sc_node_class;
+    => nrel_main_idtf: [определение эффективности очистных сооружений](*<- lang_ru;;*);;
+
+concept_pollution_assessment <- sc_node_class;
+    => nrel_main_idtf: [оценка уровня загрязнения водоемов органическими веществами](*<- lang_ru;;*);;
+
+concept_aeration_calculation <- sc_node_class;
+    => nrel_main_idtf: [расчет необходимой аэрации в очистных сооружениях](*<- lang_ru;;*);;
+
+
+rrel_unit <- sc_node_role_relation;
+    => nrel_main_idtf: [мг O₂/л](*<- lang_ru;;*);;
+
+rrel_standard_duration <- sc_node_role_relation;
+    => nrel_main_idtf: [5 суток при 20°С](*<- lang_ru;;*);;
+
+rrel_dependency_factors <- sc_node_role_relation;
+    => nrel_main_idtf: [температура, концентрация микроорганизмов, состав загрязнителей](*<- lang_ru;;*);;
+
+
+concept_oxidation_by_microorganisms <- sc_node_class;
+    => nrel_main_idtf: [аэробные микроорганизмы окисляют органические соединения](*<- lang_ru;;*);;
+
+concept_oxygen_consumption <- sc_node_class;
+    => nrel_main_idtf: [кислород расходуется на биохимическое разложение](*<- lang_ru;;*);;
+
+concept_dissolved_oxygen_drop <- sc_node_class;
+    => nrel_main_idtf: [снижение концентрации растворённого O₂ указывает уровень загрязнения](*<- lang_ru;;*);;
+
+
+concept_organic_pollutants <- sc_node_class;
+    => nrel_main_idtf: [органические загрязнители (углеводы, белки, жиры)](*<- lang_ru;;*);;
+
+concept_aerobic_microorganisms <- sc_node_class;
+    => nrel_main_idtf: [аэробные бактерии и микроорганизмы](*<- lang_ru;;*);;
+
+concept_dissolved_oxygen <- sc_node_class;
+    => nrel_main_idtf: [растворённый кислород](*<- lang_ru;;*);;
+
+
+concept_BOD_total_type <- sc_node_class;
+    => nrel_main_idtf: [БПК полного разложения (БПК∞)](*<- lang_ru;;*);;
+
+concept_BOD_5_type <- sc_node_class;
+    => nrel_main_idtf: [БПК₅ — стандартный лабораторный тест](*<- lang_ru;;*);;
+
+concept_BOD_1_type <- sc_node_class;
+    => nrel_main_idtf: [БПК₁ — экспресс-анализ](*<- lang_ru;;*);;
+
+
+
+
+
+concept_chemical_oxygen_demand <- sc_node_class;
+    => nrel_main_idtf: [химическое потребление кислорода (ХПК)](*<- lang_ru;;*);
+    => sc_link_content: [количество кислорода, необходимое для окисления органических и неорганических веществ в воде сильными окислителями (например, дихроматом калия) при стандартных условиях.];;
+concept_chemical_oxygen_demand -> rrel_maximum_studied_object_class: concept_major_pollutants;;
+concept_chemical_oxygen_demand => nrel_partition:
+    concept_COD_organic;
+    concept_COD_inorganic;;
+
+concept_chemical_oxygen_demand => nrel_application:
+    concept_wastewater_monitoring;
+    concept_total_pollution_assessment;
+    concept_treatment_efficiency_check;
+    concept_ecological_monitoring;;
+
+concept_chemical_oxygen_demand => nrel_technical_parameter:
+    rrel_unit;
+    rrel_standard_method;
+    rrel_reaction_time;;
+
+concept_chemical_oxygen_demand => nrel_operation_principle:
+    concept_strong_oxidizers_use;
+    concept_oxygen_consumption_for_oxidation;;
+
+concept_chemical_oxygen_demand => nrel_component:
+    concept_organic_pollutants;
+    concept_inorganic_pollutants;
+    concept_oxidizing_agents;;
+
+concept_chemical_oxygen_demand => nrel_type:
+    concept_COD_organic_type;
+    concept_COD_inorganic_type;;
+
+
+concept_COD_organic <- sc_node_class;
+    => nrel_main_idtf: [ХПК органических веществ](*<- lang_ru;;*);;
+
+concept_COD_inorganic <- sc_node_class;
+    => nrel_main_idtf: [ХПК неорганических веществ](*<- lang_ru;;*);;
+
+
+concept_wastewater_monitoring <- sc_node_class;
+    => nrel_main_idtf: [контроль качества сточных вод](*<- lang_ru;;*);;
+
+concept_total_pollution_assessment <- sc_node_class;
+    => nrel_main_idtf: [оценка общей степени загрязнения водоёмов](*<- lang_ru;;*);;
+
+concept_treatment_efficiency_check <- sc_node_class;
+    => nrel_main_idtf: [определение эффективности очистных процессов](*<- lang_ru;;*);;
+
+concept_ecological_monitoring <- sc_node_class;
+    => nrel_main_idtf: [экологический мониторинг водоёмов и водоснабжения](*<- lang_ru;;*);;
+
+
+rrel_unit <- sc_node_role_relation;
+    => nrel_main_idtf: [мг O₂/л](*<- lang_ru;;*);;
+
+rrel_standard_method <- sc_node_role_relation;
+    => nrel_main_idtf: [окисление дихроматом калия в кислой среде](*<- lang_ru;;*);;
+
+rrel_reaction_time <- sc_node_role_relation;
+    => nrel_main_idtf: [2–3 часа при 150°С](*<- lang_ru;;*);;
+
+
+concept_strong_oxidizers_use <- sc_node_class;
+    => nrel_main_idtf: [использование сильных окислителей (дихромат калия)](*<- lang_ru;;*);;
+
+concept_oxygen_consumption_for_oxidation <- sc_node_class;
+    => nrel_main_idtf: [кислород расходуется на окисление органических и неорганических загрязнителей](*<- lang_ru;;*);;
+
+
+concept_organic_pollutants <- sc_node_class;
+    => nrel_main_idtf: [органические загрязнители (углеводороды, белки, жиры)](*<- lang_ru;;*);;
+
+concept_inorganic_pollutants <- sc_node_class;
+    => nrel_main_idtf: [неорганические загрязнители (серо- и азотсодержащие вещества)](*<- lang_ru;;*);;
+
+concept_oxidizing_agents <- sc_node_class;
+    => nrel_main_idtf: [окислители (дихромат калия, хлорное железо и другие)](*<- lang_ru;;*);;
+
+
+concept_COD_organic_type <- sc_node_class;
+    => nrel_main_idtf: [ХПК органического происхождения](*<- lang_ru;;*);;
+
+concept_COD_inorganic_type <- sc_node_class;
+    => nrel_main_idtf: [ХПК неорганического происхождения](*<- lang_ru;;*);;
+
+
+
+
+
+concept_ammonium_ion <- sc_node_class;
+    => nrel_main_idtf: [аммоний-ион (азот аммонийный)](*<- lang_ru;;*);
+    => sc_link_content: [положительно заряженный ион аммония, образующийся при диссоциации аммиака в воде, часто встречается в сточных водах.];;
+concept_ammonium_ion -> rrel_maximum_studied_object_class: concept_major_pollutants;;
+concept_ammonium_ion => nrel_partition:
+    concept_ammonium_in_wastewater;
+    concept_ammonium_in_sludge;;
+
+concept_ammonium_ion => nrel_application:
+    concept_ammonium_removal;
+    concept_ammonia_neutralization;
+    concept_pollution_monitoring;;
+
+concept_ammonium_ion => nrel_technical_parameter:
+    rrel_concentration;
+    rrel_treatment_efficiency;;
+
+concept_ammonium_ion => nrel_operation_principle:
+    concept_biological_oxidation;
+    concept_chemical_removal;;
+
+concept_ammonium_ion => nrel_component:
+    concept_ammonium;
+    concept_nitrifying_microorganisms;
+    concept_chemical_reagents;;
+
+concept_ammonium_ion => nrel_type:
+    concept_ammonium_in_primary_effluent;
+    concept_ammonium_in_secondary_sludge;;
+
+
+concept_ammonium_in_wastewater <- sc_node_class;
+    => nrel_main_idtf: [аммоний в сточных водах (NH₄⁺)](*<- lang_ru;;*);;
+
+concept_ammonium_in_sludge <- sc_node_class;
+    => nrel_main_idtf: [аммоний в осадках очистки сточных вод](*<- lang_ru;;*);;
+
+
+concept_ammonium_removal <- sc_node_class;
+    => nrel_main_idtf: [очистка сточных вод (удаление аммония)](*<- lang_ru;;*);;
+
+concept_ammonia_neutralization <- sc_node_class;
+    => nrel_main_idtf: [нейтрализация аммиака в очистных сооружениях](*<- lang_ru;;*);;
+
+concept_pollution_monitoring <- sc_node_class;
+    => nrel_main_idtf: [мониторинг загрязнения водоёмов (предотвращение эвтрофикации)](*<- lang_ru;;*);;
+
+
+rrel_concentration <- sc_node_role_relation;
+    => nrel_main_idtf: [концентрация аммоний-ионов в сточных водах (мг/л)](*<- lang_ru;;*);;
+
+rrel_treatment_efficiency <- sc_node_role_relation;
+    => nrel_main_idtf: [эффективность нитрификации и денитрификации](*<- lang_ru;;*);;
+
+
+concept_biological_oxidation <- sc_node_class;
+    => nrel_main_idtf: [нитрификация с помощью нитрифицирующих бактерий → нитраты (NO₃⁻)](*<- lang_ru;;*);;
+
+concept_chemical_removal <- sc_node_class;
+    => nrel_main_idtf: [удаление аммония химическими методами (осаждение, ионный обмен)](*<- lang_ru;;*);;
+
+
+concept_ammonium <- sc_node_class;
+    => nrel_main_idtf: [аммоний-ион (NH₄⁺)](*<- lang_ru;;*);;
+
+concept_nitrifying_microorganisms <- sc_node_class;
+    => nrel_main_idtf: [нитрифицирующие микроорганизмы (Nitrosomonas, Nitrobacter)](*<- lang_ru;;*);;
+
+concept_chemical_reagents <- sc_node_class;
+    => nrel_main_idtf: [химические реагенты для осаждения аммония](*<- lang_ru;;*);;
+
+
+concept_ammonium_in_primary_effluent <- sc_node_class;
+    => nrel_main_idtf: [аммоний в первичных сточных водах](*<- lang_ru;;*);;
+
+concept_ammonium_in_secondary_sludge <- sc_node_class;
+    => nrel_main_idtf: [аммоний во вторичных осадках после биологической очистки](*<- lang_ru;;*);;
+
+
+
+
+
+concept_kjeldahl_nitrogen <- sc_node_class;
+    => nrel_main_idtf: [азот по Кьельдалю](*<- lang_ru;;*);
+    => sc_link_content: [общая концентрация азота, определяемая в сточных водах, осадках или других жидкостях методом Кьельдаля, который включает определение общего органического и аммонийного азота.];;
+concept_kjeldahl_nitrogen -> rrel_maximum_studied_object_class: concept_major_pollutants;;
+
+concept_kjeldahl_nitrogen => nrel_partition:
+    concept_organic_nitrogen;
+    concept_ammonium_nitrogen;;
+
+concept_kjeldahl_nitrogen => nrel_application:
+    concept_wastewater_pollution_assessment;
+    concept_sludge_nitrogen_measurement;
+    concept_treatment_monitoring;;
+
+concept_kjeldahl_nitrogen => nrel_technical_parameter:
+    rrel_nitrogen_concentration;
+    rrel_fraction_content;;
+
+concept_kjeldahl_nitrogen => nrel_operation_principle:
+    concept_acid_digestion;
+    concept_oxidation_to_ammonium;;
+
+concept_kjeldahl_nitrogen => nrel_component:
+    concept_protein_nitrogen;
+    concept_ammonium_ion;
+    concept_acid_reagents;;
+
+concept_kjeldahl_nitrogen => nrel_type:
+    concept_total_nitrogen;
+    concept_extractable_ammonium_nitrogen;;
+
+
+concept_organic_nitrogen <- sc_node_class;
+    => nrel_main_idtf: [органический азот](*<- lang_ru;;*);;
+
+concept_ammonium_nitrogen <- sc_node_class;
+    => nrel_main_idtf: [аммонийный азот](*<- lang_ru;;*);;
+
+concept_wastewater_pollution_assessment <- sc_node_class;
+    => nrel_main_idtf: [оценка загрязнения сточных вод](*<- lang_ru;;*);;
+
+concept_sludge_nitrogen_measurement <- sc_node_class;
+    => nrel_main_idtf: [определение общей концентрации азота в осадках](*<- lang_ru;;*);;
+
+concept_treatment_monitoring <- sc_node_class;
+    => nrel_main_idtf: [мониторинг эффективности очистных процессов](*<- lang_ru;;*);;
+
+rrel_nitrogen_concentration <- sc_node_role_relation;
+    => nrel_main_idtf: [концентрация азота в сточных водах (мг/л)](*<- lang_ru;;*);;
+
+rrel_fraction_content <- sc_node_role_relation;
+    => nrel_main_idtf: [количество аммонийного и органического азота в пробах](*<- lang_ru;;*);;
+
+concept_acid_digestion <- sc_node_class;
+    => nrel_main_idtf: [кислотное расщепление, перегонка аммония, титрование](*<- lang_ru;;*);;
+
+concept_oxidation_to_ammonium <- sc_node_class;
+    => nrel_main_idtf: [окисление органического азота до аммония с помощью кислоты](*<- lang_ru;;*);;
+
+concept_protein_nitrogen <- sc_node_class;
+    => nrel_main_idtf: [органический азот (в составе белков, аминокислот, нуклеиновых кислот)](*<- lang_ru;;*);;
+
+concept_acid_reagents <- sc_node_class;
+    => nrel_main_idtf: [кислоты для расщепления органического азота](*<- lang_ru;;*);;
+
+concept_total_nitrogen <- sc_node_class;
+    => nrel_main_idtf: [общий азот (органический + аммонийный)](*<- lang_ru;;*);;
+
+concept_extractable_ammonium_nitrogen <- sc_node_class;
+    => nrel_main_idtf: [аммонийный азот (легко извлекаемая фракция)](*<- lang_ru;;*);;
+
+
+
+
+
+concept_total_phosphorus <- sc_node_class;
+    => nrel_main_idtf: [фосфор общий](*<- lang_ru;;*);
+    => sc_link_content: [общая концентрация фосфора в сточных водах, включающая как растворенные формы (например, фосфаты), так и фосфор, связанный с осадками.];;
+concept_total_phosphorus -> rrel_maximum_studied_object_class: concept_major_pollutants;;
+concept_total_phosphorus => nrel_partition:
+    concept_dissolved_phosphorus;
+    concept_sediment_bound_phosphorus;;
+
+concept_total_phosphorus => nrel_application:
+    concept_wastewater_quality_monitoring;
+    concept_eutrophication_control;
+    concept_treatment_plant_efficiency;;
+
+concept_total_phosphorus => nrel_technical_parameter:
+    rrel_total_phosphorus_concentration;
+    rrel_dissolved_phosphates_concentration;;
+
+concept_total_phosphorus => nrel_operation_principle:
+    concept_phosphorus_extraction_and_oxidation;;
+
+concept_total_phosphorus => nrel_component:
+    concept_phosphates;
+    concept_organic_phosphorus;
+    concept_inorganic_phosphorus;;
+
+concept_total_phosphorus => nrel_type:
+    concept_dissolved_phosphorus_type;
+    concept_sediment_phosphorus_type;
+    concept_combined_phosphorus_type;;
+
+
+concept_dissolved_phosphorus <- sc_node_class;
+    => nrel_main_idtf: [фосфор в растворенной форме (фосфаты)](*<- lang_ru;;*);;
+
+concept_sediment_bound_phosphorus <- sc_node_class;
+    => nrel_main_idtf: [фосфор в осадках](*<- lang_ru;;*);;
+
+concept_wastewater_quality_monitoring <- sc_node_class;
+    => nrel_main_idtf: [мониторинг качества сточных вод](*<- lang_ru;;*);;
+
+concept_eutrophication_control <- sc_node_class;
+    => nrel_main_idtf: [контроль загрязнения водоёмов (предотвращение эвтрофикации)](*<- lang_ru;;*);;
+
+concept_treatment_plant_efficiency <- sc_node_class;
+    => nrel_main_idtf: [оценка эффективности очистных сооружений](*<- lang_ru;;*);;
+
+rrel_total_phosphorus_concentration <- sc_node_role_relation;
+    => nrel_main_idtf: [концентрация общего фосфора (мг/л)](*<- lang_ru;;*);;
+
+rrel_dissolved_phosphates_concentration <- sc_node_role_relation;
+    => nrel_main_idtf: [концентрация растворённых фосфатов (мг/л)](*<- lang_ru;;*);;
+
+concept_phosphorus_extraction_and_oxidation <- sc_node_class;
+    => nrel_main_idtf: [экстракция и окисление фосфора до фосфатов с последующим химическим анализом](*<- lang_ru;;*);;
+
+concept_phosphates <- sc_node_class;
+    => nrel_main_idtf: [фосфаты (PO₄³⁻)](*<- lang_ru;;*);;
+
+concept_organic_phosphorus <- sc_node_class;
+    => nrel_main_idtf: [органический фосфор](*<- lang_ru;;*);;
+
+concept_inorganic_phosphorus <- sc_node_class;
+    => nrel_main_idtf: [неорганический фосфор](*<- lang_ru;;*);;
+
+concept_dissolved_phosphorus_type <- sc_node_class;
+    => nrel_main_idtf: [растворённый фосфор](*<- lang_ru;;*);;
+
+concept_sediment_phosphorus_type <- sc_node_class;
+    => nrel_main_idtf: [фосфор в осадках](*<- lang_ru;;*);;
+
+concept_combined_phosphorus_type <- sc_node_class;
+    => nrel_main_idtf: [общий фосфор (сумма всех форм)](*<- lang_ru;;*);;
+
+
+
+
+
+concept_phosphate_ion <- sc_node_class;
+    => nrel_main_idtf: [фосфат-ион](*<- lang_ru;;*);
+    => sc_link_content: [негативно заряженный ион фосфора, образующийся в результате растворения фосфорных соединений в воде, основная форма фосфора, встречающаяся в водоёмах и сточных водах.];;
+concept_phosphate_ion -> rrel_maximum_studied_object_class: concept_major_pollutants;;
+concept_phosphate_ion => nrel_partition:
+    concept_dissolved_phosphate;
+    concept_sediment_bound_phosphate;;
+
+concept_phosphate_ion => nrel_application:
+    concept_phosphate_removal;
+    concept_eutrophication_prevention;
+    concept_phosphorus_control_in_supply;;
+
+concept_phosphate_ion => nrel_technical_parameter:
+    rrel_concentration;
+    rrel_phase_ratio;;
+
+concept_phosphate_ion => nrel_operation_principle:
+    concept_chemical_precipitation;
+    concept_biological_removal;
+    concept_eutrophication_mechanism;;
+
+concept_phosphate_ion => nrel_component:
+    concept_phosphate;
+    concept_organic_phosphorus;
+    concept_inorganic_phosphorus;;
+
+concept_phosphate_ion => nrel_type:
+    concept_dissolved_phosphate_type;
+    concept_solid_bound_phosphate_type;;
+
+
+concept_dissolved_phosphate <- sc_node_class;
+    => nrel_main_idtf: [фосфат в растворённой форме (PO₄³⁻)](*<- lang_ru;;*);;
+
+concept_sediment_bound_phosphate <- sc_node_class;
+    => nrel_main_idtf: [фосфат в осадках](*<- lang_ru;;*);;
+
+concept_phosphate_removal <- sc_node_class;
+    => nrel_main_idtf: [очистка сточных вод (удаление фосфатов)](*<- lang_ru;;*);;
+
+concept_eutrophication_prevention <- sc_node_class;
+    => nrel_main_idtf: [мониторинг загрязнения водоёмов (предотвращение эвтрофикации)](*<- lang_ru;;*);;
+
+concept_phosphorus_control_in_supply <- sc_node_class;
+    => nrel_main_idtf: [контроль содержания фосфора в водоснабжении](*<- lang_ru;;*);;
+
+rrel_concentration <- sc_node_role_relation;
+    => nrel_main_idtf: [концентрация фосфат-ионов (мг/л)](*<- lang_ru;;*);;
+
+rrel_phase_ratio <- sc_node_role_relation;
+    => nrel_main_idtf: [соотношение растворённого и осаждённого фосфора](*<- lang_ru;;*);;
+
+concept_chemical_precipitation <- sc_node_class;
+    => nrel_main_idtf: [удаление фосфатов осаждением (например, с известью)](*<- lang_ru;;*);;
+
+concept_biological_removal <- sc_node_class;
+    => nrel_main_idtf: [удаление фосфатов биологической очисткой](*<- lang_ru;;*);;
+
+concept_eutrophication_mechanism <- sc_node_class;
+    => nrel_main_idtf: [фосфаты стимулируют рост водорослей (эвтрофикация)](*<- lang_ru;;*);;
+
+concept_phosphate <- sc_node_class;
+    => nrel_main_idtf: [фосфат-ион (PO₄³⁻)](*<- lang_ru;;*);;
+
+concept_organic_phosphorus <- sc_node_class;
+    => nrel_main_idtf: [органический фосфор](*<- lang_ru;;*);;
+
+concept_inorganic_phosphorus <- sc_node_class;
+    => nrel_main_idtf: [неорганический фосфор (в форме фосфатов)](*<- lang_ru;;*);;
+
+concept_dissolved_phosphate_type <- sc_node_class;
+    => nrel_main_idtf: [растворённый фосфат-ион](*<- lang_ru;;*);;
+
+concept_solid_bound_phosphate_type <- sc_node_class;
+    => nrel_main_idtf: [осаждённый фосфат (связанный с твердыми частицами)](*<- lang_ru;;*);;
+
+
+
+
+
+concept_chloride_ion <- sc_node_class;
+    => nrel_main_idtf: [хлорид-ион](*<- lang_ru;;*);
+    => sc_link_content: [негативно заряженный ион хлора, образующийся при растворении хлористых соединений, таких как хлорид натрия (NaCl), в воде.];;
+concept_chloride_ion -> rrel_maximum_studied_object_class: concept_major_pollutants;;
+concept_chloride_ion => nrel_partition:
+    concept_dissolved_chloride;
+    concept_sediment_bound_chloride;;
+
+concept_chloride_ion => nrel_application:
+    concept_water_quality_monitoring;
+    concept_salt_pollution_control;
+    concept_water_characteristics_in_treatment;;
+
+concept_chloride_ion => nrel_technical_parameter:
+    rrel_chloride_ion_concentration;
+    rrel_corrosion_and_process_impact;;
+
+concept_chloride_ion => nrel_operation_principle:
+    concept_no_biological_involvement;
+    concept_source_in_wastewater;;
+
+concept_chloride_ion => nrel_component:
+    concept_chloride_ion;
+    concept_chloride_compounds;;
+
+concept_chloride_ion => nrel_type:
+    concept_dissolved_chloride_type;
+    concept_sediment_bound_chloride_type;;
+
+
+concept_dissolved_chloride <- sc_node_class;
+    => nrel_main_idtf: [хлорид в растворённой форме (Cl⁻)](*<- lang_ru;;*);;
+
+concept_sediment_bound_chloride <- sc_node_class;
+    => nrel_main_idtf: [хлорид в осадках](*<- lang_ru;;*);;
+
+concept_water_quality_monitoring <- sc_node_class;
+    => nrel_main_idtf: [мониторинг качества воды и сточных вод](*<- lang_ru;;*);;
+
+concept_salt_pollution_control <- sc_node_class;
+    => nrel_main_idtf: [контроль солевого загрязнения воды](*<- lang_ru;;*);;
+
+concept_water_characteristics_in_treatment <- sc_node_class;
+    => nrel_main_idtf: [определение характеристик воды в очистных сооружениях](*<- lang_ru;;*);;
+
+rrel_chloride_ion_concentration <- sc_node_role_relation;
+    => nrel_main_idtf: [концентрация хлорид-ионов (мг/л)](*<- lang_ru;;*);;
+
+rrel_corrosion_and_process_impact <- sc_node_role_relation;
+    => nrel_main_idtf: [влияние на коррозию и изменение характеристик очистных процессов](*<- lang_ru;;*);;
+
+concept_no_biological_involvement <- sc_node_class;
+    => nrel_main_idtf: [хлорид-ион обычно не участвует в биологических процессах очистки воды, но может влиять на коррозию оборудования очистных сооружений](*<- lang_ru;;*);;
+
+concept_source_in_wastewater <- sc_node_class;
+    => nrel_main_idtf: [хлориды присутствуют в сточных водах в результате растворения солей и продуктов жизнедеятельности человека](*<- lang_ru;;*);;
+
+concept_chloride_compounds <- sc_node_class;
+    => nrel_main_idtf: [хлоридные соединения (например, хлорид натрия, хлорид кальция)](*<- lang_ru;;*);;
+
+concept_dissolved_chloride_type <- sc_node_class;
+    => nrel_main_idtf: [растворённый хлорид-ион](*<- lang_ru;;*);;
+
+concept_sediment_bound_chloride_type <- sc_node_class;
+    => nrel_main_idtf: [хлорид-ион в осадках](*<- lang_ru;;*);;
+
+
+
+
+concept_petroleum_products <- sc_node_class;
+    => nrel_main_idtf: [нефтепродукты](*<- lang_ru;;*);
+    => sc_link_content: [органические вещества, получаемые при переработке нефти, включая углеводороды и их производные, которые могут попадать в сточные воды в виде загрязнителей.];;
+concept_petroleum_products -> rrel_maximum_studied_object_class: concept_major_pollutants;;
+concept_petroleum_products => nrel_partition:
+    concept_hydrocarbons;
+    concept_petroleum_chemicals;;
+
+concept_petroleum_products => nrel_application:
+    concept_industrial_pollution_control;
+    concept_water_pollution_monitoring_near_oil_fields;
+    concept_oil_removal_in_treatment_plants;;
+
+concept_petroleum_products => nrel_technical_parameter:
+    rrel_petroleum_products_concentration;
+    rrel_measurement_methods;;
+
+concept_petroleum_products => nrel_operation_principle:
+    concept_coagulation_flokculation_adsorption;
+    concept_biological_treatment_inefficiency;;
+
+concept_petroleum_products => nrel_component:
+    concept_hydrocarbons;
+    concept_petroleum_chemicals;;
+
+concept_petroleum_products => nrel_type:
+    concept_oil_hydrocarbons_type;
+    concept_petroleum_chemical_products_type;;
+
+
+concept_hydrocarbons <- sc_node_class;
+    => nrel_main_idtf: [углеводороды (нефть и её фракции, такие как бензин, дизельное топливо, мазут)](*<- lang_ru;;*);;
+
+concept_petroleum_chemicals <- sc_node_class;
+    => nrel_main_idtf: [нефтехимические вещества (например, синтетические смолы и растворители)](*<- lang_ru;;*);;
+
+concept_industrial_pollution_control <- sc_node_class;
+    => nrel_main_idtf: [контроль загрязнения сточных вод от промышленных объектов (нефтехимические предприятия, автозаправочные станции)](*<- lang_ru;;*);;
+
+concept_water_pollution_monitoring_near_oil_fields <- sc_node_class;
+    => nrel_main_idtf: [мониторинг загрязнения водоёмов вблизи нефтяных месторождений и трубопроводов](*<- lang_ru;;*);;
+
+concept_oil_removal_in_treatment_plants <- sc_node_class;
+    => nrel_main_idtf: [очистка воды от нефтепродуктов на очистных сооружениях](*<- lang_ru;;*);;
+
+rrel_petroleum_products_concentration <- sc_node_role_relation;
+    => nrel_main_idtf: [концентрация нефтепродуктов в сточных водах (мг/л)](*<- lang_ru;;*);;
+
+rrel_measurement_methods <- sc_node_role_relation;
+    => nrel_main_idtf: [методы измерения — флуресцентные методы, газовая хроматография](*<- lang_ru;;*);;
+
+concept_coagulation_flokculation_adsorption <- sc_node_class;
+    => nrel_main_idtf: [нефтепродукты могут быть удалены с помощью коагуляции, флокуляции и адсорбции на углеродных фильтрах](*<- lang_ru;;*);;
+
+concept_biological_treatment_inefficiency <- sc_node_class;
+    => nrel_main_idtf: [биологическая очистка может быть менее эффективной из-за устойчивости некоторых нефтепродуктов к разложению](*<- lang_ru;;*);;
+
+concept_oil_hydrocarbons_type <- sc_node_class;
+    => nrel_main_idtf: [нефтяной углеводород (например, бензин, керосин, мазут)](*<- lang_ru;;*);;
+
+concept_petroleum_chemical_products_type <- sc_node_class;
+    => nrel_main_idtf: [нефтехимические продукты (например, синтетические масла, растворители)](*<- lang_ru;;*);;
+
+
+
+
+
+concept_oils_and_fats <- sc_node_class;
+    => nrel_main_idtf: [масла и жиры](*<- lang_ru;;*);
+    => sc_link_content: [органические вещества, состоящие из триглицеридов жирных кислот, которые могут загрязнять сточные воды и осадки, поступая с промышленными и бытовыми отходами.];;
+concept_oils_and_fats -> rrel_maximum_studied_object_class: concept_major_pollutants;;
+concept_oils_and_fats => nrel_partition:
+    concept_vegetable_oils;
+    concept_animal_fats;
+    concept_synthetic_oils;;
+
+concept_oils_and_fats => nrel_application:
+    concept_food_industry_pollution_control;
+    concept_wastewater_treatment;
+    concept_waste_management_in_industries;;
+
+concept_oils_and_fats => nrel_technical_parameter:
+    rrel_oils_and_fats_concentration;
+    rrel_volatile_and_nonvolatile_content;;
+
+concept_oils_and_fats => nrel_operation_principle:
+    concept_physical_chemical_methods;
+    concept_adsorption_materials;;
+
+concept_oils_and_fats => nrel_component:
+    concept_vegetable_oils_component;
+    concept_animal_fats_component;
+    concept_synthetic_oils_fats_component;;
+
+concept_oils_and_fats => nrel_type:
+    concept_vegetable_oil_type;
+    concept_animal_fat_type;
+    concept_synthetic_oils_fats_type;;
+
+
+concept_vegetable_oils <- sc_node_class;
+    => nrel_main_idtf: [растительные масла (например, подсолнечное, соевое)](*<- lang_ru;;*);;
+
+concept_animal_fats <- sc_node_class;
+    => nrel_main_idtf: [животные жиры (например, свиной жир, рыбий жир)](*<- lang_ru;;*);;
+
+concept_synthetic_oils <- sc_node_class;
+    => nrel_main_idtf: [синтетические масла (получаемые в процессе химического синтеза)](*<- lang_ru;;*);;
+
+concept_food_industry_pollution_control <- sc_node_class;
+    => nrel_main_idtf: [контроль загрязнения сточных вод от пищевой промышленности (масложировые производства)](*<- lang_ru;;*);;
+
+concept_wastewater_treatment <- sc_node_class;
+    => nrel_main_idtf: [очистка сточных вод на очистных сооружениях](*<- lang_ru;;*);;
+
+concept_waste_management_in_industries <- sc_node_class;
+    => nrel_main_idtf: [управление отходами в нефтехимической и пищевой промышленности](*<- lang_ru;;*);;
+
+rrel_oils_and_fats_concentration <- sc_node_role_relation;
+    => nrel_main_idtf: [концентрация масел и жиров в сточных водах (мг/л)](*<- lang_ru;;*);;
+
+rrel_volatile_and_nonvolatile_content <- sc_node_role_relation;
+    => nrel_main_idtf: [содержание летучих и нелетучих веществ в маслах и жирах](*<- lang_ru;;*);;
+
+concept_physical_chemical_methods <- sc_node_class;
+    => nrel_main_idtf: [масла и жиры могут быть удалены из сточных вод с помощью физико-химических методов, таких как коагуляция, флокуляция и фильтрация](*<- lang_ru;;*);;
+
+concept_adsorption_materials <- sc_node_class;
+    => nrel_main_idtf: [используются адсорбционные материалы, такие как активированный уголь и специализированные сорбенты](*<- lang_ru;;*);;
+
+concept_vegetable_oils_component <- sc_node_class;
+    => nrel_main_idtf: [растительные масла (например, оливковое, подсолнечное)](*<- lang_ru;;*);;
+
+concept_animal_fats_component <- sc_node_class;
+    => nrel_main_idtf: [животные жиры (например, свиной, говяжий жир)](*<- lang_ru;;*);;
+
+concept_synthetic_oils_fats_component <- sc_node_class;
+    => nrel_main_idtf: [синтетические масла и жиры (например, моторные масла, трансжиры)](*<- lang_ru;;*);;
+
+concept_vegetable_oil_type <- sc_node_class;
+    => nrel_main_idtf: [масла растительного происхождения](*<- lang_ru;;*);;
+
+concept_animal_fat_type <- sc_node_class;
+    => nrel_main_idtf: [жиры животного происхождения](*<- lang_ru;;*);;
+
+concept_synthetic_oils_fats_type <- sc_node_class;
+    => nrel_main_idtf: [синтетические масла и жиры](*<- lang_ru;;*);;

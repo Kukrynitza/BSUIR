@@ -1,0 +1,415 @@
+subject_domain_of_cleaning_reagents <- sc_node_struct;;
+subject_domain_of_cleaning_reagents => nrel_main_idtf: [Предметная область реагентов для очистки] (*<- lang_ru;;*);;
+concept_cleaning_reagents <- sc_node_class;
+              => nrel_main_idtf: [реагенты для очистки](*<- lang_ru;;*);;
+
+subject_domain_of_cleaning_reagents
+                                => nrel_partition:
+                                                  concept_aluminum_salts_coagulants;
+                                                  concept_iron_salts_coagulants;
+                                                  concept_lime_CaO;
+                                                  concept_anionic_flocculants;
+                                                  concept_cationic_flocculants;;
+
+
+
+
+
+
+
+concept_aluminum_salts_coagulants <- sc_node_class;
+    => nrel_main_idtf: [соли алюминия (коагулянты)](*<- lang_ru;;*);
+    => sc_link_content: [соединения алюминия, такие как сульфат алюминия (Al₂(SO₄)₃) и хлорид алюминия (AlCl₃), которые используются для осаждения взвешенных частиц и очистки воды в процессах коагуляции и флокуляции];;
+concept_aluminum_salts_coagulants -> rrel_maximum_studied_object_class: concept_cleaning_reagents;;
+concept_aluminum_salts_coagulants => nrel_partition:
+    concept_aluminum_sulfate;
+    concept_aluminum_chloride;
+    concept_aluminum_polycarboxylate;;
+
+concept_aluminum_salts_coagulants => nrel_application:
+    concept_drinking_wastewater_treatment;
+    concept_water_treatment_plants;
+    concept_industrial_water_preparation;;
+
+concept_aluminum_salts_coagulants => nrel_technical_parameter:
+    rrel_coagulant_concentration;
+    rrel_ph_efficiency;;
+
+concept_aluminum_salts_coagulants => nrel_operation_principle:
+    concept_coagulation_process;
+    concept_neutralization;;
+
+concept_aluminum_salts_coagulants => nrel_component:
+    concept_aluminum_sulfate_component;
+    concept_aluminum_chloride_component;
+    concept_aluminum_polycarboxylate_component;;
+
+concept_aluminum_salts_coagulants => nrel_type:
+    concept_aluminum_sulfate_type;
+    concept_aluminum_chloride_type;
+    concept_organic_coagulants_type;;
+
+
+concept_aluminum_sulfate <- sc_node_class;
+    => nrel_main_idtf: [сульфат алюминия (Al₂(SO₄)₃)](*<- lang_ru;;*);;
+
+concept_aluminum_chloride <- sc_node_class;
+    => nrel_main_idtf: [хлорид алюминия (AlCl₃)](*<- lang_ru;;*);;
+
+concept_aluminum_polycarboxylate <- sc_node_class;
+    => nrel_main_idtf: [поликарбоксилат алюминия](*<- lang_ru;;*);;
+
+concept_drinking_wastewater_treatment <- sc_node_class;
+    => nrel_main_idtf: [очистка питьевой воды и сточных вод (коагуляция для удаления взвешенных частиц)](*<- lang_ru;;*);;
+
+concept_water_treatment_plants <- sc_node_class;
+    => nrel_main_idtf: [очистка воды на водоочистных станциях](*<- lang_ru;;*);;
+
+concept_industrial_water_preparation <- sc_node_class;
+    => nrel_main_idtf: [использование в промышленной водоподготовке и очистке воды в разных отраслях (например, в текстильной промышленности)](*<- lang_ru;;*);;
+
+rrel_coagulant_concentration <- sc_node_role_relation;
+    => nrel_main_idtf: [концентрация коагулянта в растворе (мг/л)](*<- lang_ru;;*);;
+
+rrel_ph_efficiency <- sc_node_role_relation;
+    => nrel_main_idtf: [pH воды, при котором коагулянт проявляет максимальную эффективность](*<- lang_ru;;*);;
+
+concept_coagulation_process <- sc_node_class;
+    => nrel_main_idtf: [коагулянты, такие как соли алюминия, помогают агрегировать мелкие частицы и взвешенные вещества в воду, образуя флокулы, которые легче удаляются в процессе фильтрации](*<- lang_ru;;*);;
+
+concept_neutralization <- sc_node_class;
+    => nrel_main_idtf: [при добавлении в воду соли алюминия взаимодействуют с частицами загрязнителей, нейтрализуя их заряд и способствуя образованию осадков](*<- lang_ru;;*);;
+
+concept_aluminum_sulfate_component <- sc_node_class;
+    => nrel_main_idtf: [сульфат алюминия (Al₂(SO₄)₃)](*<- lang_ru;;*);;
+
+concept_aluminum_chloride_component <- sc_node_class;
+    => nrel_main_idtf: [хлорид алюминия (AlCl₃)](*<- lang_ru;;*);;
+
+concept_aluminum_polycarboxylate_component <- sc_node_class;
+    => nrel_main_idtf: [поликарбоксилат алюминия](*<- lang_ru;;*);;
+
+concept_aluminum_sulfate_type <- sc_node_class;
+    => nrel_main_idtf: [сульфат алюминия (для обычных процессов коагуляции)](*<- lang_ru;;*);;
+
+concept_aluminum_chloride_type <- sc_node_class;
+    => nrel_main_idtf: [хлорид алюминия (для воды с низким pH)](*<- lang_ru;;*);;
+
+concept_organic_coagulants_type <- sc_node_class;
+    => nrel_main_idtf: [органические коагулянты на основе алюминия (для специализированных условий)](*<- lang_ru;;*);;
+
+
+
+
+
+concept_iron_salts_coagulants <- sc_node_class;
+    => nrel_main_idtf: [соли железа (коагулянты)](*<- lang_ru;;*);
+    => sc_link_content: [соединения железа, такие как сульфат железа (FeSO₄) и хлорид железа (FeCl₃), используемые для коагуляции и флокуляции в процессе очистки воды, эффективны для осаждения взвешенных частиц и других загрязнителей];;
+concept_iron_salts_coagulants -> rrel_maximum_studied_object_class: concept_cleaning_reagents;;
+concept_iron_salts_coagulants => nrel_partition:
+    concept_iron_sulfate;
+    concept_iron_chloride;
+    concept_iron_organic_coagulants;;
+
+concept_iron_salts_coagulants => nrel_application:
+    concept_drinking_wastewater_treatment;
+    concept_water_treatment_plants;
+    concept_industrial_water_preparation;;
+
+concept_iron_salts_coagulants => nrel_technical_parameter:
+    rrel_coagulant_concentration;
+    rrel_ph_efficiency;
+    rrel_suspended_particles_turbidity;;
+
+concept_iron_salts_coagulants => nrel_operation_principle:
+    concept_coagulation_process;
+    concept_phosphate_organic_removal;;
+
+concept_iron_salts_coagulants => nrel_component:
+    concept_iron_sulfate_component;
+    concept_iron_chloride_component;
+    concept_iron_organic_compounds;;
+
+concept_iron_salts_coagulants => nrel_type:
+    concept_iron_sulfate_type;
+    concept_iron_chloride_type;
+    concept_organic_iron_coagulants_type;;
+
+
+concept_iron_sulfate <- sc_node_class;
+    => nrel_main_idtf: [сульфат железа (FeSO₄)](*<- lang_ru;;*);;
+
+concept_iron_chloride <- sc_node_class;
+    => nrel_main_idtf: [хлорид железа (FeCl₃)](*<- lang_ru;;*);;
+
+concept_iron_organic_coagulants <- sc_node_class;
+    => nrel_main_idtf: [железоорганические коагулянты](*<- lang_ru;;*);;
+
+concept_drinking_wastewater_treatment <- sc_node_class;
+    => nrel_main_idtf: [очистка питьевой воды и сточных вод (осаждение загрязнителей и флокуляция)](*<- lang_ru;;*);;
+
+concept_water_treatment_plants <- sc_node_class;
+    => nrel_main_idtf: [очистка воды на водоочистных станциях](*<- lang_ru;;*);;
+
+concept_industrial_water_preparation <- sc_node_class;
+    => nrel_main_idtf: [водоподготовка в химической и пищевой промышленности](*<- lang_ru;;*);;
+
+rrel_coagulant_concentration <- sc_node_role_relation;
+    => nrel_main_idtf: [концентрация коагулянта в растворе (мг/л)](*<- lang_ru;;*);;
+
+rrel_ph_efficiency <- sc_node_role_relation;
+    => nrel_main_idtf: [pH воды, при котором коагулянт наиболее эффективен](*<- lang_ru;;*);;
+
+rrel_suspended_particles_turbidity <- sc_node_role_relation;
+    => nrel_main_idtf: [содержание взвешенных частиц и мутности в исходной воде](*<- lang_ru;;*);;
+
+concept_coagulation_process <- sc_node_class;
+    => nrel_main_idtf: [соли железа при добавлении в воду взаимодействуют с загрязняющими частицами, нейтрализуя их заряд и способствуя их агрегации, что приводит к образованию крупных флокул, которые легко удаляются из воды](*<- lang_ru;;*);;
+
+concept_phosphate_organic_removal <- sc_node_class;
+    => nrel_main_idtf: [коагулянты из солей железа могут эффективно осаждать фосфаты, органические вещества и другие загрязнители, улучшая качество воды](*<- lang_ru;;*);;
+
+concept_iron_sulfate_component <- sc_node_class;
+    => nrel_main_idtf: [сульфат железа (FeSO₄)](*<- lang_ru;;*);;
+
+concept_iron_chloride_component <- sc_node_class;
+    => nrel_main_idtf: [хлорид железа (FeCl₃)](*<- lang_ru;;*);;
+
+concept_iron_organic_compounds <- sc_node_class;
+    => nrel_main_idtf: [железоорганические соединения](*<- lang_ru;;*);;
+
+concept_iron_sulfate_type <- sc_node_class;
+    => nrel_main_idtf: [сульфат железа (для осаждения взвешенных частиц и фосфатов)](*<- lang_ru;;*);;
+
+concept_iron_chloride_type <- sc_node_class;
+    => nrel_main_idtf: [хлорид железа (для воды с низким pH)](*<- lang_ru;;*);;
+
+concept_organic_iron_coagulants_type <- sc_node_class;
+    => nrel_main_idtf: [органические коагулянты железа (для специфических условий очистки)](*<- lang_ru;;*);;
+
+
+
+
+
+concept_lime_CaO <- sc_node_class;
+    => nrel_main_idtf: [известь (CaO)](*<- lang_ru;;*);
+    => sc_link_content: [оксид кальция, часто используемый в очистных сооружениях для регулирования pH воды, осаждения загрязнителей и удаления твердых частиц];;
+concept_lime_CaO -> rrel_maximum_studied_object_class: concept_cleaning_reagents;;
+concept_lime_CaO => nrel_partition:
+    concept_slaked_lime;
+    concept_quicklime;;
+
+concept_lime_CaO => nrel_application:
+    concept_drinking_wastewater_treatment;
+    concept_water_hardness_control;
+    concept_agriculture;;
+
+concept_lime_CaO => nrel_technical_parameter:
+    rrel_lime_concentration;
+    rrel_ph_control;;
+
+concept_lime_CaO => nrel_operation_principle:
+    concept_neutralization;
+    concept_coagulation_flocculation;;
+
+concept_lime_CaO => nrel_component:
+    concept_calcium_oxide;
+    concept_calcium_hydroxide;;
+
+concept_lime_CaO => nrel_type:
+    concept_quicklime_type;
+    concept_slaked_lime_type;;
+
+
+concept_slaked_lime <- sc_node_class;
+    => nrel_main_idtf: [гашеная известь (Ca(OH)₂)](*<- lang_ru;;*);;
+
+concept_quicklime <- sc_node_class;
+    => nrel_main_idtf: [негашеная известь (CaO)](*<- lang_ru;;*);;
+
+concept_drinking_wastewater_treatment <- sc_node_class;
+    => nrel_main_idtf: [очистка питьевой воды и сточных вод (регулировка pH, осаждение загрязнителей)](*<- lang_ru;;*);;
+
+concept_water_hardness_control <- sc_node_class;
+    => nrel_main_idtf: [контроль жесткости воды](*<- lang_ru;;*);;
+
+concept_agriculture <- sc_node_class;
+    => nrel_main_idtf: [сельское хозяйство (внесение извести в почву для нейтрализации кислотности)](*<- lang_ru;;*);;
+
+rrel_lime_concentration <- sc_node_role_relation;
+    => nrel_main_idtf: [концентрация извести в растворе (мг/л или г/м³)](*<- lang_ru;;*);;
+
+rrel_ph_control <- sc_node_role_relation;
+    => nrel_main_idtf: [pH воды (контроль кислотности и щелочности)](*<- lang_ru;;*);;
+
+concept_neutralization <- sc_node_class;
+    => nrel_main_idtf: [известь используется для нейтрализации кислых загрязнителей, регулируя уровень pH воды и создавая условия для осаждения твердых частиц и фосфатов](*<- lang_ru;;*);;
+
+concept_coagulation_flocculation <- sc_node_class;
+    => nrel_main_idtf: [известь также способствует разложению органических веществ и удалению загрязнителей из воды в процессе коагуляции и флокуляции](*<- lang_ru;;*);;
+
+concept_calcium_oxide <- sc_node_class;
+    => nrel_main_idtf: [оксид кальция (CaO)](*<- lang_ru;;*);;
+
+concept_calcium_hydroxide <- sc_node_class;
+    => nrel_main_idtf: [гидроксид кальция (Ca(OH)₂)](*<- lang_ru;;*);;
+
+concept_quicklime_type <- sc_node_class;
+    => nrel_main_idtf: [негашеная известь (CaO)](*<- lang_ru;;*);;
+
+concept_slaked_lime_type <- sc_node_class;
+    => nrel_main_idtf: [гашеная известь (Ca(OH)₂)](*<- lang_ru;;*);;
+
+
+
+
+
+concept_anionic_flocculants <- sc_node_class;
+    => nrel_main_idtf: [анионные флокулянты](*<- lang_ru;;*);
+    => sc_link_content: [поверхностно-активные вещества, которые обладают отрицательным зарядом и используются для агрегации частиц и образования флокул в процессе очистки воды и сточных вод];;
+concept_anionic_flocculants -> rrel_maximum_studied_object_class: concept_cleaning_reagents;;
+concept_anionic_flocculants => nrel_partition:
+    concept_polymeric_anionic_flocculants;
+    concept_polyphosphate_anionic_flocculants;;
+
+concept_anionic_flocculants => nrel_application:
+    concept_wastewater_treatment;
+    concept_water_purification;
+    concept_industrial_water_treatment;;
+
+concept_anionic_flocculants => nrel_technical_parameter:
+    rrel_flocculant_concentration;
+    rrel_molecular_weight;
+    rrel_ph_effectiveness;;
+
+concept_anionic_flocculants => nrel_operation_principle:
+    concept_particle_interaction;
+    concept_reducing_solubility;;
+
+concept_anionic_flocculants => nrel_component:
+    concept_polymeric_flocculants;
+    concept_polyphosphate_flocculants;;
+
+concept_anionic_flocculants => nrel_type:
+    concept_synthetic_anionic_flocculants;
+    concept_natural_anionic_flocculants;;
+
+
+concept_polymeric_anionic_flocculants <- sc_node_class;
+    => nrel_main_idtf: [полимерные анионные флокулянты](*<- lang_ru;;*);;
+
+concept_polyphosphate_anionic_flocculants <- sc_node_class;
+    => nrel_main_idtf: [полифосфатные анионные флокулянты](*<- lang_ru;;*);;
+
+concept_wastewater_treatment <- sc_node_class;
+    => nrel_main_idtf: [очистка сточных вод (удаление взвешенных частиц, органических загрязнителей и осаждение флокул)](*<- lang_ru;;*);;
+
+concept_water_purification <- sc_node_class;
+    => nrel_main_idtf: [водоочистка на водоочистных станциях](*<- lang_ru;;*);;
+
+concept_industrial_water_treatment <- sc_node_class;
+    => nrel_main_idtf: [промышленная очистка воды (например, в текстильной и химической промышленности)](*<- lang_ru;;*);;
+
+rrel_flocculant_concentration <- sc_node_role_relation;
+    => nrel_main_idtf: [концентрация флокулянта в растворе (мг/л или г/м³)](*<- lang_ru;;*);;
+
+rrel_molecular_weight <- sc_node_role_relation;
+    => nrel_main_idtf: [молекулярная масса флокулянта (определяет эффективность агрегации частиц)](*<- lang_ru;;*);;
+
+rrel_ph_effectiveness <- sc_node_role_relation;
+    => nrel_main_idtf: [pH воды, при котором флокулянт наиболее эффективен](*<- lang_ru;;*);;
+
+concept_particle_interaction <- sc_node_class;
+    => nrel_main_idtf: [ан ionic flocculants с отрицательным зарядом вступают в реакцию с положительно заряженными частицами в воде, нейтрализуют их заряд и способствуют образованию флокул, которые легко удаляются фильтрацией или осаждением](*<- lang_ru;;*);;
+
+concept_reducing_solubility <- sc_node_class;
+    => nrel_main_idtf: [они также могут снижать растворимость загрязнителей в воде, помогая удалить органические и неорганические частицы](*<- lang_ru;;*);;
+
+concept_polymeric_flocculants <- sc_node_class;
+    => nrel_main_idtf: [полимерные флокулянты на основе акриламида или других полимеров](*<- lang_ru;;*);;
+
+concept_polyphosphate_flocculants <- sc_node_class;
+    => nrel_main_idtf: [полифосфатные флокулянты](*<- lang_ru;;*);;
+
+concept_synthetic_anionic_flocculants <- sc_node_class;
+    => nrel_main_idtf: [синтетические анионные флокулянты (на основе акриламида, полиакрилата)](*<- lang_ru;;*);;
+
+concept_natural_anionic_flocculants <- sc_node_class;
+    => nrel_main_idtf: [натуральные анионные флокулянты (например, крахмал и его производные)](*<- lang_ru;;*);;
+
+
+
+
+
+concept_cationic_flocculants <- sc_node_class;
+    => nrel_main_idtf: [катионные флокулянты](*<- lang_ru;;*);
+    => sc_link_content: [поверхностно-активные вещества с положительным зарядом, используемые для агрегации частиц и образования флокул в процессе очистки воды и сточных вод, обычно для удаления взвешенных частиц и органических загрязнителей];;
+concept_cationic_flocculants -> rrel_maximum_studied_object_class: concept_cleaning_reagents;;
+concept_cationic_flocculants => nrel_partition:
+    concept_polymeric_cationic_flocculants;
+    concept_polyelectrolytes;;
+
+concept_cationic_flocculants => nrel_application:
+    concept_wastewater_treatment;
+    concept_water_purification;
+    concept_industrial_processes;;
+
+concept_cationic_flocculants => nrel_technical_parameter:
+    rrel_flocculant_concentration;
+    rrel_molecular_weight;
+    rrel_ph_effectiveness;;
+
+concept_cationic_flocculants => nrel_operation_principle:
+    concept_particle_interaction;
+    concept_organic_contaminant_removal;;
+
+concept_cationic_flocculants => nrel_component:
+    concept_polymeric_flocculants_ammonium_based;
+    concept_polymeric_flocculants_natural_based;;
+
+concept_cationic_flocculants => nrel_type:
+    concept_synthetic_cationic_flocculants;
+    concept_natural_cationic_flocculants;;
+
+
+concept_polymeric_cationic_flocculants <- sc_node_class;
+    => nrel_main_idtf: [полимерные катионные флокулянты](*<- lang_ru;;*);;
+
+concept_polyelectrolytes <- sc_node_class;
+    => nrel_main_idtf: [полиэлектролиты](*<- lang_ru;;*);;
+
+concept_wastewater_treatment <- sc_node_class;
+    => nrel_main_idtf: [очистка сточных вод (удаление взвешенных частиц и органических загрязнителей)](*<- lang_ru;;*);;
+
+concept_water_purification <- sc_node_class;
+    => nrel_main_idtf: [водоочистка на водоочистных станциях](*<- lang_ru;;*);;
+
+concept_industrial_processes <- sc_node_class;
+    => nrel_main_idtf: [промышленные процессы (например, в текстильной, пищевой и нефтехимической промышленности)](*<- lang_ru;;*);;
+
+rrel_flocculant_concentration <- sc_node_role_relation;
+    => nrel_main_idtf: [концентрация флокулянта в растворе (мг/л или г/м³)](*<- lang_ru;;*);;
+
+rrel_molecular_weight <- sc_node_role_relation;
+    => nrel_main_idtf: [молекулярная масса флокулянта (определяет эффективность агрегации)](*<- lang_ru;;*);;
+
+rrel_ph_effectiveness <- sc_node_role_relation;
+    => nrel_main_idtf: [pH воды, при котором флокулянт наиболее эффективен](*<- lang_ru;;*);;
+
+concept_particle_interaction <- sc_node_class;
+    => nrel_main_idtf: [катионные флокулянты с положительным зарядом вступают в реакцию с отрицательно заряженными частицами в воде, нейтрализуют их заряд и способствуют их агрегации, образуя флокулы, которые затем удаляются фильтрацией или осаждением](*<- lang_ru;;*);;
+
+concept_organic_contaminant_removal <- sc_node_class;
+    => nrel_main_idtf: [они эффективно удаляют органические загрязнители и взвешенные вещества, улучшая качество воды](*<- lang_ru;;*);;
+
+concept_polymeric_flocculants_ammonium_based <- sc_node_class;
+    => nrel_main_idtf: [полимерные флокулянты на основе аммониевых соединений или полиакриламида](*<- lang_ru;;*);;
+
+concept_polymeric_flocculants_natural_based <- sc_node_class;
+    => nrel_main_idtf: [полимерные флокулянты на основе естественных полимеров, например, катионные крахмалы](*<- lang_ru;;*);;
+
+concept_synthetic_cationic_flocculants <- sc_node_class;
+    => nrel_main_idtf: [синтетические катионные флокулянты (на основе полиакриламида и других синтетических полимеров)](*<- lang_ru;;*);;
+
+concept_natural_cationic_flocculants <- sc_node_class;
+    => nrel_main_idtf: [натуральные катионные флокулянты (например, катионные производные крахмала)](*<- lang_ru;;*);;
