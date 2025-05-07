@@ -3,24 +3,28 @@
 **Класс действия:**
 action_length_calculation_and_result
 **Параметры:**
-1. rules_set - правила классификации.
+1. rules_set - правила.
 2. input_structure - входная структура.
 3. working_structure - структура получаемая из 1-го агента.
 **Рабочий процесс:**
 - Агент, пользуясь правилами классификации, считает длину kc и формирует выходную структуру использую входную структуру.
 ### Пример
 Пример структуры получаемой из 1-го агента.
+
 ![image](https://github.com/user-attachments/assets/3e4671a2-a687-4d27-a631-76488096e1ce)
 
-Пример входной структуры
+Пример входной структуры:
 
 ![image](https://github.com/user-attachments/assets/876a5531-1c22-49b7-b5e9-f31b06fd1871)
 
-Пример правил классификации.
-![image](https://github.com/user-attachments/assets/fbafea7a-79e2-43d3-a932-669f325ee195)
+Пример правил:
+
+![image](https://github.com/user-attachments/assets/be61d003-442f-4ae6-89ae-c66385940475)
 
 Пример выходной структуры:
-<img src="./result3.png"></img>
+
+![image](https://github.com/user-attachments/assets/fbafea7a-79e2-43d3-a932-669f325ee195)
+
 ### Результат
 Возможные коды результата:
 * `SC_RESULT_ERROR` — внутренняя ошибка.
