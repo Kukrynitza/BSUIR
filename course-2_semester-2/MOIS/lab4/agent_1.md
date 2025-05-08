@@ -14,12 +14,11 @@ action_data_generation
 
 Пример правил:
 
-![image](https://github.com/user-attachments/assets/1428814f-5103-4f53-8ce4-b2cc146e61d6)
-
+![image](https://github.com/user-attachments/assets/c17d9a8f-4139-4726-912e-f64d34b06952)
 
 Пример выходной структуры:
 
-![image](https://github.com/user-attachments/assets/69aad05b-0644-408e-9da9-56adf3e977a2)
+![image](https://github.com/user-attachments/assets/42757b4d-3431-4ee3-be3c-9e788fdcad24)
 
 ### Результат
 Возможные коды результата:
