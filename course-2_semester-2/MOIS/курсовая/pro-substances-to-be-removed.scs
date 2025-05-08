@@ -1,16 +1,15 @@
-subject_domain_of_substances_to_be_removed <- sc_node_struct;;
-subject_domain_of_substances_to_be_removed => nrel_main_idtf: [Предметная область веществ, подлежащих удалению] (*<- lang_ru;;*);;
 concept_substances_to_be_removed <- sc_node_class;
-              => nrel_main_idtf: [вещества, подлежащие удалению](*<- lang_ru;;*);;
+              => nrel_main_idtf: [вещества, подлежащие удалению](*<- lang_ru;;*);
+            => sc_link_content: [группа веществ, подлежащих удалению в процессе водоочистки из-за их вредного воздействия на здоровье человека, окружающую среду или нарушение технологических процессов.
+];;
 
-subject_domain_of_substances_to_be_removed
+concept_substances_to_be_removed
                                 => nrel_partition:
                                                   concept_heavy_metals;
                                                   concept_hexavalent_chromium_compounds;
                                                   concept_oil_emulsions;
                                                   concept_oil_and_grease_contaminants;
                                                   concept_organic_compounds_lignin_surfactants;;
-
 
 
 

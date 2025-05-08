@@ -1,9 +1,7 @@
-subject_domain_of_major_pollutants <- sc_node_struct;;
-subject_domain_of_major_pollutants => nrel_main_idtf: [Предметная область основных загрязняющих веществ] (*<- lang_ru;;*);;
 concept_major_pollutants <- sc_node_class;
-              => nrel_main_idtf: [основные загрязняющие вещества](*<- lang_ru;;*);;
-
-subject_domain_of_major_pollutants
+              => nrel_main_idtf: [основные загрязняющие вещества](*<- lang_ru;;*);
+            => sc_link_content: [группа химических, биологических и физических веществ, вызывающих ухудшение качества воды, воздуха или почвы и оказывающих негативное воздействие на окружающую среду и здоровье человека.];;
+concept_major_pollutants
                                 => nrel_partition:
                                                   concept_suspended_solids;
                                                   concept_biochemical_oxygen_demand;
@@ -15,7 +13,6 @@ subject_domain_of_major_pollutants
                                                   concept_chloride_ion;
                                                   concept_petroleum_products;
                                                   concept_oils_and_fats;;
-
 
 
 

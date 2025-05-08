@@ -1,9 +1,7 @@
-subject_domain_of_substances_for_biogenic_nutrition <- sc_node_struct;;
-subject_domain_of_substances_for_biogenic_nutrition => nrel_main_idtf: [Предметная область веществ для биогенной подпитки] (*<- lang_ru;;*);;
 concept_substances_for_biogenic_nutrition <- sc_node_class;
-              => nrel_main_idtf: [вещества для биогенной подпитки](*<- lang_ru;;*);;
-
-subject_domain_of_substances_for_biogenic_nutrition
+              => nrel_main_idtf: [вещества для биогенной подпитки](*<- lang_ru;;*);
+            => sc_link_content: [вещества, обеспечивающие микроорганизмы необходимыми элементами (азот, фосфор, калий и микроэлементы) для поддержания биохимических процессов, таких как очистка сточных вод или биологическое разложение.];;
+concept_substances_for_biogenic_nutrition
                                 => nrel_partition:
                                                   concept_superphosphate;
                                                   concept_orthophosphoric_acid;
@@ -13,7 +11,6 @@ subject_domain_of_substances_for_biogenic_nutrition
                                                   concept_urea;
                                                   concept_diammonium_phosphate;
                                                   concept_ammophos;;
-
 
 
 

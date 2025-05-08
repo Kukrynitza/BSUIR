@@ -1,9 +1,8 @@
-subject_domain_of_cleaning_reagents <- sc_node_struct;;
-subject_domain_of_cleaning_reagents => nrel_main_idtf: [Предметная область реагентов для очистки] (*<- lang_ru;;*);;
 concept_cleaning_reagents <- sc_node_class;
-              => nrel_main_idtf: [реагенты для очистки](*<- lang_ru;;*);;
+              => nrel_main_idtf: [реагенты для очистки](*<- lang_ru;;*);
+            => sc_link_content: [химические вещества, применяемые для удаления загрязняющих веществ из воды и сточных вод путём осаждения, нейтрализации, коагуляции, дезинфекции и других процессов.];;
 
-subject_domain_of_cleaning_reagents
+concept_cleaning_reagents
                                 => nrel_partition:
                                                   concept_aluminum_salts_coagulants;
                                                   concept_iron_salts_coagulants;

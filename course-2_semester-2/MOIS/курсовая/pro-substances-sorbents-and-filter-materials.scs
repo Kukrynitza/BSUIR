@@ -1,12 +1,12 @@
-subject_domain_of_sorbents_and_filter_materials <- sc_node_struct;;
-subject_domain_of_sorbents_and_filter_materials => nrel_main_idtf: [Предметная область сорбентов и фильтрующих материалов] (*<- lang_ru;;*);;
 concept_sorbents_and_filter_materials <- sc_node_class;
-              => nrel_main_idtf: [сорбенты и фильтрующие материалы](*<- lang_ru;;*);;
-
-subject_domain_of_sorbents_and_filter_materials
+              => nrel_main_idtf: [сорбенты и фильтрующие материалы](*<- lang_ru;;*);
+              => sc_link_content: [материал с высокой пористостью, используемый для удаления органических и неорганических загрязнителей из воды, воздуха и других жидкостей. Он обладает отличной адсорбционной способностью и широко применяется в очистке сточных вод];;
+concept_sorbents_and_filter_materials
                                 => nrel_partition:
                                                   concept_activated_carbon;
                                                   concept_zeolites;;
+
+
 
 
 
