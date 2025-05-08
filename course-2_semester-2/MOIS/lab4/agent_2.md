@@ -17,9 +17,6 @@ action_length_calculation_and_result
 
 ![image](https://github.com/user-attachments/assets/876a5531-1c22-49b7-b5e9-f31b06fd1871)
 
-Пример правил:
-
-![image](https://github.com/user-attachments/assets/be61d003-442f-4ae6-89ae-c66385940475)
 
 Пример выходной структуры:
 
