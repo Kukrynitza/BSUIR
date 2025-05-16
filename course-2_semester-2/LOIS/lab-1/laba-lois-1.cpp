@@ -24,10 +24,10 @@ bool isValidLiteral(const string& token) {
     if (token.empty()) return false;
     if (token[0] == '!') {
         if (token.size() != 2) return false;
-        return isalpha(token[1]);
+        return token[1] >= 'A' && token[1] <= 'Z';
     }
     else {
-        return token.size() == 1 && isalpha(token[0]);
+        return token.size() == 1 && token[0] >= 'A' && token[0] <= 'Z';
     }
 }
 
@@ -54,10 +54,11 @@ bool isValidClause(const string& clause) {
             if (ch == '!') {
                 token += ch;
                 ++i;
-                if (i >= clause.size() || !isalpha(clause[i])) return false;
+                if (i >= clause.size() || clause[i] < 'A' || clause[i] > 'Z') return false;
                 token += clause[i++];
             }
-            else if (isalpha(ch)) {
+            else if (ch >= 'A' && ch <= 'Z')
+            {
                 token += ch;
                 ++i;
                 if (i < clause.size() && isalpha(clause[i])) return false;
@@ -150,7 +151,7 @@ void userTest() {
     {"&(A|B)", false},
     {"(A|B)&", false},
     {"(A|1)", false},
-    {"(A|!b)&(B|!a)", true},
+    {"(A|!b)&(B|!a)", false},
     {"(A|!B)&(C|!B)&(!A|C)", true},
     {"(X|Y|Z)&(!X|!Y|!Z)", true},
     {"(A|!A)", false},
