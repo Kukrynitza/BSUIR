@@ -24,7 +24,8 @@ concept_activated_carbon => nrel_application:
     concept_drinking_and_wastewater_treatment;
     concept_water_purification;
     concept_air_filtration;
-    concept_chemical_industry;;
+    concept_chemical_industry;
+    concept_activated_carbon_filters;;
 
 concept_activated_carbon => nrel_technical_parameter:
     rrel_adsorption_capacity;
@@ -33,7 +34,10 @@ concept_activated_carbon => nrel_technical_parameter:
 
 concept_activated_carbon => nrel_operation_principle:
     concept_adsorption_process;
-    concept_catalytic_reactions;;
+    concept_catalytic_reactions;
+    concept_purification_from_specific_impurities;
+    concept_chemical_precipitation;;
+
 
 concept_activated_carbon => nrel_component:
     concept_carbon;
@@ -61,14 +65,8 @@ concept_wood_activated_carbon <- sc_node_class;
 concept_drinking_and_wastewater_treatment <- sc_node_class;
     => nrel_main_idtf: [очистка питьевой воды и сточных вод (удаление органических загрязнителей, хлора, запахов)](*<- lang_ru;;*);;
 
-concept_water_purification <- sc_node_class;
-    => nrel_main_idtf: [водоочистка на водоочистных станциях](*<- lang_ru;;*);;
-
 concept_air_filtration <- sc_node_class;
     => nrel_main_idtf: [фильтрация воздуха (очистка от запахов, газов, паров)](*<- lang_ru;;*);;
-
-concept_chemical_industry <- sc_node_class;
-    => nrel_main_idtf: [химическая промышленность (адсорбция химических веществ)](*<- lang_ru;;*);;
 
 rrel_adsorption_capacity <- sc_node_role_relation;
     => nrel_main_idtf: [степень адсорбции (мг загрязнителя на грамм угля)](*<- lang_ru;;*);;
@@ -119,7 +117,10 @@ concept_zeolites => nrel_application:
     concept_wastewater_treatment;
     concept_water_purification;
     concept_agriculture;
-    concept_air_and_gas_purification;;
+    concept_air_and_gas_purification;
+    concept_sewage_sludge_treatment_facilities;
+    concept_ion_exchange_units;
+    concept_deep_wastewater_treatment_facilities;;
 
 concept_zeolites => nrel_technical_parameter:
     rrel_ion_exchange_capacity;
@@ -128,7 +129,7 @@ concept_zeolites => nrel_technical_parameter:
 
 concept_zeolites => nrel_operation_principle:
     concept_ion_exchange;
-    concept_adsorption_process;;
+    concept_removal_of_phosphorus_compounds;;
 
 concept_zeolites => nrel_component:
     concept_natural_zeolites;
@@ -148,15 +149,6 @@ concept_potassium_zeolites <- sc_node_class;
 
 concept_synthetic_zeolites <- sc_node_class;
     => nrel_main_idtf: [синтетические цеолиты](*<- lang_ru;;*);;
-
-concept_wastewater_treatment <- sc_node_class;
-    => nrel_main_idtf: [очистка сточных вод (удаление аммония, тяжелых металлов и других загрязнителей)](*<- lang_ru;;*);;
-
-concept_water_purification <- sc_node_class;
-    => nrel_main_idtf: [водоочистка на водоочистных станциях](*<- lang_ru;;*);;
-
-concept_agriculture <- sc_node_class;
-    => nrel_main_idtf: [сельское хозяйство (для улучшения качества почвы и водообмена)](*<- lang_ru;;*);;
 
 concept_air_and_gas_purification <- sc_node_class;
     => nrel_main_idtf: [очистка газов и воздуха](*<- lang_ru;;*);;

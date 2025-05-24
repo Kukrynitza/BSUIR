@@ -28,7 +28,8 @@ concept_aluminum_salts_coagulants => nrel_partition:
 concept_aluminum_salts_coagulants => nrel_application:
     concept_drinking_wastewater_treatment;
     concept_water_treatment_plants;
-    concept_industrial_water_preparation;;
+    concept_industrial_water_preparation;
+    concept_flotation_units;;
 
 concept_aluminum_salts_coagulants => nrel_technical_parameter:
     rrel_coagulant_concentration;
@@ -36,7 +37,9 @@ concept_aluminum_salts_coagulants => nrel_technical_parameter:
 
 concept_aluminum_salts_coagulants => nrel_operation_principle:
     concept_coagulation_process;
-    concept_neutralization;;
+    concept_neutralization;
+    concept_chemical_precipitation;
+    concept_removal_of_phosphorus_compounds;;
 
 concept_aluminum_salts_coagulants => nrel_component:
     concept_aluminum_sulfate_component;
@@ -113,7 +116,8 @@ concept_iron_salts_coagulants => nrel_partition:
 concept_iron_salts_coagulants => nrel_application:
     concept_drinking_wastewater_treatment;
     concept_water_treatment_plants;
-    concept_industrial_water_preparation;;
+    concept_industrial_water_preparation;
+    concept_sludge_thickeners;;  
 
 concept_iron_salts_coagulants => nrel_technical_parameter:
     rrel_coagulant_concentration;
@@ -122,7 +126,9 @@ concept_iron_salts_coagulants => nrel_technical_parameter:
 
 concept_iron_salts_coagulants => nrel_operation_principle:
     concept_coagulation_process;
-    concept_phosphate_organic_removal;;
+    concept_phosphate_organic_removal;
+    concept_chemical_precipitation;
+    concept_removal_of_phosphorus_with_precipitation_reagents;;
 
 concept_iron_salts_coagulants => nrel_component:
     concept_iron_sulfate_component;
@@ -201,7 +207,9 @@ concept_lime_CaO => nrel_partition:
 concept_lime_CaO => nrel_application:
     concept_drinking_wastewater_treatment;
     concept_water_hardness_control;
-    concept_agriculture;;
+    concept_agriculture;
+    concept_sludge_dewatering_units;
+    concept_two_tier_settling_tanks;; 
 
 concept_lime_CaO => nrel_technical_parameter:
     rrel_lime_concentration;
@@ -209,7 +217,9 @@ concept_lime_CaO => nrel_technical_parameter:
 
 concept_lime_CaO => nrel_operation_principle:
     concept_neutralization;
-    concept_coagulation_flocculation;;
+    concept_coagulation_flocculation;
+    concept_chemical_precipitation;
+    concept_treatment_without_nitrification;;
 
 concept_lime_CaO => nrel_component:
     concept_calcium_oxide;
@@ -232,8 +242,6 @@ concept_drinking_wastewater_treatment <- sc_node_class;
 concept_water_hardness_control <- sc_node_class;
     => nrel_main_idtf: [контроль жесткости воды](*<- lang_ru;;*);;
 
-concept_agriculture <- sc_node_class;
-    => nrel_main_idtf: [сельское хозяйство (внесение извести в почву для нейтрализации кислотности)](*<- lang_ru;;*);;
 
 rrel_lime_concentration <- sc_node_role_relation;
     => nrel_main_idtf: [концентрация извести в растворе (мг/л или г/м³)](*<- lang_ru;;*);;
@@ -274,7 +282,9 @@ concept_anionic_flocculants => nrel_partition:
 concept_anionic_flocculants => nrel_application:
     concept_wastewater_treatment;
     concept_water_purification;
-    concept_industrial_water_treatment;;
+    concept_industrial_water_treatment;
+    concept_flotation_units;
+    concept_secondary_settling_tanks;; 
 
 concept_anionic_flocculants => nrel_technical_parameter:
     rrel_flocculant_concentration;
@@ -283,7 +293,9 @@ concept_anionic_flocculants => nrel_technical_parameter:
 
 concept_anionic_flocculants => nrel_operation_principle:
     concept_particle_interaction;
-    concept_reducing_solubility;;
+    concept_reducing_solubility;
+    concept_purification_from_specific_impurities;
+    concept_operation_of_secondary_sedimentation_tanks;;
 
 concept_anionic_flocculants => nrel_component:
     concept_polymeric_flocculants;
@@ -299,9 +311,6 @@ concept_polymeric_anionic_flocculants <- sc_node_class;
 
 concept_polyphosphate_anionic_flocculants <- sc_node_class;
     => nrel_main_idtf: [полифосфатные анионные флокулянты](*<- lang_ru;;*);;
-
-concept_wastewater_treatment <- sc_node_class;
-    => nrel_main_idtf: [очистка сточных вод (удаление взвешенных частиц, органических загрязнителей и осаждение флокул)](*<- lang_ru;;*);;
 
 concept_water_purification <- sc_node_class;
     => nrel_main_idtf: [водоочистка на водоочистных станциях](*<- lang_ru;;*);;
@@ -351,7 +360,9 @@ concept_cationic_flocculants => nrel_partition:
 concept_cationic_flocculants => nrel_application:
     concept_wastewater_treatment;
     concept_water_purification;
-    concept_industrial_processes;;
+    concept_industrial_processes;
+    concept_activated_sludge_systems;
+    concept_sludge_thickeners;;
 
 concept_cationic_flocculants => nrel_technical_parameter:
     rrel_flocculant_concentration;
@@ -360,7 +371,9 @@ concept_cationic_flocculants => nrel_technical_parameter:
 
 concept_cationic_flocculants => nrel_operation_principle:
     concept_particle_interaction;
-    concept_organic_contaminant_removal;;
+    concept_organic_contaminant_removal;
+    concept_biological_treatment_with_sludge_regeneration;
+    concept_regeneration_of_activated_sludge;;
 
 concept_cationic_flocculants => nrel_component:
     concept_polymeric_flocculants_ammonium_based;
@@ -376,12 +389,6 @@ concept_polymeric_cationic_flocculants <- sc_node_class;
 
 concept_polyelectrolytes <- sc_node_class;
     => nrel_main_idtf: [полиэлектролиты](*<- lang_ru;;*);;
-
-concept_wastewater_treatment <- sc_node_class;
-    => nrel_main_idtf: [очистка сточных вод (удаление взвешенных частиц и органических загрязнителей)](*<- lang_ru;;*);;
-
-concept_water_purification <- sc_node_class;
-    => nrel_main_idtf: [водоочистка на водоочистных станциях](*<- lang_ru;;*);;
 
 concept_industrial_processes <- sc_node_class;
     => nrel_main_idtf: [промышленные процессы (например, в текстильной, пищевой и нефтехимической промышленности)](*<- lang_ru;;*);;

@@ -31,6 +31,8 @@ concept_organic_suspended_solids <- sc_node_class;
                                  => nrel_main_idtf: [органические: остатки растений, бактерии](*<- lang_ru;;*);;                                 
 
 concept_suspended_solids => nrel_application:
+                                            concept_sand_traps;
+                                            concept_secondary_settling_tanks;
                                             concept_wastewater_treatment;
                                             concept_water_quality_monitoring;;
 
@@ -45,12 +47,12 @@ concept_suspended_solids => nrel_technical_parameter:
     => nrel_main_idtf: [мкм](*<- lang_ru;;*);;
 
 concept_suspended_solids => nrel_operation_principle:
+                                            concept_operation_of_secondary_sedimentation_tanks;
+                                            concept_removal_of_phosphorus_with_precipitation_reagents;
                                             concept_sedimentation;
                                             concept_filtration;
                                             concept_coagulation;;
 
-    concept_wastewater_treatment <- sc_node_class; 
-    => nrel_main_idtf: [очистка сточных вод](*<- lang_ru;;*);;
     concept_water_quality_monitoring <- sc_node_class; 
     => nrel_main_idtf: [мониторинг качества воды](*<- lang_ru;;*);;
 
@@ -75,6 +77,8 @@ concept_biochemical_oxygen_demand => nrel_partition:
     concept_BOD_1;;
 
 concept_biochemical_oxygen_demand => nrel_application:
+    concept_aerotanks_mixers_with_regenerators;
+    concept_biological_filters;
     concept_wastewater_quality_control;
     concept_treatment_efficiency_evaluation;
     concept_pollution_assessment;
@@ -86,6 +90,8 @@ concept_biochemical_oxygen_demand => nrel_technical_parameter:
     rrel_dependency_factors;;
 
 concept_biochemical_oxygen_demand => nrel_operation_principle:
+    concept_biological_treatment;
+    concept_wastewater_treatment_in_activated_sludge_systems;
     concept_oxidation_by_microorganisms;
     concept_oxygen_consumption;
     concept_dissolved_oxygen_drop;;
@@ -175,6 +181,8 @@ concept_chemical_oxygen_demand => nrel_partition:
     concept_COD_inorganic;;
 
 concept_chemical_oxygen_demand => nrel_application:
+    concept_activated_carbon_filters;
+    concept_chemical_precipitation;
     concept_wastewater_monitoring;
     concept_total_pollution_assessment;
     concept_treatment_efficiency_check;
@@ -186,6 +194,8 @@ concept_chemical_oxygen_demand => nrel_technical_parameter:
     rrel_reaction_time;;
 
 concept_chemical_oxygen_demand => nrel_operation_principle:
+    concept_purification_from_specific_impurities;
+    concept_chemical_precipitation;
     concept_strong_oxidizers_use;
     concept_oxygen_consumption_for_oxidation;;
 
@@ -265,6 +275,8 @@ concept_ammonium_ion => nrel_partition:
     concept_ammonium_in_sludge;;
 
 concept_ammonium_ion => nrel_application:
+    concept_preaerators;
+    concept_nitrification;
     concept_ammonium_removal;
     concept_ammonia_neutralization;
     concept_pollution_monitoring;;
@@ -274,6 +286,8 @@ concept_ammonium_ion => nrel_technical_parameter:
     rrel_treatment_efficiency;;
 
 concept_ammonium_ion => nrel_operation_principle:
+    concept_nitrification;
+    concept_use_of_preaerators_and_biocoagulators;
     concept_biological_oxidation;
     concept_chemical_removal;;
 
@@ -292,10 +306,6 @@ concept_ammonium_in_wastewater <- sc_node_class;
 
 concept_ammonium_in_sludge <- sc_node_class;
     => nrel_main_idtf: [аммоний в осадках очистки сточных вод](*<- lang_ru;;*);;
-
-
-concept_ammonium_removal <- sc_node_class;
-    => nrel_main_idtf: [очистка сточных вод (удаление аммония)](*<- lang_ru;;*);;
 
 concept_ammonia_neutralization <- sc_node_class;
     => nrel_main_idtf: [нейтрализация аммиака в очистных сооружениях](*<- lang_ru;;*);;
@@ -348,6 +358,8 @@ concept_kjeldahl_nitrogen => nrel_partition:
     concept_ammonium_nitrogen;;
 
 concept_kjeldahl_nitrogen => nrel_application:
+    concept_aerotanks_mixers_with_regenerators;
+    concept_trickling_biological_filters;
     concept_wastewater_pollution_assessment;
     concept_sludge_nitrogen_measurement;
     concept_treatment_monitoring;;
@@ -357,6 +369,8 @@ concept_kjeldahl_nitrogen => nrel_technical_parameter:
     rrel_fraction_content;;
 
 concept_kjeldahl_nitrogen => nrel_operation_principle:
+    concept_treatment_with_nitrification_and_denitrification;
+    concept_biological_treatment_with_sludge_regeneration;
     concept_acid_digestion;
     concept_oxidation_to_ammonium;;
 
@@ -422,6 +436,8 @@ concept_total_phosphorus => nrel_partition:
     concept_sediment_bound_phosphorus;;
 
 concept_total_phosphorus => nrel_application:
+    concept_chemical_precipitation;
+    concept_sludge_thickeners;
     concept_wastewater_quality_monitoring;
     concept_eutrophication_control;
     concept_treatment_plant_efficiency;;
@@ -431,6 +447,8 @@ concept_total_phosphorus => nrel_technical_parameter:
     rrel_dissolved_phosphates_concentration;;
 
 concept_total_phosphorus => nrel_operation_principle:
+    concept_removal_of_phosphorus_compounds;
+    concept_removal_of_phosphorus_with_precipitation_reagents;
     concept_phosphorus_extraction_and_oxidation;;
 
 concept_total_phosphorus => nrel_component:
@@ -499,6 +517,8 @@ concept_phosphate_ion => nrel_partition:
     concept_sediment_bound_phosphate;;
 
 concept_phosphate_ion => nrel_application:
+    concept_ion_exchange_units;
+    concept_membrane_bioreactors;
     concept_phosphate_removal;
     concept_eutrophication_prevention;
     concept_phosphorus_control_in_supply;;
@@ -508,6 +528,8 @@ concept_phosphate_ion => nrel_technical_parameter:
     rrel_phase_ratio;;
 
 concept_phosphate_ion => nrel_operation_principle:
+    concept_removal_of_phosphorus_compounds;
+    concept_biological_treatment;
     concept_chemical_precipitation;
     concept_biological_removal;
     concept_eutrophication_mechanism;;
@@ -527,10 +549,7 @@ concept_dissolved_phosphate <- sc_node_class;
 
 concept_sediment_bound_phosphate <- sc_node_class;
     => nrel_main_idtf: [фосфат в осадках](*<- lang_ru;;*);;
-
-concept_phosphate_removal <- sc_node_class;
-    => nrel_main_idtf: [очистка сточных вод (удаление фосфатов)](*<- lang_ru;;*);;
-
+    
 concept_eutrophication_prevention <- sc_node_class;
     => nrel_main_idtf: [мониторинг загрязнения водоёмов (предотвращение эвтрофикации)](*<- lang_ru;;*);;
 
@@ -580,6 +599,8 @@ concept_chloride_ion => nrel_partition:
     concept_sediment_bound_chloride;;
 
 concept_chloride_ion => nrel_application:
+    concept_electrochemical_reactors;
+    concept_reverse_osmosis_units;
     concept_water_quality_monitoring;
     concept_salt_pollution_control;
     concept_water_characteristics_in_treatment;;
@@ -589,6 +610,8 @@ concept_chloride_ion => nrel_technical_parameter:
     rrel_corrosion_and_process_impact;;
 
 concept_chloride_ion => nrel_operation_principle:
+    concept_industrial_wastewater_treatment;
+    concept_purification_from_specific_impurities;
     concept_no_biological_involvement;
     concept_source_in_wastewater;;
 
@@ -649,6 +672,8 @@ concept_petroleum_products => nrel_partition:
     concept_petroleum_chemicals;;
 
 concept_petroleum_products => nrel_application:
+    concept_flotation_units;
+    concept_activated_carbon_filters;
     concept_industrial_pollution_control;
     concept_water_pollution_monitoring_near_oil_fields;
     concept_oil_removal_in_treatment_plants;;
@@ -658,6 +683,8 @@ concept_petroleum_products => nrel_technical_parameter:
     rrel_measurement_methods;;
 
 concept_petroleum_products => nrel_operation_principle:
+    concept_purification_from_specific_impurities;
+    concept_wastewater_treatment_for_organic_matter_destruction;
     concept_coagulation_flokculation_adsorption;
     concept_biological_treatment_inefficiency;;
 
@@ -717,6 +744,8 @@ concept_oils_and_fats => nrel_partition:
     concept_synthetic_oils;;
 
 concept_oils_and_fats => nrel_application:
+    concept_two_tier_settling_tanks;
+    concept_flotation_units;
     concept_food_industry_pollution_control;
     concept_wastewater_treatment;
     concept_waste_management_in_industries;;
@@ -726,6 +755,8 @@ concept_oils_and_fats => nrel_technical_parameter:
     rrel_volatile_and_nonvolatile_content;;
 
 concept_oils_and_fats => nrel_operation_principle:
+    concept_chemical_precipitation;
+    concept_purification_from_specific_impurities;
     concept_physical_chemical_methods;
     concept_adsorption_materials;;
 
@@ -751,9 +782,6 @@ concept_synthetic_oils <- sc_node_class;
 
 concept_food_industry_pollution_control <- sc_node_class;
     => nrel_main_idtf: [контроль загрязнения сточных вод от пищевой промышленности (масложировые производства)](*<- lang_ru;;*);;
-
-concept_wastewater_treatment <- sc_node_class;
-    => nrel_main_idtf: [очистка сточных вод на очистных сооружениях](*<- lang_ru;;*);;
 
 concept_waste_management_in_industries <- sc_node_class;
     => nrel_main_idtf: [управление отходами в нефтехимической и пищевой промышленности](*<- lang_ru;;*);;

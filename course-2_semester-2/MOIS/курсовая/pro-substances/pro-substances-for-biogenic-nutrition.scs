@@ -24,6 +24,8 @@ concept_superphosphate => nrel_partition:
     concept_double_superphosphate;;
 
 concept_superphosphate => nrel_application:
+    concept_biological_filters;
+    concept_activated_sludge_systems;
     concept_agricultural_fertilizer_use;
     concept_soil_phosphorus_restoration;
     concept_agronomy_application;;
@@ -33,6 +35,8 @@ concept_superphosphate => nrel_technical_parameter:
     rrel_phosphate_solubility;;
 
 concept_superphosphate => nrel_operation_principle:
+    concept_removal_of_phosphorus_compounds;
+    concept_biological_treatment;
     concept_plant_phosphorus_supply;
     concept_soil_dissolution_availability;;
 
@@ -101,6 +105,7 @@ concept_orthophosphoric_acid => nrel_partition:
     concept_food_grade_phosphoric_acid;;
 
 concept_orthophosphoric_acid => nrel_application:
+    concept_ion_exchange_units;
     concept_fertilizer_production;
     concept_water_softening;
     concept_food_additive_use;
@@ -111,7 +116,10 @@ concept_orthophosphoric_acid => nrel_technical_parameter:
     rrel_solution_pH;;
 
 concept_orthophosphoric_acid => nrel_operation_principle:
+    concept_chemical_precipitation;
+    concept_removal_of_phosphorus_with_precipitation_reagents;
     concept_base_neutralization_reaction;
+    
     concept_water_hardness_reduction;;
 
 concept_orthophosphoric_acid => nrel_component:
@@ -178,6 +186,8 @@ concept_ammonium_sulfate => nrel_partition:
     concept_ammonium_sulfate_in_industry;;
 
 concept_ammonium_sulfate => nrel_application:
+    concept_aerotanks_mixers_with_regenerators;
+    concept_biological_filters;
     concept_agriculture_use;
     concept_nitrogen_fertilizer_production;
     concept_chemical_industry_use;;
@@ -188,6 +198,8 @@ concept_ammonium_sulfate => nrel_technical_parameter:
     rrel_water_solubility;;
 
 concept_ammonium_sulfate => nrel_operation_principle:
+    concept_nitrification;
+    concept_biological_treatment_with_sludge_regeneration;
     concept_nutrient_supply;
     concept_acidifying_effect;;
 
@@ -255,6 +267,8 @@ concept_ammonium_nitrate => nrel_partition:
     concept_ammonium_nitrate_in_industry;;
 
 concept_ammonium_nitrate => nrel_application:
+    concept_activated_sludge_systems;
+    concept_trickling_biological_filters;
     concept_agricultural_use;
     concept_explosives_production;
     concept_chemical_industry_use;;
@@ -264,6 +278,8 @@ concept_ammonium_nitrate => nrel_technical_parameter:
     rrel_water_solubility;;
 
 concept_ammonium_nitrate => nrel_operation_principle:
+    concept_nitrification;
+    concept_denitrification;
     concept_nitrogen_supply_to_plants;
     concept_ion_release_upon_dissolution;;
 
@@ -328,6 +344,8 @@ concept_aqueous_ammonia => nrel_partition:
     concept_ammonia_in_water_treatment;;
 
 concept_aqueous_ammonia => nrel_application:
+    concept_preaerators;
+    concept_biocoagulators;
     concept_chemical_industry_use;
     concept_wastewater_treatment;
     concept_cleaning_agent_production;;
@@ -337,6 +355,8 @@ concept_aqueous_ammonia => nrel_technical_parameter:
     rrel_pH_level;;
 
 concept_aqueous_ammonia => nrel_operation_principle:
+    concept_use_of_preaerators_and_biocoagulators;
+    concept_regeneration_of_activated_sludge_in_preaerators;
     concept_acid_neutralization;
     concept_nitrogen_source;;
 
@@ -357,9 +377,6 @@ concept_ammonia_in_water_treatment <- sc_node_class;
 
 concept_chemical_industry_use <- sc_node_class;
     => nrel_main_idtf: [химическая промышленность (производство удобрений, пластмасс)](*<- lang_ru;;*);;
-
-concept_wastewater_treatment <- sc_node_class;
-    => nrel_main_idtf: [очистка сточных вод (для нейтрализации кислотности)](*<- lang_ru;;*);;
 
 concept_cleaning_agent_production <- sc_node_class;
     => nrel_main_idtf: [производство моющих средств и в агрохимической промышленности](*<- lang_ru;;*);;
@@ -401,6 +418,8 @@ concept_urea => nrel_partition:
     concept_urea_in_industry;;
 
 concept_urea => nrel_application:
+    concept_aerotanks_mixers_without_regenerators;
+    concept_circulating_oxidation_channels;
     concept_agriculture;
     concept_chemical_industry;
     concept_pharmaceutical_industry;;
@@ -410,6 +429,8 @@ concept_urea => nrel_technical_parameter:
     rrel_solubility;;
 
 concept_urea => nrel_operation_principle:
+    concept_nitrification;
+    concept_treatment_with_nitrification_and_denitrification;
     concept_hydrolysis_in_soil;
     concept_plant_growth_support;;
 
@@ -426,12 +447,6 @@ concept_urea_as_fertilizer <- sc_node_class;
 
 concept_urea_in_industry <- sc_node_class;
     => nrel_main_idtf: [карбамид в промышленности](*<- lang_ru;;*);;
-
-concept_agriculture <- sc_node_class;
-    => nrel_main_idtf: [сельское хозяйство (удобрение для растений, улучшение качества почвы)](*<- lang_ru;;*);;
-
-concept_chemical_industry <- sc_node_class;
-    => nrel_main_idtf: [химическая промышленность (производство пластмасс, синтетических волокон)](*<- lang_ru;;*);;
 
 concept_pharmaceutical_industry <- sc_node_class;
     => nrel_main_idtf: [фармацевтическая промышленность (используется в составе некоторых препаратов)](*<- lang_ru;;*);;
@@ -470,6 +485,8 @@ concept_diammonium_phosphate => nrel_partition:
     concept_dap_in_industry;;
 
 concept_diammonium_phosphate => nrel_application:
+    concept_activated_sludge_systems;
+    concept_membrane_bioreactors;
     concept_agriculture;
     concept_chemical_industry;;
 
@@ -479,6 +496,8 @@ concept_diammonium_phosphate => nrel_technical_parameter:
     rrel_solubility;;
 
 concept_diammonium_phosphate => nrel_operation_principle:
+    concept_biological_treatment;
+    concept_removal_of_phosphorus_compounds;
     concept_dap_effect_in_soil;
     concept_phosphorus_role_in_plants;;
 
@@ -496,12 +515,6 @@ concept_dap_as_fertilizer <- sc_node_class;
 
 concept_dap_in_industry <- sc_node_class;
     => nrel_main_idtf: [диаммонийфосфат в промышленности](*<- lang_ru;;*);;
-
-concept_agriculture <- sc_node_class;
-    => nrel_main_idtf: [сельское хозяйство (удобрение, источник фосфора и азота для растений)](*<- lang_ru;;*);;
-
-concept_chemical_industry <- sc_node_class;
-    => nrel_main_idtf: [химическая промышленность (производство других фосфорных соединений)](*<- lang_ru;;*);;
 
 rrel_nitrogen_content <- sc_node_role_relation;
     => nrel_main_idtf: [содержание азота (обычно около 18-20%)](*<- lang_ru;;*);;
@@ -543,6 +556,8 @@ concept_ammophos => nrel_partition:
     concept_ammophos_in_industry;;
 
 concept_ammophos => nrel_application:
+    concept_biological_filters;
+    concept_sludge_lagoons;
     concept_agriculture;
     concept_fertilizer_production;;
 
@@ -552,6 +567,8 @@ concept_ammophos => nrel_technical_parameter:
     rrel_solubility;;
 
 concept_ammophos => nrel_operation_principle:
+    concept_removal_of_phosphorus_compounds;
+    concept_full_biological_treatment_without_nitrification;
     concept_nutrient_supply;
     concept_phosphorus_and_nitrogen_effect;;
 
@@ -569,9 +586,6 @@ concept_ammophos_as_fertilizer <- sc_node_class;
 
 concept_ammophos_in_industry <- sc_node_class;
     => nrel_main_idtf: [аммофос в промышленности](*<- lang_ru;;*);;
-
-concept_agriculture <- sc_node_class;
-    => nrel_main_idtf: [сельское хозяйство (удобрение для повышения урожайности)](*<- lang_ru;;*);;
 
 concept_fertilizer_production <- sc_node_class;
     => nrel_main_idtf: [производство минеральных удобрений](*<- lang_ru;;*);;
