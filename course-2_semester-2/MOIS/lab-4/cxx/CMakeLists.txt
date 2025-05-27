@@ -1,0 +1,5 @@
+add_subdirectory(exampleModule)
+#add_subdirectory(generateAnswerOnStatusCodeModule)
+#add_subdirectory(generateStatusCodeStructureModule)
+add_subdirectory(reusable-components)
+add_subdirectory(segmentInCircumferenceModule)
