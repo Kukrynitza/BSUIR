@@ -3,11 +3,11 @@ import string
 import time
 def generate_matrix():
     all_letters = string.ascii_letters
-    random_letters_column = [random.choice(all_letters) for _ in range(column)]
+    # random_letters_column = [random.choice(all_letters) for _ in range(column)]
     random_letters_string = [random.choice(all_letters) for _ in range(line)]
     matrix = random_letters_string.copy()
     for element in range(len(matrix)):
-        matrix[element] = random_letters_column.copy()
+        matrix[element] = [random.choice(all_letters) for _ in range(column)]
     return matrix
 
 def text_encryption(matrix, line, column, text):
@@ -76,8 +76,8 @@ if __name__ == '__main__':
         column: int
         line: int
         try:
-            # text: str = input('Введите текст: ')
-            text = 'QWERTY'
+            text: str = input('Введите текст: ')
+            # text = 'QWERTY'
             column: int = int(input('Количество столбцов:'))
             line: int = int(input('Количество строк:'))
         except:
