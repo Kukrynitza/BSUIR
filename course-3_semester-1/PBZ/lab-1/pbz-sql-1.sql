@@ -5,10 +5,19 @@ WHERE "S" > 320
 GROUP BY "Д#"
 
 25
+WITH "sity_1" as(
 SELECT "Город"
 FROM "Проекты J"
 ORDER BY "Город" ASC
 LIMIT 1
+
+)
+
+SELECT  "Имя ПР", "Город"
+FROM "Проекты J"
+WHERE "Город" IN (SELECT * FROM "sity_1")
+ORDER BY "Город" ASC
+
 
 33
 SELECT "Проекты J"."Город"
