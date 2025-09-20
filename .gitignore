@@ -1,2 +1,4 @@
 BNTU
 workspace.xml
+.env
+next-env.d.ts
