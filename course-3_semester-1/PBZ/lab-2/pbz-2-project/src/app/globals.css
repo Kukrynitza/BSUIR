@@ -1,0 +1,10 @@
+body {
+  font-family: 'Noto Sans KR Variable', sans-serif;
+  width: 100%;
+  background-color: #ffc72e;
+
+}
+
+html{
+  scrollbar-color: #003089 #ffc72e; 
+}

@@ -1,0 +1,76 @@
+.page {
+  width: 100%;
+  height: 100%;
+  background-color: #ffc72e;
+}
+
+.main {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: start;
+  row-gap: 50px;
+  padding-top: 120px;
+  width: 100%;
+  height: 100%;
+  color:#003089;
+}
+
+.ul {
+  margin-top: 40px;
+  display: grid;
+  justify-content: center;
+  row-gap: 10px;
+  border-radius: 30px;
+  border-color: #003089;
+  border-style: solid;
+  border-width: 5px;
+  color: #003089;
+  padding: 20px;
+}
+
+.button {
+  cursor: pointer;
+  padding-bottom: 15px;
+  padding-top: 15px;
+  border-radius: 15px;
+  text-align: center;
+  color: #ffc72e;
+  background-color: #003089;
+}
+
+.button:disabled {
+  cursor: not-allowed;
+  padding-bottom: 15px;
+  padding-top: 15px;
+  border-radius: 15px;
+  text-align: center;
+  color: #ffc72e;
+  background-color: #fe6a1f;
+}
+
+.cross{
+  size: 32px;
+  margin-left: 1fr;
+}
+
+.liCross{
+  text-align: end;
+}
+
+.mainLi{
+  display: grid;
+  justify-items: center;
+  border-right: solid 3px #003089;
+  justify-content: center;
+}
+
+.mainLiLast{
+  display: grid;
+  justify-content: center;
+  justify-items: center;
+  border-right: solid 3px #003089;
+}
+
+.p{
+  text-align: center;
+}

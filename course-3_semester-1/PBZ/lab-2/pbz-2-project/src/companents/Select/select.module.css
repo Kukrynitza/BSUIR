@@ -1,0 +1,101 @@
+.simple_select_trigger {
+  padding: 12px 16px;
+  font-size: 16px;
+  background-color: #ffc72e;
+  border-radius: 8px;
+  width: 250px;
+  cursor: pointer;
+  outline: none;
+  color: #003089;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  border: 2px solid transparent;
+}
+
+.simple_select_trigger:focus {
+  border: 2px solid #003089;
+  outline: none;
+}
+
+.simple_select_trigger:hover {
+  background-color: #f8c01a;
+}
+
+.simple_select_content {
+  z-index: 110;
+  background-color: #ffc72e;
+  border: 2px solid #003089;
+  border-radius: 8px;
+  color: #003089;
+  margin-top: 8px;
+  width: 250px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  
+  /* ДОБАВЬТЕ ЭТИ СВОЙСТВА */
+  max-height: 200px;
+  overflow-y: auto;
+  
+  /* ВАЖНО: для правильного позиционирования */
+  position: relative;
+}
+
+/* КОНТЕЙНЕР ДЛЯ ЭЛЕМЕНТОВ */
+.simple_select_viewport {
+  width: 100%;
+}
+
+.simple_select_item {
+  padding: 12px 16px;
+  font-size: 14px;
+  cursor: pointer;
+  outline: none;
+  color: #003089;
+  background-color: #ffc72e;
+  display: flex;
+  align-items: center;
+  transition: all 0.2s ease;
+  border-bottom: 1px solid rgba(0, 48, 137, 0.3);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.simple_select_item:last-child {
+  border-bottom: none;
+}
+
+.simple_select_item:hover {
+  background-color: #e6b325;
+}
+
+.simple_select_item[data-highlighted] {
+  background-color: #d4a220;
+}
+
+.simple_select_item[data-state="checked"] {
+  background-color: #003089;
+  color: #ffc72e;
+  font-weight: 600;
+}
+
+/* СТИЛИ ДЛЯ СКРОЛЛБАРА */
+.simple_select_content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.simple_select_content::-webkit-scrollbar-track {
+  background: rgba(0, 48, 137, 0.1);
+  border-radius: 3px;
+}
+
+.simple_select_content::-webkit-scrollbar-thumb {
+  background: #003089;
+  border-radius: 3px;
+}
+
+.simple_select_content::-webkit-scrollbar-thumb:hover {
+  background: #002366;
+}
