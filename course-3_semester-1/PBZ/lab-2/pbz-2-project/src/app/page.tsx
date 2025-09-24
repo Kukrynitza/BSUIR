@@ -133,8 +133,8 @@ export default function Page() {
     setUpdateEvent(isUpdate => !isUpdate)
     setNewEvent({
   id: 0,
-  name: 'Выберите объект',
-  date: currentDate.toLocaleDateString(),
+  name: '',
+  date: currentDate.toLocaleDateString('en-CA'),
   type: 'Festival',
   object: {
     id: 0,

@@ -37,12 +37,14 @@
   transition: 0.5s;
   color: #fe6a1f;
 }
-/* 
-.link:active{
+
+.linkActive{
+  padding-right: 30px;
   transform: scale(1.1) rotateZ(-15deg);
   transition: 0.5s;
   color: #fe6a1f;
-} */
+  cursor: not-allowed;
+}
 
 .linkReq{
 font-size: 24px;
@@ -52,4 +54,20 @@ font-size: 24px;
   transform: scale(1.5) rotateZ(-360deg);
   transition: 0.5s;
   color: #fe6a1f;
+}
+
+
+
+.linkReqActive {
+    display: inline-block;
+    padding-right: 30px;
+    font-size: 36px;
+    color: #fe6a1f;
+    cursor: not-allowed;
+    animation: rotate infinite 0.1s linear;
+}
+
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(-360deg); }
 }

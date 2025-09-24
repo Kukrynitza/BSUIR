@@ -51,13 +51,21 @@ export default function Page() {
 
   useEffect(() => {
   async function updateObjects() {
+    const dataOwner = await selectOwnersLastName()
     const data = await selectObjectsInOpen()
-    setObjectInOpen(data)
+    setObjectInOpen(
+        data.map((element) => (
+          {...element, owner: {
+        id: element.owner,
+        lastName: dataOwner.find((owner) => owner.id === element.owner)?.lastName || 'Нет'
+      }}
+    )
+  ))
   }
   updateObjects()
     }, []
   )
-
+console.log(objectInOpen)
   useEffect(() => {
   async function updateObjects() {
     const eventData = await selectEventsInTwoWeek()
@@ -82,7 +90,7 @@ export default function Page() {
         data.map((element) => (
           {...element, owner: {
         id: element.owner,
-        lastName: dataOwner.find((owner) => owner.id = element.owner)?.lastName || 'Нет'
+        lastName: dataOwner.find((owner) => owner.id === element.owner)?.lastName || 'Нет'
       }}
     )
   ))
@@ -90,7 +98,6 @@ export default function Page() {
     updateObjects()
   }, [currentObjectInType]
   )
-
 
   function handleCurrentObjectTypeChange(id: number | undefined, newType: string) {
     setCurrentObjectInType(newType)
@@ -114,7 +121,7 @@ export default function Page() {
           ))}  
         </li>
         <li className={styles.mainLi}>
-          <p className={styles.p}>Просмотр списка мероприятий, которые будут проводится в ближайшие 2 недели</p>
+          <p className={styles.p}>Просмотр списка мероприятий, которые будут проводиться в ближайшие 2 недели</p>
           {eventsInTwoWeek?.map((element) => (
           <ul className={styles.ul}  key={`${element.id}`} >
             <li>Название: {element.name}</li>
@@ -126,7 +133,7 @@ export default function Page() {
           ))}  
         </li>
         <li className={styles.mainLiLast}>
-          <p>Просмотр списка объектов заданного типа на текущую дату.</p>
+          <p>Просмотр списка объектов заданного типа на текущую дату</p>
           <CustomSelect options={objectTypes} defaultValue={currentObjectInType} id={undefined} onValueChange = {handleCurrentObjectTypeChange}  />
           {objectInType?.map((element) => (
           <ul className={styles.ul}  key={`${element.id}`} >
