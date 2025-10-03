@@ -37,11 +37,19 @@ export interface ObjectsTable {
   date: Date
 }
 
+export interface SessionsTable {
+  id: GeneratedAlways<number>
+  createdAt: Date
+  name: number
+  open: boolean
+}
+
 export interface Database {
   objects: ObjectsTable
   event: EventTable
   owner: OwnerTable
   popularity: PopularityTable
+  sessions: SessionsTable
 }
 
 const database = new Kysely<Database>({
