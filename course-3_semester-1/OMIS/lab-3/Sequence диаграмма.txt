@@ -1,0 +1,37 @@
+@startuml
+participant "Сотрудник кредитного отдела" as manager
+participant "Руководитель плодразделения банка" as director
+participant "UI" as ui
+participant "Система" as system
+participant "Система по черным списках" as black_system
+
+manager -> ui++ : Отправить данные о заемщике()
+ui  -> system++ : Отправить данные о заемщике()
+system -> system : Получить данные о заемщике()
+system -> black_system++: Определить наличие в черных списках()
+black_system --> system--: Факт наличия/отсутствия в черных списках
+
+alt Присутствует в черных списках
+system --> ui: Отказ
+system --> manager: Отказ
+
+else Отсутствует в черных списках
+system -> system : Сформировать отчет()
+system --> ui--: Отчет
+ui -> director--: Отчет
+director -> director--: Проверить отчет()
+alt Нужно исправить отчет
+director -> director: Исправить отчет()
+director -> ui++: Исправить отчет()
+ui -> system++: Исправить отчет()
+system --> ui--: Скорректированный отчет
+ui --> manager--: Скорректированный отчет
+else Не нужно исправить отчет
+director -> ui++: Отравить отчет сотруднику()
+ui -> system++: Отравить отчет сотруднику()
+system --> ui--: Отчет
+ui --> manager--: Отчет
+end alt
+end alt
+
+@enduml
