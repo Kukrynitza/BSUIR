@@ -33,13 +33,12 @@ export interface ObjectsTable {
   type: string
   numberOfSeats: number
   owner: number
-  open: boolean
   date: Date
 }
 
 export interface SessionsTable {
   id: GeneratedAlways<number>
-  createdAt: Date
+  createdAt: GeneratedAlways<Date>
   name: number
   open: boolean
 }

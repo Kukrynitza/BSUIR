@@ -172,7 +172,7 @@ export default function Page() {
       )
     )
   }
-
+console.log(objectData)
   function addNewObject(){
     setObjectData(prevObject => [...prevObject, newObject])
     insertObject(newObject)
@@ -239,7 +239,7 @@ function routeToHistory(id: number){
             <li>Владелец: <CustomSelect options={owners} defaultValue={String(newObject.owner.id)} id={undefined} onValueChange = {handleOwnerChange}/></li>
             <li>Число мест: <input min={1} type="number" value={newObject.numberOfSeats} onChange={(event) => setNewObject({...newObject, numberOfSeats: Number(event.target.value)})} /></li>
             <li>Тип: <CustomSelect options={types} defaultValue={newObject.type} id={undefined} onValueChange = {handleTypeChange}  /></li>
-            <li>Открыт: <CustomSelect options={open} defaultValue={newObject.open} id={undefined} onValueChange = {handleOpenChange}  /></li>
+            {/* <li>Открыт: <CustomSelect options={open} defaultValue={newObject.open} id={undefined} onValueChange = {handleOpenChange}  /></li> */}
             <li>Дата: <input type="date" value={newObject.date} onChange={(event) => setNewObject({...newObject, date: event.target.value})}/></li>  
             <button className={styles.button} disabled={
               newObject.name.length < 1 

@@ -11,8 +11,14 @@ export default async function selectObjects() {
       'objects.type',
       'objects.numberOfSeats',
       'objects.owner',
-      'objects.open',
-      'objects.date'
+      'objects.date',
+      (eb) => eb
+      .selectFrom('sessions')
+      .select('sessions.open')
+      .whereRef('sessions.name', '=', 'objects.id')
+      .orderBy('sessions.id', 'desc')
+      .limit(1)
+      .as('open')
     ])
     .orderBy('objects.name', 'asc')
     .execute()

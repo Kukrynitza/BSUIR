@@ -12,7 +12,7 @@ interface Object {
     id: number,
     lastName: string
   }
-  open: string
+  // open: string
 }
 
 export default async function insertObject(object: Object) {
@@ -25,7 +25,7 @@ export default async function insertObject(object: Object) {
       date: new Date(object.date),
       numberOfSeats: object.numberOfSeats,
       owner: Number(object.owner.id),
-      open: object.open === 'true' ? true : false
+      // open: object.open === 'true' ? true : false
     })
     .executeTakeFirst()
 }

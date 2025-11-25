@@ -12,12 +12,19 @@ export default async function selectObjectsInOpen() {
       'objects.type',
       'objects.numberOfSeats',
       'objects.owner',
-      'objects.open',
-      'objects.date'
+      'objects.date',
+      (eb) => eb
+      .selectFrom('sessions')
+      .select('sessions.open')
+      .whereRef('sessions.name', '=', 'objects.id')
+      .orderBy('sessions.id', 'desc')
+      .limit(1)
+      .as('open')
     ])
-    .where('objects.open', '=', true)
     .where('objects.date', '<=', currentDate)
     .orderBy('objects.name', 'asc')
     .execute()
-    return result.map((element) => ({...element, date: element.date.toISOString().split('T')[0], open: String(element.open)}))
+    return result
+    .filter((element) => element.open === true)
+    .map((element) => ({...element, date: element.date.toISOString().split('T')[0], open: String(element.open)}))
 }

@@ -1,10 +1,12 @@
 'use server'
-import database from '@/modules/database'
 
+import database from '@/modules/database'
+import { sql } from 'kysely'
 
 export default async function deletePopularity(id: number) {
-  database
-    .deleteFrom('popularity')
-    .where('popularity.id', '=', id)
-    .executeTakeFirst()
+  const compiled = sql`CALL delete_popularity(${id})`.compile(database)
+
+  await database.executeQuery(compiled)
+
+  return { success: true }
 }
