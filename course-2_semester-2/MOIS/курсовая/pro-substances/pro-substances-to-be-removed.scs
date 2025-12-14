@@ -1,0 +1,389 @@
+concept_substances_to_be_removed <- sc_node_class;
+              => nrel_main_idtf: [вещества, подлежащие удалению](*<- lang_ru;;*);
+            => sc_link_content: [группа веществ, подлежащих удалению в процессе водоочистки из-за их вредного воздействия на здоровье человека, окружающую среду или нарушение технологических процессов.
+];;
+
+concept_substances_to_be_removed
+                                => nrel_partition:
+                                                  concept_heavy_metals;
+                                                  concept_hexavalent_chromium_compounds;
+                                                  concept_oil_emulsions;
+                                                  concept_oil_and_grease_contaminants;
+                                                  concept_organic_compounds_lignin_surfactants;;
+
+
+
+
+
+concept_heavy_metals <- sc_node_class;
+    => nrel_main_idtf: [тяжелые металлы](*<- lang_ru;;*);
+    => sc_link_content: [металлические элементы с высокой плотностью, которые могут быть токсичными для живых организмов даже при низких концентрациях, часто обнаруживаются в сточных водах и загрязняют окружающую среду];;
+concept_heavy_metals -> rrel_maximum_studied_object_class: concept_substances_to_be_removed;;
+concept_heavy_metals => nrel_partition:
+    concept_cadmium;
+    concept_lead;
+    concept_mercury;
+    concept_chromium;
+    concept_arsenic;;
+
+concept_heavy_metals => nrel_application:
+    concept_ion_exchange_units;
+    concept_electrochemical_reactors;
+    concept_sludge_lagoons;
+    concept_wastewater_treatment;
+    concept_ecological_monitoring;
+    concept_health_risk_management;;
+
+concept_heavy_metals => nrel_technical_parameter:
+    rrel_concentration;
+    rrel_toxicity;;
+
+concept_heavy_metals => nrel_operation_principle:
+    concept_chemical_precipitation;
+    concept_purification_from_specific_impurities;
+    concept_toxic_effect;
+    concept_bioaccumulation;;
+
+concept_heavy_metals => nrel_component:
+    concept_cadmium;
+    concept_lead;
+    concept_mercury;
+    concept_chromium;
+    concept_arsenic;;
+
+concept_heavy_metals => nrel_type:
+    concept_heavy_metals_in_wastewater;
+    concept_heavy_metals_in_soil;;
+
+
+concept_cadmium <- sc_node_class;
+    => nrel_main_idtf: [кадиум (Cd)](*<- lang_ru;;*);;
+
+concept_lead <- sc_node_class;
+    => nrel_main_idtf: [свинец (Pb)](*<- lang_ru;;*);;
+
+concept_mercury <- sc_node_class;
+    => nrel_main_idtf: [ртуть (Hg)](*<- lang_ru;;*);;
+
+concept_chromium <- sc_node_class;
+    => nrel_main_idtf: [хром (Cr)](*<- lang_ru;;*);;
+
+concept_arsenic <- sc_node_class;
+    => nrel_main_idtf: [мышьяк (As)](*<- lang_ru;;*);;
+
+concept_ecological_monitoring <- sc_node_class;
+    => nrel_main_idtf: [мониторинг экологической безопасности в промышленных районах](*<- lang_ru;;*);;
+
+concept_health_risk_management <- sc_node_class;
+    => nrel_main_idtf: [санитарные исследования и управление рисками для здоровья населения](*<- lang_ru;;*);;
+
+rrel_concentration <- sc_node_role_relation;
+    => nrel_main_idtf: [концентрация тяжелых металлов в сточных водах и осадках (мкг/л или мг/л)](*<- lang_ru;;*);;
+
+rrel_toxicity <- sc_node_role_relation;
+    => nrel_main_idtf: [токсичность элементов для флоры и фауны (например, предельно допустимые концентрации)](*<- lang_ru;;*);;
+
+concept_toxic_effect <- sc_node_class;
+    => nrel_main_idtf: [тяжелые металлы оказывают токсическое воздействие на живые организмы, нарушая физиологические процессы](*<- lang_ru;;*);;
+
+concept_bioaccumulation <- sc_node_class;
+    => nrel_main_idtf: [могут накапливаться в биологических системах, вызывая долгосрочные экологические и здоровьесберегающие риски](*<- lang_ru;;*);;
+
+concept_heavy_metals_in_wastewater <- sc_node_class;
+    => nrel_main_idtf: [тяжелые металлы, встречающиеся в сточных водах](*<- lang_ru;;*);;
+
+concept_heavy_metals_in_soil <- sc_node_class;
+    => nrel_main_idtf: [тяжелые металлы, загрязняющие почву и водоемы](*<- lang_ru;;*);;
+
+
+
+
+
+concept_hexavalent_chromium_compounds <- sc_node_class;
+    => nrel_main_idtf: [соединения шестивалентного хрома](*<- lang_ru;;*);
+    => sc_link_content: [химические соединения, содержащие хром в степени окисления +6, обладающие высокой токсичностью и канцерогенным воздействием, часто встречаются в сточных водах и промышленных отходах];;
+concept_hexavalent_chromium_compounds -> rrel_maximum_studied_object_class: concept_substances_to_be_removed;;
+concept_hexavalent_chromium_compounds => nrel_partition:
+    concept_chromium_trioxide;
+    concept_chromates;
+    concept_dichromates;;
+
+concept_hexavalent_chromium_compounds => nrel_application:
+    concept_chemical_precipitation;
+    concept_electrochemical_reactors;
+    concept_chroming;
+    concept_dye_industry;
+    concept_metal_processing;;
+
+concept_hexavalent_chromium_compounds => nrel_technical_parameter:
+    rrel_concentration;
+    rrel_toxicity;;
+
+concept_hexavalent_chromium_compounds => nrel_operation_principle:
+    concept_chemical_precipitation;
+    concept_oxidative_damage;
+    concept_high_solubility;;
+
+concept_hexavalent_chromium_compounds => nrel_component:
+    concept_chromium_6_plus;
+    concept_chromic_acid;;
+
+concept_hexavalent_chromium_compounds => nrel_type:
+    concept_chromates;
+    concept_dichromates;;
+
+
+concept_chromium_trioxide <- sc_node_class;
+    => nrel_main_idtf: [хромовый ангидрид (CrO₃)](*<- lang_ru;;*);;
+
+concept_chromates <- sc_node_class;
+    => nrel_main_idtf: [хроматы (например, натриевый хромат, Na₂CrO₄)](*<- lang_ru;;*);;
+
+concept_dichromates <- sc_node_class;
+    => nrel_main_idtf: [дихроматы (например, калийный дихромат, K₂Cr₂O₇)](*<- lang_ru;;*);;
+
+concept_chroming <- sc_node_class;
+    => nrel_main_idtf: [хромирование и антикоррозийная обработка](*<- lang_ru;;*);;
+
+concept_dye_industry <- sc_node_class;
+    => nrel_main_idtf: [производство красителей и пигментов](*<- lang_ru;;*);;
+
+concept_metal_processing <- sc_node_class;
+    => nrel_main_idtf: [обработка металлов и производство легированных сталей](*<- lang_ru;;*);;
+
+rrel_concentration <- sc_node_role_relation;
+    => nrel_main_idtf: [концентрация шестивалентного хрома в сточных водах (мкг/л или мг/л)](*<- lang_ru;;*);;
+
+rrel_toxicity <- sc_node_role_relation;
+    => nrel_main_idtf: [токсичность для экосистем и человека (предельно допустимые концентрации, PEL)](*<- lang_ru;;*);;
+
+concept_oxidative_damage <- sc_node_class;
+    => nrel_main_idtf: [соединения являются сильными окислителями, вызывающими повреждения биологических молекул, мутации и рак](*<- lang_ru;;*);;
+
+concept_high_solubility <- sc_node_class;
+    => nrel_main_idtf: [высокая растворимость в воде облегчает их проникновение в экосистемы и организм человека](*<- lang_ru;;*);;
+
+concept_chromium_6_plus <- sc_node_class;
+    => nrel_main_idtf: [хром (Cr⁶⁺)](*<- lang_ru;;*);;
+
+concept_chromic_acid <- sc_node_class;
+    => nrel_main_idtf: [хромовая кислота (H₂CrO₄)](*<- lang_ru;;*);;
+
+
+
+
+
+concept_oil_emulsions <- sc_node_class;
+    => nrel_main_idtf: [маслоэмульсионные соединения](*<- lang_ru;;*);
+    => sc_link_content: [соединения, представляющие собой смеси масла и воды, стабилизированные эмульгаторами, часто используемые в качестве смазочных материалов, а также встречаются в сточных водах с нефтяными загрязнениями];;
+concept_oil_emulsions -> rrel_maximum_studied_object_class: concept_substances_to_be_removed;;
+concept_oil_emulsions => nrel_partition:
+    concept_petroleum_based_emulsions;
+    concept_vegetable_animal_oil_emulsions;;
+
+concept_oil_emulsions => nrel_application:
+    concept_flotation_units;
+    concept_activated_carbon_filters;
+    concept_industry;
+    concept_agriculture;
+    concept_wastewater_treatment;;
+
+concept_oil_emulsions => nrel_technical_parameter:
+    rrel_oil_content;
+    rrel_emulsion_stability;;
+
+concept_oil_emulsions => nrel_operation_principle:
+    concept_purification_from_specific_impurities;
+    concept_lubrication_cooling;
+    concept_oil_removal;;
+
+concept_oil_emulsions => nrel_component:
+    concept_oils;
+    concept_emulsifiers;;
+
+concept_oil_emulsions => nrel_type:
+    concept_mineral_oil_emulsions;
+    concept_vegetable_oil_emulsions;;
+
+
+concept_petroleum_based_emulsions <- sc_node_class;
+    => nrel_main_idtf: [эмульсии на основе нефтяных масел](*<- lang_ru;;*);;
+
+concept_vegetable_animal_oil_emulsions <- sc_node_class;
+    => nrel_main_idtf: [эмульсии на основе растительных и животных масел](*<- lang_ru;;*);;
+
+concept_industry <- sc_node_class;
+    => nrel_main_idtf: [промышленность (смазочные жидкости для обработки металлов)](*<- lang_ru;;*);;
+
+rrel_oil_content <- sc_node_role_relation;
+    => nrel_main_idtf: [содержание масла в эмульсии (в процентах)](*<- lang_ru;;*);;
+
+rrel_emulsion_stability <- sc_node_role_relation;
+    => nrel_main_idtf: [стабильность эмульсии (время сохранения стабильности)](*<- lang_ru;;*);;
+
+concept_lubrication_cooling <- sc_node_class;
+    => nrel_main_idtf: [действуют как смазочные и охлаждающие жидкости, снижая трение и теплообразование](*<- lang_ru;;*);;
+
+concept_oil_removal <- sc_node_class;
+    => nrel_main_idtf: [помогают разлагать нефтяные загрязнители и удалять их из водоемов](*<- lang_ru;;*);;
+
+concept_oils <- sc_node_class;
+    => nrel_main_idtf: [масла (нефть, растительные масла)](*<- lang_ru;;*);;
+
+concept_emulsifiers <- sc_node_class;
+    => nrel_main_idtf: [эмульгаторы (пищевые или химические вещества)](*<- lang_ru;;*);;
+
+concept_mineral_oil_emulsions <- sc_node_class;
+    => nrel_main_idtf: [эмульсии на основе минеральных масел](*<- lang_ru;;*);;
+
+concept_vegetable_oil_emulsions <- sc_node_class;
+    => nrel_main_idtf: [эмульсии на основе растительных масел](*<- lang_ru;;*);;
+
+
+
+
+
+concept_oil_and_grease_contaminants <- sc_node_class;
+    => nrel_main_idtf: [жиро- и нефтесодержащие примеси](*<- lang_ru;;*);
+    => sc_link_content: [загрязнители, содержащие масла и нефтепродукты, которые могут попасть в сточные воды в результате производственных процессов, бытовых выбросов или утечек из транспортных средств и оборудования];;
+concept_oil_and_grease_contaminants -> rrel_maximum_studied_object_class: concept_substances_to_be_removed;;
+concept_oil_and_grease_contaminants => nrel_partition:
+    concept_animal_oils_fats;
+    concept_vegetable_oils_fats;
+    concept_petroleum_products;;
+
+concept_oil_and_grease_contaminants => nrel_application:
+    concept_sand_traps;
+    concept_flotation_units;
+    concept_biological_filters;
+    concept_wastewater_treatment;
+    concept_petroleum_chemical_industry;
+    concept_automotive_industry;;
+
+concept_oil_and_grease_contaminants => nrel_technical_parameter:
+    rrel_oil_and_fat_content;
+    rrel_contaminant_type;;
+
+concept_oil_and_grease_contaminants => nrel_operation_principle:
+    concept_biological_treatment;
+    concept_toxicity;
+    concept_removal_processes;;
+
+concept_oil_and_grease_contaminants => nrel_component:
+    concept_hydrocarbons;
+    concept_fatty_acids_derivatives;;
+
+concept_oil_and_grease_contaminants => nrel_type:
+    concept_petroleum_contaminants;
+    concept_fatty_and_emulsion_contaminants;;
+
+
+concept_animal_oils_fats <- sc_node_class;
+    => nrel_main_idtf: [масла и жиры животного происхождения](*<- lang_ru;;*);;
+
+concept_vegetable_oils_fats <- sc_node_class;
+    => nrel_main_idtf: [масла и жиры растительного происхождения](*<- lang_ru;;*);;
+
+concept_petroleum_products <- sc_node_class;
+    => nrel_main_idtf: [нефтепродукты](*<- lang_ru;;*);;
+
+concept_petroleum_chemical_industry <- sc_node_class;
+    => nrel_main_idtf: [нефтехимическая промышленность (переработка и очистка нефтепродуктов)](*<- lang_ru;;*);;
+
+concept_automotive_industry <- sc_node_class;
+    => nrel_main_idtf: [автомобильная промышленность и сервис (уход за автотранспортом и утечками из техники)](*<- lang_ru;;*);;
+
+rrel_oil_and_fat_content <- sc_node_role_relation;
+    => nrel_main_idtf: [содержание масла и жиров в сточных водах (мг/л или г/м³)](*<- lang_ru;;*);;
+
+rrel_contaminant_type <- sc_node_role_relation;
+    => nrel_main_idtf: [тип загрязнителя (нефть, растительные масла, животные жиры)](*<- lang_ru;;*);;
+
+concept_toxicity <- sc_node_class;
+    => nrel_main_idtf: [жиро- и нефтесодержащие примеси могут оказывать токсическое воздействие на водные экосистемы](*<- lang_ru;;*);;
+
+concept_removal_processes <- sc_node_class;
+    => nrel_main_idtf: [загрязнители удаляются с помощью процессов флотации, абсорбции и фильтрации](*<- lang_ru;;*);;
+
+concept_hydrocarbons <- sc_node_class;
+    => nrel_main_idtf: [углеводороды (нефть и нефтепродукты)](*<- lang_ru;;*);;
+
+concept_fatty_acids_derivatives <- sc_node_class;
+    => nrel_main_idtf: [жирные кислоты и их производные (масла и жиры)](*<- lang_ru;;*);;
+
+concept_petroleum_contaminants <- sc_node_class;
+    => nrel_main_idtf: [нефтесодержащие примеси](*<- lang_ru;;*);;
+
+concept_fatty_and_emulsion_contaminants <- sc_node_class;
+    => nrel_main_idtf: [жиро- и эмульсионные загрязнители](*<- lang_ru;;*);;
+
+
+
+
+
+concept_organic_compounds_lignin_surfactants <- sc_node_class;
+    => nrel_main_idtf: [органические соединения (лигнин, ПАВ)](*<- lang_ru;;*);
+    => sc_link_content: [органические вещества, такие как лигнин и поверхностно-активные вещества (ПАВ), которые могут быть источниками загрязнения в сточных водах, воздействуют на водные экосистемы и могут нарушать работу очистных сооружений];;
+concept_organic_compounds_lignin_surfactants -> rrel_maximum_studied_object_class: concept_substances_to_be_removed;;
+concept_organic_compounds_lignin_surfactants => nrel_partition:
+    concept_lignin;
+    concept_surfactants;;
+
+concept_organic_compounds_lignin_surfactants => nrel_application:
+    concept_aerotanks_mixers_with_regenerators;
+    concept_activated_carbon_filters;
+    concept_paper_industry;
+    concept_chemical_industry;
+    concept_wastewater_treatment;;
+
+concept_organic_compounds_lignin_surfactants => nrel_technical_parameter:
+    rrel_lignin_surfactant_concentration;
+    rrel_toxicity_to_aquatic_organisms;;
+
+concept_organic_compounds_lignin_surfactants => nrel_operation_principle:
+    concept_biological_treatment;
+    concept_adsorption_process;
+    concept_lignin_degradation;
+    concept_surfactant_impact;;
+
+concept_organic_compounds_lignin_surfactants => nrel_component:
+    concept_lignin_component;
+    concept_surfactants_component;;
+
+concept_organic_compounds_lignin_surfactants => nrel_type:
+    concept_lignin_type;
+    concept_surfactant_type;;
+
+
+concept_lignin <- sc_node_class;
+    => nrel_main_idtf: [лигнин](*<- lang_ru;;*);;
+
+concept_surfactants <- sc_node_class;
+    => nrel_main_idtf: [ПАВ (поверхностно-активные вещества)](*<- lang_ru;;*);;
+
+concept_paper_industry <- sc_node_class;
+    => nrel_main_idtf: [производство бумаги и картона (лигнин используется в качестве побочного продукта в процессе производства)](*<- lang_ru;;*);;
+
+rrel_lignin_surfactant_concentration <- sc_node_role_relation;
+    => nrel_main_idtf: [концентрация лигнина и ПАВ в сточных водах (мг/л или г/м³)](*<- lang_ru;;*);;
+
+rrel_toxicity_to_aquatic_organisms <- sc_node_role_relation;
+    => nrel_main_idtf: [токсичность для водных организмов (особенно для ПАВ)](*<- lang_ru;;*);;
+
+concept_lignin_degradation <- sc_node_class;
+    => nrel_main_idtf: [лигнин, как органическое соединение, может разрушаться в природных условиях, но в сточных водах он часто приводит к образованию осадков и помутнению воды](*<- lang_ru;;*);;
+
+concept_surfactant_impact <- sc_node_class;
+    => nrel_main_idtf: [ПАВ могут нарушать баланс водных экосистем, снижая растворимость кислорода в воде и влияя на жизнь водных организмов, таких как рыбы и водоросли](*<- lang_ru;;*);;
+
+concept_lignin_component <- sc_node_class;
+    => nrel_main_idtf: [лигнин (органическое полимерное соединение)](*<- lang_ru;;*);;
+
+concept_surfactants_component <- sc_node_class;
+    => nrel_main_idtf: [ПАВ (например, анионные, катионные, неионогенные и амфотерные соединения)](*<- lang_ru;;*);;
+
+concept_lignin_type <- sc_node_class;
+    => nrel_main_idtf: [лигнин (в основном из древесины)](*<- lang_ru;;*);;
+
+concept_surfactant_type <- sc_node_class;
+    => nrel_main_idtf: [ПАВ (моющие средства, эмульгаторы, средства для обработки текстиля)](*<- lang_ru;;*);;

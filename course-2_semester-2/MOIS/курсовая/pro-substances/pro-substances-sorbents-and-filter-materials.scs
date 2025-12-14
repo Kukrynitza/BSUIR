@@ -1,0 +1,184 @@
+concept_sorbents_and_filter_materials <- sc_node_class;
+              => nrel_main_idtf: [сорбенты и фильтрующие материалы](*<- lang_ru;;*);
+              => sc_link_content: [материал с высокой пористостью, используемый для удаления органических и неорганических загрязнителей из воды, воздуха и других жидкостей. Он обладает отличной адсорбционной способностью и широко применяется в очистке сточных вод];;
+concept_sorbents_and_filter_materials
+                                => nrel_partition:
+                                                  concept_activated_carbon;
+                                                  concept_zeolites;;
+
+
+
+
+
+concept_activated_carbon <- sc_node_class;
+    => nrel_main_idtf: [активированный уголь](*<- lang_ru;;*);
+    => sc_link_content: [материал с высокой пористостью, используемый для удаления органических и неорганических загрязнителей из воды, воздуха и других жидкостей. Он обладает отличной адсорбционной способностью и широко применяется в очистке сточных вод];;
+concept_activated_carbon -> rrel_maximum_studied_object_class: concept_sorbents_and_filter_materials;;
+concept_activated_carbon => nrel_partition:
+    concept_powdered_activated_carbon;
+    concept_granular_activated_carbon;
+    concept_coconut_shell_activated_carbon;
+    concept_wood_activated_carbon;;
+
+concept_activated_carbon => nrel_application:
+    concept_drinking_and_wastewater_treatment;
+    concept_water_purification;
+    concept_air_filtration;
+    concept_chemical_industry;
+    concept_activated_carbon_filters;;
+
+concept_activated_carbon => nrel_technical_parameter:
+    rrel_adsorption_capacity;
+    rrel_pore_size;
+    rrel_flow_rate;;
+
+concept_activated_carbon => nrel_operation_principle:
+    concept_adsorption_process;
+    concept_catalytic_reactions;
+    concept_purification_from_specific_impurities;
+    concept_chemical_precipitation;;
+
+
+concept_activated_carbon => nrel_component:
+    concept_carbon;
+    concept_micro_and_mesopores;;
+
+concept_activated_carbon => nrel_type:
+    concept_powdered_type;
+    concept_granular_type;
+    concept_coconut_shell_type;
+    concept_wood_type;;
+
+
+concept_powdered_activated_carbon <- sc_node_class;
+    => nrel_main_idtf: [порошковый активированный уголь](*<- lang_ru;;*);;
+
+concept_granular_activated_carbon <- sc_node_class;
+    => nrel_main_idtf: [гранулированный активированный уголь](*<- lang_ru;;*);;
+
+concept_coconut_shell_activated_carbon <- sc_node_class;
+    => nrel_main_idtf: [активированный уголь на основе кокосовой скорлупы](*<- lang_ru;;*);;
+
+concept_wood_activated_carbon <- sc_node_class;
+    => nrel_main_idtf: [активированный уголь на основе древесного угля](*<- lang_ru;;*);;
+
+concept_drinking_and_wastewater_treatment <- sc_node_class;
+    => nrel_main_idtf: [очистка питьевой воды и сточных вод (удаление органических загрязнителей, хлора, запахов)](*<- lang_ru;;*);;
+
+concept_air_filtration <- sc_node_class;
+    => nrel_main_idtf: [фильтрация воздуха (очистка от запахов, газов, паров)](*<- lang_ru;;*);;
+
+rrel_adsorption_capacity <- sc_node_role_relation;
+    => nrel_main_idtf: [степень адсорбции (мг загрязнителя на грамм угля)](*<- lang_ru;;*);;
+
+rrel_pore_size <- sc_node_role_relation;
+    => nrel_main_idtf: [размер пор активированного угля](*<- lang_ru;;*);;
+
+rrel_flow_rate <- sc_node_role_relation;
+    => nrel_main_idtf: [скорость потока воды или воздуха через фильтры с активированным углем](*<- lang_ru;;*);;
+
+concept_adsorption_process <- sc_node_class;
+    => nrel_main_idtf: [активированный уголь удаляет загрязнители из воды или воздуха за счет адсорбции — процесса, при котором молекулы загрязнителя прилипают к поверхности угля благодаря его высокой пористости и большому количеству микропор](*<- lang_ru;;*);;
+
+concept_catalytic_reactions <- sc_node_class;
+    => nrel_main_idtf: [уголь также может разрушать органические молекулы через каталитические реакции, улучшая очистку воды и воздуха](*<- lang_ru;;*);;
+
+concept_carbon <- sc_node_class;
+    => nrel_main_idtf: [углерод (основной компонент активированного угля)](*<- lang_ru;;*);;
+
+concept_micro_and_mesopores <- sc_node_class;
+    => nrel_main_idtf: [микропоры и мезопоры, образующиеся в процессе активации угля](*<- lang_ru;;*);;
+
+concept_powdered_type <- sc_node_class;
+    => nrel_main_idtf: [порошковый активированный уголь](*<- lang_ru;;*);;
+
+concept_granular_type <- sc_node_class;
+    => nrel_main_idtf: [гранулированный активированный уголь](*<- lang_ru;;*);;
+
+concept_coconut_shell_type <- sc_node_class;
+    => nrel_main_idtf: [уголь на основе кокосовой скорлупы](*<- lang_ru;;*);;
+
+concept_wood_type <- sc_node_class;
+    => nrel_main_idtf: [уголь на основе древесины](*<- lang_ru;;*);;
+
+
+
+
+concept_zeolites <- sc_node_class;
+    => nrel_main_idtf: [цеолиты](*<- lang_ru;;*);
+    => sc_link_content: [минеральные соединения, обладающие пористой структурой, используемые для очистки воды, адсорбции и обмена ионами. Цеолиты широко применяются в очистных сооружениях для удаления аммония, тяжелых металлов и других загрязнителей];;
+concept_zeolites -> rrel_maximum_studied_object_class: concept_sorbents_and_filter_materials;;
+concept_zeolites => nrel_partition:
+    concept_sodium_zeolites;
+    concept_potassium_zeolites;
+    concept_synthetic_zeolites;;
+
+concept_zeolites => nrel_application:
+    concept_wastewater_treatment;
+    concept_water_purification;
+    concept_agriculture;
+    concept_air_and_gas_purification;
+    concept_sewage_sludge_treatment_facilities;
+    concept_ion_exchange_units;
+    concept_deep_wastewater_treatment_facilities;;
+
+concept_zeolites => nrel_technical_parameter:
+    rrel_ion_exchange_capacity;
+    rrel_porous_structure;
+    rrel_adsorption_efficiency;;
+
+concept_zeolites => nrel_operation_principle:
+    concept_ion_exchange;
+    concept_removal_of_phosphorus_compounds;;
+
+concept_zeolites => nrel_component:
+    concept_natural_zeolites;
+    concept_synthetic_zeolites;;
+
+concept_zeolites => nrel_type:
+    concept_sodium_type;
+    concept_potassium_type;
+    concept_synthetic_type;;
+
+
+concept_sodium_zeolites <- sc_node_class;
+    => nrel_main_idtf: [натриевые цеолиты](*<- lang_ru;;*);;
+
+concept_potassium_zeolites <- sc_node_class;
+    => nrel_main_idtf: [калиевые цеолиты](*<- lang_ru;;*);;
+
+concept_synthetic_zeolites <- sc_node_class;
+    => nrel_main_idtf: [синтетические цеолиты](*<- lang_ru;;*);;
+
+concept_air_and_gas_purification <- sc_node_class;
+    => nrel_main_idtf: [очистка газов и воздуха](*<- lang_ru;;*);;
+
+rrel_ion_exchange_capacity <- sc_node_role_relation;
+    => nrel_main_idtf: [ионная обменная способность цеолита (мг-экв/г)](*<- lang_ru;;*);;
+
+rrel_porous_structure <- sc_node_role_relation;
+    => nrel_main_idtf: [пористость цеолита и его удельная поверхность](*<- lang_ru;;*);;
+
+rrel_adsorption_efficiency <- sc_node_role_relation;
+    => nrel_main_idtf: [эффективность адсорбции для различных загрязнителей](*<- lang_ru;;*);;
+
+concept_ion_exchange <- sc_node_class;
+    => nrel_main_idtf: [цеолиты работают путем обмена ионами — ионы загрязнителей, такие как аммоний, могут заменяться на безопасные ионы (например, натрий или калий)](*<- lang_ru;;*);;
+
+concept_adsorption_process <- sc_node_class;
+    => nrel_main_idtf: [они также обладают способностью адсорбировать органические и неорганические вещества благодаря своей пористой структуре, что помогает очищать воду и воздух](*<- lang_ru;;*);;
+
+concept_natural_zeolites <- sc_node_class;
+    => nrel_main_idtf: [природные цеолиты (например, клиноптилолит)](*<- lang_ru;;*);;
+
+concept_synthetic_zeolites <- sc_node_class;
+    => nrel_main_idtf: [синтетические цеолиты (например, фаунапоатит, офтальмоклацит)](*<- lang_ru;;*);;
+
+concept_sodium_type <- sc_node_class;
+    => nrel_main_idtf: [натриевые цеолиты](*<- lang_ru;;*);;
+
+concept_potassium_type <- sc_node_class;
+    => nrel_main_idtf: [калиевые цеолиты](*<- lang_ru;;*);;
+
+concept_synthetic_type <- sc_node_class;
+    => nrel_main_idtf: [синтетические цеолиты (например, для специализированных очистных процессов)](*<- lang_ru;;*);;

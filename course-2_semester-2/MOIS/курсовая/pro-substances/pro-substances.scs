@@ -1,0 +1,30 @@
+section_subject_domain_of_substances <- sc_node_struct;;
+section_subject_domain_of_substances => nrel_main_idtf: [Раздел. Предметная область веществ] (*<- lang_ru;;*);;
+section_subject_domain_of_substances => nrel_main_idtf: [Section. Subject domain of substances] (*<- lang_en;;*);;
+section_subject_domain_of_substances
+                                <= nrel_section_decomposition: ...
+                                                            (* <-sc_node_tuple;; 
+                                                -> concept_major_pollutants;;
+                                                -> concept_substances_for_biogenic_nutrition;;
+                                                -> concept_substances_to_be_removed;; 
+                                                -> concept_cleaning_reagents;;
+                                                -> concept_sorbents_and_filter_materials;;
+                                                             *);;
+
+nrel_partition <- sc_node_norole_relation; 
+                     => nrel_main_idtf:[разбиение*] (*<- lang_ru;;*);[partition*](*<- lang_en;;*);;
+
+nrel_application <- sc_node_norole_relation; 
+                     => nrel_main_idtf:[применение*] (*<- lang_ru;;*);[application*](*<- lang_en;;*);; 
+
+nrel_operation_principle <- sc_node_norole_relation; 
+                     => nrel_main_idtf:[принцип работы*] (*<- lang_ru;;*);[operation_principle*](*<- lang_en;;*);;
+
+nrel_technical_parameter <- sc_node_norole_relation; 
+                     => nrel_main_idtf:[технические параметры*] (*<- lang_ru;;*);[technical_parameter*](*<- lang_en;;*);;
+
+nrel_component <- sc_node_norole_relation; 
+    => nrel_main_idtf:[состав*](*<- lang_ru;;*);[component*](*<- lang_en;;*);;
+
+nrel_type <- sc_node_norole_relation; 
+    => nrel_main_idtf:[тип*](*<- lang_ru;;*);[type*](*<- lang_en;;*);;

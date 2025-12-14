@@ -1,0 +1,618 @@
+concept_substances_for_biogenic_nutrition <- sc_node_class;
+              => nrel_main_idtf: [вещества для биогенной подпитки](*<- lang_ru;;*);
+            => sc_link_content: [вещества, обеспечивающие микроорганизмы необходимыми элементами (азот, фосфор, калий и микроэлементы) для поддержания биохимических процессов, таких как очистка сточных вод или биологическое разложение.];;
+concept_substances_for_biogenic_nutrition
+                                => nrel_partition:
+                                                  concept_superphosphate;
+                                                  concept_orthophosphoric_acid;
+                                                  concept_ammonium_sulfate;
+                                                  concept_ammonium_nitrate;
+                                                  concept_aqueous_ammonia;
+                                                  concept_urea;
+                                                  concept_diammonium_phosphate;
+                                                  concept_ammophos;;
+
+
+
+
+concept_superphosphate <- sc_node_class;
+    => nrel_main_idtf: [суперфосфат](*<- lang_ru;;*);
+    => sc_link_content: [минеральное удобрение, содержащее моно- и дигидрофосфаты кальция, получаемое из фосфатных руд, используемое для питания растений и как источник фосфора.];;
+concept_superphosphate -> rrel_maximum_studied_object_class: concept_substances_for_biogenic_nutrition;;
+concept_superphosphate => nrel_partition:
+    concept_single_superphosphate;
+    concept_double_superphosphate;;
+
+concept_superphosphate => nrel_application:
+    concept_biological_filters;
+    concept_activated_sludge_systems;
+    concept_agricultural_fertilizer_use;
+    concept_soil_phosphorus_restoration;
+    concept_agronomy_application;;
+
+concept_superphosphate => nrel_technical_parameter:
+    rrel_phosphorus_content;
+    rrel_phosphate_solubility;;
+
+concept_superphosphate => nrel_operation_principle:
+    concept_removal_of_phosphorus_compounds;
+    concept_biological_treatment;
+    concept_plant_phosphorus_supply;
+    concept_soil_dissolution_availability;;
+
+concept_superphosphate => nrel_component:
+    concept_calcium_monophosphate;
+    concept_calcium_dihydrogen_phosphate;
+    concept_free_calcium_and_sulfur;;
+
+concept_superphosphate => nrel_type:
+    concept_single_superphosphate_type;
+    concept_double_superphosphate_type;;
+
+
+concept_single_superphosphate <- sc_node_class;
+    => nrel_main_idtf: [простой суперфосфат (содержит монофосфат кальция)](*<- lang_ru;;*);;
+
+concept_double_superphosphate <- sc_node_class;
+    => nrel_main_idtf: [двойной суперфосфат (содержит дигидрофосфат кальция, повышенное содержание фосфора)](*<- lang_ru;;*);;
+
+concept_agricultural_fertilizer_use <- sc_node_class;
+    => nrel_main_idtf: [сельское хозяйство (удобрения для улучшения роста растений)](*<- lang_ru;;*);;
+
+concept_soil_phosphorus_restoration <- sc_node_class;
+    => nrel_main_idtf: [восстановление фосфора в почвах, бедных этим элементом](*<- lang_ru;;*);;
+
+concept_agronomy_application <- sc_node_class;
+    => nrel_main_idtf: [использование в агрономии и в производстве сельскохозяйственных культур](*<- lang_ru;;*);;
+
+rrel_phosphorus_content <- sc_node_role_relation;
+    => nrel_main_idtf: [содержание фосфора (P₂O₅) в удобрении (например, 16–20% для простого суперфосфата)](*<- lang_ru;;*);;
+
+rrel_phosphate_solubility <- sc_node_role_relation;
+    => nrel_main_idtf: [степень растворимости фосфатов, влияющая на усвояемость растениями](*<- lang_ru;;*);;
+
+concept_plant_phosphorus_supply <- sc_node_class;
+    => nrel_main_idtf: [обеспечение растений фосфором, участвующим в фотосинтезе и развитии корневой системы](*<- lang_ru;;*);;
+
+concept_soil_dissolution_availability <- sc_node_class;
+    => nrel_main_idtf: [удобрение растворяется в почве, делая фосфор доступным для растений](*<- lang_ru;;*);;
+
+concept_calcium_monophosphate <- sc_node_class;
+    => nrel_main_idtf: [монофосфат кальция (Ca(H₂PO₄)₂)](*<- lang_ru;;*);;
+
+concept_calcium_dihydrogen_phosphate <- sc_node_class;
+    => nrel_main_idtf: [дигидрофосфат кальция (CaHPO₄)](*<- lang_ru;;*);;
+
+concept_free_calcium_and_sulfur <- sc_node_class;
+    => nrel_main_idtf: [свободный кальций и сера](*<- lang_ru;;*);;
+
+concept_single_superphosphate_type <- sc_node_class;
+    => nrel_main_idtf: [простой суперфосфат](*<- lang_ru;;*);;
+
+concept_double_superphosphate_type <- sc_node_class;
+    => nrel_main_idtf: [двойной суперфосфат](*<- lang_ru;;*);;
+
+
+
+
+
+concept_orthophosphoric_acid <- sc_node_class;
+    => nrel_main_idtf: [ортофосфорная кислота](*<- lang_ru;;*);
+    => sc_link_content: [неорганическое кислотное соединение, используемое в производстве удобрений, в пищевой и химической промышленности, а также в процессах очистки воды];;
+concept_orthophosphoric_acid -> rrel_maximum_studied_object_class: concept_substances_for_biogenic_nutrition;;
+concept_orthophosphoric_acid => nrel_partition:
+    concept_technical_grade_phosphoric_acid;
+    concept_food_grade_phosphoric_acid;;
+
+concept_orthophosphoric_acid => nrel_application:
+    concept_ion_exchange_units;
+    concept_fertilizer_production;
+    concept_water_softening;
+    concept_food_additive_use;
+    concept_detergents_and_metallurgy;;
+
+concept_orthophosphoric_acid => nrel_technical_parameter:
+    rrel_acid_concentration;
+    rrel_solution_pH;;
+
+concept_orthophosphoric_acid => nrel_operation_principle:
+    concept_chemical_precipitation;
+    concept_removal_of_phosphorus_with_precipitation_reagents;
+    concept_base_neutralization_reaction;
+    
+    concept_water_hardness_reduction;;
+
+concept_orthophosphoric_acid => nrel_component:
+    concept_H3PO4_molecule;
+    concept_calcium_magnesium_phosphates;;
+
+concept_orthophosphoric_acid => nrel_type:
+    concept_technical_grade_type;
+    concept_food_grade_type;;
+
+
+concept_technical_grade_phosphoric_acid <- sc_node_class;
+    => nrel_main_idtf: [техническая ортофосфорная кислота (используется в промышленности)](*<- lang_ru;;*);;
+
+concept_food_grade_phosphoric_acid <- sc_node_class;
+    => nrel_main_idtf: [пищевая ортофосфорная кислота (E338, используется в пищевой промышленности)](*<- lang_ru;;*);;
+
+concept_fertilizer_production <- sc_node_class;
+    => nrel_main_idtf: [производство удобрений (например, фосфорных удобрений)](*<- lang_ru;;*);;
+
+concept_water_softening <- sc_node_class;
+    => nrel_main_idtf: [очистка воды (нейтрализация кальция и магния)](*<- lang_ru;;*);;
+
+concept_food_additive_use <- sc_node_class;
+    => nrel_main_idtf: [пищевая промышленность (как консервант и регулятор кислотности)](*<- lang_ru;;*);;
+
+concept_detergents_and_metallurgy <- sc_node_class;
+    => nrel_main_idtf: [производство моющих средств и в металлургии](*<- lang_ru;;*);;
+
+rrel_acid_concentration <- sc_node_role_relation;
+    => nrel_main_idtf: [концентрация кислоты (молярность)](*<- lang_ru;;*);;
+
+rrel_solution_pH <- sc_node_role_relation;
+    => nrel_main_idtf: [pH раствора (обычно сильно кислый)](*<- lang_ru;;*);;
+
+concept_base_neutralization_reaction <- sc_node_class;
+    => nrel_main_idtf: [реакция с основными соединениями (например, кальцием и магнием) для образования фосфатов](*<- lang_ru;;*);;
+
+concept_water_hardness_reduction <- sc_node_class;
+    => nrel_main_idtf: [уменьшение жесткости воды путём осаждения солей кальция и магния](*<- lang_ru;;*);;
+
+concept_H3PO4_molecule <- sc_node_class;
+    => nrel_main_idtf: [ортофосфорная кислота (H₃PO₄)](*<- lang_ru;;*);;
+
+concept_calcium_magnesium_phosphates <- sc_node_class;
+    => nrel_main_idtf: [фосфаты кальция и магния (продукты реакции с основаниями)](*<- lang_ru;;*);;
+
+concept_technical_grade_type <- sc_node_class;
+    => nrel_main_idtf: [техническая ортофосфорная кислота](*<- lang_ru;;*);;
+
+concept_food_grade_type <- sc_node_class;
+    => nrel_main_idtf: [пищевая ортофосфорная кислота](*<- lang_ru;;*);;
+
+
+
+
+
+concept_ammonium_sulfate <- sc_node_class;
+    => nrel_main_idtf: [сульфат аммония](*<- lang_ru;;*);
+    => sc_link_content: [неорганическое удобрение, содержащее аммоний и сульфат, используется для питания растений, особенно в почвах с низким содержанием азота];;
+concept_ammonium_sulfate -> rrel_maximum_studied_object_class: concept_substances_for_biogenic_nutrition;;
+concept_ammonium_sulfate => nrel_partition:
+    concept_ammonium_sulfate_as_fertilizer;
+    concept_ammonium_sulfate_in_industry;;
+
+concept_ammonium_sulfate => nrel_application:
+    concept_aerotanks_mixers_with_regenerators;
+    concept_biological_filters;
+    concept_agriculture_use;
+    concept_nitrogen_fertilizer_production;
+    concept_chemical_industry_use;;
+
+concept_ammonium_sulfate => nrel_technical_parameter:
+    rrel_nitrogen_content;
+    rrel_sulfur_content;
+    rrel_water_solubility;;
+
+concept_ammonium_sulfate => nrel_operation_principle:
+    concept_nitrification;
+    concept_biological_treatment_with_sludge_regeneration;
+    concept_nutrient_supply;
+    concept_acidifying_effect;;
+
+concept_ammonium_sulfate => nrel_component:
+    concept_ammonium_ion;
+    concept_sulfate_ion;;
+
+concept_ammonium_sulfate => nrel_type:
+    concept_powdered_ammonium_sulfate;
+    concept_granular_ammonium_sulfate;;
+
+
+concept_ammonium_sulfate_as_fertilizer <- sc_node_class;
+    => nrel_main_idtf: [сульфат аммония в качестве удобрения](*<- lang_ru;;*);;
+
+concept_ammonium_sulfate_in_industry <- sc_node_class;
+    => nrel_main_idtf: [сульфат аммония в промышленности](*<- lang_ru;;*);;
+
+concept_agriculture_use <- sc_node_class;
+    => nrel_main_idtf: [сельское хозяйство (удобрение для повышения урожайности)](*<- lang_ru;;*);;
+
+concept_nitrogen_fertilizer_production <- sc_node_class;
+    => nrel_main_idtf: [производство удобрений с азотом](*<- lang_ru;;*);;
+
+concept_chemical_industry_use <- sc_node_class;
+    => nrel_main_idtf: [химическая промышленность (производство текстиля, химические реакции)](*<- lang_ru;;*);;
+
+rrel_nitrogen_content <- sc_node_role_relation;
+    => nrel_main_idtf: [содержание азота (18–21%)](*<- lang_ru;;*);;
+
+rrel_sulfur_content <- sc_node_role_relation;
+    => nrel_main_idtf: [содержание серы (24–25%)](*<- lang_ru;;*);;
+
+rrel_water_solubility <- sc_node_role_relation;
+    => nrel_main_idtf: [растворимость в воде](*<- lang_ru;;*);;
+
+concept_nutrient_supply <- sc_node_class;
+    => nrel_main_idtf: [обеспечивает растения азотом и серой для роста и синтеза белков](*<- lang_ru;;*);;
+
+concept_acidifying_effect <- sc_node_class;
+    => nrel_main_idtf: [увеличивает кислотность почвы при растворении](*<- lang_ru;;*);;
+
+concept_ammonium_ion <- sc_node_class;
+    => nrel_main_idtf: [аммоний-ион (NH₄⁺)](*<- lang_ru;;*);;
+
+concept_sulfate_ion <- sc_node_class;
+    => nrel_main_idtf: [сульфат-ион (SO₄²⁻)](*<- lang_ru;;*);;
+
+concept_powdered_ammonium_sulfate <- sc_node_class;
+    => nrel_main_idtf: [сульфат аммония в виде порошка](*<- lang_ru;;*);;
+
+concept_granular_ammonium_sulfate <- sc_node_class;
+    => nrel_main_idtf: [сульфат аммония в виде гранул](*<- lang_ru;;*);;
+
+
+
+
+
+concept_ammonium_nitrate <- sc_node_class;
+    => nrel_main_idtf: [аммиачная селитра](*<- lang_ru;;*);
+    => sc_link_content: [неорганическое удобрение, содержащее азот в форме аммоний- и нитрат-ионов, широко используется в сельском хозяйстве и промышленности];;
+concept_ammonium_nitrate -> rrel_maximum_studied_object_class: concept_substances_for_biogenic_nutrition;;
+concept_ammonium_nitrate => nrel_partition:
+    concept_ammonium_nitrate_as_fertilizer;
+    concept_ammonium_nitrate_in_industry;;
+
+concept_ammonium_nitrate => nrel_application:
+    concept_activated_sludge_systems;
+    concept_trickling_biological_filters;
+    concept_agricultural_use;
+    concept_explosives_production;
+    concept_chemical_industry_use;;
+
+concept_ammonium_nitrate => nrel_technical_parameter:
+    rrel_nitrogen_content;
+    rrel_water_solubility;;
+
+concept_ammonium_nitrate => nrel_operation_principle:
+    concept_nitrification;
+    concept_denitrification;
+    concept_nitrogen_supply_to_plants;
+    concept_ion_release_upon_dissolution;;
+
+concept_ammonium_nitrate => nrel_component:
+    concept_ammonium_ion;
+    concept_nitrate_ion;;
+
+concept_ammonium_nitrate => nrel_type:
+    concept_granular_ammonium_nitrate;
+    concept_solution_ammonium_nitrate;;
+
+
+concept_ammonium_nitrate_as_fertilizer <- sc_node_class;
+    => nrel_main_idtf: [аммиачная селитра в качестве удобрения](*<- lang_ru;;*);;
+
+concept_ammonium_nitrate_in_industry <- sc_node_class;
+    => nrel_main_idtf: [аммиачная селитра в промышленности](*<- lang_ru;;*);;
+
+concept_agricultural_use <- sc_node_class;
+    => nrel_main_idtf: [сельское хозяйство (удобрение, источник азота)](*<- lang_ru;;*);;
+
+concept_explosives_production <- sc_node_class;
+    => nrel_main_idtf: [производство взрывчатых веществ (например, в горнодобывающей промышленности)](*<- lang_ru;;*);;
+
+concept_chemical_industry_use <- sc_node_class;
+    => nrel_main_idtf: [химическая промышленность (производство азотных кислот, пластмасс)](*<- lang_ru;;*);;
+
+rrel_nitrogen_content <- sc_node_role_relation;
+    => nrel_main_idtf: [содержание азота (обычно около 34–35%)](*<- lang_ru;;*);;
+
+rrel_water_solubility <- sc_node_role_relation;
+    => nrel_main_idtf: [растворимость в воде (аммиачная селитра хорошо растворяется)](*<- lang_ru;;*);;
+
+concept_nitrogen_supply_to_plants <- sc_node_class;
+    => nrel_main_idtf: [обеспечивает растения азотом для синтеза белков и роста](*<- lang_ru;;*);;
+
+concept_ion_release_upon_dissolution <- sc_node_class;
+    => nrel_main_idtf: [в воде высвобождаются NH₄⁺ и NO₃⁻, доступные для усвоения растениями](*<- lang_ru;;*);;
+
+concept_ammonium_ion <- sc_node_class;
+    => nrel_main_idtf: [аммоний-ион (NH₄⁺)](*<- lang_ru;;*);;
+
+concept_nitrate_ion <- sc_node_class;
+    => nrel_main_idtf: [нитрат-ион (NO₃⁻)](*<- lang_ru;;*);;
+
+concept_granular_ammonium_nitrate <- sc_node_class;
+    => nrel_main_idtf: [аммиачная селитра гранулированная](*<- lang_ru;;*);;
+
+concept_solution_ammonium_nitrate <- sc_node_class;
+    => nrel_main_idtf: [аммиачная селитра в растворе (для удобрения с использованием орошения)](*<- lang_ru;;*);;
+
+
+
+
+
+concept_aqueous_ammonia <- sc_node_class;
+    => nrel_main_idtf: [водный аммиак](*<- lang_ru;;*);
+    => sc_link_content: [раствор аммиака (NH₃) в воде, используется в различных химических и промышленных процессах, а также в качестве реагента в очистке сточных вод];;
+concept_aqueous_ammonia -> rrel_maximum_studied_object_class: concept_substances_for_biogenic_nutrition;;
+concept_aqueous_ammonia => nrel_partition:
+    concept_ammonia_as_reagent;
+    concept_ammonia_in_water_treatment;;
+
+concept_aqueous_ammonia => nrel_application:
+    concept_preaerators;
+    concept_biocoagulators;
+    concept_chemical_industry_use;
+    concept_wastewater_treatment;
+    concept_cleaning_agent_production;;
+
+concept_aqueous_ammonia => nrel_technical_parameter:
+    rrel_ammonia_concentration;
+    rrel_pH_level;;
+
+concept_aqueous_ammonia => nrel_operation_principle:
+    concept_use_of_preaerators_and_biocoagulators;
+    concept_regeneration_of_activated_sludge_in_preaerators;
+    concept_acid_neutralization;
+    concept_nitrogen_source;;
+
+concept_aqueous_ammonia => nrel_component:
+    concept_ammonia;
+    concept_water;;
+
+concept_aqueous_ammonia => nrel_type:
+    concept_low_concentration_ammonia;
+    concept_high_concentration_ammonia;;
+
+
+concept_ammonia_as_reagent <- sc_node_class;
+    => nrel_main_idtf: [водный аммиак как реагент](*<- lang_ru;;*);;
+
+concept_ammonia_in_water_treatment <- sc_node_class;
+    => nrel_main_idtf: [водный аммиак в очистке воды](*<- lang_ru;;*);;
+
+concept_chemical_industry_use <- sc_node_class;
+    => nrel_main_idtf: [химическая промышленность (производство удобрений, пластмасс)](*<- lang_ru;;*);;
+
+concept_cleaning_agent_production <- sc_node_class;
+    => nrel_main_idtf: [производство моющих средств и в агрохимической промышленности](*<- lang_ru;;*);;
+
+rrel_ammonia_concentration <- sc_node_role_relation;
+    => nrel_main_idtf: [концентрация аммиака в растворе (обычно 25–30% NH₃)](*<- lang_ru;;*);;
+
+rrel_pH_level <- sc_node_role_relation;
+    => nrel_main_idtf: [pH раствора (обычно высокое, в пределах 11–12)](*<- lang_ru;;*);;
+
+concept_acid_neutralization <- sc_node_class;
+    => nrel_main_idtf: [реагирует с кислотами, образуя аммоний-соли — нейтрализация кислотности](*<- lang_ru;;*);;
+
+concept_nitrogen_source <- sc_node_class;
+    => nrel_main_idtf: [используется как источник азота для синтеза удобрений и других веществ](*<- lang_ru;;*);;
+
+concept_ammonia <- sc_node_class;
+    => nrel_main_idtf: [аммиак (NH₃)](*<- lang_ru;;*);;
+
+concept_water <- sc_node_class;
+    => nrel_main_idtf: [вода (H₂O)](*<- lang_ru;;*);;
+
+concept_low_concentration_ammonia <- sc_node_class;
+    => nrel_main_idtf: [водный аммиак с низкой концентрацией (для бытового использования)](*<- lang_ru;;*);;
+
+concept_high_concentration_ammonia <- sc_node_class;
+    => nrel_main_idtf: [водный аммиак с высокой концентрацией (для промышленного использования)](*<- lang_ru;;*);;
+
+
+
+
+
+concept_urea <- sc_node_class;
+    => nrel_main_idtf: [карбамид (мочевина)](*<- lang_ru;;*);
+    => sc_link_content: [органическое соединение, содержащее азот, широко используемое в качестве удобрения, а также в химической и фармацевтической промышленности];;
+concept_urea -> rrel_maximum_studied_object_class: concept_substances_for_biogenic_nutrition;;
+concept_urea => nrel_partition:
+    concept_urea_as_fertilizer;
+    concept_urea_in_industry;;
+
+concept_urea => nrel_application:
+    concept_aerotanks_mixers_without_regenerators;
+    concept_circulating_oxidation_channels;
+    concept_agriculture;
+    concept_chemical_industry;
+    concept_pharmaceutical_industry;;
+
+concept_urea => nrel_technical_parameter:
+    rrel_nitrogen_content;
+    rrel_solubility;;
+
+concept_urea => nrel_operation_principle:
+    concept_nitrification;
+    concept_treatment_with_nitrification_and_denitrification;
+    concept_hydrolysis_in_soil;
+    concept_plant_growth_support;;
+
+concept_urea => nrel_component:
+    concept_urea_compound;;
+
+concept_urea => nrel_type:
+    concept_granular_urea;
+    concept_liquid_urea;;
+
+
+concept_urea_as_fertilizer <- sc_node_class;
+    => nrel_main_idtf: [карбамид как удобрение](*<- lang_ru;;*);;
+
+concept_urea_in_industry <- sc_node_class;
+    => nrel_main_idtf: [карбамид в промышленности](*<- lang_ru;;*);;
+
+concept_pharmaceutical_industry <- sc_node_class;
+    => nrel_main_idtf: [фармацевтическая промышленность (используется в составе некоторых препаратов)](*<- lang_ru;;*);;
+
+rrel_nitrogen_content <- sc_node_role_relation;
+    => nrel_main_idtf: [содержание азота (обычно около 46% азота по массе)](*<- lang_ru;;*);;
+
+rrel_solubility <- sc_node_role_relation;
+    => nrel_main_idtf: [растворимость в воде (карбамид хорошо растворим в воде)](*<- lang_ru;;*);;
+
+concept_hydrolysis_in_soil <- sc_node_class;
+    => nrel_main_idtf: [карбамид в почве расщепляется на аммоний-ион (NH₄⁺) и углекислый газ, повышая доступность азота](*<- lang_ru;;*);;
+
+concept_plant_growth_support <- sc_node_class;
+    => nrel_main_idtf: [выделяющийся азот способствует росту растений и синтезу белков](*<- lang_ru;;*);;
+
+concept_urea_compound <- sc_node_class;
+    => nrel_main_idtf: [карбамид (NH₂CONH₂)](*<- lang_ru;;*);;
+
+concept_granular_urea <- sc_node_class;
+    => nrel_main_idtf: [гранулированный карбамид](*<- lang_ru;;*);;
+
+concept_liquid_urea <- sc_node_class;
+    => nrel_main_idtf: [жидкий карбамид (мочевина в растворе)](*<- lang_ru;;*);;
+
+
+
+
+
+concept_diammonium_phosphate <- sc_node_class;
+    => nrel_main_idtf: [диаммонийфосфат технический](*<- lang_ru;;*);
+    => sc_link_content: [неорганическое удобрение, содержащее азот и фосфор, используемое для улучшения роста растений и улучшения качества почвы];;
+concept_diammonium_phosphate -> rrel_maximum_studied_object_class: concept_substances_for_biogenic_nutrition;;
+concept_diammonium_phosphate => nrel_partition:
+    concept_dap_as_fertilizer;
+    concept_dap_in_industry;;
+
+concept_diammonium_phosphate => nrel_application:
+    concept_activated_sludge_systems;
+    concept_membrane_bioreactors;
+    concept_agriculture;
+    concept_chemical_industry;;
+
+concept_diammonium_phosphate => nrel_technical_parameter:
+    rrel_nitrogen_content;
+    rrel_phosphorus_content;
+    rrel_solubility;;
+
+concept_diammonium_phosphate => nrel_operation_principle:
+    concept_biological_treatment;
+    concept_removal_of_phosphorus_compounds;
+    concept_dap_effect_in_soil;
+    concept_phosphorus_role_in_plants;;
+
+concept_diammonium_phosphate => nrel_component:
+    concept_ammonium_ion;
+    concept_phosphate_ion;;
+
+concept_diammonium_phosphate => nrel_type:
+    concept_granular_dap;
+    concept_powder_dap;;
+
+
+concept_dap_as_fertilizer <- sc_node_class;
+    => nrel_main_idtf: [диаммонийфосфат как удобрение](*<- lang_ru;;*);;
+
+concept_dap_in_industry <- sc_node_class;
+    => nrel_main_idtf: [диаммонийфосфат в промышленности](*<- lang_ru;;*);;
+
+rrel_nitrogen_content <- sc_node_role_relation;
+    => nrel_main_idtf: [содержание азота (обычно около 18-20%)](*<- lang_ru;;*);;
+
+rrel_phosphorus_content <- sc_node_role_relation;
+    => nrel_main_idtf: [содержание фосфора (обычно около 46-48% P₂O₅)](*<- lang_ru;;*);;
+
+rrel_solubility <- sc_node_role_relation;
+    => nrel_main_idtf: [растворимость в воде](*<- lang_ru;;*);;
+
+concept_dap_effect_in_soil <- sc_node_class;
+    => nrel_main_idtf: [обеспечивает растениям доступный азот и фосфор, способствуя росту и урожайности](*<- lang_ru;;*);;
+
+concept_phosphorus_role_in_plants <- sc_node_class;
+    => nrel_main_idtf: [фосфор участвует в энергетическом обмене и фотосинтезе растений](*<- lang_ru;;*);;
+
+concept_ammonium_ion <- sc_node_class;
+    => nrel_main_idtf: [аммоний-ион (NH₄⁺)](*<- lang_ru;;*);;
+
+concept_phosphate_ion <- sc_node_class;
+    => nrel_main_idtf: [фосфат-ион (HPO₄²⁻)](*<- lang_ru;;*);;
+
+concept_granular_dap <- sc_node_class;
+    => nrel_main_idtf: [гранулированный диаммонийфосфат](*<- lang_ru;;*);;
+
+concept_powder_dap <- sc_node_class;
+    => nrel_main_idtf: [порошковый диаммонийфосфат](*<- lang_ru;;*);;
+
+
+
+
+
+concept_ammophos <- sc_node_class;
+    => nrel_main_idtf: [аммофос](*<- lang_ru;;*);
+    => sc_link_content: [минеральное удобрение, содержащее азот и фосфор, используется для повышения урожайности сельскохозяйственных культур];;
+concept_ammophos -> rrel_maximum_studied_object_class: concept_substances_for_biogenic_nutrition;;
+concept_ammophos => nrel_partition:
+    concept_ammophos_as_fertilizer;
+    concept_ammophos_in_industry;;
+
+concept_ammophos => nrel_application:
+    concept_biological_filters;
+    concept_sludge_lagoons;
+    concept_agriculture;
+    concept_fertilizer_production;;
+
+concept_ammophos => nrel_technical_parameter:
+    rrel_nitrogen_content;
+    rrel_phosphorus_content;
+    rrel_solubility;;
+
+concept_ammophos => nrel_operation_principle:
+    concept_removal_of_phosphorus_compounds;
+    concept_full_biological_treatment_without_nitrification;
+    concept_nutrient_supply;
+    concept_phosphorus_and_nitrogen_effect;;
+
+concept_ammophos => nrel_component:
+    concept_ammonium_ion;
+    concept_phosphate_ion;;
+
+concept_ammophos => nrel_type:
+    concept_granular_ammophos;
+    concept_powder_ammophos;;
+
+
+concept_ammophos_as_fertilizer <- sc_node_class;
+    => nrel_main_idtf: [аммофос как удобрение](*<- lang_ru;;*);;
+
+concept_ammophos_in_industry <- sc_node_class;
+    => nrel_main_idtf: [аммофос в промышленности](*<- lang_ru;;*);;
+
+concept_fertilizer_production <- sc_node_class;
+    => nrel_main_idtf: [производство минеральных удобрений](*<- lang_ru;;*);;
+
+rrel_nitrogen_content <- sc_node_role_relation;
+    => nrel_main_idtf: [содержание азота (обычно около 12-14%)](*<- lang_ru;;*);;
+
+rrel_phosphorus_content <- sc_node_role_relation;
+    => nrel_main_idtf: [содержание фосфора (обычно около 52-54% P₂O₅)](*<- lang_ru;;*);;
+
+rrel_solubility <- sc_node_role_relation;
+    => nrel_main_idtf: [растворимость в воде](*<- lang_ru;;*);;
+
+concept_nutrient_supply <- sc_node_class;
+    => nrel_main_idtf: [аммофос снабжает растения азотом и фосфором, необходимыми для роста и развития](*<- lang_ru;;*);;
+
+concept_phosphorus_and_nitrogen_effect <- sc_node_class;
+    => nrel_main_idtf: [фосфор способствует корнеобразованию и фотосинтезу, а азот — росту зелёной массы](*<- lang_ru;;*);;
+
+concept_ammonium_ion <- sc_node_class;
+    => nrel_main_idtf: [аммоний-ион (NH₄⁺)](*<- lang_ru;;*);;
+
+concept_phosphate_ion <- sc_node_class;
+    => nrel_main_idtf: [фосфат-ион (PO₄³⁻)](*<- lang_ru;;*);;
+
+concept_granular_ammophos <- sc_node_class;
+    => nrel_main_idtf: [гранулированный аммофос](*<- lang_ru;;*);;
+
+concept_powder_ammophos <- sc_node_class;
+    => nrel_main_idtf: [порошковый аммофос](*<- lang_ru;;*);;
