@@ -1,0 +1,303 @@
+.container {
+  min-height: 100vh;
+  padding: 2rem;
+  background: linear-gradient(135deg, #f5f7fa 0%, #e8eef5 100%);
+}
+
+.header {
+  max-width: 1200px;
+  margin: 0 auto 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1e293b;
+}
+
+.backLink {
+  color: #3b82f6;
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+
+.backLink:hover {
+  color: #2563eb;
+}
+
+.content {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* ---------- BUTTONS ---------- */
+
+.button {
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  border: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.buttonPrimary {
+  background: #3b82f6;
+  color: white;
+}
+
+.buttonPrimary:hover {
+  background: #2563eb;
+}
+
+.buttonSecondary {
+  background: #f1f5f9;
+  color: #475569;
+}
+
+.buttonSecondary:hover {
+  background: #e2e8f0;
+}
+
+/* ---------- REPORT ---------- */
+
+.reportSection {
+  background: white;
+  border-radius: 12px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.reportTitle {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #1e293b;
+  margin-bottom: 1.5rem;
+}
+
+.completionBar {
+  height: 36px;
+  background: #e2e8f0;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.completionFill {
+  height: 100%;
+  background: linear-gradient(90deg, #22c55e, #16a34a);
+  color: white;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ---------- RISK ---------- */
+
+.riskList {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.riskItem {
+  padding: 1rem;
+  border-radius: 8px;
+  border-left: 4px solid;
+}
+
+.riskHigh {
+  background: #fee2e2;
+  border-color: #ef4444;
+}
+
+.riskMedium {
+  background: #fef3c7;
+  border-color: #f59e0b;
+}
+
+.riskItemTitle {
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.riskItemReason {
+  font-size: 0.9rem;
+  color: #64748b;
+}
+
+/* ---------- EFFICIENCY ---------- */
+
+.efficiencyList {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.efficiencyItem {
+  background: #f8fafc;
+  border-radius: 8px;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.efficiencyInfo h4 {
+  margin: 0;
+  font-weight: 600;
+}
+
+.efficiencyStats {
+  font-size: 0.85rem;
+  color: #64748b;
+}
+
+.efficiencyScore {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #3b82f6;
+}
+
+/* ---------- TASKS ---------- */
+
+.tasksList {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.taskCard {
+  background: white;
+  border-radius: 12px;
+  padding: 1.25rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  border-left: 4px solid transparent;
+}
+
+.stateBadge {
+  display: inline-block;
+  margin-top: 0.5rem;
+  padding: 0.3rem 0.7rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  color: white;
+}
+
+/* ---------- MODAL ---------- */
+
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modalContent {
+  background: white;
+  border-radius: 16px;
+  padding: 2rem;
+  width: 90%;
+  max-width: 500px;
+}
+
+.modalActions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.input,
+.textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 2px solid #e2e8f0;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+.input:focus,
+.textarea:focus {
+  outline: none;
+  border-color: #3b82f6;
+}
+
+.textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+
+/* ---------- TASKS SECTION ---------- */
+
+.infoSection {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem 2rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.infoSection h2 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #1e293b;
+  margin-bottom: 1rem;
+}
+
+.tasksList {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.taskCard {
+  background: #f8fafc;
+  border-radius: 12px;
+  padding: 1rem 1.25rem;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+  border-left: 4px solid transparent;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.taskCard:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.taskCard h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #1e293b;
+}
+
+.taskCard p {
+  font-size: 0.9rem;
+  color: #475569;
+  line-height: 1.4;
+}
+
+.stateBadge {
+  display: inline-block;
+  margin-top: 0.5rem;
+  padding: 0.25rem 0.7rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: white;
+}
+
+.tasksList p {
+  text-align: center;
+  color: #64748b;
+  padding: 1.5rem 0;
+}
