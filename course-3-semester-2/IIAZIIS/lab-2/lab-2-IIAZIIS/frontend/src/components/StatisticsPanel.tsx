@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import { api } from '../api/client';
 
+const PAGE_SIZE = 70;
+
 function StatisticsPanel() {
   const [overview, setOverview] = useState<any>(null);
   const [wordFreq, setWordFreq] = useState<any>(null);
@@ -11,6 +13,9 @@ function StatisticsPanel() {
   const [error, setError] = useState('');
   const [activeStat, setActiveStat] = useState<'overview' | 'wordforms' | 'lemmas' | 'pos' | 'grammars'>('overview');
   const [loadTime, setLoadTime] = useState<number | null>(null);
+  
+  const [wordPage, setWordPage] = useState(1);
+  const [lemmaPage, setLemmaPage] = useState(1);
 
   useEffect(() => {
     loadStatistics();
@@ -20,18 +25,13 @@ function StatisticsPanel() {
     try {
       setLoading(true);
       const startTime = performance.now();
-      const [overviewData, wordData, lemmaData, posData, grammarData] = await Promise.all([
+      const [overviewData, posData, grammarData] = await Promise.all([
         api.getOverview(),
-        api.getWordFrequencies(30),
-        api.getLemmaFrequencies(30),
         api.getPOSStatistics(),
         api.getGrammarStatistics(),
       ]);
       setLoadTime(performance.now() - startTime);
-      console.log('Statistics load time:', loadTime, 'ms');
       setOverview(overviewData);
-      setWordFreq(wordData);
-      setLemmaFreq(lemmaData);
       setPosStats(posData);
       setGrammarStats(grammarData);
     } catch (err) {
@@ -41,8 +41,55 @@ function StatisticsPanel() {
     }
   };
 
+  const loadWordFrequencies = async (page: number) => {
+    const offset = (page - 1) * PAGE_SIZE;
+    const data = await api.getWordFrequencies(PAGE_SIZE, offset);
+    setWordFreq(data);
+    setWordPage(page);
+  };
+
+  const loadLemmaFrequencies = async (page: number) => {
+    const offset = (page - 1) * PAGE_SIZE;
+    const data = await api.getLemmaFrequencies(PAGE_SIZE, offset);
+    setLemmaFreq(data);
+    setLemmaPage(page);
+  };
+
+  useEffect(() => {
+    if (activeStat === 'wordforms' && !wordFreq) {
+      loadWordFrequencies(1);
+    }
+  }, [activeStat]);
+
+  useEffect(() => {
+    if (activeStat === 'lemmas' && !lemmaFreq) {
+      loadLemmaFrequencies(1);
+    }
+  }, [activeStat]);
+
+  const handleWordPageChange = (newPage: number) => {
+    if (wordFreq) {
+      const totalPages = Math.ceil(wordFreq.total_unique / PAGE_SIZE);
+      if (newPage >= 1 && newPage <= totalPages) {
+        loadWordFrequencies(newPage);
+      }
+    }
+  };
+
+  const handleLemmaPageChange = (newPage: number) => {
+    if (lemmaFreq) {
+      const totalPages = Math.ceil(lemmaFreq.total_unique / PAGE_SIZE);
+      if (newPage >= 1 && newPage <= totalPages) {
+        loadLemmaFrequencies(newPage);
+      }
+    }
+  };
+
   if (loading) return <div className="loading">Загрузка статистики...</div>;
   if (error) return <div className="error">{error}</div>;
+
+  const wordTotalPages = wordFreq ? Math.ceil(wordFreq.total_unique / PAGE_SIZE) : 1;
+  const lemmaTotalPages = lemmaFreq ? Math.ceil(lemmaFreq.total_unique / PAGE_SIZE) : 1;
 
   return (
     <div className="panel">
@@ -105,49 +152,91 @@ function StatisticsPanel() {
         </div>
       )}
 
-      {activeStat === 'wordforms' && wordFreq && (
+      {activeStat === 'wordforms' && (
         <div className="stat-content">
           <h3>Частотный словарь словоформ</h3>
-          <p>Всего уникальных: {wordFreq.total_unique}</p>
-          <table>
-            <thead>
-              <tr>
-                <th>Слово</th>
-                <th>Частота</th>
-              </tr>
-            </thead>
-            <tbody>
-              {wordFreq.frequencies.map((item: any, idx: number) => (
-                <tr key={idx}>
-                  <td>{item.word}</td>
-                  <td>{item.count}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+          {wordFreq ? (
+            <>
+              <p>Всего уникальных: {wordFreq.total_unique}</p>
+              <p>Страница {wordPage} из {wordTotalPages}</p>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Слово</th>
+                    <th>Частота</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {wordFreq.frequencies.map((item: any, idx: number) => (
+                    <tr key={idx}>
+                      <td>{item.word}</td>
+                      <td>{item.count}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+              <div className="pagination">
+                <button 
+                  onClick={() => handleWordPageChange(wordPage - 1)} 
+                  disabled={wordPage <= 1}
+                >
+                  Назад
+                </button>
+                <button 
+                  onClick={() => handleWordPageChange(wordPage + 1)} 
+                  disabled={wordPage >= wordTotalPages}
+                >
+                  Вперед
+                </button>
+              </div>
+            </>
+          ) : (
+            <div className="loading">Загрузка...</div>
+          )}
         </div>
       )}
 
-      {activeStat === 'lemmas' && lemmaFreq && (
+      {activeStat === 'lemmas' && (
         <div className="stat-content">
           <h3>Частотный словарь лемм</h3>
-          <p>Всего уникальных: {lemmaFreq.total_unique}</p>
-          <table>
-            <thead>
-              <tr>
-                <th>Лемма</th>
-                <th>Частота</th>
-              </tr>
-            </thead>
-            <tbody>
-              {lemmaFreq.frequencies.map((item: any, idx: number) => (
-                <tr key={idx}>
-                  <td>{item.lemma}</td>
-                  <td>{item.count}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+          {lemmaFreq ? (
+            <>
+              <p>Всего уникальных: {lemmaFreq.total_unique}</p>
+              <p>Страница {lemmaPage} из {lemmaTotalPages}</p>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Лемма</th>
+                    <th>Частота</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {lemmaFreq.frequencies.map((item: any, idx: number) => (
+                    <tr key={idx}>
+                      <td>{item.lemma}</td>
+                      <td>{item.count}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+              <div className="pagination">
+                <button 
+                  onClick={() => handleLemmaPageChange(lemmaPage - 1)} 
+                  disabled={lemmaPage <= 1}
+                >
+                  Назад
+                </button>
+                <button 
+                  onClick={() => handleLemmaPageChange(lemmaPage + 1)} 
+                  disabled={lemmaPage >= lemmaTotalPages}
+                >
+                  Вперед
+                </button>
+              </div>
+            </>
+          ) : (
+            <div className="loading">Загрузка...</div>
+          )}
         </div>
       )}
 

@@ -7,3 +7,7 @@ striprtf>=0.0.26
 chardet>=5.2.0
 pydantic>=2.5.0
 python-multipart>=0.0.6
+pypdf>=3.0.0
+python-docx>=1.1.0
+mammoth>=1.6.0
+sqlalchemy>=2.0.0

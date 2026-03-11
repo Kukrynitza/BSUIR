@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { api, ConcordanceItem } from '../api/client';
+import { api, ConcordanceItem, Document } from '../api/client';
 
 function SearchPanel() {
   const [query, setQuery] = useState('');
@@ -10,6 +10,10 @@ function SearchPanel() {
   const [searchType, setSearchType] = useState<'search' | 'concordance'>('search');
   const [concordanceTime, setConcordanceTime] = useState<number | null>(null);
   const [searchTime, setSearchTime] = useState<number | null>(null);
+  
+  const [selectedDoc, setSelectedDoc] = useState<Document | null>(null);
+  const [viewDocLoading, setViewDocLoading] = useState(false);
+  const [highlightWord, setHighlightWord] = useState('');
 
   const handleSearch = async () => {
     if (!query.trim()) return;
@@ -22,14 +26,12 @@ function SearchPanel() {
         const startTime = performance.now();
         const results = await api.search(query);
         setSearchTime(performance.now() - startTime);
-        console.log('Search results:', results);
         setSearchResults(results.results || []);
       } else {
         const startTime = performance.now();
         const results = await api.getConcordance(query);
         const elapsed = performance.now() - startTime;
         setConcordanceTime(elapsed);
-        console.log('Concordance results:', results);
         setConcordance(results.concordance || []);
       }
     } catch (err) {
@@ -43,6 +45,33 @@ function SearchPanel() {
     if (e.key === 'Enter') {
       handleSearch();
     }
+  };
+
+  const handleViewDocument = async (docId: string, keyword: string) => {
+    try {
+      setViewDocLoading(true);
+      const doc = await api.getDocument(docId);
+      setSelectedDoc(doc);
+      setHighlightWord(keyword);
+    } catch (err) {
+      setError('Не удалось загрузить документ');
+    } finally {
+      setViewDocLoading(false);
+    }
+  };
+
+  const closeDocument = () => {
+    setSelectedDoc(null);
+    setHighlightWord('');
+  };
+
+  const renderHighlightedContent = (content: string, word: string) => {
+    if (!word) return content;
+    const regex = new RegExp(`(${word})`, 'gi');
+    const parts = content.split(regex);
+    return parts.map((part, i) => 
+      regex.test(part) ? <span key={i} className="highlight">{part}</span> : part
+    );
   };
 
   return (
@@ -104,17 +133,43 @@ function SearchPanel() {
           {concordance.length === 0 ? (
             <p>Введите слово и нажмите "Найти"</p>
           ) : (
-            <div className="kwic-list">
+            <ul className="results-list">
               {concordance.map((item, idx) => (
-                <div key={idx} className="kwic-item">
-                  <span className="kwic-left">{item.left}</span>
-                  <span className="kwic-keyword">{item.keyword}</span>
-                  <span className="kwic-right">{item.right}</span>
-                  <span className="kwic-doc">[{item.document}]</span>
-                </div>
+                <li key={idx} className="result-item">
+                  <div className="result-doc">{item.document_title}</div>
+                  <div className="result-context">
+                    {item.left} <span className="highlight">{item.keyword}</span> {item.right}
+                  </div>
+                  <button 
+                    className="view-btn"
+                    onClick={() => handleViewDocument(item.document_id, item.keyword)}
+                    disabled={viewDocLoading}
+                  >
+                    Просмотреть
+                  </button>
+                </li>
               ))}
-            </div>
+            </ul>
           )}
+        </div>
+      )}
+
+      {selectedDoc && (
+        <div className="document-view">
+          <h3>{selectedDoc.title}</h3>
+          <div className="metadata">
+            <p><strong>Тип:</strong> {selectedDoc.metadata.text_type}</p>
+            <p><strong>Автор:</strong> {selectedDoc.metadata.author || '-'}</p>
+            <p><strong>Жанр:</strong> {selectedDoc.metadata.genre || '-'}</p>
+            <p><strong>Дата:</strong> {selectedDoc.metadata.date || '-'}</p>
+            <p><strong>Слов:</strong> {selectedDoc.metadata.word_count}</p>
+            <p><strong>Символов:</strong> {selectedDoc.metadata.char_count}</p>
+            <p><strong>Создан:</strong> {selectedDoc.metadata.created_at}</p>
+          </div>
+          <div className="content">
+            <pre>{renderHighlightedContent(selectedDoc.content, highlightWord)}</pre>
+          </div>
+          <button onClick={closeDocument}>Закрыть</button>
         </div>
       )}
     </div>

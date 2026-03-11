@@ -1,6 +1,13 @@
 import { useState, useEffect } from 'react';
 import { api, Document } from '../api/client';
 
+interface UploadMetadata {
+  author: string;
+  date: string;
+  genre: string;
+  text_type: string;
+}
+
 function CorpusPanel() {
   const [documents, setDocuments] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
@@ -10,6 +17,14 @@ function CorpusPanel() {
   const [editingDoc, setEditingDoc] = useState<Document | null>(null);
   const [editContent, setEditContent] = useState('');
   const [saving, setSaving] = useState(false);
+  const [showUploadModal, setShowUploadModal] = useState(false);
+  const [selectedFile, setSelectedFile] = useState<File | null>(null);
+  const [uploadMetadata, setUploadMetadata] = useState<UploadMetadata>({
+    author: '',
+    date: '',
+    genre: '',
+    text_type: 'кулинарный текст'
+  });
 
   useEffect(() => {
     loadDocuments();
@@ -27,14 +42,30 @@ function CorpusPanel() {
     }
   };
 
-  const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleFileSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
-    if (!file) return;
+    if (file) {
+      setSelectedFile(file);
+      setShowUploadModal(true);
+    }
+  };
+
+  const handleFileUpload = async () => {
+    if (!selectedFile) return;
 
     try {
       setUploading(true);
-      await api.loadFile(file);
+      console.log(uploadMetadata)
+      await api.loadFile(selectedFile, uploadMetadata);
       await loadDocuments();
+      setShowUploadModal(false);
+      setSelectedFile(null);
+      setUploadMetadata({
+        author: '',
+        date: '',
+        genre: '',
+        text_type: 'кулинарный текст'
+      });
     } catch (err) {
       setError('Не удалось загрузить файл');
     } finally {
@@ -100,13 +131,13 @@ function CorpusPanel() {
           {uploading ? 'Загрузка...' : 'Загрузить файл'}
           <input
             type="file"
-            accept=".txt,.rtf"
-            onChange={handleFileUpload}
+            accept=".txt,.rtf,.pdf,.doc,.docx"
+            onChange={handleFileSelect}
             disabled={uploading}
             style={{ display: 'none' }}
           />
         </label>
-        <span className="hint">(TXT, RTF)</span>
+        <span className="hint">(TXT, RTF, PDF, DOC, DOCX)</span>
       </div>
 
       {error && <div className="error">{error}</div>}
@@ -145,9 +176,12 @@ function CorpusPanel() {
           <h3>{selectedDoc.title}</h3>
           <div className="metadata">
             <p><strong>Тип:</strong> {selectedDoc.metadata.text_type}</p>
+            <p><strong>Автор:</strong> {selectedDoc.metadata.author || '-'}</p>
+            <p><strong>Жанр:</strong> {selectedDoc.metadata.genre || '-'}</p>
+            <p><strong>Дата:</strong> {selectedDoc.metadata.date || '-'}</p>
             <p><strong>Слов:</strong> {selectedDoc.metadata.word_count}</p>
             <p><strong>Символов:</strong> {selectedDoc.metadata.char_count}</p>
-            <p><strong>Дата:</strong> {selectedDoc.metadata.created_at}</p>
+            <p><strong>Создан:</strong> {selectedDoc.metadata.created_at}</p>
           </div>
           <div className="content">
             <pre>{selectedDoc.content}</pre>
@@ -172,6 +206,65 @@ function CorpusPanel() {
             <button onClick={() => setEditingDoc(null)} disabled={saving}>
               Отмена
             </button>
+          </div>
+        </div>
+      )}
+
+      {showUploadModal && (
+        <div className="modal-overlay" onClick={() => setShowUploadModal(false)}>
+          <div className="modal" onClick={e => e.stopPropagation()}>
+            <h3>Загрузка документа</h3>
+            <div className="modal-content">
+              <p><strong>Файл:</strong> {selectedFile?.name}</p>
+              
+              <div className="form-group">
+                <label>Автор:</label>
+                <input
+                  type="text"
+                  value={uploadMetadata.author}
+                  onChange={e => setUploadMetadata({...uploadMetadata, author: e.target.value})}
+                  placeholder="Автор текста"
+                />
+              </div>
+              
+              <div className="form-group">
+                <label>Дата:</label>
+                <input
+                  type="text"
+                  value={uploadMetadata.date}
+                  onChange={e => setUploadMetadata({...uploadMetadata, date: e.target.value})}
+                  placeholder="Год или дата"
+                />
+              </div>
+              
+              <div className="form-group">
+                <label>Жанр:</label>
+                <input
+                  type="text"
+                  value={uploadMetadata.genre}
+                  onChange={e => setUploadMetadata({...uploadMetadata, genre: e.target.value})}
+                  placeholder="Жанр текста"
+                />
+              </div>
+              
+              <div className="form-group">
+                <label>Тип текста:</label>
+                <input
+                  type="text"
+                  value={uploadMetadata.text_type}
+                  onChange={e => setUploadMetadata({...uploadMetadata, text_type: e.target.value})}
+                  placeholder="Тип текста"
+                />
+              </div>
+            </div>
+            <div className="modal-actions">
+              <button onClick={handleFileUpload} disabled={uploading}>
+                {uploading ? 'Загрузка...' : 'Загрузить'}
+              </button>
+              <button onClick={() => setShowUploadModal(false)} disabled={uploading}>
+                Отмена
+              </button>
+            </div>
           </div>
         </div>
       )}

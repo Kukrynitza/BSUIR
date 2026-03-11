@@ -7,36 +7,44 @@ router = APIRouter(tags=["Статистика"])
 @router.get("/stats/wordforms")
 async def get_wordform_frequencies(
     doc_id: str | None = Query(None, description="ID документа (опционально)"),
-    limit: int = Query(50, description="Количество слов в топе")
+    limit: int = Query(70, description="Количество слов в топе"),
+    offset: int = Query(0, description="Смещение для пагинации")
 ):
     frequencies = corpus.get_wordform_frequencies(doc_id)
     
     sorted_freq = sorted(frequencies.items(), key=lambda x: x[1], reverse=True)
-    top = sorted_freq[:limit]
+    total = len(sorted_freq)
+    paginated = sorted_freq[offset:offset + limit]
     
     return {
         "type": "wordforms",
-        "total_unique": len(frequencies),
+        "total_unique": total,
         "total_tokens": sum(frequencies.values()),
-        "frequencies": [{"word": w, "count": c} for w, c in top]
+        "limit": limit,
+        "offset": offset,
+        "frequencies": [{"word": w, "count": c} for w, c in paginated]
     }
 
 
 @router.get("/stats/lemmas")
 async def get_lemma_frequencies(
     doc_id: str | None = Query(None, description="ID документа (опционально)"),
-    limit: int = Query(50, description="Количество лемм в топе")
+    limit: int = Query(70, description="Количество лемм в топе"),
+    offset: int = Query(0, description="Смещение для пагинации")
 ):
     frequencies = corpus.get_lemma_frequencies(doc_id)
     
     sorted_freq = sorted(frequencies.items(), key=lambda x: x[1], reverse=True)
-    top = sorted_freq[:limit]
+    total = len(sorted_freq)
+    paginated = sorted_freq[offset:offset + limit]
     
     return {
         "type": "lemmas",
-        "total_unique": len(frequencies),
+        "total_unique": total,
         "total_tokens": sum(frequencies.values()),
-        "frequencies": [{"lemma": l, "count": c} for l, c in top]
+        "limit": limit,
+        "offset": offset,
+        "frequencies": [{"lemma": l, "count": c} for l, c in paginated]
     }
 
 
@@ -68,7 +76,7 @@ async def get_grammar_statistics(
 ):
     grammar_stats = corpus.get_grammar_statistics(doc_id)
     
-    result = {"type": "grammatical_categories"}
+    result: dict = {"type": "grammatical_categories"}
     
     for category, stats in grammar_stats.items():
         total = sum(stats.values())
@@ -89,8 +97,9 @@ async def get_grammar_statistics(
 
 @router.get("/stats/overview")
 async def get_overview():
-    total_docs = len(corpus.documents)
-    total_words = sum(doc.word_count for doc in corpus.documents.values())
+    docs = corpus.get_all_documents()
+    total_docs = len(docs)
+    total_words = sum(doc['word_count'] for doc in docs)
     
     wordform_freq = corpus.get_wordform_frequencies()
     lemma_freq = corpus.get_lemma_frequencies()

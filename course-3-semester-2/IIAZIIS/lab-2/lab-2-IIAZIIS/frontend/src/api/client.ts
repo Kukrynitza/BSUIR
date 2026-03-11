@@ -2,6 +2,9 @@ const API_BASE = 'http://127.0.0.1:8001/api';
 
 export interface DocumentMeta {
   source: string;
+  author: string;
+  date: string;
+  genre: string;
   text_type: string;
   word_count: number;
   char_count: number;
@@ -26,10 +29,11 @@ export interface LemmaFrequency {
 }
 
 export interface ConcordanceItem {
+  document_id: string;
+  document_title: string;
   left: string;
   keyword: string;
   right: string;
-  document: string;
 }
 
 export const api = {
@@ -39,12 +43,18 @@ export const api = {
     return res.json();
   },
 
-  async loadFile(file: File): Promise<any> {
+  async loadFile(file: File, metadata: { author?: string; date?: string; genre?: string; text_type?: string } = {}): Promise<any> {
     const formData = new FormData();
     formData.append('file', file);
-    const res = await fetch(`${API_BASE}/corpus/load`, {
+    const url = new URL(`${API_BASE}/corpus/load`);
+    if (metadata.author) url.searchParams.append('author', metadata.author);
+    if (metadata.date) url.searchParams.append('date', metadata.date);
+    if (metadata.genre) url.searchParams.append('genre', metadata.genre);
+    if (metadata.text_type) url.searchParams.append('text_type', metadata.text_type);
+
+    const res = await fetch(url.toString(), {
       method: 'POST',
-      body: formData,
+      body: formData
     });
     if (!res.ok) throw new Error('Failed to load file');
     return res.json();
@@ -63,14 +73,14 @@ export const api = {
     return res.json();
   },
 
-  async getWordFrequencies(limit: number = 50): Promise<{ frequencies: WordFrequency[] }> {
-    const res = await fetch(`${API_BASE}/stats/wordforms?limit=${limit}`);
+  async getWordFrequencies(limit: number = 70, offset: number = 0): Promise<{ frequencies: WordFrequency[]; total_unique: number; limit: number; offset: number }> {
+    const res = await fetch(`${API_BASE}/stats/wordforms?limit=${limit}&offset=${offset}`);
     if (!res.ok) throw new Error('Failed to fetch word frequencies');
     return res.json();
   },
 
-  async getLemmaFrequencies(limit: number = 50): Promise<{ frequencies: LemmaFrequency[] }> {
-    const res = await fetch(`${API_BASE}/stats/lemmas?limit=${limit}`);
+  async getLemmaFrequencies(limit: number = 70, offset: number = 0): Promise<{ frequencies: LemmaFrequency[]; total_unique: number; limit: number; offset: number }> {
+    const res = await fetch(`${API_BASE}/stats/lemmas?limit=${limit}&offset=${offset}`);
     if (!res.ok) throw new Error('Failed to fetch lemma frequencies');
     return res.json();
   },

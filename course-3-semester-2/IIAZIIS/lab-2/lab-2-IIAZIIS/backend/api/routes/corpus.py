@@ -9,20 +9,31 @@ class UpdateDocumentRequest(BaseModel):
     content: str
 
 
+class LoadDocumentRequest(BaseModel):
+    author: str = ""
+    date: str = ""
+    genre: str = ""
+    text_type: str = "кулинарный текст"
+
+
 @router.get("/corpus")
 async def get_documents():
+    docs = corpus.get_all_documents()
     return {
-        "documents": corpus.get_all_documents(),
-        "total": len(corpus.documents)
+        "documents": docs,
+        "total": len(docs)
     }
 
 
 @router.post("/corpus/load")
 async def load_file(
     file: UploadFile = File(...),
-    text_type: str = ""
+    author: str = "",
+    date: str = "",
+    genre: str = "",
+    text_type: str = "кулинарный текст"
 ):
-    allowed_extensions = {'txt', 'rtf'}
+    allowed_extensions = {'txt', 'rtf', 'pdf', 'doc', 'docx'}
     ext = file.filename.split('.')[-1].lower() if file.filename else 'txt'
     
     if ext not in allowed_extensions:
@@ -34,8 +45,10 @@ async def load_file(
     content = await file.read()
     
     doc = corpus.load_file(content, file.filename or "unknown.txt")
+    doc.author = author
+    doc.date = date
+    doc.genre = genre
     doc.text_type = text_type or "кулинарный текст"
-    
     corpus.add_document(doc)
     
     return {
@@ -91,9 +104,11 @@ async def get_analyzed_document(doc_id: str):
 
 @router.get("/corpus/{doc_id}/lemmas")
 async def get_document_lemmas(doc_id: str):
-    lemmas = corpus.get_lemmas(doc_id)
-    if lemmas is None:
+    doc = corpus.get_document(doc_id)
+    if not doc:
         raise HTTPException(status_code=404, detail="Документ не найден")
+    
+    lemmas = corpus.get_lemmas(doc_id)
     
     sorted_lemmas = sorted(lemmas.items(), key=lambda x: x[1], reverse=True)
     

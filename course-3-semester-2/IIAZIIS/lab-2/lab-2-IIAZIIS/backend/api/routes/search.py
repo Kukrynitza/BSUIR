@@ -53,10 +53,11 @@ async def get_kwic(
     kwic = []
     for item in results:
         kwic.append({
+            "document_id": item["document_id"],
+            "document_title": item["document_title"],
             "left": item["left"],
             "keyword": item["keyword"],
             "right": item["right"],
-            "document": item["document_title"]
         })
     
     return {
