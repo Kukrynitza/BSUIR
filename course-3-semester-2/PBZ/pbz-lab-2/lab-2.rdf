@@ -1,0 +1,739 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="urn:webprotege:ontology:5b70bd51-1abc-4cfa-8344-db77040bcb5f#"
+     xml:base="urn:webprotege:ontology:5b70bd51-1abc-4cfa-8344-db77040bcb5f"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:webprotege="http://webprotege.stanford.edu/">
+    <owl:Ontology rdf:about="urn:webprotege:ontology:5b70bd51-1abc-4cfa-8344-db77040bcb5f"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.w3.org/2000/01/rdf-schema#label -->
+
+    <owl:AnnotationProperty rdf:about="http://www.w3.org/2000/01/rdf-schema#label">
+        <rdfs:label xml:lang="en">rdfs:label</rdfs:label>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://webprotege.stanford.edu/R7yB1zjrhOKuXJ0DExdurTK -->
+
+    <owl:ObjectProperty rdf:about="http://webprotege.stanford.edu/R7yB1zjrhOKuXJ0DExdurTK">
+        <rdfs:label xml:lang="en">threadThickness</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://webprotege.stanford.edu/R9B4CCJTvY3X2HAYmvgkk0t -->
+
+    <owl:ObjectProperty rdf:about="http://webprotege.stanford.edu/R9B4CCJTvY3X2HAYmvgkk0t">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="http://webprotege.stanford.edu/R8jEGk9PV5P4Y5zfsQNnLAZ"/>
+        <rdfs:range rdf:resource="http://webprotege.stanford.edu/RBTSjB09a1vyU36jqIdMOsU"/>
+        <rdfs:label xml:lang="en">requiresAnesthesia</rdfs:label>
+        <rdfs:label xml:lang="ru">требуетАнестезии</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://webprotege.stanford.edu/R9w2GzJWwEHMmdgKIBHhQmj -->
+
+    <owl:ObjectProperty rdf:about="http://webprotege.stanford.edu/R9w2GzJWwEHMmdgKIBHhQmj">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="http://webprotege.stanford.edu/RyvtzMQDMiySHahWYAuqX2"/>
+        <rdfs:range rdf:resource="http://webprotege.stanford.edu/R8jEGk9PV5P4Y5zfsQNnLAZ"/>
+        <rdfs:label xml:lang="en">occursDuring</rdfs:label>
+        <rdfs:label xml:lang="ru">возниклоВоВремя</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://webprotege.stanford.edu/RBIqKCX4aO71HDB2McnFEke -->
+
+    <owl:ObjectProperty rdf:about="http://webprotege.stanford.edu/RBIqKCX4aO71HDB2McnFEke">
+        <rdfs:label xml:lang="en">diseaseCode</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://webprotege.stanford.edu/RDI1o26gYHJ240QNrUocEhh -->
+
+    <owl:ObjectProperty rdf:about="http://webprotege.stanford.edu/RDI1o26gYHJ240QNrUocEhh">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="http://webprotege.stanford.edu/R73pcrdxTGJxwkNBGojX8KO"/>
+        <rdfs:range rdf:resource="http://webprotege.stanford.edu/RBhid6NFXGiWvLsEHzcKYCS"/>
+        <rdfs:label xml:lang="en">isDiagnosedWith</rdfs:label>
+        <rdfs:label xml:lang="ru">имеетДиагноз</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://webprotege.stanford.edu/R3InGd3smUuQbwJC208C90 -->
+
+    <owl:DatatypeProperty rdf:about="http://webprotege.stanford.edu/R3InGd3smUuQbwJC208C90">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://webprotege.stanford.edu/RBTSjB09a1vyU36jqIdMOsU"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:label xml:lang="en">drugName</rdfs:label>
+        <rdfs:label xml:lang="ru">названиеПрепарата</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://webprotege.stanford.edu/R7LHdjt54U6Gf0faiem0QEd -->
+
+    <owl:DatatypeProperty rdf:about="http://webprotege.stanford.edu/R7LHdjt54U6Gf0faiem0QEd">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://webprotege.stanford.edu/RB678UqaapfEHyHHe926iaR"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <rdfs:label xml:lang="en">hasExperience</rdfs:label>
+        <rdfs:label xml:lang="ru">стажРаботы</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://webprotege.stanford.edu/R7bzVe9AhJu38uZy19Ji8Sw -->
+
+    <owl:DatatypeProperty rdf:about="http://webprotege.stanford.edu/R7bzVe9AhJu38uZy19Ji8Sw">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://webprotege.stanford.edu/RB678UqaapfEHyHHe926iaR"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:label xml:lang="en">hasSpecialization</rdfs:label>
+        <rdfs:label xml:lang="ru">специализация</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://webprotege.stanford.edu/R8IDIodHqLIiaubffhHDW5e -->
+
+    <owl:DatatypeProperty rdf:about="http://webprotege.stanford.edu/R8IDIodHqLIiaubffhHDW5e">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://webprotege.stanford.edu/R73pcrdxTGJxwkNBGojX8KO"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:label xml:lang="en">hasBloodType</rdfs:label>
+        <rdfs:label xml:lang="ru">группаКрови</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://webprotege.stanford.edu/R8V5TjjkhLtfvl157a3AMiw -->
+
+    <owl:DatatypeProperty rdf:about="http://webprotege.stanford.edu/R8V5TjjkhLtfvl157a3AMiw">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://webprotege.stanford.edu/R8jEGk9PV5P4Y5zfsQNnLAZ"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <rdfs:label xml:lang="en">durationMinutes</rdfs:label>
+        <rdfs:label xml:lang="ru">длительность</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://webprotege.stanford.edu/R9Hn7PsOmzn8ElhTKPLXLvA -->
+
+    <owl:DatatypeProperty rdf:about="http://webprotege.stanford.edu/R9Hn7PsOmzn8ElhTKPLXLvA">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://webprotege.stanford.edu/RBD0pBVbjNXq4gdELwJGpbs"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+        <rdfs:label xml:lang="en">isVital</rdfs:label>
+        <rdfs:label xml:lang="ru">жизненноВажный</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://webprotege.stanford.edu/R9cUfIK7ZFuk5oEkSvRSnp0 -->
+
+    <owl:DatatypeProperty rdf:about="http://webprotege.stanford.edu/R9cUfIK7ZFuk5oEkSvRSnp0">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://webprotege.stanford.edu/RBhid6NFXGiWvLsEHzcKYCS"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+        <rdfs:label xml:lang="en">isChronic</rdfs:label>
+        <rdfs:label xml:lang="ru">хронический</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://webprotege.stanford.edu/R9m50uDuMG3hlNFOkX95Uyv -->
+
+    <owl:DatatypeProperty rdf:about="http://webprotege.stanford.edu/R9m50uDuMG3hlNFOkX95Uyv">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://webprotege.stanford.edu/RyvtzMQDMiySHahWYAuqX2"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:label xml:lang="en">severityLevel</rdfs:label>
+        <rdfs:label xml:lang="ru">уровеньТяжести</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://webprotege.stanford.edu/RBhS7H4q8gqkqmo0Y1VGXxs -->
+
+    <owl:DatatypeProperty rdf:about="http://webprotege.stanford.edu/RBhS7H4q8gqkqmo0Y1VGXxs">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://webprotege.stanford.edu/RwUDW8R7ZTGH9CLUrogRZ9"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+        <rdfs:label xml:lang="en">lastSterilizationDate</rdfs:label>
+        <rdfs:label xml:lang="ru">датаСтерилизации</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://webprotege.stanford.edu/RBwiARS2kS3E3O51AaNO1k8 -->
+
+    <owl:DatatypeProperty rdf:about="http://webprotege.stanford.edu/RBwiARS2kS3E3O51AaNO1k8">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://webprotege.stanford.edu/RwUDW8R7ZTGH9CLUrogRZ9"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:label xml:lang="en">materialType</rdfs:label>
+        <rdfs:label xml:lang="ru">материал</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://webprotege.stanford.edu/RDAcaNpxrCg2BGMCFaSNVEv -->
+
+    <owl:DatatypeProperty rdf:about="http://webprotege.stanford.edu/RDAcaNpxrCg2BGMCFaSNVEv">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://webprotege.stanford.edu/RBGi2Q82zaUdfXXTIG8rU0E"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+        <rdfs:label xml:lang="en">isSterile</rdfs:label>
+        <rdfs:label xml:lang="ru">стерильность</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://webprotege.stanford.edu/RDY3yzozRCFffwhkbx60tGG -->
+
+    <owl:DatatypeProperty rdf:about="http://webprotege.stanford.edu/RDY3yzozRCFffwhkbx60tGG">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://webprotege.stanford.edu/RR7yJUv6Sq0uAMvRGRbrpG"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+        <rdfs:label xml:lang="en">isAbsorbable</rdfs:label>
+        <rdfs:label xml:lang="ru">рассасываемость</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://webprotege.stanford.edu/RDhbZfAozPZgMIoq8KaCfPT -->
+
+    <owl:DatatypeProperty rdf:about="http://webprotege.stanford.edu/RDhbZfAozPZgMIoq8KaCfPT">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://webprotege.stanford.edu/RBuLo0O7iJSYLiiHSBToShk"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+        <rdfs:label xml:lang="en">bladeSize</rdfs:label>
+        <rdfs:label xml:lang="ru">размерЛезвия</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://webprotege.stanford.edu/REglVwkgwJh4iVMUCmgm8f -->
+
+    <owl:DatatypeProperty rdf:about="http://webprotege.stanford.edu/REglVwkgwJh4iVMUCmgm8f">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://webprotege.stanford.edu/RBD0pBVbjNXq4gdELwJGpbs"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:label xml:lang="en">belongsToSystem</rdfs:label>
+        <rdfs:label xml:lang="ru">системаОрганов</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://webprotege.stanford.edu/RF6tUPASWVXEOZlGcbxU5Q -->
+
+    <owl:DatatypeProperty rdf:about="http://webprotege.stanford.edu/RF6tUPASWVXEOZlGcbxU5Q">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://webprotege.stanford.edu/RBGi2Q82zaUdfXXTIG8rU0E"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <rdfs:label xml:lang="en">roomNumber</rdfs:label>
+        <rdfs:label xml:lang="ru">номерКабинета</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://webprotege.stanford.edu/RIC6WzN0pqLxUZeKOynaFe -->
+
+    <owl:DatatypeProperty rdf:about="http://webprotege.stanford.edu/RIC6WzN0pqLxUZeKOynaFe">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://webprotege.stanford.edu/RBTSjB09a1vyU36jqIdMOsU"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+        <rdfs:label xml:lang="en">dosageMg</rdfs:label>
+        <rdfs:label xml:lang="ru">дозировкаМг</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://webprotege.stanford.edu/RQh3PhJPBlvxJuoRgf6pdP -->
+
+    <owl:DatatypeProperty rdf:about="http://webprotege.stanford.edu/RQh3PhJPBlvxJuoRgf6pdP">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://webprotege.stanford.edu/RBuLo0O7iJSYLiiHSBToShk"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+        <rdfs:label xml:lang="en">isDisposable</rdfs:label>
+        <rdfs:label xml:lang="ru">одноразовый</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://webprotege.stanford.edu/Re8kWHkcAh93khLtPgLdtj -->
+
+    <owl:DatatypeProperty rdf:about="http://webprotege.stanford.edu/Re8kWHkcAh93khLtPgLdtj">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://webprotege.stanford.edu/RR7yJUv6Sq0uAMvRGRbrpG"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:label xml:lang="en">threadThickness</rdfs:label>
+        <rdfs:label xml:lang="ru">толщинаНити</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://webprotege.stanford.edu/RsnP9yQhhW5PyK6WhHka6B -->
+
+    <owl:DatatypeProperty rdf:about="http://webprotege.stanford.edu/RsnP9yQhhW5PyK6WhHka6B">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://webprotege.stanford.edu/RBhid6NFXGiWvLsEHzcKYCS"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:label xml:lang="en">diseaseCode</rdfs:label>
+        <rdfs:label xml:lang="ru">кодБолезни</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://webprotege.stanford.edu/R73pcrdxTGJxwkNBGojX8KO -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/R73pcrdxTGJxwkNBGojX8KO">
+        <rdfs:label xml:lang="en">Patient</rdfs:label>
+        <rdfs:label xml:lang="ru">Пациент</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://webprotege.stanford.edu/R8jEGk9PV5P4Y5zfsQNnLAZ -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/R8jEGk9PV5P4Y5zfsQNnLAZ">
+        <rdfs:label xml:lang="en">Surgery</rdfs:label>
+        <rdfs:label xml:lang="ru">Операция</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://webprotege.stanford.edu/RB678UqaapfEHyHHe926iaR -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/RB678UqaapfEHyHHe926iaR">
+        <rdfs:label xml:lang="en">Surgeon</rdfs:label>
+        <rdfs:label xml:lang="ru">Хирург</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://webprotege.stanford.edu/RBD0pBVbjNXq4gdELwJGpbs -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/RBD0pBVbjNXq4gdELwJGpbs">
+        <rdfs:label xml:lang="en">Organ</rdfs:label>
+        <rdfs:label xml:lang="ru">Орган</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://webprotege.stanford.edu/RBGi2Q82zaUdfXXTIG8rU0E -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/RBGi2Q82zaUdfXXTIG8rU0E">
+        <rdfs:label xml:lang="en">OperatingRoom</rdfs:label>
+        <rdfs:label xml:lang="ru">Операционная</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://webprotege.stanford.edu/RBTSjB09a1vyU36jqIdMOsU -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/RBTSjB09a1vyU36jqIdMOsU">
+        <rdfs:label xml:lang="en">Anesthesia</rdfs:label>
+        <rdfs:label xml:lang="ru">Анестезия</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://webprotege.stanford.edu/RBhid6NFXGiWvLsEHzcKYCS -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/RBhid6NFXGiWvLsEHzcKYCS">
+        <rdfs:label xml:lang="en">Diagnosis</rdfs:label>
+        <rdfs:label xml:lang="ru">Диагноз</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://webprotege.stanford.edu/RBuLo0O7iJSYLiiHSBToShk -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/RBuLo0O7iJSYLiiHSBToShk">
+        <rdfs:subClassOf rdf:resource="http://webprotege.stanford.edu/RwUDW8R7ZTGH9CLUrogRZ9"/>
+        <rdfs:label xml:lang="en">Scalpel</rdfs:label>
+        <rdfs:label xml:lang="ru">Скальпель</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://webprotege.stanford.edu/RR7yJUv6Sq0uAMvRGRbrpG -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/RR7yJUv6Sq0uAMvRGRbrpG">
+        <rdfs:label xml:lang="en">SutureMaterial</rdfs:label>
+        <rdfs:label xml:lang="ru">ШовныйМатериал</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://webprotege.stanford.edu/RwUDW8R7ZTGH9CLUrogRZ9 -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/RwUDW8R7ZTGH9CLUrogRZ9">
+        <rdfs:label xml:lang="en">SurgicalInstrument</rdfs:label>
+        <rdfs:label xml:lang="ru">ХирургическийИнструмент</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://webprotege.stanford.edu/RyvtzMQDMiySHahWYAuqX2 -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/RyvtzMQDMiySHahWYAuqX2">
+        <rdfs:label xml:lang="en">Complication</rdfs:label>
+        <rdfs:label xml:lang="ru">Осложнение</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://webprotege.stanford.edu/R6Srcvm10M1d78Bg7AC5Hl -->
+
+    <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/R6Srcvm10M1d78Bg7AC5Hl">
+        <rdf:type rdf:resource="http://webprotege.stanford.edu/RBTSjB09a1vyU36jqIdMOsU"/>
+        <webprotege:R3InGd3smUuQbwJC208C90>Propofol</webprotege:R3InGd3smUuQbwJC208C90>
+        <webprotege:RIC6WzN0pqLxUZeKOynaFe rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">200.0</webprotege:RIC6WzN0pqLxUZeKOynaFe>
+        <rdfs:label xml:lang="en">Anesthesia_General</rdfs:label>
+        <rdfs:label xml:lang="ru">Анестезия_Общая</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://webprotege.stanford.edu/R70oea8VrWSLYdq5zT5c33K -->
+
+    <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/R70oea8VrWSLYdq5zT5c33K">
+        <rdf:type rdf:resource="http://webprotege.stanford.edu/R73pcrdxTGJxwkNBGojX8KO"/>
+        <webprotege:RDI1o26gYHJ240QNrUocEhh rdf:resource="http://webprotege.stanford.edu/Rzhh9qpHJLFNo6TaUCfqJK"/>
+        <webprotege:R8IDIodHqLIiaubffhHDW5e>O(I) Rh-</webprotege:R8IDIodHqLIiaubffhHDW5e>
+        <rdfs:label xml:lang="en">Patient_Kozlov</rdfs:label>
+        <rdfs:label xml:lang="ru">Пациент_Козлов</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://webprotege.stanford.edu/R7cC57836V3EEzIkeW5VYSF -->
+
+    <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/R7cC57836V3EEzIkeW5VYSF">
+        <rdf:type rdf:resource="http://webprotege.stanford.edu/RBD0pBVbjNXq4gdELwJGpbs"/>
+        <webprotege:R9Hn7PsOmzn8ElhTKPLXLvA rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</webprotege:R9Hn7PsOmzn8ElhTKPLXLvA>
+        <webprotege:REglVwkgwJh4iVMUCmgm8f>Digestive</webprotege:REglVwkgwJh4iVMUCmgm8f>
+        <rdfs:label xml:lang="en">Organ_Appendix_Human</rdfs:label>
+        <rdfs:label xml:lang="ru">Орган_Аппендикс</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://webprotege.stanford.edu/R7iaOd3CVGtOAxzS4afq0kG -->
+
+    <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/R7iaOd3CVGtOAxzS4afq0kG">
+        <rdf:type rdf:resource="http://webprotege.stanford.edu/RBuLo0O7iJSYLiiHSBToShk"/>
+        <webprotege:RDhbZfAozPZgMIoq8KaCfPT rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">15.0</webprotege:RDhbZfAozPZgMIoq8KaCfPT>
+        <webprotege:RQh3PhJPBlvxJuoRgf6pdP rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</webprotege:RQh3PhJPBlvxJuoRgf6pdP>
+        <rdfs:label xml:lang="en">Scalpel_Disposable_15</rdfs:label>
+        <rdfs:label xml:lang="ru">Скальпель_одноразовый_№15</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://webprotege.stanford.edu/R7llz3LwrhCifcekaCPNxBM -->
+
+    <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/R7llz3LwrhCifcekaCPNxBM">
+        <rdf:type rdf:resource="http://webprotege.stanford.edu/RyvtzMQDMiySHahWYAuqX2"/>
+        <webprotege:R9w2GzJWwEHMmdgKIBHhQmj rdf:resource="http://webprotege.stanford.edu/R8Kcc4MsKcI85uAeKMm5x4s"/>
+        <webprotege:R9m50uDuMG3hlNFOkX95Uyv>High</webprotege:R9m50uDuMG3hlNFOkX95Uyv>
+        <rdfs:label xml:lang="en">Complication_Bleeding</rdfs:label>
+        <rdfs:label xml:lang="ru">Осложнение_Слепота</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://webprotege.stanford.edu/R7ro5X5UctfqvE1hoJbgYSW -->
+
+    <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/R7ro5X5UctfqvE1hoJbgYSW">
+        <rdf:type rdf:resource="http://webprotege.stanford.edu/R8jEGk9PV5P4Y5zfsQNnLAZ"/>
+        <webprotege:R9B4CCJTvY3X2HAYmvgkk0t rdf:resource="http://webprotege.stanford.edu/RB1zaGR0X1pSXP5aUozRFyL"/>
+        <webprotege:R8V5TjjkhLtfvl157a3AMiw rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">60</webprotege:R8V5TjjkhLtfvl157a3AMiw>
+        <rdfs:label xml:lang="en">Surgery_Hernioplasty_02</rdfs:label>
+        <rdfs:label xml:lang="ru">Операция_Герниопластика _№2</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://webprotege.stanford.edu/R7rqTUZ4gNSPho2084RlZpQ -->
+
+    <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/R7rqTUZ4gNSPho2084RlZpQ">
+        <rdfs:label xml:lang="en">2-0</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://webprotege.stanford.edu/R8Kcc4MsKcI85uAeKMm5x4s -->
+
+    <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/R8Kcc4MsKcI85uAeKMm5x4s">
+        <rdf:type rdf:resource="http://webprotege.stanford.edu/R8jEGk9PV5P4Y5zfsQNnLAZ"/>
+        <webprotege:R9B4CCJTvY3X2HAYmvgkk0t rdf:resource="http://webprotege.stanford.edu/R6Srcvm10M1d78Bg7AC5Hl"/>
+        <webprotege:R8V5TjjkhLtfvl157a3AMiw rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">45</webprotege:R8V5TjjkhLtfvl157a3AMiw>
+        <rdfs:label xml:lang="en">Surgery_Appendectomy_01</rdfs:label>
+        <rdfs:label xml:lang="ru">Операция_Аппендэктомия_№1</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://webprotege.stanford.edu/R8ZIkkfb45cZYVDvCMMpsYo -->
+
+    <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/R8ZIkkfb45cZYVDvCMMpsYo">
+        <rdf:type rdf:resource="http://webprotege.stanford.edu/RBGi2Q82zaUdfXXTIG8rU0E"/>
+        <webprotege:RDAcaNpxrCg2BGMCFaSNVEv rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</webprotege:RDAcaNpxrCg2BGMCFaSNVEv>
+        <webprotege:RF6tUPASWVXEOZlGcbxU5Q rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">202</webprotege:RF6tUPASWVXEOZlGcbxU5Q>
+        <rdfs:label xml:lang="en">OperatingRoom _Room_202</rdfs:label>
+        <rdfs:label xml:lang="ru">Операционная_№202</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://webprotege.stanford.edu/R8fBomwO8RcinZs8fGz02bV -->
+
+    <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/R8fBomwO8RcinZs8fGz02bV">
+        <rdf:type rdf:resource="http://webprotege.stanford.edu/RBuLo0O7iJSYLiiHSBToShk"/>
+        <webprotege:RDhbZfAozPZgMIoq8KaCfPT rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">10.0</webprotege:RDhbZfAozPZgMIoq8KaCfPT>
+        <webprotege:RQh3PhJPBlvxJuoRgf6pdP rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</webprotege:RQh3PhJPBlvxJuoRgf6pdP>
+        <rdfs:label xml:lang="en">Scalpel_Reusable_10</rdfs:label>
+        <rdfs:label xml:lang="ru">Скальпель_многоразовый_№10</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://webprotege.stanford.edu/R8qZJ51vMFXWppmRUIYbRAI -->
+
+    <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/R8qZJ51vMFXWppmRUIYbRAI">
+        <rdfs:label xml:lang="en">K40.9</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://webprotege.stanford.edu/R9FvPEcT9QrxRhIJHCbxHhc -->
+
+    <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/R9FvPEcT9QrxRhIJHCbxHhc">
+        <rdf:type rdf:resource="http://webprotege.stanford.edu/RwUDW8R7ZTGH9CLUrogRZ9"/>
+        <webprotege:RBhS7H4q8gqkqmo0Y1VGXxs rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2023-10-25T10:00:00</webprotege:RBhS7H4q8gqkqmo0Y1VGXxs>
+        <webprotege:RBwiARS2kS3E3O51AaNO1k8>Stainless_Steel</webprotege:RBwiARS2kS3E3O51AaNO1k8>
+        <rdfs:label xml:lang="en">SurgicalInstrument_Forceps_01</rdfs:label>
+        <rdfs:label xml:lang="ru">Иструмент_Пинцет_Хирургический</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://webprotege.stanford.edu/R9MOgES0Clhzc12gHesYbk0 -->
+
+    <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/R9MOgES0Clhzc12gHesYbk0">
+        <rdf:type rdf:resource="http://webprotege.stanford.edu/R73pcrdxTGJxwkNBGojX8KO"/>
+        <webprotege:RDI1o26gYHJ240QNrUocEhh rdf:resource="http://webprotege.stanford.edu/R9UipTWvh1oTue1OZ5A8QpS"/>
+        <webprotege:R8IDIodHqLIiaubffhHDW5e>A(II) Rh+</webprotege:R8IDIodHqLIiaubffhHDW5e>
+        <rdfs:label xml:lang="en">Patient_Sidorov</rdfs:label>
+        <rdfs:label xml:lang="ru">Пациент_Сидоров</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://webprotege.stanford.edu/R9UipTWvh1oTue1OZ5A8QpS -->
+
+    <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/R9UipTWvh1oTue1OZ5A8QpS">
+        <rdf:type rdf:resource="http://webprotege.stanford.edu/RBhid6NFXGiWvLsEHzcKYCS"/>
+        <webprotege:R9cUfIK7ZFuk5oEkSvRSnp0 rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</webprotege:R9cUfIK7ZFuk5oEkSvRSnp0>
+        <webprotege:RsnP9yQhhW5PyK6WhHka6B>K35.8</webprotege:RsnP9yQhhW5PyK6WhHka6B>
+        <rdfs:label xml:lang="en">Diagnosis_Appendicitis</rdfs:label>
+        <rdfs:label xml:lang="ru">Диагноз_Аппендицит</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://webprotege.stanford.edu/R9tbwztgQGfPLQj7pwpX6gf -->
+
+    <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/R9tbwztgQGfPLQj7pwpX6gf">
+        <rdf:type rdf:resource="http://webprotege.stanford.edu/RR7yJUv6Sq0uAMvRGRbrpG"/>
+        <webprotege:RDY3yzozRCFffwhkbx60tGG rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</webprotege:RDY3yzozRCFffwhkbx60tGG>
+        <webprotege:Re8kWHkcAh93khLtPgLdtj>2-0</webprotege:Re8kWHkcAh93khLtPgLdtj>
+        <rdfs:label xml:lang="en">Suture_Silk</rdfs:label>
+        <rdfs:label xml:lang="ru">Материал_Шелк</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://webprotege.stanford.edu/RB1zaGR0X1pSXP5aUozRFyL -->
+
+    <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/RB1zaGR0X1pSXP5aUozRFyL">
+        <rdf:type rdf:resource="http://webprotege.stanford.edu/RBTSjB09a1vyU36jqIdMOsU"/>
+        <webprotege:R3InGd3smUuQbwJC208C90>Lidocaine</webprotege:R3InGd3smUuQbwJC208C90>
+        <webprotege:RIC6WzN0pqLxUZeKOynaFe rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">50.0</webprotege:RIC6WzN0pqLxUZeKOynaFe>
+        <rdfs:label xml:lang="en">Anesthesia_Local</rdfs:label>
+        <rdfs:label>Анестезия_Локальная</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://webprotege.stanford.edu/RBoNn9SDJX5zcegYy2Rwhm9 -->
+
+    <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/RBoNn9SDJX5zcegYy2Rwhm9">
+        <rdf:type rdf:resource="http://webprotege.stanford.edu/RBGi2Q82zaUdfXXTIG8rU0E"/>
+        <webprotege:RDAcaNpxrCg2BGMCFaSNVEv rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</webprotege:RDAcaNpxrCg2BGMCFaSNVEv>
+        <webprotege:RF6tUPASWVXEOZlGcbxU5Q rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">101</webprotege:RF6tUPASWVXEOZlGcbxU5Q>
+        <rdfs:label xml:lang="en">OperatingRoom _Room_101</rdfs:label>
+        <rdfs:label xml:lang="ru">Операционная_№101</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://webprotege.stanford.edu/RBz0CZEmTOl07r9jaUJS1i7 -->
+
+    <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/RBz0CZEmTOl07r9jaUJS1i7">
+        <rdf:type rdf:resource="http://webprotege.stanford.edu/RwUDW8R7ZTGH9CLUrogRZ9"/>
+        <webprotege:RBhS7H4q8gqkqmo0Y1VGXxs rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2023-10-24T15:30:00</webprotege:RBhS7H4q8gqkqmo0Y1VGXxs>
+        <webprotege:RBwiARS2kS3E3O51AaNO1k8>Titanium</webprotege:RBwiARS2kS3E3O51AaNO1k8>
+        <rdfs:label xml:lang="en">SurgicalInstrument_Retractor_01</rdfs:label>
+        <rdfs:label xml:lang="ru">Иструмент_Ранорасширитель</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://webprotege.stanford.edu/RDhY53jXkdaphaAFU07tux3 -->
+
+    <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/RDhY53jXkdaphaAFU07tux3">
+        <rdf:type rdf:resource="http://webprotege.stanford.edu/RB678UqaapfEHyHHe926iaR"/>
+        <webprotege:R7LHdjt54U6Gf0faiem0QEd rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">15</webprotege:R7LHdjt54U6Gf0faiem0QEd>
+        <webprotege:R7bzVe9AhJu38uZy19Ji8Sw>Cardiosurgeon</webprotege:R7bzVe9AhJu38uZy19Ji8Sw>
+        <rdfs:label xml:lang="en">Surgeon_Vlad</rdfs:label>
+        <rdfs:label xml:lang="ru">Хирург_Влад</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://webprotege.stanford.edu/RDy5MvGPs589JLvf6b3opCw -->
+
+    <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/RDy5MvGPs589JLvf6b3opCw">
+        <rdf:type rdf:resource="http://webprotege.stanford.edu/RB678UqaapfEHyHHe926iaR"/>
+        <webprotege:R7LHdjt54U6Gf0faiem0QEd rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">8</webprotege:R7LHdjt54U6Gf0faiem0QEd>
+        <webprotege:R7bzVe9AhJu38uZy19Ji8Sw>Neurosurgeon</webprotege:R7bzVe9AhJu38uZy19Ji8Sw>
+        <rdfs:label xml:lang="en">Surgeon_Fedor</rdfs:label>
+        <rdfs:label xml:lang="ru">Хирург_Федор</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://webprotege.stanford.edu/RHlwVO6EmhoGBRDxSNMjZq -->
+
+    <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/RHlwVO6EmhoGBRDxSNMjZq">
+        <rdf:type rdf:resource="http://webprotege.stanford.edu/RR7yJUv6Sq0uAMvRGRbrpG"/>
+        <webprotege:RDY3yzozRCFffwhkbx60tGG rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</webprotege:RDY3yzozRCFffwhkbx60tGG>
+        <webprotege:Re8kWHkcAh93khLtPgLdtj>3-0</webprotege:Re8kWHkcAh93khLtPgLdtj>
+        <rdfs:label xml:lang="en">Suture_Vicryl</rdfs:label>
+        <rdfs:label xml:lang="ru">Материал_Викрил</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://webprotege.stanford.edu/RTtjYb5zdKYfAnzQn8KM59 -->
+
+    <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/RTtjYb5zdKYfAnzQn8KM59">
+        <rdf:type rdf:resource="http://webprotege.stanford.edu/RyvtzMQDMiySHahWYAuqX2"/>
+        <webprotege:R9w2GzJWwEHMmdgKIBHhQmj rdf:resource="http://webprotege.stanford.edu/R7ro5X5UctfqvE1hoJbgYSW"/>
+        <webprotege:R9m50uDuMG3hlNFOkX95Uyv>Medium</webprotege:R9m50uDuMG3hlNFOkX95Uyv>
+        <rdfs:label xml:lang="en">Complication_Infection</rdfs:label>
+        <rdfs:label xml:lang="ru">Осложнение_Инфекция</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://webprotege.stanford.edu/Rs2qxGbzYlgOjWCEaeXPw4 -->
+
+    <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/Rs2qxGbzYlgOjWCEaeXPw4">
+        <rdf:type rdf:resource="http://webprotege.stanford.edu/RBD0pBVbjNXq4gdELwJGpbs"/>
+        <webprotege:R9Hn7PsOmzn8ElhTKPLXLvA rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</webprotege:R9Hn7PsOmzn8ElhTKPLXLvA>
+        <webprotege:REglVwkgwJh4iVMUCmgm8f>Cardiovascular</webprotege:REglVwkgwJh4iVMUCmgm8f>
+        <rdfs:label xml:lang="en">Organ_Heart_Human</rdfs:label>
+        <rdfs:label xml:lang="ru">Орган_Сердце_Человека</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://webprotege.stanford.edu/Rzhh9qpHJLFNo6TaUCfqJK -->
+
+    <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/Rzhh9qpHJLFNo6TaUCfqJK">
+        <rdf:type rdf:resource="http://webprotege.stanford.edu/RBhid6NFXGiWvLsEHzcKYCS"/>
+        <webprotege:R9cUfIK7ZFuk5oEkSvRSnp0 rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</webprotege:R9cUfIK7ZFuk5oEkSvRSnp0>
+        <webprotege:RsnP9yQhhW5PyK6WhHka6B>K40.9</webprotege:RsnP9yQhhW5PyK6WhHka6B>
+        <rdfs:label xml:lang="en">Diagnosis_Hernia</rdfs:label>
+        <rdfs:label xml:lang="ru">Диагноз_Грыжа</rdfs:label>
+    </owl:NamedIndividual>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi -->
+
