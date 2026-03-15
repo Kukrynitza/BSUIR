@@ -7,3 +7,7 @@ LABA1.1PPOIS.vcxproj.user
 .googletest
 .idea
 .venv
+__pycache__
+yallist
+node_modules
+course-3-semester-2
