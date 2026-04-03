@@ -7,6 +7,7 @@
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
      ontologyIRI="urn:webprotege:ontology:5b70bd51-1abc-4cfa-8344-db77040bcb5f">
     <Prefix name="" IRI="urn:webprotege:ontology:5b70bd51-1abc-4cfa-8344-db77040bcb5f#"/>
+    <Prefix name="obo" IRI="http://purl.obolibrary.org/obo/"/>
     <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
     <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
     <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
@@ -40,6 +41,9 @@
         <Class abbreviatedIRI="webprotege:RBuLo0O7iJSYLiiHSBToShk"/>
     </Declaration>
     <Declaration>
+        <Class abbreviatedIRI="webprotege:RDisease00Class"/>
+    </Declaration>
+    <Declaration>
         <Class abbreviatedIRI="webprotege:RR7yJUv6Sq0uAMvRGRbrpG"/>
     </Declaration>
     <Declaration>
@@ -47,6 +51,12 @@
     </Declaration>
     <Declaration>
         <Class abbreviatedIRI="webprotege:RyvtzMQDMiySHahWYAuqX2"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty abbreviatedIRI="obo:RO_0002233"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty abbreviatedIRI="obo:usesDevice"/>
     </Declaration>
     <Declaration>
         <ObjectProperty abbreviatedIRI="webprotege:R7yB1zjrhOKuXJ0DExdurTK"/>
@@ -62,6 +72,33 @@
     </Declaration>
     <Declaration>
         <ObjectProperty abbreviatedIRI="webprotege:RDI1o26gYHJ240QNrUocEhh"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty abbreviatedIRI="obo:deviceMaterial"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty abbreviatedIRI="obo:deviceModel"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty abbreviatedIRI="obo:diseaseCode"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty abbreviatedIRI="obo:organName"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty abbreviatedIRI="obo:patientName"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty abbreviatedIRI="obo:procedureDuration"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty abbreviatedIRI="obo:severityLevel"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty abbreviatedIRI="obo:symptoms"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty abbreviatedIRI="obo:treatmentDurationDays"/>
     </Declaration>
     <Declaration>
         <DataProperty abbreviatedIRI="webprotege:R3InGd3smUuQbwJC208C90"/>
@@ -118,7 +155,46 @@
         <DataProperty abbreviatedIRI="webprotege:Re8kWHkcAh93khLtPgLdtj"/>
     </Declaration>
     <Declaration>
+        <DataProperty abbreviatedIRI="webprotege:RpatientName"/>
+    </Declaration>
+    <Declaration>
         <DataProperty abbreviatedIRI="webprotege:RsnP9yQhhW5PyK6WhHka6B"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual abbreviatedIRI="obo:COB_Appendectomy"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual abbreviatedIRI="obo:COB_Appendix"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual abbreviatedIRI="obo:COB_Cholecystectomy"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual abbreviatedIRI="obo:COB_Forceps"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual abbreviatedIRI="obo:COB_Gallbladder"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual abbreviatedIRI="obo:COB_Heart"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual abbreviatedIRI="obo:COB_Hernioplasty"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual abbreviatedIRI="obo:COB_Scalpel"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual abbreviatedIRI="obo:COB_SutureKit"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual abbreviatedIRI="obo:OGMS_Appendicitis"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual abbreviatedIRI="obo:OGMS_Hernia"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual abbreviatedIRI="obo:OGMS_Pneumonia"/>
     </Declaration>
     <Declaration>
         <NamedIndividual abbreviatedIRI="webprotege:R6Srcvm10M1d78Bg7AC5Hl"/>
@@ -178,6 +254,15 @@
         <NamedIndividual abbreviatedIRI="webprotege:RDhY53jXkdaphaAFU07tux3"/>
     </Declaration>
     <Declaration>
+        <NamedIndividual abbreviatedIRI="webprotege:RDiseaseAppendicitis"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual abbreviatedIRI="webprotege:RDiseaseHernia"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual abbreviatedIRI="webprotege:RDiseasePneumonia"/>
+    </Declaration>
+    <Declaration>
         <NamedIndividual abbreviatedIRI="webprotege:RDy5MvGPs589JLvf6b3opCw"/>
     </Declaration>
     <Declaration>
@@ -195,10 +280,65 @@
     <Declaration>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
     </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="obo:COB_00001300"/>
+    </Declaration>
     <SubClassOf>
         <Class abbreviatedIRI="webprotege:RBuLo0O7iJSYLiiHSBToShk"/>
         <Class abbreviatedIRI="webprotege:RwUDW8R7ZTGH9CLUrogRZ9"/>
     </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="webprotege:RDisease00Class"/>
+        <Class abbreviatedIRI="owl:Thing"/>
+    </SubClassOf>
+    <ClassAssertion>
+        <Class abbreviatedIRI="obo:COB_0000082"/>
+        <NamedIndividual abbreviatedIRI="obo:COB_Appendectomy"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="obo:BFO_0000040"/>
+        <NamedIndividual abbreviatedIRI="obo:COB_Appendix"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="obo:COB_0000082"/>
+        <NamedIndividual abbreviatedIRI="obo:COB_Cholecystectomy"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="obo:COB_00001300"/>
+        <NamedIndividual abbreviatedIRI="obo:COB_Forceps"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="obo:BFO_0000040"/>
+        <NamedIndividual abbreviatedIRI="obo:COB_Gallbladder"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="obo:BFO_0000040"/>
+        <NamedIndividual abbreviatedIRI="obo:COB_Heart"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="obo:COB_0000082"/>
+        <NamedIndividual abbreviatedIRI="obo:COB_Hernioplasty"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="obo:COB_00001300"/>
+        <NamedIndividual abbreviatedIRI="obo:COB_Scalpel"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="obo:COB_00001300"/>
+        <NamedIndividual abbreviatedIRI="obo:COB_SutureKit"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="obo:OGMS_0000031"/>
+        <NamedIndividual abbreviatedIRI="obo:OGMS_Appendicitis"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="obo:OGMS_0000031"/>
+        <NamedIndividual abbreviatedIRI="obo:OGMS_Hernia"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="obo:OGMS_0000031"/>
+        <NamedIndividual abbreviatedIRI="obo:OGMS_Pneumonia"/>
+    </ClassAssertion>
     <ClassAssertion>
         <Class abbreviatedIRI="webprotege:RBTSjB09a1vyU36jqIdMOsU"/>
         <NamedIndividual abbreviatedIRI="webprotege:R6Srcvm10M1d78Bg7AC5Hl"/>
@@ -268,6 +408,30 @@
         <NamedIndividual abbreviatedIRI="webprotege:RDhY53jXkdaphaAFU07tux3"/>
     </ClassAssertion>
     <ClassAssertion>
+        <Class abbreviatedIRI="obo:Disease"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RDiseaseAppendicitis"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="webprotege:RDisease00Class"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RDiseaseAppendicitis"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="obo:Disease"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RDiseaseHernia"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="webprotege:RDisease00Class"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RDiseaseHernia"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="obo:Disease"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RDiseasePneumonia"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="webprotege:RDisease00Class"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RDiseasePneumonia"/>
+    </ClassAssertion>
+    <ClassAssertion>
         <Class abbreviatedIRI="webprotege:RB678UqaapfEHyHHe926iaR"/>
         <NamedIndividual abbreviatedIRI="webprotege:RDy5MvGPs589JLvf6b3opCw"/>
     </ClassAssertion>
@@ -287,6 +451,36 @@
         <Class abbreviatedIRI="webprotege:RBhid6NFXGiWvLsEHzcKYCS"/>
         <NamedIndividual abbreviatedIRI="webprotege:Rzhh9qpHJLFNo6TaUCfqJK"/>
     </ClassAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty abbreviatedIRI="obo:RO_0002233"/>
+        <NamedIndividual abbreviatedIRI="obo:COB_Appendectomy"/>
+        <NamedIndividual abbreviatedIRI="obo:COB_Appendix"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty abbreviatedIRI="obo:usesDevice"/>
+        <NamedIndividual abbreviatedIRI="obo:COB_Appendectomy"/>
+        <NamedIndividual abbreviatedIRI="obo:COB_Scalpel"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty abbreviatedIRI="obo:RO_0002233"/>
+        <NamedIndividual abbreviatedIRI="obo:COB_Cholecystectomy"/>
+        <NamedIndividual abbreviatedIRI="obo:COB_Gallbladder"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty abbreviatedIRI="obo:usesDevice"/>
+        <NamedIndividual abbreviatedIRI="obo:COB_Cholecystectomy"/>
+        <NamedIndividual abbreviatedIRI="obo:COB_SutureKit"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty abbreviatedIRI="obo:RO_0002233"/>
+        <NamedIndividual abbreviatedIRI="obo:COB_Hernioplasty"/>
+        <NamedIndividual abbreviatedIRI="obo:COB_Heart"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty abbreviatedIRI="obo:usesDevice"/>
+        <NamedIndividual abbreviatedIRI="obo:COB_Hernioplasty"/>
+        <NamedIndividual abbreviatedIRI="obo:COB_Forceps"/>
+    </ObjectPropertyAssertion>
     <ObjectPropertyAssertion>
         <ObjectProperty abbreviatedIRI="webprotege:RDI1o26gYHJ240QNrUocEhh"/>
         <NamedIndividual abbreviatedIRI="webprotege:R70oea8VrWSLYdq5zT5c33K"/>
@@ -317,6 +511,96 @@
         <NamedIndividual abbreviatedIRI="webprotege:RTtjYb5zdKYfAnzQn8KM59"/>
         <NamedIndividual abbreviatedIRI="webprotege:R7ro5X5UctfqvE1hoJbgYSW"/>
     </ObjectPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty abbreviatedIRI="obo:procedureDuration"/>
+        <NamedIndividual abbreviatedIRI="obo:COB_Appendectomy"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">45</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty abbreviatedIRI="obo:organName"/>
+        <NamedIndividual abbreviatedIRI="obo:COB_Appendix"/>
+        <Literal>Appendix</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty abbreviatedIRI="obo:procedureDuration"/>
+        <NamedIndividual abbreviatedIRI="obo:COB_Cholecystectomy"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">90</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty abbreviatedIRI="obo:deviceMaterial"/>
+        <NamedIndividual abbreviatedIRI="obo:COB_Forceps"/>
+        <Literal>Titanium</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty abbreviatedIRI="obo:deviceModel"/>
+        <NamedIndividual abbreviatedIRI="obo:COB_Forceps"/>
+        <Literal>Forceps-150</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty abbreviatedIRI="obo:organName"/>
+        <NamedIndividual abbreviatedIRI="obo:COB_Gallbladder"/>
+        <Literal>Gallbladder</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty abbreviatedIRI="obo:organName"/>
+        <NamedIndividual abbreviatedIRI="obo:COB_Heart"/>
+        <Literal>Heart</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty abbreviatedIRI="obo:procedureDuration"/>
+        <NamedIndividual abbreviatedIRI="obo:COB_Hernioplasty"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">60</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty abbreviatedIRI="obo:deviceMaterial"/>
+        <NamedIndividual abbreviatedIRI="obo:COB_Scalpel"/>
+        <Literal>Stainless Steel</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty abbreviatedIRI="obo:deviceModel"/>
+        <NamedIndividual abbreviatedIRI="obo:COB_Scalpel"/>
+        <Literal>Scalpel-200</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty abbreviatedIRI="obo:deviceMaterial"/>
+        <NamedIndividual abbreviatedIRI="obo:COB_SutureKit"/>
+        <Literal>Silk</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty abbreviatedIRI="obo:deviceModel"/>
+        <NamedIndividual abbreviatedIRI="obo:COB_SutureKit"/>
+        <Literal>SuturePro</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty abbreviatedIRI="obo:symptoms"/>
+        <NamedIndividual abbreviatedIRI="obo:OGMS_Appendicitis"/>
+        <Literal>abdominal pain, fever, nausea</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty abbreviatedIRI="obo:treatmentDurationDays"/>
+        <NamedIndividual abbreviatedIRI="obo:OGMS_Appendicitis"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">45</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty abbreviatedIRI="obo:symptoms"/>
+        <NamedIndividual abbreviatedIRI="obo:OGMS_Hernia"/>
+        <Literal>bulging, discomfort</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty abbreviatedIRI="obo:treatmentDurationDays"/>
+        <NamedIndividual abbreviatedIRI="obo:OGMS_Hernia"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">30</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty abbreviatedIRI="obo:symptoms"/>
+        <NamedIndividual abbreviatedIRI="obo:OGMS_Pneumonia"/>
+        <Literal>cough, fever, chest pain</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty abbreviatedIRI="obo:treatmentDurationDays"/>
+        <NamedIndividual abbreviatedIRI="obo:OGMS_Pneumonia"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">60</Literal>
+    </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty abbreviatedIRI="webprotege:R3InGd3smUuQbwJC208C90"/>
         <NamedIndividual abbreviatedIRI="webprotege:R6Srcvm10M1d78Bg7AC5Hl"/>
@@ -463,6 +747,51 @@
         <Literal>Cardiosurgeon</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
+        <DataProperty abbreviatedIRI="obo:diseaseCode"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RDiseaseAppendicitis"/>
+        <Literal>K35.8</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty abbreviatedIRI="obo:patientName"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RDiseaseAppendicitis"/>
+        <Literal>Kozlov</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty abbreviatedIRI="obo:severityLevel"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RDiseaseAppendicitis"/>
+        <Literal>High</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty abbreviatedIRI="obo:diseaseCode"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RDiseaseHernia"/>
+        <Literal>K40.9</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty abbreviatedIRI="obo:patientName"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RDiseaseHernia"/>
+        <Literal>Sidorov</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty abbreviatedIRI="obo:severityLevel"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RDiseaseHernia"/>
+        <Literal>Medium</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty abbreviatedIRI="obo:diseaseCode"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RDiseasePneumonia"/>
+        <Literal>J18.9</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty abbreviatedIRI="obo:patientName"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RDiseasePneumonia"/>
+        <Literal>Petrov</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty abbreviatedIRI="obo:severityLevel"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RDiseasePneumonia"/>
+        <Literal>High</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
         <DataProperty abbreviatedIRI="webprotege:R7LHdjt54U6Gf0faiem0QEd"/>
         <NamedIndividual abbreviatedIRI="webprotege:RDy5MvGPs589JLvf6b3opCw"/>
         <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">8</Literal>
@@ -544,6 +873,18 @@
         <Class abbreviatedIRI="webprotege:RBhid6NFXGiWvLsEHzcKYCS"/>
     </ObjectPropertyRange>
     <SubDataPropertyOf>
+        <DataProperty abbreviatedIRI="obo:diseaseCode"/>
+        <DataProperty abbreviatedIRI="owl:topDataProperty"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty abbreviatedIRI="obo:patientName"/>
+        <DataProperty abbreviatedIRI="owl:topDataProperty"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty abbreviatedIRI="obo:severityLevel"/>
+        <DataProperty abbreviatedIRI="owl:topDataProperty"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
         <DataProperty abbreviatedIRI="webprotege:R3InGd3smUuQbwJC208C90"/>
         <DataProperty abbreviatedIRI="owl:topDataProperty"/>
     </SubDataPropertyOf>
@@ -619,6 +960,18 @@
         <DataProperty abbreviatedIRI="webprotege:RsnP9yQhhW5PyK6WhHka6B"/>
         <DataProperty abbreviatedIRI="owl:topDataProperty"/>
     </SubDataPropertyOf>
+    <DataPropertyDomain>
+        <DataProperty abbreviatedIRI="obo:diseaseCode"/>
+        <Class abbreviatedIRI="webprotege:RDisease00Class"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty abbreviatedIRI="obo:patientName"/>
+        <Class abbreviatedIRI="webprotege:RDisease00Class"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty abbreviatedIRI="obo:severityLevel"/>
+        <Class abbreviatedIRI="webprotege:RDisease00Class"/>
+    </DataPropertyDomain>
     <DataPropertyDomain>
         <DataProperty abbreviatedIRI="webprotege:R3InGd3smUuQbwJC208C90"/>
         <Class abbreviatedIRI="webprotege:RBTSjB09a1vyU36jqIdMOsU"/>
@@ -696,6 +1049,18 @@
         <Class abbreviatedIRI="webprotege:RBhid6NFXGiWvLsEHzcKYCS"/>
     </DataPropertyDomain>
     <DataPropertyRange>
+        <DataProperty abbreviatedIRI="obo:diseaseCode"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty abbreviatedIRI="obo:patientName"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty abbreviatedIRI="obo:severityLevel"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
         <DataProperty abbreviatedIRI="webprotege:R3InGd3smUuQbwJC208C90"/>
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
@@ -771,6 +1136,81 @@
         <DataProperty abbreviatedIRI="webprotege:RsnP9yQhhW5PyK6WhHka6B"/>
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>obo:COB_Appendectomy</AbbreviatedIRI>
+        <Literal xml:lang="en">Appendectomy</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>obo:COB_Appendix</AbbreviatedIRI>
+        <Literal xml:lang="en">Appendix</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>obo:COB_Cholecystectomy</AbbreviatedIRI>
+        <Literal xml:lang="en">Cholecystectomy</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>obo:COB_Forceps</AbbreviatedIRI>
+        <Literal xml:lang="en">Forceps</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>obo:COB_Gallbladder</AbbreviatedIRI>
+        <Literal xml:lang="en">Gallbladder</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>obo:COB_Heart</AbbreviatedIRI>
+        <Literal xml:lang="en">Heart</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>obo:COB_Hernioplasty</AbbreviatedIRI>
+        <Literal xml:lang="en">Hernioplasty</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>obo:COB_Scalpel</AbbreviatedIRI>
+        <Literal xml:lang="en">Scalpel</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>obo:COB_SutureKit</AbbreviatedIRI>
+        <Literal xml:lang="en">SutureKit</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>obo:OGMS_Appendicitis</AbbreviatedIRI>
+        <Literal xml:lang="en">Appendicitis</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>obo:OGMS_Hernia</AbbreviatedIRI>
+        <Literal xml:lang="en">Hernia</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>obo:OGMS_Pneumonia</AbbreviatedIRI>
+        <Literal xml:lang="en">Pneumonia</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>obo:diseaseCode</AbbreviatedIRI>
+        <Literal xml:lang="en">diseaseCode</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>obo:patientName</AbbreviatedIRI>
+        <Literal xml:lang="en">patientName</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>obo:severityLevel</AbbreviatedIRI>
+        <Literal xml:lang="en">severityLevel</Literal>
+    </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <AbbreviatedIRI>webprotege:R3InGd3smUuQbwJC208C90</AbbreviatedIRI>
@@ -1200,6 +1640,46 @@
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <AbbreviatedIRI>webprotege:RDhbZfAozPZgMIoq8KaCfPT</AbbreviatedIRI>
         <Literal xml:lang="ru">размерЛезвия</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:RDisease00Class</AbbreviatedIRI>
+        <Literal xml:lang="en">Disease</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:RDisease00Class</AbbreviatedIRI>
+        <Literal xml:lang="ru">Заболевание</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:RDiseaseAppendicitis</AbbreviatedIRI>
+        <Literal xml:lang="en">Appendicitis</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:RDiseaseAppendicitis</AbbreviatedIRI>
+        <Literal xml:lang="ru">Аппендицит</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:RDiseaseHernia</AbbreviatedIRI>
+        <Literal xml:lang="en">Hernia</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:RDiseaseHernia</AbbreviatedIRI>
+        <Literal xml:lang="ru">Грыжа</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:RDiseasePneumonia</AbbreviatedIRI>
+        <Literal xml:lang="en">Pneumonia</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:RDiseasePneumonia</AbbreviatedIRI>
+        <Literal xml:lang="ru">Пневмония</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
