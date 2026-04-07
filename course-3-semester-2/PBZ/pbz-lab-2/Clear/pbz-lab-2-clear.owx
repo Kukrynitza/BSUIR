@@ -1,0 +1,2556 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="urn:webprotege:ontology:5b70bd51-1abc-4cfa-8344-db77040bcb5f"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="urn:webprotege:ontology:5b70bd51-1abc-4cfa-8344-db77040bcb5f">
+    <Prefix name="" IRI="urn:webprotege:ontology:5b70bd51-1abc-4cfa-8344-db77040bcb5f#"/>
+    <Prefix name="obo" IRI="http://purl.obolibrary.org/obo/"/>
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Prefix name="webprotege" IRI="http://webprotege.stanford.edu/"/>
+    <Import>http://purl.obolibrary.org/obo/cob/releases/2025-12-12/cob.owl</Import>
+    <Import>http://purl.obolibrary.org/obo/ogms/2021-08-19/ogms.owl</Import>
+    <Declaration>
+        <Class abbreviatedIRI="webprotege:R73pcrdxTGJxwkNBGojX8KO"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="webprotege:RB678UqaapfEHyHHe926iaR"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="webprotege:RBD0pBVbjNXq4gdELwJGpbs"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="webprotege:RBGi2Q82zaUdfXXTIG8rU0E"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="webprotege:RBTSjB09a1vyU36jqIdMOsU"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="webprotege:RBhid6NFXGiWvLsEHzcKYCS"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="webprotege:RDisease00Class"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="webprotege:RR7yJUv6Sq0uAMvRGRbrpG"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="webprotege:RScalpelLocal"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="webprotege:RSurgeryLocal"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="webprotege:RwUDW8R7ZTGH9CLUrogRZ9"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="webprotege:RyvtzMQDMiySHahWYAuqX2"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty abbreviatedIRI="obo:RO_0002233"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty abbreviatedIRI="obo:usesDevice"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty abbreviatedIRI="webprotege:R7yB1zjrhOKuXJ0DExdurTK"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty abbreviatedIRI="webprotege:R9B4CCJTvY3X2HAYmvgkk0t"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty abbreviatedIRI="webprotege:R9w2GzJWwEHMmdgKIBHhQmj"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty abbreviatedIRI="webprotege:RBIqKCX4aO71HDB2McnFEke"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty abbreviatedIRI="webprotege:RDI1o26gYHJ240QNrUocEhh"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty abbreviatedIRI="webprotege:RaffectsOrgan"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty abbreviatedIRI="webprotege:RassignedToSurgeon"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty abbreviatedIRI="webprotege:RhasComplication"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty abbreviatedIRI="webprotege:RhasDisease"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty abbreviatedIRI="webprotege:RperformedBy"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty abbreviatedIRI="webprotege:RtreatedWithSurgery"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty abbreviatedIRI="webprotege:RusedBySurgeon"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty abbreviatedIRI="webprotege:RusedInSurgery"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty abbreviatedIRI="obo:deviceMaterial"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty abbreviatedIRI="obo:deviceModel"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty abbreviatedIRI="obo:diseaseCode"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty abbreviatedIRI="obo:organName"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty abbreviatedIRI="obo:patientName"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty abbreviatedIRI="obo:procedureDuration"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty abbreviatedIRI="obo:severityLevel"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty abbreviatedIRI="obo:symptoms"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty abbreviatedIRI="obo:treatmentDurationDays"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty abbreviatedIRI="webprotege:R3InGd3smUuQbwJC208C90"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty abbreviatedIRI="webprotege:R7LHdjt54U6Gf0faiem0QEd"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty abbreviatedIRI="webprotege:R7bzVe9AhJu38uZy19Ji8Sw"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty abbreviatedIRI="webprotege:R8IDIodHqLIiaubffhHDW5e"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty abbreviatedIRI="webprotege:R8V5TjjkhLtfvl157a3AMiw"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty abbreviatedIRI="webprotege:R9Hn7PsOmzn8ElhTKPLXLvA"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty abbreviatedIRI="webprotege:R9cUfIK7ZFuk5oEkSvRSnp0"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty abbreviatedIRI="webprotege:R9m50uDuMG3hlNFOkX95Uyv"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty abbreviatedIRI="webprotege:RBhS7H4q8gqkqmo0Y1VGXxs"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty abbreviatedIRI="webprotege:RBwiARS2kS3E3O51AaNO1k8"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty abbreviatedIRI="webprotege:RDAcaNpxrCg2BGMCFaSNVEv"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty abbreviatedIRI="webprotege:RDY3yzozRCFffwhkbx60tGG"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty abbreviatedIRI="webprotege:RDhbZfAozPZgMIoq8KaCfPT"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty abbreviatedIRI="webprotege:REglVwkgwJh4iVMUCmgm8f"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty abbreviatedIRI="webprotege:RF6tUPASWVXEOZlGcbxU5Q"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty abbreviatedIRI="webprotege:RIC6WzN0pqLxUZeKOynaFe"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty abbreviatedIRI="webprotege:RQh3PhJPBlvxJuoRgf6pdP"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty abbreviatedIRI="webprotege:Rage"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty abbreviatedIRI="webprotege:RanesthesiaType"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty abbreviatedIRI="webprotege:RdiseaseIsChronic"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty abbreviatedIRI="webprotege:Re8kWHkcAh93khLtPgLdtj"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty abbreviatedIRI="webprotege:RhasAllergies"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty abbreviatedIRI="webprotege:Rmanufacturer"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty abbreviatedIRI="webprotege:RpatientName"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty abbreviatedIRI="webprotege:RrequiresAnesthesia"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty abbreviatedIRI="webprotege:RsnP9yQhhW5PyK6WhHka6B"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual abbreviatedIRI="webprotege:R6Srcvm10M1d78Bg7AC5Hl"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual abbreviatedIRI="webprotege:R7cC57836V3EEzIkeW5VYSF"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual abbreviatedIRI="webprotege:R7llz3LwrhCifcekaCPNxBM"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual abbreviatedIRI="webprotege:R7rqTUZ4gNSPho2084RlZpQ"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual abbreviatedIRI="webprotege:R8ZIkkfb45cZYVDvCMMpsYo"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual abbreviatedIRI="webprotege:R8qZJ51vMFXWppmRUIYbRAI"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual abbreviatedIRI="webprotege:R9FvPEcT9QrxRhIJHCbxHhc"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual abbreviatedIRI="webprotege:R9UipTWvh1oTue1OZ5A8QpS"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual abbreviatedIRI="webprotege:R9tbwztgQGfPLQj7pwpX6gf"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual abbreviatedIRI="webprotege:RB1zaGR0X1pSXP5aUozRFyL"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual abbreviatedIRI="webprotege:RBoNn9SDJX5zcegYy2Rwhm9"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual abbreviatedIRI="webprotege:RBz0CZEmTOl07r9jaUJS1i7"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual abbreviatedIRI="webprotege:RDhY53jXkdaphaAFU07tux3"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual abbreviatedIRI="webprotege:RDiseaseAppendicitis"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual abbreviatedIRI="webprotege:RDiseaseAppendicitisNew"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual abbreviatedIRI="webprotege:RDiseaseDiabetes"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual abbreviatedIRI="webprotege:RDiseaseHernia"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual abbreviatedIRI="webprotege:RDiseaseHerniaNew"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual abbreviatedIRI="webprotege:RDiseaseHypertension"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual abbreviatedIRI="webprotege:RDiseasePneumonia"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual abbreviatedIRI="webprotege:RDiseasePneumoniaNew"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual abbreviatedIRI="webprotege:RDy5MvGPs589JLvf6b3opCw"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual abbreviatedIRI="webprotege:RHlwVO6EmhoGBRDxSNMjZq"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual abbreviatedIRI="webprotege:ROrganAppendix"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual abbreviatedIRI="webprotege:ROrganIntestine"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual abbreviatedIRI="webprotege:ROrganLung"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual abbreviatedIRI="webprotege:ROrganPancreas"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual abbreviatedIRI="webprotege:ROrganVessels"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual abbreviatedIRI="webprotege:RPatientIvanov"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual abbreviatedIRI="webprotege:RPatientKozlov"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual abbreviatedIRI="webprotege:RPatientNovikov"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual abbreviatedIRI="webprotege:RPatientPetrov"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual abbreviatedIRI="webprotege:RPatientSidorov"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual abbreviatedIRI="webprotege:RScalpel001"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual abbreviatedIRI="webprotege:RScalpel002"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual abbreviatedIRI="webprotege:RScalpel003"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual abbreviatedIRI="webprotege:RScalpel004"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual abbreviatedIRI="webprotege:RScalpel005"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual abbreviatedIRI="webprotege:RSurgeonIvanova"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual abbreviatedIRI="webprotege:RSurgeonPetrov"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual abbreviatedIRI="webprotege:RSurgeonSidorova"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual abbreviatedIRI="webprotege:RSurgeryAppendectomy"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual abbreviatedIRI="webprotege:RSurgeryBiopsy"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual abbreviatedIRI="webprotege:RSurgeryCholecystectomy"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual abbreviatedIRI="webprotege:RSurgeryHernioplasty"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual abbreviatedIRI="webprotege:RSurgerySuturing"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual abbreviatedIRI="webprotege:RTtjYb5zdKYfAnzQn8KM59"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual abbreviatedIRI="webprotege:Rs2qxGbzYlgOjWCEaeXPw4"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual abbreviatedIRI="webprotege:Rzhh9qpHJLFNo6TaUCfqJK"/>
+    </Declaration>
+    <Declaration>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+    </Declaration>
+    <SubClassOf>
+        <Class abbreviatedIRI="webprotege:RDisease00Class"/>
+        <Class abbreviatedIRI="owl:Thing"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="webprotege:RScalpelLocal"/>
+        <Class abbreviatedIRI="webprotege:RwUDW8R7ZTGH9CLUrogRZ9"/>
+    </SubClassOf>
+    <ClassAssertion>
+        <Class abbreviatedIRI="webprotege:RBTSjB09a1vyU36jqIdMOsU"/>
+        <NamedIndividual abbreviatedIRI="webprotege:R6Srcvm10M1d78Bg7AC5Hl"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="webprotege:RBGi2Q82zaUdfXXTIG8rU0E"/>
+        <NamedIndividual abbreviatedIRI="webprotege:R8ZIkkfb45cZYVDvCMMpsYo"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="webprotege:RwUDW8R7ZTGH9CLUrogRZ9"/>
+        <NamedIndividual abbreviatedIRI="webprotege:R9FvPEcT9QrxRhIJHCbxHhc"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="webprotege:RBhid6NFXGiWvLsEHzcKYCS"/>
+        <NamedIndividual abbreviatedIRI="webprotege:R9UipTWvh1oTue1OZ5A8QpS"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="webprotege:RR7yJUv6Sq0uAMvRGRbrpG"/>
+        <NamedIndividual abbreviatedIRI="webprotege:R9tbwztgQGfPLQj7pwpX6gf"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="webprotege:RBTSjB09a1vyU36jqIdMOsU"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RB1zaGR0X1pSXP5aUozRFyL"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="webprotege:RBGi2Q82zaUdfXXTIG8rU0E"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RBoNn9SDJX5zcegYy2Rwhm9"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="webprotege:RwUDW8R7ZTGH9CLUrogRZ9"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RBz0CZEmTOl07r9jaUJS1i7"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="webprotege:RB678UqaapfEHyHHe926iaR"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RDhY53jXkdaphaAFU07tux3"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="webprotege:RDisease00Class"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RDiseaseAppendicitis"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="webprotege:RDisease00Class"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RDiseaseAppendicitisNew"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="webprotege:RDisease00Class"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RDiseaseDiabetes"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="webprotege:RDisease00Class"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RDiseaseHernia"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="webprotege:RDisease00Class"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RDiseaseHerniaNew"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="webprotege:RDisease00Class"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RDiseaseHypertension"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="webprotege:RDisease00Class"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RDiseasePneumonia"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="webprotege:RDisease00Class"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RDiseasePneumoniaNew"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="webprotege:RB678UqaapfEHyHHe926iaR"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RDy5MvGPs589JLvf6b3opCw"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="webprotege:RR7yJUv6Sq0uAMvRGRbrpG"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RHlwVO6EmhoGBRDxSNMjZq"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="webprotege:RBD0pBVbjNXq4gdELwJGpbs"/>
+        <NamedIndividual abbreviatedIRI="webprotege:ROrganAppendix"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="webprotege:RBD0pBVbjNXq4gdELwJGpbs"/>
+        <NamedIndividual abbreviatedIRI="webprotege:ROrganIntestine"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="webprotege:RBD0pBVbjNXq4gdELwJGpbs"/>
+        <NamedIndividual abbreviatedIRI="webprotege:ROrganLung"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="webprotege:RBD0pBVbjNXq4gdELwJGpbs"/>
+        <NamedIndividual abbreviatedIRI="webprotege:ROrganPancreas"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="webprotege:RBD0pBVbjNXq4gdELwJGpbs"/>
+        <NamedIndividual abbreviatedIRI="webprotege:ROrganVessels"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="webprotege:R73pcrdxTGJxwkNBGojX8KO"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RPatientIvanov"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="webprotege:R73pcrdxTGJxwkNBGojX8KO"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RPatientKozlov"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="webprotege:R73pcrdxTGJxwkNBGojX8KO"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RPatientNovikov"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="webprotege:R73pcrdxTGJxwkNBGojX8KO"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RPatientPetrov"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="webprotege:R73pcrdxTGJxwkNBGojX8KO"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RPatientSidorov"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="webprotege:RScalpelLocal"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RScalpel001"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="webprotege:RScalpelLocal"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RScalpel002"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="webprotege:RScalpelLocal"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RScalpel003"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="webprotege:RScalpelLocal"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RScalpel004"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="webprotege:RScalpelLocal"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RScalpel005"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="webprotege:RB678UqaapfEHyHHe926iaR"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RSurgeonIvanova"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="webprotege:RB678UqaapfEHyHHe926iaR"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RSurgeonPetrov"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="webprotege:RB678UqaapfEHyHHe926iaR"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RSurgeonSidorova"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="webprotege:RSurgeryLocal"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RSurgeryAppendectomy"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="webprotege:RSurgeryLocal"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RSurgeryBiopsy"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="webprotege:RSurgeryLocal"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RSurgeryCholecystectomy"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="webprotege:RSurgeryLocal"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RSurgeryHernioplasty"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="webprotege:RSurgeryLocal"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RSurgerySuturing"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="webprotege:RyvtzMQDMiySHahWYAuqX2"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RTtjYb5zdKYfAnzQn8KM59"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="webprotege:RBD0pBVbjNXq4gdELwJGpbs"/>
+        <NamedIndividual abbreviatedIRI="webprotege:Rs2qxGbzYlgOjWCEaeXPw4"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="webprotege:RBhid6NFXGiWvLsEHzcKYCS"/>
+        <NamedIndividual abbreviatedIRI="webprotege:Rzhh9qpHJLFNo6TaUCfqJK"/>
+    </ClassAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty abbreviatedIRI="webprotege:R9w2GzJWwEHMmdgKIBHhQmj"/>
+        <NamedIndividual abbreviatedIRI="webprotege:R7llz3LwrhCifcekaCPNxBM"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RSurgeryAppendectomy"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty abbreviatedIRI="webprotege:RaffectsOrgan"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RDiseaseAppendicitisNew"/>
+        <NamedIndividual abbreviatedIRI="webprotege:ROrganAppendix"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty abbreviatedIRI="webprotege:RtreatedWithSurgery"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RDiseaseAppendicitisNew"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RSurgeryAppendectomy"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty abbreviatedIRI="webprotege:RaffectsOrgan"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RDiseaseDiabetes"/>
+        <NamedIndividual abbreviatedIRI="webprotege:ROrganPancreas"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty abbreviatedIRI="webprotege:RtreatedWithSurgery"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RDiseaseDiabetes"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RSurgerySuturing"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty abbreviatedIRI="webprotege:RaffectsOrgan"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RDiseaseHerniaNew"/>
+        <NamedIndividual abbreviatedIRI="webprotege:ROrganIntestine"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty abbreviatedIRI="webprotege:RtreatedWithSurgery"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RDiseaseHerniaNew"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RSurgeryHernioplasty"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty abbreviatedIRI="webprotege:RaffectsOrgan"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RDiseaseHypertension"/>
+        <NamedIndividual abbreviatedIRI="webprotege:ROrganVessels"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty abbreviatedIRI="webprotege:RtreatedWithSurgery"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RDiseaseHypertension"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RSurgeryBiopsy"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty abbreviatedIRI="webprotege:RaffectsOrgan"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RDiseasePneumoniaNew"/>
+        <NamedIndividual abbreviatedIRI="webprotege:ROrganLung"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty abbreviatedIRI="webprotege:RtreatedWithSurgery"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RDiseasePneumoniaNew"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RSurgeryBiopsy"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty abbreviatedIRI="webprotege:RDI1o26gYHJ240QNrUocEhh"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RPatientIvanov"/>
+        <NamedIndividual abbreviatedIRI="webprotege:R9UipTWvh1oTue1OZ5A8QpS"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty abbreviatedIRI="webprotege:RassignedToSurgeon"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RPatientIvanov"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RDhY53jXkdaphaAFU07tux3"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty abbreviatedIRI="webprotege:RhasDisease"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RPatientIvanov"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RDiseaseAppendicitisNew"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty abbreviatedIRI="webprotege:RDI1o26gYHJ240QNrUocEhh"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RPatientKozlov"/>
+        <NamedIndividual abbreviatedIRI="webprotege:Rzhh9qpHJLFNo6TaUCfqJK"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty abbreviatedIRI="webprotege:RassignedToSurgeon"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RPatientKozlov"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RSurgeonSidorova"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty abbreviatedIRI="webprotege:RhasDisease"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RPatientKozlov"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RDiseaseDiabetes"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty abbreviatedIRI="webprotege:RDI1o26gYHJ240QNrUocEhh"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RPatientNovikov"/>
+        <NamedIndividual abbreviatedIRI="webprotege:R9UipTWvh1oTue1OZ5A8QpS"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty abbreviatedIRI="webprotege:RassignedToSurgeon"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RPatientNovikov"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RDy5MvGPs589JLvf6b3opCw"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty abbreviatedIRI="webprotege:RhasDisease"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RPatientNovikov"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RDiseaseHypertension"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty abbreviatedIRI="webprotege:RDI1o26gYHJ240QNrUocEhh"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RPatientPetrov"/>
+        <NamedIndividual abbreviatedIRI="webprotege:Rzhh9qpHJLFNo6TaUCfqJK"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty abbreviatedIRI="webprotege:RassignedToSurgeon"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RPatientPetrov"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RSurgeonIvanova"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty abbreviatedIRI="webprotege:RhasDisease"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RPatientPetrov"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RDiseaseHerniaNew"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty abbreviatedIRI="webprotege:RDI1o26gYHJ240QNrUocEhh"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RPatientSidorov"/>
+        <NamedIndividual abbreviatedIRI="webprotege:R9UipTWvh1oTue1OZ5A8QpS"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty abbreviatedIRI="webprotege:RassignedToSurgeon"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RPatientSidorov"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RSurgeonPetrov"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty abbreviatedIRI="webprotege:RhasDisease"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RPatientSidorov"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RDiseasePneumoniaNew"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty abbreviatedIRI="webprotege:RusedInSurgery"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RScalpel001"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RSurgeryAppendectomy"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty abbreviatedIRI="webprotege:RusedInSurgery"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RScalpel002"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RSurgeryHernioplasty"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty abbreviatedIRI="webprotege:RusedInSurgery"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RScalpel003"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RSurgeryCholecystectomy"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty abbreviatedIRI="webprotege:RusedInSurgery"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RScalpel004"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RSurgeryBiopsy"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty abbreviatedIRI="webprotege:RusedInSurgery"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RScalpel005"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RSurgerySuturing"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty abbreviatedIRI="webprotege:RhasComplication"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RSurgeryAppendectomy"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RTtjYb5zdKYfAnzQn8KM59"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty abbreviatedIRI="webprotege:RperformedBy"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RSurgeryAppendectomy"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RDhY53jXkdaphaAFU07tux3"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty abbreviatedIRI="webprotege:RrequiresAnesthesia"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RSurgeryAppendectomy"/>
+        <NamedIndividual abbreviatedIRI="webprotege:R6Srcvm10M1d78Bg7AC5Hl"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty abbreviatedIRI="webprotege:RhasComplication"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RSurgeryBiopsy"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RHlwVO6EmhoGBRDxSNMjZq"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty abbreviatedIRI="webprotege:RperformedBy"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RSurgeryBiopsy"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RSurgeonSidorova"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty abbreviatedIRI="webprotege:RrequiresAnesthesia"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RSurgeryBiopsy"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RB1zaGR0X1pSXP5aUozRFyL"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty abbreviatedIRI="webprotege:RhasComplication"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RSurgeryCholecystectomy"/>
+        <NamedIndividual abbreviatedIRI="webprotege:R9tbwztgQGfPLQj7pwpX6gf"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty abbreviatedIRI="webprotege:RperformedBy"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RSurgeryCholecystectomy"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RSurgeonPetrov"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty abbreviatedIRI="webprotege:RrequiresAnesthesia"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RSurgeryCholecystectomy"/>
+        <NamedIndividual abbreviatedIRI="webprotege:R6Srcvm10M1d78Bg7AC5Hl"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty abbreviatedIRI="webprotege:RhasComplication"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RSurgeryHernioplasty"/>
+        <NamedIndividual abbreviatedIRI="webprotege:R7llz3LwrhCifcekaCPNxBM"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty abbreviatedIRI="webprotege:RperformedBy"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RSurgeryHernioplasty"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RSurgeonIvanova"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty abbreviatedIRI="webprotege:RrequiresAnesthesia"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RSurgeryHernioplasty"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RB1zaGR0X1pSXP5aUozRFyL"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty abbreviatedIRI="webprotege:RhasComplication"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RSurgerySuturing"/>
+        <NamedIndividual abbreviatedIRI="webprotege:Rzhh9qpHJLFNo6TaUCfqJK"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty abbreviatedIRI="webprotege:RperformedBy"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RSurgerySuturing"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RDy5MvGPs589JLvf6b3opCw"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty abbreviatedIRI="webprotege:RrequiresAnesthesia"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RSurgerySuturing"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RB1zaGR0X1pSXP5aUozRFyL"/>
+    </ObjectPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty abbreviatedIRI="webprotege:R3InGd3smUuQbwJC208C90"/>
+        <NamedIndividual abbreviatedIRI="webprotege:R6Srcvm10M1d78Bg7AC5Hl"/>
+        <Literal>Propofol</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty abbreviatedIRI="webprotege:RIC6WzN0pqLxUZeKOynaFe"/>
+        <NamedIndividual abbreviatedIRI="webprotege:R6Srcvm10M1d78Bg7AC5Hl"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#decimal">200.0</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty abbreviatedIRI="webprotege:R9Hn7PsOmzn8ElhTKPLXLvA"/>
+        <NamedIndividual abbreviatedIRI="webprotege:R7cC57836V3EEzIkeW5VYSF"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">false</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty abbreviatedIRI="webprotege:REglVwkgwJh4iVMUCmgm8f"/>
+        <NamedIndividual abbreviatedIRI="webprotege:R7cC57836V3EEzIkeW5VYSF"/>
+        <Literal>Digestive</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty abbreviatedIRI="webprotege:R9m50uDuMG3hlNFOkX95Uyv"/>
+        <NamedIndividual abbreviatedIRI="webprotege:R7llz3LwrhCifcekaCPNxBM"/>
+        <Literal>High</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty abbreviatedIRI="webprotege:RDAcaNpxrCg2BGMCFaSNVEv"/>
+        <NamedIndividual abbreviatedIRI="webprotege:R8ZIkkfb45cZYVDvCMMpsYo"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">false</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty abbreviatedIRI="webprotege:RF6tUPASWVXEOZlGcbxU5Q"/>
+        <NamedIndividual abbreviatedIRI="webprotege:R8ZIkkfb45cZYVDvCMMpsYo"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">202</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty abbreviatedIRI="webprotege:RBhS7H4q8gqkqmo0Y1VGXxs"/>
+        <NamedIndividual abbreviatedIRI="webprotege:R9FvPEcT9QrxRhIJHCbxHhc"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#dateTime">2023-10-25T10:00:00</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty abbreviatedIRI="webprotege:RBwiARS2kS3E3O51AaNO1k8"/>
+        <NamedIndividual abbreviatedIRI="webprotege:R9FvPEcT9QrxRhIJHCbxHhc"/>
+        <Literal>Stainless_Steel</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty abbreviatedIRI="webprotege:R9cUfIK7ZFuk5oEkSvRSnp0"/>
+        <NamedIndividual abbreviatedIRI="webprotege:R9UipTWvh1oTue1OZ5A8QpS"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">false</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty abbreviatedIRI="webprotege:RsnP9yQhhW5PyK6WhHka6B"/>
+        <NamedIndividual abbreviatedIRI="webprotege:R9UipTWvh1oTue1OZ5A8QpS"/>
+        <Literal>K35.8</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty abbreviatedIRI="webprotege:RDY3yzozRCFffwhkbx60tGG"/>
+        <NamedIndividual abbreviatedIRI="webprotege:R9tbwztgQGfPLQj7pwpX6gf"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">false</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty abbreviatedIRI="webprotege:Re8kWHkcAh93khLtPgLdtj"/>
+        <NamedIndividual abbreviatedIRI="webprotege:R9tbwztgQGfPLQj7pwpX6gf"/>
+        <Literal>2-0</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty abbreviatedIRI="webprotege:R3InGd3smUuQbwJC208C90"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RB1zaGR0X1pSXP5aUozRFyL"/>
+        <Literal>Lidocaine</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty abbreviatedIRI="webprotege:RIC6WzN0pqLxUZeKOynaFe"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RB1zaGR0X1pSXP5aUozRFyL"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#decimal">50.0</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty abbreviatedIRI="webprotege:RDAcaNpxrCg2BGMCFaSNVEv"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RBoNn9SDJX5zcegYy2Rwhm9"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">true</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty abbreviatedIRI="webprotege:RF6tUPASWVXEOZlGcbxU5Q"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RBoNn9SDJX5zcegYy2Rwhm9"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">101</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty abbreviatedIRI="webprotege:RBhS7H4q8gqkqmo0Y1VGXxs"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RBz0CZEmTOl07r9jaUJS1i7"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#dateTime">2023-10-24T15:30:00</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty abbreviatedIRI="webprotege:RBwiARS2kS3E3O51AaNO1k8"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RBz0CZEmTOl07r9jaUJS1i7"/>
+        <Literal>Titanium</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty abbreviatedIRI="webprotege:R7LHdjt54U6Gf0faiem0QEd"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RDhY53jXkdaphaAFU07tux3"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">15</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty abbreviatedIRI="webprotege:R7bzVe9AhJu38uZy19Ji8Sw"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RDhY53jXkdaphaAFU07tux3"/>
+        <Literal>Cardiosurgeon</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty abbreviatedIRI="webprotege:R9m50uDuMG3hlNFOkX95Uyv"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RDiseaseAppendicitis"/>
+        <Literal>High</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty abbreviatedIRI="webprotege:RsnP9yQhhW5PyK6WhHka6B"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RDiseaseAppendicitis"/>
+        <Literal>K35.8</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty abbreviatedIRI="webprotege:R9m50uDuMG3hlNFOkX95Uyv"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RDiseaseAppendicitisNew"/>
+        <Literal>High</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty abbreviatedIRI="webprotege:RdiseaseIsChronic"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RDiseaseAppendicitisNew"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">false</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty abbreviatedIRI="webprotege:RsnP9yQhhW5PyK6WhHka6B"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RDiseaseAppendicitisNew"/>
+        <Literal>K35.9</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty abbreviatedIRI="webprotege:R9m50uDuMG3hlNFOkX95Uyv"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RDiseaseDiabetes"/>
+        <Literal>Medium</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty abbreviatedIRI="webprotege:RdiseaseIsChronic"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RDiseaseDiabetes"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">true</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty abbreviatedIRI="webprotege:RsnP9yQhhW5PyK6WhHka6B"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RDiseaseDiabetes"/>
+        <Literal>E11.9</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty abbreviatedIRI="webprotege:R9m50uDuMG3hlNFOkX95Uyv"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RDiseaseHernia"/>
+        <Literal>Medium</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty abbreviatedIRI="webprotege:RsnP9yQhhW5PyK6WhHka6B"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RDiseaseHernia"/>
+        <Literal>K40.9</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty abbreviatedIRI="webprotege:R9m50uDuMG3hlNFOkX95Uyv"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RDiseaseHerniaNew"/>
+        <Literal>Medium</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty abbreviatedIRI="webprotege:RdiseaseIsChronic"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RDiseaseHerniaNew"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">false</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty abbreviatedIRI="webprotege:RsnP9yQhhW5PyK6WhHka6B"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RDiseaseHerniaNew"/>
+        <Literal>K40.9</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty abbreviatedIRI="webprotege:R9m50uDuMG3hlNFOkX95Uyv"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RDiseaseHypertension"/>
+        <Literal>Low</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty abbreviatedIRI="webprotege:RdiseaseIsChronic"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RDiseaseHypertension"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">true</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty abbreviatedIRI="webprotege:RsnP9yQhhW5PyK6WhHka6B"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RDiseaseHypertension"/>
+        <Literal>I10</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty abbreviatedIRI="webprotege:R9m50uDuMG3hlNFOkX95Uyv"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RDiseasePneumonia"/>
+        <Literal>High</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty abbreviatedIRI="webprotege:RsnP9yQhhW5PyK6WhHka6B"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RDiseasePneumonia"/>
+        <Literal>J18.9</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty abbreviatedIRI="webprotege:R9m50uDuMG3hlNFOkX95Uyv"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RDiseasePneumoniaNew"/>
+        <Literal>High</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty abbreviatedIRI="webprotege:RdiseaseIsChronic"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RDiseasePneumoniaNew"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">false</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty abbreviatedIRI="webprotege:RsnP9yQhhW5PyK6WhHka6B"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RDiseasePneumoniaNew"/>
+        <Literal>J18.9</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty abbreviatedIRI="webprotege:R7LHdjt54U6Gf0faiem0QEd"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RDy5MvGPs589JLvf6b3opCw"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">8</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty abbreviatedIRI="webprotege:R7bzVe9AhJu38uZy19Ji8Sw"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RDy5MvGPs589JLvf6b3opCw"/>
+        <Literal>Neurosurgeon</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty abbreviatedIRI="webprotege:RDY3yzozRCFffwhkbx60tGG"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RHlwVO6EmhoGBRDxSNMjZq"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">true</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty abbreviatedIRI="webprotege:Re8kWHkcAh93khLtPgLdtj"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RHlwVO6EmhoGBRDxSNMjZq"/>
+        <Literal>3-0</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty abbreviatedIRI="webprotege:R9Hn7PsOmzn8ElhTKPLXLvA"/>
+        <NamedIndividual abbreviatedIRI="webprotege:ROrganAppendix"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">false</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty abbreviatedIRI="webprotege:REglVwkgwJh4iVMUCmgm8f"/>
+        <NamedIndividual abbreviatedIRI="webprotege:ROrganAppendix"/>
+        <Literal>Digestive</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty abbreviatedIRI="webprotege:R9Hn7PsOmzn8ElhTKPLXLvA"/>
+        <NamedIndividual abbreviatedIRI="webprotege:ROrganIntestine"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">false</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty abbreviatedIRI="webprotege:REglVwkgwJh4iVMUCmgm8f"/>
+        <NamedIndividual abbreviatedIRI="webprotege:ROrganIntestine"/>
+        <Literal>Digestive</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty abbreviatedIRI="webprotege:R9Hn7PsOmzn8ElhTKPLXLvA"/>
+        <NamedIndividual abbreviatedIRI="webprotege:ROrganLung"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">false</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty abbreviatedIRI="webprotege:REglVwkgwJh4iVMUCmgm8f"/>
+        <NamedIndividual abbreviatedIRI="webprotege:ROrganLung"/>
+        <Literal>Respiratory</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty abbreviatedIRI="webprotege:R9Hn7PsOmzn8ElhTKPLXLvA"/>
+        <NamedIndividual abbreviatedIRI="webprotege:ROrganPancreas"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">false</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty abbreviatedIRI="webprotege:REglVwkgwJh4iVMUCmgm8f"/>
+        <NamedIndividual abbreviatedIRI="webprotege:ROrganPancreas"/>
+        <Literal>Endocrine</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty abbreviatedIRI="webprotege:R9Hn7PsOmzn8ElhTKPLXLvA"/>
+        <NamedIndividual abbreviatedIRI="webprotege:ROrganVessels"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">false</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty abbreviatedIRI="webprotege:REglVwkgwJh4iVMUCmgm8f"/>
+        <NamedIndividual abbreviatedIRI="webprotege:ROrganVessels"/>
+        <Literal>Cardiovascular</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty abbreviatedIRI="webprotege:R8IDIodHqLIiaubffhHDW5e"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RPatientIvanov"/>
+        <Literal>A+</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty abbreviatedIRI="webprotege:R8IDIodHqLIiaubffhHDW5e"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RPatientKozlov"/>
+        <Literal>AB+</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty abbreviatedIRI="webprotege:R8IDIodHqLIiaubffhHDW5e"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RPatientNovikov"/>
+        <Literal>A-</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty abbreviatedIRI="webprotege:R8IDIodHqLIiaubffhHDW5e"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RPatientPetrov"/>
+        <Literal>B-</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty abbreviatedIRI="webprotege:R8IDIodHqLIiaubffhHDW5e"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RPatientSidorov"/>
+        <Literal>O+</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty abbreviatedIRI="webprotege:Rage"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RPatientSidorov"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">28</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty abbreviatedIRI="webprotege:RhasAllergies"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RPatientSidorov"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">false</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty abbreviatedIRI="webprotege:RDhbZfAozPZgMIoq8KaCfPT"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RScalpel001"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#decimal">15.0</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty abbreviatedIRI="webprotege:RQh3PhJPBlvxJuoRgf6pdP"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RScalpel001"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">true</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty abbreviatedIRI="webprotege:Rmanufacturer"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RScalpel001"/>
+        <Literal>MedTech</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty abbreviatedIRI="webprotege:Rmanufacturer"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RScalpel002"/>
+        <Literal>SurgPro</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty abbreviatedIRI="webprotege:Rmanufacturer"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RScalpel003"/>
+        <Literal>BladeCo</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty abbreviatedIRI="webprotege:Rmanufacturer"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RScalpel004"/>
+        <Literal>MedTech</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty abbreviatedIRI="webprotege:Rmanufacturer"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RScalpel005"/>
+        <Literal>CutEdge</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty abbreviatedIRI="webprotege:R7LHdjt54U6Gf0faiem0QEd"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RSurgeonIvanova"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">12</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty abbreviatedIRI="webprotege:R7bzVe9AhJu38uZy19Ji8Sw"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RSurgeonIvanova"/>
+        <Literal>Cardiosurgeon</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty abbreviatedIRI="webprotege:R7LHdjt54U6Gf0faiem0QEd"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RSurgeonPetrov"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">8</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty abbreviatedIRI="webprotege:R7bzVe9AhJu38uZy19Ji8Sw"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RSurgeonPetrov"/>
+        <Literal>Neurosurgeon</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty abbreviatedIRI="webprotege:R7LHdjt54U6Gf0faiem0QEd"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RSurgeonSidorova"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">20</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty abbreviatedIRI="webprotege:R7bzVe9AhJu38uZy19Ji8Sw"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RSurgeonSidorova"/>
+        <Literal>General Surgeon</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty abbreviatedIRI="webprotege:R8V5TjjkhLtfvl157a3AMiw"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RSurgeryAppendectomy"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">45</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty abbreviatedIRI="webprotege:RanesthesiaType"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RSurgeryAppendectomy"/>
+        <Literal>General</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty abbreviatedIRI="webprotege:RrequiresAnesthesia"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RSurgeryAppendectomy"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">true</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty abbreviatedIRI="webprotege:R8V5TjjkhLtfvl157a3AMiw"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RSurgeryBiopsy"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">30</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty abbreviatedIRI="webprotege:RanesthesiaType"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RSurgeryBiopsy"/>
+        <Literal>Local</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty abbreviatedIRI="webprotege:RrequiresAnesthesia"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RSurgeryBiopsy"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">false</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty abbreviatedIRI="webprotege:R8V5TjjkhLtfvl157a3AMiw"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RSurgeryCholecystectomy"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">90</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty abbreviatedIRI="webprotege:RanesthesiaType"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RSurgeryCholecystectomy"/>
+        <Literal>General</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty abbreviatedIRI="webprotege:RanesthesiaType"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RSurgeryHernioplasty"/>
+        <Literal>Spinal</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty abbreviatedIRI="webprotege:RanesthesiaType"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RSurgerySuturing"/>
+        <Literal>Local</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty abbreviatedIRI="webprotege:RrequiresAnesthesia"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RSurgerySuturing"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">false</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty abbreviatedIRI="webprotege:R9m50uDuMG3hlNFOkX95Uyv"/>
+        <NamedIndividual abbreviatedIRI="webprotege:RTtjYb5zdKYfAnzQn8KM59"/>
+        <Literal>Medium</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty abbreviatedIRI="webprotege:R9Hn7PsOmzn8ElhTKPLXLvA"/>
+        <NamedIndividual abbreviatedIRI="webprotege:Rs2qxGbzYlgOjWCEaeXPw4"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">true</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty abbreviatedIRI="webprotege:REglVwkgwJh4iVMUCmgm8f"/>
+        <NamedIndividual abbreviatedIRI="webprotege:Rs2qxGbzYlgOjWCEaeXPw4"/>
+        <Literal>Cardiovascular</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty abbreviatedIRI="webprotege:R9cUfIK7ZFuk5oEkSvRSnp0"/>
+        <NamedIndividual abbreviatedIRI="webprotege:Rzhh9qpHJLFNo6TaUCfqJK"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">true</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty abbreviatedIRI="webprotege:RsnP9yQhhW5PyK6WhHka6B"/>
+        <NamedIndividual abbreviatedIRI="webprotege:Rzhh9qpHJLFNo6TaUCfqJK"/>
+        <Literal>K40.9</Literal>
+    </DataPropertyAssertion>
+    <SubObjectPropertyOf>
+        <ObjectProperty abbreviatedIRI="webprotege:R9B4CCJTvY3X2HAYmvgkk0t"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty abbreviatedIRI="webprotege:R9w2GzJWwEHMmdgKIBHhQmj"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty abbreviatedIRI="webprotege:RDI1o26gYHJ240QNrUocEhh"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty abbreviatedIRI="webprotege:RaffectsOrgan"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty abbreviatedIRI="webprotege:RassignedToSurgeon"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty abbreviatedIRI="webprotege:RhasComplication"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty abbreviatedIRI="webprotege:RhasDisease"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty abbreviatedIRI="webprotege:RperformedBy"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty abbreviatedIRI="webprotege:RtreatedWithSurgery"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty abbreviatedIRI="webprotege:RusedBySurgeon"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty abbreviatedIRI="webprotege:RusedInSurgery"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <ObjectPropertyDomain>
+        <ObjectProperty abbreviatedIRI="webprotege:R9B4CCJTvY3X2HAYmvgkk0t"/>
+        <Class abbreviatedIRI="webprotege:RSurgeryLocal"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty abbreviatedIRI="webprotege:R9w2GzJWwEHMmdgKIBHhQmj"/>
+        <Class abbreviatedIRI="webprotege:RyvtzMQDMiySHahWYAuqX2"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty abbreviatedIRI="webprotege:RDI1o26gYHJ240QNrUocEhh"/>
+        <Class abbreviatedIRI="webprotege:R73pcrdxTGJxwkNBGojX8KO"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty abbreviatedIRI="webprotege:RaffectsOrgan"/>
+        <Class abbreviatedIRI="webprotege:RDisease00Class"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty abbreviatedIRI="webprotege:RassignedToSurgeon"/>
+        <Class abbreviatedIRI="webprotege:R73pcrdxTGJxwkNBGojX8KO"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty abbreviatedIRI="webprotege:RhasComplication"/>
+        <Class abbreviatedIRI="webprotege:RSurgeryLocal"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty abbreviatedIRI="webprotege:RhasDisease"/>
+        <Class abbreviatedIRI="webprotege:R73pcrdxTGJxwkNBGojX8KO"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty abbreviatedIRI="webprotege:RperformedBy"/>
+        <Class abbreviatedIRI="webprotege:RSurgeryLocal"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty abbreviatedIRI="webprotege:RtreatedWithSurgery"/>
+        <Class abbreviatedIRI="webprotege:RDisease00Class"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty abbreviatedIRI="webprotege:RusedBySurgeon"/>
+        <Class abbreviatedIRI="webprotege:RScalpelLocal"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty abbreviatedIRI="webprotege:RusedInSurgery"/>
+        <Class abbreviatedIRI="webprotege:RScalpelLocal"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty abbreviatedIRI="webprotege:R9B4CCJTvY3X2HAYmvgkk0t"/>
+        <Class abbreviatedIRI="webprotege:RBTSjB09a1vyU36jqIdMOsU"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty abbreviatedIRI="webprotege:R9w2GzJWwEHMmdgKIBHhQmj"/>
+        <Class abbreviatedIRI="webprotege:RSurgeryLocal"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty abbreviatedIRI="webprotege:RDI1o26gYHJ240QNrUocEhh"/>
+        <Class abbreviatedIRI="webprotege:RBhid6NFXGiWvLsEHzcKYCS"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty abbreviatedIRI="webprotege:RaffectsOrgan"/>
+        <Class abbreviatedIRI="webprotege:RBD0pBVbjNXq4gdELwJGpbs"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty abbreviatedIRI="webprotege:RassignedToSurgeon"/>
+        <Class abbreviatedIRI="webprotege:RB678UqaapfEHyHHe926iaR"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty abbreviatedIRI="webprotege:RhasComplication"/>
+        <Class abbreviatedIRI="webprotege:RyvtzMQDMiySHahWYAuqX2"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty abbreviatedIRI="webprotege:RhasDisease"/>
+        <Class abbreviatedIRI="webprotege:RDisease00Class"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty abbreviatedIRI="webprotege:RperformedBy"/>
+        <Class abbreviatedIRI="webprotege:RB678UqaapfEHyHHe926iaR"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty abbreviatedIRI="webprotege:RtreatedWithSurgery"/>
+        <Class abbreviatedIRI="webprotege:RSurgeryLocal"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty abbreviatedIRI="webprotege:RusedBySurgeon"/>
+        <Class abbreviatedIRI="webprotege:RB678UqaapfEHyHHe926iaR"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty abbreviatedIRI="webprotege:RusedInSurgery"/>
+        <Class abbreviatedIRI="webprotege:RSurgeryLocal"/>
+    </ObjectPropertyRange>
+    <SubDataPropertyOf>
+        <DataProperty abbreviatedIRI="obo:diseaseCode"/>
+        <DataProperty abbreviatedIRI="owl:topDataProperty"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty abbreviatedIRI="obo:patientName"/>
+        <DataProperty abbreviatedIRI="owl:topDataProperty"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty abbreviatedIRI="obo:severityLevel"/>
+        <DataProperty abbreviatedIRI="owl:topDataProperty"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty abbreviatedIRI="webprotege:R3InGd3smUuQbwJC208C90"/>
+        <DataProperty abbreviatedIRI="owl:topDataProperty"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty abbreviatedIRI="webprotege:R7LHdjt54U6Gf0faiem0QEd"/>
+        <DataProperty abbreviatedIRI="owl:topDataProperty"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty abbreviatedIRI="webprotege:R7bzVe9AhJu38uZy19Ji8Sw"/>
+        <DataProperty abbreviatedIRI="owl:topDataProperty"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty abbreviatedIRI="webprotege:R8IDIodHqLIiaubffhHDW5e"/>
+        <DataProperty abbreviatedIRI="owl:topDataProperty"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty abbreviatedIRI="webprotege:R8V5TjjkhLtfvl157a3AMiw"/>
+        <DataProperty abbreviatedIRI="owl:topDataProperty"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty abbreviatedIRI="webprotege:R9Hn7PsOmzn8ElhTKPLXLvA"/>
+        <DataProperty abbreviatedIRI="owl:topDataProperty"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty abbreviatedIRI="webprotege:R9cUfIK7ZFuk5oEkSvRSnp0"/>
+        <DataProperty abbreviatedIRI="owl:topDataProperty"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty abbreviatedIRI="webprotege:R9m50uDuMG3hlNFOkX95Uyv"/>
+        <DataProperty abbreviatedIRI="owl:topDataProperty"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty abbreviatedIRI="webprotege:RBhS7H4q8gqkqmo0Y1VGXxs"/>
+        <DataProperty abbreviatedIRI="owl:topDataProperty"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty abbreviatedIRI="webprotege:RBwiARS2kS3E3O51AaNO1k8"/>
+        <DataProperty abbreviatedIRI="owl:topDataProperty"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty abbreviatedIRI="webprotege:RDAcaNpxrCg2BGMCFaSNVEv"/>
+        <DataProperty abbreviatedIRI="owl:topDataProperty"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty abbreviatedIRI="webprotege:RDY3yzozRCFffwhkbx60tGG"/>
+        <DataProperty abbreviatedIRI="owl:topDataProperty"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty abbreviatedIRI="webprotege:RDhbZfAozPZgMIoq8KaCfPT"/>
+        <DataProperty abbreviatedIRI="owl:topDataProperty"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty abbreviatedIRI="webprotege:REglVwkgwJh4iVMUCmgm8f"/>
+        <DataProperty abbreviatedIRI="owl:topDataProperty"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty abbreviatedIRI="webprotege:RF6tUPASWVXEOZlGcbxU5Q"/>
+        <DataProperty abbreviatedIRI="owl:topDataProperty"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty abbreviatedIRI="webprotege:RIC6WzN0pqLxUZeKOynaFe"/>
+        <DataProperty abbreviatedIRI="owl:topDataProperty"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty abbreviatedIRI="webprotege:RQh3PhJPBlvxJuoRgf6pdP"/>
+        <DataProperty abbreviatedIRI="owl:topDataProperty"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty abbreviatedIRI="webprotege:Rage"/>
+        <DataProperty abbreviatedIRI="owl:topDataProperty"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty abbreviatedIRI="webprotege:RanesthesiaType"/>
+        <DataProperty abbreviatedIRI="owl:topDataProperty"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty abbreviatedIRI="webprotege:RdiseaseIsChronic"/>
+        <DataProperty abbreviatedIRI="owl:topDataProperty"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty abbreviatedIRI="webprotege:Re8kWHkcAh93khLtPgLdtj"/>
+        <DataProperty abbreviatedIRI="owl:topDataProperty"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty abbreviatedIRI="webprotege:RhasAllergies"/>
+        <DataProperty abbreviatedIRI="owl:topDataProperty"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty abbreviatedIRI="webprotege:Rmanufacturer"/>
+        <DataProperty abbreviatedIRI="owl:topDataProperty"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty abbreviatedIRI="webprotege:RrequiresAnesthesia"/>
+        <DataProperty abbreviatedIRI="owl:topDataProperty"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty abbreviatedIRI="webprotege:RsnP9yQhhW5PyK6WhHka6B"/>
+        <DataProperty abbreviatedIRI="owl:topDataProperty"/>
+    </SubDataPropertyOf>
+    <DataPropertyDomain>
+        <DataProperty abbreviatedIRI="obo:diseaseCode"/>
+        <Class abbreviatedIRI="webprotege:RDisease00Class"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty abbreviatedIRI="obo:patientName"/>
+        <Class abbreviatedIRI="webprotege:RDisease00Class"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty abbreviatedIRI="obo:severityLevel"/>
+        <Class abbreviatedIRI="webprotege:RDisease00Class"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty abbreviatedIRI="webprotege:R3InGd3smUuQbwJC208C90"/>
+        <Class abbreviatedIRI="webprotege:RBTSjB09a1vyU36jqIdMOsU"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty abbreviatedIRI="webprotege:R7LHdjt54U6Gf0faiem0QEd"/>
+        <Class abbreviatedIRI="webprotege:RB678UqaapfEHyHHe926iaR"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty abbreviatedIRI="webprotege:R7bzVe9AhJu38uZy19Ji8Sw"/>
+        <Class abbreviatedIRI="webprotege:RB678UqaapfEHyHHe926iaR"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty abbreviatedIRI="webprotege:R8IDIodHqLIiaubffhHDW5e"/>
+        <Class abbreviatedIRI="webprotege:R73pcrdxTGJxwkNBGojX8KO"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty abbreviatedIRI="webprotege:R8V5TjjkhLtfvl157a3AMiw"/>
+        <Class abbreviatedIRI="webprotege:RSurgeryLocal"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty abbreviatedIRI="webprotege:R9Hn7PsOmzn8ElhTKPLXLvA"/>
+        <Class abbreviatedIRI="webprotege:RBD0pBVbjNXq4gdELwJGpbs"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty abbreviatedIRI="webprotege:R9cUfIK7ZFuk5oEkSvRSnp0"/>
+        <Class abbreviatedIRI="webprotege:RBhid6NFXGiWvLsEHzcKYCS"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty abbreviatedIRI="webprotege:R9m50uDuMG3hlNFOkX95Uyv"/>
+        <Class abbreviatedIRI="webprotege:RyvtzMQDMiySHahWYAuqX2"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty abbreviatedIRI="webprotege:RBhS7H4q8gqkqmo0Y1VGXxs"/>
+        <Class abbreviatedIRI="webprotege:RwUDW8R7ZTGH9CLUrogRZ9"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty abbreviatedIRI="webprotege:RBwiARS2kS3E3O51AaNO1k8"/>
+        <Class abbreviatedIRI="webprotege:RwUDW8R7ZTGH9CLUrogRZ9"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty abbreviatedIRI="webprotege:RDAcaNpxrCg2BGMCFaSNVEv"/>
+        <Class abbreviatedIRI="webprotege:RBGi2Q82zaUdfXXTIG8rU0E"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty abbreviatedIRI="webprotege:RDY3yzozRCFffwhkbx60tGG"/>
+        <Class abbreviatedIRI="webprotege:RR7yJUv6Sq0uAMvRGRbrpG"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty abbreviatedIRI="webprotege:RDhbZfAozPZgMIoq8KaCfPT"/>
+        <Class abbreviatedIRI="webprotege:RScalpelLocal"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty abbreviatedIRI="webprotege:REglVwkgwJh4iVMUCmgm8f"/>
+        <Class abbreviatedIRI="webprotege:RBD0pBVbjNXq4gdELwJGpbs"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty abbreviatedIRI="webprotege:RF6tUPASWVXEOZlGcbxU5Q"/>
+        <Class abbreviatedIRI="webprotege:RBGi2Q82zaUdfXXTIG8rU0E"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty abbreviatedIRI="webprotege:RIC6WzN0pqLxUZeKOynaFe"/>
+        <Class abbreviatedIRI="webprotege:RBTSjB09a1vyU36jqIdMOsU"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty abbreviatedIRI="webprotege:RQh3PhJPBlvxJuoRgf6pdP"/>
+        <Class abbreviatedIRI="webprotege:RScalpelLocal"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty abbreviatedIRI="webprotege:Rage"/>
+        <Class abbreviatedIRI="webprotege:R73pcrdxTGJxwkNBGojX8KO"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty abbreviatedIRI="webprotege:RanesthesiaType"/>
+        <Class abbreviatedIRI="webprotege:RSurgeryLocal"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty abbreviatedIRI="webprotege:RdiseaseIsChronic"/>
+        <Class abbreviatedIRI="webprotege:RDisease00Class"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty abbreviatedIRI="webprotege:Re8kWHkcAh93khLtPgLdtj"/>
+        <Class abbreviatedIRI="webprotege:RR7yJUv6Sq0uAMvRGRbrpG"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty abbreviatedIRI="webprotege:RhasAllergies"/>
+        <Class abbreviatedIRI="webprotege:R73pcrdxTGJxwkNBGojX8KO"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty abbreviatedIRI="webprotege:Rmanufacturer"/>
+        <Class abbreviatedIRI="webprotege:RScalpelLocal"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty abbreviatedIRI="webprotege:RrequiresAnesthesia"/>
+        <Class abbreviatedIRI="webprotege:RSurgeryLocal"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty abbreviatedIRI="webprotege:RsnP9yQhhW5PyK6WhHka6B"/>
+        <Class abbreviatedIRI="webprotege:RBhid6NFXGiWvLsEHzcKYCS"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty abbreviatedIRI="obo:diseaseCode"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty abbreviatedIRI="obo:patientName"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty abbreviatedIRI="obo:severityLevel"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty abbreviatedIRI="webprotege:R3InGd3smUuQbwJC208C90"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty abbreviatedIRI="webprotege:R7LHdjt54U6Gf0faiem0QEd"/>
+        <Datatype abbreviatedIRI="xsd:integer"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty abbreviatedIRI="webprotege:R7bzVe9AhJu38uZy19Ji8Sw"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty abbreviatedIRI="webprotege:R8IDIodHqLIiaubffhHDW5e"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty abbreviatedIRI="webprotege:R8V5TjjkhLtfvl157a3AMiw"/>
+        <Datatype abbreviatedIRI="xsd:integer"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty abbreviatedIRI="webprotege:R9Hn7PsOmzn8ElhTKPLXLvA"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty abbreviatedIRI="webprotege:R9cUfIK7ZFuk5oEkSvRSnp0"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty abbreviatedIRI="webprotege:R9m50uDuMG3hlNFOkX95Uyv"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty abbreviatedIRI="webprotege:RBhS7H4q8gqkqmo0Y1VGXxs"/>
+        <Datatype abbreviatedIRI="xsd:dateTime"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty abbreviatedIRI="webprotege:RBwiARS2kS3E3O51AaNO1k8"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty abbreviatedIRI="webprotege:RDAcaNpxrCg2BGMCFaSNVEv"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty abbreviatedIRI="webprotege:RDY3yzozRCFffwhkbx60tGG"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty abbreviatedIRI="webprotege:RDhbZfAozPZgMIoq8KaCfPT"/>
+        <Datatype abbreviatedIRI="xsd:decimal"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty abbreviatedIRI="webprotege:REglVwkgwJh4iVMUCmgm8f"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty abbreviatedIRI="webprotege:RF6tUPASWVXEOZlGcbxU5Q"/>
+        <Datatype abbreviatedIRI="xsd:integer"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty abbreviatedIRI="webprotege:RIC6WzN0pqLxUZeKOynaFe"/>
+        <Datatype abbreviatedIRI="xsd:decimal"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty abbreviatedIRI="webprotege:RQh3PhJPBlvxJuoRgf6pdP"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty abbreviatedIRI="webprotege:Rage"/>
+        <Datatype abbreviatedIRI="xsd:integer"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty abbreviatedIRI="webprotege:RanesthesiaType"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty abbreviatedIRI="webprotege:RdiseaseIsChronic"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty abbreviatedIRI="webprotege:Re8kWHkcAh93khLtPgLdtj"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty abbreviatedIRI="webprotege:RhasAllergies"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty abbreviatedIRI="webprotege:Rmanufacturer"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty abbreviatedIRI="webprotege:RrequiresAnesthesia"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty abbreviatedIRI="webprotege:RsnP9yQhhW5PyK6WhHka6B"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>obo:diseaseCode</AbbreviatedIRI>
+        <Literal xml:lang="en">diseaseCode</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>obo:patientName</AbbreviatedIRI>
+        <Literal xml:lang="en">patientName</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>obo:severityLevel</AbbreviatedIRI>
+        <Literal xml:lang="en">severityLevel</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:R3InGd3smUuQbwJC208C90</AbbreviatedIRI>
+        <Literal xml:lang="en">drugName</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:R3InGd3smUuQbwJC208C90</AbbreviatedIRI>
+        <Literal xml:lang="ru">названиеПрепарата</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:R6Srcvm10M1d78Bg7AC5Hl</AbbreviatedIRI>
+        <Literal xml:lang="en">Anesthesia_General</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:R6Srcvm10M1d78Bg7AC5Hl</AbbreviatedIRI>
+        <Literal xml:lang="ru">Анестезия_Общая</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:R73pcrdxTGJxwkNBGojX8KO</AbbreviatedIRI>
+        <Literal xml:lang="en">Patient</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:R73pcrdxTGJxwkNBGojX8KO</AbbreviatedIRI>
+        <Literal xml:lang="ru">Пациент</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:R7LHdjt54U6Gf0faiem0QEd</AbbreviatedIRI>
+        <Literal xml:lang="en">hasExperience</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:R7LHdjt54U6Gf0faiem0QEd</AbbreviatedIRI>
+        <Literal xml:lang="ru">стажРаботы</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:R7bzVe9AhJu38uZy19Ji8Sw</AbbreviatedIRI>
+        <Literal xml:lang="en">hasSpecialization</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:R7bzVe9AhJu38uZy19Ji8Sw</AbbreviatedIRI>
+        <Literal xml:lang="ru">специализация</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:R7cC57836V3EEzIkeW5VYSF</AbbreviatedIRI>
+        <Literal xml:lang="en">Organ_Appendix_Human</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:R7cC57836V3EEzIkeW5VYSF</AbbreviatedIRI>
+        <Literal xml:lang="ru">Орган_Аппендикс</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:R7llz3LwrhCifcekaCPNxBM</AbbreviatedIRI>
+        <Literal xml:lang="en">Complication_Bleeding</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:R7llz3LwrhCifcekaCPNxBM</AbbreviatedIRI>
+        <Literal xml:lang="ru">Осложнение_Слепота</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:R7rqTUZ4gNSPho2084RlZpQ</AbbreviatedIRI>
+        <Literal xml:lang="en">2-0</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:R7yB1zjrhOKuXJ0DExdurTK</AbbreviatedIRI>
+        <Literal xml:lang="en">threadThickness</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:R8IDIodHqLIiaubffhHDW5e</AbbreviatedIRI>
+        <Literal xml:lang="en">hasBloodType</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:R8IDIodHqLIiaubffhHDW5e</AbbreviatedIRI>
+        <Literal xml:lang="ru">группаКрови</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:R8V5TjjkhLtfvl157a3AMiw</AbbreviatedIRI>
+        <Literal xml:lang="en">durationMinutes</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:R8V5TjjkhLtfvl157a3AMiw</AbbreviatedIRI>
+        <Literal xml:lang="ru">длительность</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:R8ZIkkfb45cZYVDvCMMpsYo</AbbreviatedIRI>
+        <Literal xml:lang="en">OperatingRoom _Room_202</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:R8ZIkkfb45cZYVDvCMMpsYo</AbbreviatedIRI>
+        <Literal xml:lang="ru">Операционная_№202</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:R8qZJ51vMFXWppmRUIYbRAI</AbbreviatedIRI>
+        <Literal xml:lang="en">K40.9</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:R9B4CCJTvY3X2HAYmvgkk0t</AbbreviatedIRI>
+        <Literal xml:lang="en">requiresAnesthesia</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:R9B4CCJTvY3X2HAYmvgkk0t</AbbreviatedIRI>
+        <Literal xml:lang="ru">требуетАнестезии</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:R9FvPEcT9QrxRhIJHCbxHhc</AbbreviatedIRI>
+        <Literal xml:lang="en">SurgicalInstrument_Forceps_01</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:R9FvPEcT9QrxRhIJHCbxHhc</AbbreviatedIRI>
+        <Literal xml:lang="ru">Иструмент_Пинцет_Хирургический</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:R9Hn7PsOmzn8ElhTKPLXLvA</AbbreviatedIRI>
+        <Literal xml:lang="en">isVital</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:R9Hn7PsOmzn8ElhTKPLXLvA</AbbreviatedIRI>
+        <Literal xml:lang="ru">жизненноВажный</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:R9UipTWvh1oTue1OZ5A8QpS</AbbreviatedIRI>
+        <Literal xml:lang="en">Diagnosis_Appendicitis</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:R9UipTWvh1oTue1OZ5A8QpS</AbbreviatedIRI>
+        <Literal xml:lang="ru">Диагноз_Аппендицит</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:R9cUfIK7ZFuk5oEkSvRSnp0</AbbreviatedIRI>
+        <Literal xml:lang="en">isChronic</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:R9cUfIK7ZFuk5oEkSvRSnp0</AbbreviatedIRI>
+        <Literal xml:lang="ru">хронический</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:R9m50uDuMG3hlNFOkX95Uyv</AbbreviatedIRI>
+        <Literal xml:lang="en">severityLevel</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:R9m50uDuMG3hlNFOkX95Uyv</AbbreviatedIRI>
+        <Literal xml:lang="ru">уровеньТяжести</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:R9tbwztgQGfPLQj7pwpX6gf</AbbreviatedIRI>
+        <Literal xml:lang="en">Suture_Silk</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:R9tbwztgQGfPLQj7pwpX6gf</AbbreviatedIRI>
+        <Literal xml:lang="ru">Материал_Шелк</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:R9w2GzJWwEHMmdgKIBHhQmj</AbbreviatedIRI>
+        <Literal xml:lang="en">occursDuring</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:R9w2GzJWwEHMmdgKIBHhQmj</AbbreviatedIRI>
+        <Literal xml:lang="ru">возниклоВоВремя</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:RB1zaGR0X1pSXP5aUozRFyL</AbbreviatedIRI>
+        <Literal xml:lang="en">Anesthesia_Local</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:RB1zaGR0X1pSXP5aUozRFyL</AbbreviatedIRI>
+        <Literal>Анестезия_Локальная</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:RB678UqaapfEHyHHe926iaR</AbbreviatedIRI>
+        <Literal xml:lang="en">Surgeon</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:RB678UqaapfEHyHHe926iaR</AbbreviatedIRI>
+        <Literal xml:lang="ru">Хирург</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:RBD0pBVbjNXq4gdELwJGpbs</AbbreviatedIRI>
+        <Literal xml:lang="en">Organ</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:RBD0pBVbjNXq4gdELwJGpbs</AbbreviatedIRI>
+        <Literal xml:lang="ru">Орган</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:RBGi2Q82zaUdfXXTIG8rU0E</AbbreviatedIRI>
+        <Literal xml:lang="en">OperatingRoom</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:RBGi2Q82zaUdfXXTIG8rU0E</AbbreviatedIRI>
+        <Literal xml:lang="ru">Операционная</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:RBIqKCX4aO71HDB2McnFEke</AbbreviatedIRI>
+        <Literal xml:lang="en">diseaseCode</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:RBTSjB09a1vyU36jqIdMOsU</AbbreviatedIRI>
+        <Literal xml:lang="en">Anesthesia</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:RBTSjB09a1vyU36jqIdMOsU</AbbreviatedIRI>
+        <Literal xml:lang="ru">Анестезия</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:RBhS7H4q8gqkqmo0Y1VGXxs</AbbreviatedIRI>
+        <Literal xml:lang="en">lastSterilizationDate</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:RBhS7H4q8gqkqmo0Y1VGXxs</AbbreviatedIRI>
+        <Literal xml:lang="ru">датаСтерилизации</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:RBhid6NFXGiWvLsEHzcKYCS</AbbreviatedIRI>
+        <Literal xml:lang="en">Diagnosis</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:RBhid6NFXGiWvLsEHzcKYCS</AbbreviatedIRI>
+        <Literal xml:lang="ru">Диагноз</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:RBoNn9SDJX5zcegYy2Rwhm9</AbbreviatedIRI>
+        <Literal xml:lang="en">OperatingRoom _Room_101</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:RBoNn9SDJX5zcegYy2Rwhm9</AbbreviatedIRI>
+        <Literal xml:lang="ru">Операционная_№101</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:RBwiARS2kS3E3O51AaNO1k8</AbbreviatedIRI>
+        <Literal xml:lang="en">materialType</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:RBwiARS2kS3E3O51AaNO1k8</AbbreviatedIRI>
+        <Literal xml:lang="ru">материал</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:RBz0CZEmTOl07r9jaUJS1i7</AbbreviatedIRI>
+        <Literal xml:lang="en">SurgicalInstrument_Retractor_01</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:RBz0CZEmTOl07r9jaUJS1i7</AbbreviatedIRI>
+        <Literal xml:lang="ru">Иструмент_Ранорасширитель</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:RDAcaNpxrCg2BGMCFaSNVEv</AbbreviatedIRI>
+        <Literal xml:lang="en">isSterile</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:RDAcaNpxrCg2BGMCFaSNVEv</AbbreviatedIRI>
+        <Literal xml:lang="ru">стерильность</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:RDI1o26gYHJ240QNrUocEhh</AbbreviatedIRI>
+        <Literal xml:lang="en">isDiagnosedWith</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:RDI1o26gYHJ240QNrUocEhh</AbbreviatedIRI>
+        <Literal xml:lang="ru">имеетДиагноз</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:RDY3yzozRCFffwhkbx60tGG</AbbreviatedIRI>
+        <Literal xml:lang="en">isAbsorbable</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:RDY3yzozRCFffwhkbx60tGG</AbbreviatedIRI>
+        <Literal xml:lang="ru">рассасываемость</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:RDhY53jXkdaphaAFU07tux3</AbbreviatedIRI>
+        <Literal xml:lang="en">Surgeon_Vlad</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:RDhY53jXkdaphaAFU07tux3</AbbreviatedIRI>
+        <Literal xml:lang="ru">Хирург_Влад</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:RDhbZfAozPZgMIoq8KaCfPT</AbbreviatedIRI>
+        <Literal xml:lang="en">bladeSize</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:RDhbZfAozPZgMIoq8KaCfPT</AbbreviatedIRI>
+        <Literal xml:lang="ru">размерЛезвия</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:RDisease00Class</AbbreviatedIRI>
+        <Literal xml:lang="en">Disease</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:RDisease00Class</AbbreviatedIRI>
+        <Literal xml:lang="ru">Заболевание</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:RDiseaseAppendicitis</AbbreviatedIRI>
+        <Literal xml:lang="en">Appendicitis</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:RDiseaseAppendicitis</AbbreviatedIRI>
+        <Literal xml:lang="ru">Аппендицит</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:RDiseaseAppendicitisNew</AbbreviatedIRI>
+        <Literal xml:lang="en">Disease-Appendicitis</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:RDiseaseDiabetes</AbbreviatedIRI>
+        <Literal xml:lang="en">Disease-Diabetes</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:RDiseaseHernia</AbbreviatedIRI>
+        <Literal xml:lang="en">Hernia</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:RDiseaseHernia</AbbreviatedIRI>
+        <Literal xml:lang="ru">Грыжа</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:RDiseaseHerniaNew</AbbreviatedIRI>
+        <Literal xml:lang="en">Disease-Hernia</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:RDiseaseHypertension</AbbreviatedIRI>
+        <Literal xml:lang="en">Disease-Hypertension</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:RDiseasePneumonia</AbbreviatedIRI>
+        <Literal xml:lang="en">Pneumonia</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:RDiseasePneumonia</AbbreviatedIRI>
+        <Literal xml:lang="ru">Пневмония</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:RDiseasePneumoniaNew</AbbreviatedIRI>
+        <Literal xml:lang="en">Disease-Pneumonia</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:RDy5MvGPs589JLvf6b3opCw</AbbreviatedIRI>
+        <Literal xml:lang="en">Surgeon_Fedor</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:RDy5MvGPs589JLvf6b3opCw</AbbreviatedIRI>
+        <Literal xml:lang="ru">Хирург_Федор</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:REglVwkgwJh4iVMUCmgm8f</AbbreviatedIRI>
+        <Literal xml:lang="en">belongsToSystem</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:REglVwkgwJh4iVMUCmgm8f</AbbreviatedIRI>
+        <Literal xml:lang="ru">системаОрганов</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:RF6tUPASWVXEOZlGcbxU5Q</AbbreviatedIRI>
+        <Literal xml:lang="en">roomNumber</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:RF6tUPASWVXEOZlGcbxU5Q</AbbreviatedIRI>
+        <Literal xml:lang="ru">номерКабинета</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:RHlwVO6EmhoGBRDxSNMjZq</AbbreviatedIRI>
+        <Literal xml:lang="en">Suture_Vicryl</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:RHlwVO6EmhoGBRDxSNMjZq</AbbreviatedIRI>
+        <Literal xml:lang="ru">Материал_Викрил</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:RIC6WzN0pqLxUZeKOynaFe</AbbreviatedIRI>
+        <Literal xml:lang="en">dosageMg</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:RIC6WzN0pqLxUZeKOynaFe</AbbreviatedIRI>
+        <Literal xml:lang="ru">дозировкаМг</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:ROrganAppendix</AbbreviatedIRI>
+        <Literal xml:lang="en">Organ-Appendix</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:ROrganIntestine</AbbreviatedIRI>
+        <Literal xml:lang="en">Organ-Intestine</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:ROrganLung</AbbreviatedIRI>
+        <Literal xml:lang="en">Organ-Lung</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:ROrganPancreas</AbbreviatedIRI>
+        <Literal xml:lang="en">Organ-Pancreas</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:ROrganVessels</AbbreviatedIRI>
+        <Literal xml:lang="en">Organ-Vessels</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:RPatientIvanov</AbbreviatedIRI>
+        <Literal xml:lang="en">Patient-Ivanov</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:RPatientKozlov</AbbreviatedIRI>
+        <Literal xml:lang="en">Patient-Kozlov</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:RPatientNovikov</AbbreviatedIRI>
+        <Literal xml:lang="en">Patient-Novikov</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:RPatientPetrov</AbbreviatedIRI>
+        <Literal xml:lang="en">Patient-Petrov</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:RPatientSidorov</AbbreviatedIRI>
+        <Literal xml:lang="en">Patient-Sidorov</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:RQh3PhJPBlvxJuoRgf6pdP</AbbreviatedIRI>
+        <Literal xml:lang="en">isDisposable</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:RQh3PhJPBlvxJuoRgf6pdP</AbbreviatedIRI>
+        <Literal xml:lang="ru">одноразовый</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:RR7yJUv6Sq0uAMvRGRbrpG</AbbreviatedIRI>
+        <Literal xml:lang="en">SutureMaterial</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:RR7yJUv6Sq0uAMvRGRbrpG</AbbreviatedIRI>
+        <Literal xml:lang="ru">ШовныйМатериал</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:RScalpel001</AbbreviatedIRI>
+        <Literal xml:lang="en">Scalpel-001</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:RScalpel002</AbbreviatedIRI>
+        <Literal xml:lang="en">Scalpel-002</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:RScalpel003</AbbreviatedIRI>
+        <Literal xml:lang="en">Scalpel-003</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:RScalpel004</AbbreviatedIRI>
+        <Literal xml:lang="en">Scalpel-004</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:RScalpel005</AbbreviatedIRI>
+        <Literal xml:lang="en">Scalpel-005</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:RScalpelLocal</AbbreviatedIRI>
+        <Literal xml:lang="en">Scalpel</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:RScalpelLocal</AbbreviatedIRI>
+        <Literal xml:lang="ru">Скальпель</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:RSurgeonIvanova</AbbreviatedIRI>
+        <Literal xml:lang="en">Surgeon-Ivanova</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:RSurgeonPetrov</AbbreviatedIRI>
+        <Literal xml:lang="en">Surgeon-Petrov</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:RSurgeonSidorova</AbbreviatedIRI>
+        <Literal xml:lang="en">Surgeon-Sidorova</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:RSurgeryAppendectomy</AbbreviatedIRI>
+        <Literal xml:lang="en">Surgery-Appendectomy</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:RSurgeryBiopsy</AbbreviatedIRI>
+        <Literal xml:lang="en">Surgery-Biopsy</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:RSurgeryCholecystectomy</AbbreviatedIRI>
+        <Literal xml:lang="en">Surgery-Cholecystectomy</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:RSurgeryHernioplasty</AbbreviatedIRI>
+        <Literal xml:lang="en">Surgery-Hernioplasty</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:RSurgeryLocal</AbbreviatedIRI>
+        <Literal xml:lang="en">Surgery</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:RSurgeryLocal</AbbreviatedIRI>
+        <Literal xml:lang="ru">Операция</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:RSurgerySuturing</AbbreviatedIRI>
+        <Literal xml:lang="en">Surgery-Suturing</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:RTtjYb5zdKYfAnzQn8KM59</AbbreviatedIRI>
+        <Literal xml:lang="en">Complication_Infection</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:RTtjYb5zdKYfAnzQn8KM59</AbbreviatedIRI>
+        <Literal xml:lang="ru">Осложнение_Инфекция</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:RaffectsOrgan</AbbreviatedIRI>
+        <Literal xml:lang="en">affectsOrgan</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:RaffectsOrgan</AbbreviatedIRI>
+        <Literal xml:lang="ru">поражаетОрган</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:Rage</AbbreviatedIRI>
+        <Literal xml:lang="en">age</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:Rage</AbbreviatedIRI>
+        <Literal xml:lang="ru">возраст</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:RanesthesiaType</AbbreviatedIRI>
+        <Literal xml:lang="en">anesthesiaType</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:RanesthesiaType</AbbreviatedIRI>
+        <Literal xml:lang="ru">типАнестезии</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:RassignedToSurgeon</AbbreviatedIRI>
+        <Literal xml:lang="en">assignedToSurgeon</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:RassignedToSurgeon</AbbreviatedIRI>
+        <Literal xml:lang="ru">наблюдаетсяХирургом</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:RdiseaseIsChronic</AbbreviatedIRI>
+        <Literal xml:lang="en">isChronic</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:RdiseaseIsChronic</AbbreviatedIRI>
+        <Literal xml:lang="ru">хроническое</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:Re8kWHkcAh93khLtPgLdtj</AbbreviatedIRI>
+        <Literal xml:lang="en">threadThickness</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:Re8kWHkcAh93khLtPgLdtj</AbbreviatedIRI>
+        <Literal xml:lang="ru">толщинаНити</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:RhasAllergies</AbbreviatedIRI>
+        <Literal xml:lang="en">hasAllergies</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:RhasAllergies</AbbreviatedIRI>
+        <Literal xml:lang="ru">имеетАллергии</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:RhasComplication</AbbreviatedIRI>
+        <Literal xml:lang="en">hasComplication</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:RhasComplication</AbbreviatedIRI>
+        <Literal xml:lang="ru">имеетОсложнение</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:RhasDisease</AbbreviatedIRI>
+        <Literal xml:lang="en">hasDisease</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:RhasDisease</AbbreviatedIRI>
+        <Literal xml:lang="ru">имеетБолезнь</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:Rmanufacturer</AbbreviatedIRI>
+        <Literal xml:lang="en">manufacturer</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:Rmanufacturer</AbbreviatedIRI>
+        <Literal xml:lang="ru">производитель</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:RperformedBy</AbbreviatedIRI>
+        <Literal xml:lang="en">performedBy</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:RperformedBy</AbbreviatedIRI>
+        <Literal xml:lang="ru">выполняетсяХирургом</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:RrequiresAnesthesia</AbbreviatedIRI>
+        <Literal xml:lang="en">requiresAnesthesia</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:RrequiresAnesthesia</AbbreviatedIRI>
+        <Literal xml:lang="ru">требуетАнестезии</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:Rs2qxGbzYlgOjWCEaeXPw4</AbbreviatedIRI>
+        <Literal xml:lang="en">Organ_Heart_Human</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:Rs2qxGbzYlgOjWCEaeXPw4</AbbreviatedIRI>
+        <Literal xml:lang="ru">Орган_Сердце_Человека</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:RsnP9yQhhW5PyK6WhHka6B</AbbreviatedIRI>
+        <Literal xml:lang="en">diseaseCode</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:RsnP9yQhhW5PyK6WhHka6B</AbbreviatedIRI>
+        <Literal xml:lang="ru">кодБолезни</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:RtreatedWithSurgery</AbbreviatedIRI>
+        <Literal xml:lang="en">treatedWithSurgery</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:RtreatedWithSurgery</AbbreviatedIRI>
+        <Literal xml:lang="ru">лечитсяОперацией</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:RusedBySurgeon</AbbreviatedIRI>
+        <Literal xml:lang="en">usedBySurgeon</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:RusedBySurgeon</AbbreviatedIRI>
+        <Literal xml:lang="ru">используетсяХирургом</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:RusedInSurgery</AbbreviatedIRI>
+        <Literal xml:lang="en">usedInSurgery</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:RusedInSurgery</AbbreviatedIRI>
+        <Literal xml:lang="ru">используетсяВ</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:RwUDW8R7ZTGH9CLUrogRZ9</AbbreviatedIRI>
+        <Literal xml:lang="en">SurgicalInstrument</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:RwUDW8R7ZTGH9CLUrogRZ9</AbbreviatedIRI>
+        <Literal xml:lang="ru">ХирургическийИнструмент</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:RyvtzMQDMiySHahWYAuqX2</AbbreviatedIRI>
+        <Literal xml:lang="en">Complication</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:RyvtzMQDMiySHahWYAuqX2</AbbreviatedIRI>
+        <Literal xml:lang="ru">Осложнение</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:Rzhh9qpHJLFNo6TaUCfqJK</AbbreviatedIRI>
+        <Literal xml:lang="en">Diagnosis_Hernia</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>webprotege:Rzhh9qpHJLFNo6TaUCfqJK</AbbreviatedIRI>
+        <Literal xml:lang="ru">Диагноз_Грыжа</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>rdfs:label</AbbreviatedIRI>
+        <Literal xml:lang="en">rdfs:label</Literal>
+    </AnnotationAssertion>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi -->
+

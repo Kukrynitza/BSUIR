@@ -7,6 +7,7 @@
      xmlns:xml="http://www.w3.org/XML/1998/namespace"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:skos="http://www.w3.org/2004/02/skos/core#"
      xmlns:terms="http://purl.org/dc/terms/">
     <owl:Ontology rdf:about="http://purl.obolibrary.org/obo/cob.owl">
         <owl:versionIRI rdf:resource="http://purl.obolibrary.org/obo/cob/releases/2025-12-12/cob.owl"/>
@@ -91,6 +92,12 @@
     <!-- http://purl.org/dc/terms/title -->
 
     <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/title"/>
+    
+
+
+    <!-- http://www.w3.org/2004/02/skos/core#altLabel -->
+
+    <owl:AnnotationProperty rdf:about="http://www.w3.org/2004/02/skos/core#altLabel"/>
     
 
 
@@ -352,6 +359,42 @@
     
 
 
+    <!-- http://purl.obolibrary.org/obo/followsProtocol -->
+
+    <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/followsProtocol">
+        <rdfs:range rdf:resource="http://purl.obolibrary.org/obo/medicalProtocol"/>
+        <rdfs:label xml:lang="en">followsProtocol</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/hasManufacturer -->
+
+    <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/hasManufacturer">
+        <rdfs:range rdf:resource="http://purl.obolibrary.org/obo/manufacturer"/>
+        <rdfs:label xml:lang="en">hasManufacturer</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/partOfKit -->
+
+    <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/partOfKit">
+        <rdfs:range rdf:resource="http://purl.obolibrary.org/obo/surgicalKit"/>
+        <rdfs:label xml:lang="en">partOfKit</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/requiresSpecialty -->
+
+    <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/requiresSpecialty">
+        <rdfs:range rdf:resource="http://purl.obolibrary.org/obo/medicalSpecialty"/>
+        <rdfs:label xml:lang="en">requiresSpecialty</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
     <!-- 
     ///////////////////////////////////////////////////////////////////////////////////////
     //
@@ -394,6 +437,60 @@
 
     <owl:DatatypeProperty rdf:about="http://purl.obolibrary.org/obo/COB_0000803">
         <rdfs:label xml:lang="en">has inchi string</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/deviceMaterial -->
+
+    <owl:DatatypeProperty rdf:about="http://purl.obolibrary.org/obo/deviceMaterial">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:label xml:lang="en">deviceMaterial</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/deviceModel -->
+
+    <owl:DatatypeProperty rdf:about="http://purl.obolibrary.org/obo/deviceModel">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:label xml:lang="en">deviceModel</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/procedureDuration -->
+
+    <owl:DatatypeProperty rdf:about="http://purl.obolibrary.org/obo/procedureDuration">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <rdfs:label xml:lang="en">procedureDuration</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/recoveryDays -->
+
+    <owl:DatatypeProperty rdf:about="http://purl.obolibrary.org/obo/recoveryDays">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <rdfs:label xml:lang="en">recoveryDays</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/riskLevel -->
+
+    <owl:DatatypeProperty rdf:about="http://purl.obolibrary.org/obo/riskLevel">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:label xml:lang="en">riskLevel</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/shelfLifeDays -->
+
+    <owl:DatatypeProperty rdf:about="http://purl.obolibrary.org/obo/shelfLifeDays">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <rdfs:label xml:lang="en">shelfLifeDays</rdfs:label>
     </owl:DatatypeProperty>
     
 
@@ -665,7 +762,6 @@
     <!-- http://purl.obolibrary.org/obo/COB_0000035 -->
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/COB_0000035">
-        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/COB_0000082"/>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/BFO_0000055"/>
@@ -695,6 +791,12 @@
         <rdfs:label>obsolete immaterial anatomical entity</rdfs:label>
         <owl:deprecated rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:deprecated>
     </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/COB_0000070 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/COB_0000070"/>
     
 
 
@@ -733,20 +835,9 @@
     
 
 
-    <!-- http://purl.obolibrary.org/obo/COB_0000082 -->
-
-    <owl:Class rdf:about="http://purl.obolibrary.org/obo/COB_0000082">
-        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-        <obo:IAO_0000115 xml:lang="en">A process that is initiated by an agent who intends to carry out a plan to achieve an objective through one or more actions as described in a plan specification.</obo:IAO_0000115>
-        <rdfs:label xml:lang="en">planned process</rdfs:label>
-    </owl:Class>
-    
-
-
     <!-- http://purl.obolibrary.org/obo/COB_0000083 -->
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/COB_0000083">
-        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/COB_0000082"/>
         <rdfs:label xml:lang="en">failed planned process</rdfs:label>
     </owl:Class>
     
@@ -1233,8 +1324,392 @@
         <obo:IAO_0000115>Biological entity that is either an individual member of a biological species or constitutes the structural organization of an individual member of a biological species.</obo:IAO_0000115>
         <rdfs:label>anatomical entity</rdfs:label>
     </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/manufacturer -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/manufacturer">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/COB_0000070"/>
+        <rdfs:label xml:lang="en">manufacturer</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/medicalProtocol -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/medicalProtocol">
+        <rdfs:label xml:lang="en">medicalProtocol</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/medicalSpecialty -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/medicalSpecialty">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/COB_0000035"/>
+        <rdfs:label xml:lang="en">medicalSpecialty</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/surgicalKit -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/surgicalKit">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/COB_0001300"/>
+        <rdfs:label xml:lang="en">surgicalKit</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://webprotege.stanford.edu/scalpel -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/scalpel">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/COB_0001300"/>
+        <skos:altLabel xml:lang="en">scalpel</skos:altLabel>
+    </owl:Class>
+    
+
+
+    <!-- http://webprotege.stanford.edu/surgery -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/surgery">
+        <skos:altLabel xml:lang="en">surgicalProcedure</skos:altLabel>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/COB_Surgery-Appendectomy -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/COB_Surgery-Appendectomy">
+        <rdf:type rdf:resource="http://webprotege.stanford.edu/surgery"/>
+        <obo:followsProtocol rdf:resource="http://purl.obolibrary.org/obo/standardProtocol"/>
+        <obo:requiresSpecialty rdf:resource="http://purl.obolibrary.org/obo/generalSurgery"/>
+        <obo:procedureDuration rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">50</obo:procedureDuration>
+        <obo:recoveryDays rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">14</obo:recoveryDays>
+        <obo:riskLevel>Medium</obo:riskLevel>
+        <rdfs:label xml:lang="en">surgeryAppendectomy</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/COB_Surgery-Colonoscopy -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/COB_Surgery-Colonoscopy">
+        <rdf:type rdf:resource="http://webprotege.stanford.edu/surgery"/>
+        <obo:followsProtocol rdf:resource="http://purl.obolibrary.org/obo/minimallyInvasiveProtocol"/>
+        <obo:requiresSpecialty rdf:resource="http://purl.obolibrary.org/obo/gastroenterology"/>
+        <obo:procedureDuration rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">25</obo:procedureDuration>
+        <obo:recoveryDays rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</obo:recoveryDays>
+        <obo:riskLevel>Low</obo:riskLevel>
+        <rdfs:label xml:lang="en">surgeryColonoscopy</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/COB_Surgery-Gastrectomy -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/COB_Surgery-Gastrectomy">
+        <rdf:type rdf:resource="http://webprotege.stanford.edu/surgery"/>
+        <obo:followsProtocol rdf:resource="http://purl.obolibrary.org/obo/openProtocol"/>
+        <obo:requiresSpecialty rdf:resource="http://purl.obolibrary.org/obo/gastroenterology"/>
+        <obo:procedureDuration rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">180</obo:procedureDuration>
+        <obo:recoveryDays rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">45</obo:recoveryDays>
+        <obo:riskLevel>High</obo:riskLevel>
+        <rdfs:label xml:lang="en">surgeryGastrectomy</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/COB_Surgery-Hernioplasty -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/COB_Surgery-Hernioplasty">
+        <rdf:type rdf:resource="http://webprotege.stanford.edu/surgery"/>
+        <obo:followsProtocol rdf:resource="http://purl.obolibrary.org/obo/electiveProtocol"/>
+        <obo:requiresSpecialty rdf:resource="http://purl.obolibrary.org/obo/orthopedics"/>
+        <obo:procedureDuration rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">70</obo:procedureDuration>
+        <obo:recoveryDays rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">21</obo:recoveryDays>
+        <obo:riskLevel>Low</obo:riskLevel>
+        <rdfs:label xml:lang="en">surgeryHernioplasty</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/COB_Surgery-Laparoscopy -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/COB_Surgery-Laparoscopy">
+        <rdf:type rdf:resource="http://webprotege.stanford.edu/surgery"/>
+        <obo:followsProtocol rdf:resource="http://purl.obolibrary.org/obo/minimallyInvasiveProtocol"/>
+        <obo:requiresSpecialty rdf:resource="http://purl.obolibrary.org/obo/generalSurgery"/>
+        <obo:procedureDuration rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">60</obo:procedureDuration>
+        <obo:recoveryDays rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">7</obo:recoveryDays>
+        <obo:riskLevel>Medium</obo:riskLevel>
+        <rdfs:label xml:lang="en">surgeryLaparoscopy</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/advancedKit -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/advancedKit">
+        <rdf:type rdf:resource="http://purl.obolibrary.org/obo/surgicalKit"/>
+        <rdfs:label xml:lang="en">advancedKit</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/basicKit -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/basicKit">
+        <rdf:type rdf:resource="http://purl.obolibrary.org/obo/surgicalKit"/>
+        <rdfs:label xml:lang="en">basicKit</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/bladeCo -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/bladeCo">
+        <rdf:type rdf:resource="http://purl.obolibrary.org/obo/manufacturer"/>
+        <rdfs:label xml:lang="en">bladeCo</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/cardioKit -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/cardioKit">
+        <rdf:type rdf:resource="http://purl.obolibrary.org/obo/surgicalKit"/>
+        <rdfs:label xml:lang="en">cardioKit</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/cardiology -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/cardiology">
+        <rdf:type rdf:resource="http://purl.obolibrary.org/obo/medicalSpecialty"/>
+        <rdfs:label xml:lang="en">cardiology</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/cutEdgeLtd -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/cutEdgeLtd">
+        <rdf:type rdf:resource="http://purl.obolibrary.org/obo/manufacturer"/>
+        <rdfs:label xml:lang="en">cutEdgeLtd</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/electiveProtocol -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/electiveProtocol">
+        <rdf:type rdf:resource="http://purl.obolibrary.org/obo/medicalProtocol"/>
+        <rdfs:label xml:lang="en">electiveProtocol</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/emergencyProtocol -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/emergencyProtocol">
+        <rdf:type rdf:resource="http://purl.obolibrary.org/obo/medicalProtocol"/>
+        <rdfs:label xml:lang="en">emergencyProtocol</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/gastroenterology -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/gastroenterology">
+        <rdf:type rdf:resource="http://purl.obolibrary.org/obo/medicalSpecialty"/>
+        <rdfs:label xml:lang="en">gastroenterology</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/generalSurgery -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/generalSurgery">
+        <rdf:type rdf:resource="http://purl.obolibrary.org/obo/medicalSpecialty"/>
+        <rdfs:label xml:lang="en">generalSurgery</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/medTechCorp -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/medTechCorp">
+        <rdf:type rdf:resource="http://purl.obolibrary.org/obo/manufacturer"/>
+        <rdfs:label xml:lang="en">medTechCorp</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/minimallyInvasiveProtocol -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/minimallyInvasiveProtocol">
+        <rdf:type rdf:resource="http://purl.obolibrary.org/obo/medicalProtocol"/>
+        <rdfs:label xml:lang="en">minimallyInvasiveProtocol</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/neurosurgery -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/neurosurgery">
+        <rdf:type rdf:resource="http://purl.obolibrary.org/obo/medicalSpecialty"/>
+        <rdfs:label xml:lang="en">neurosurgery</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/openProtocol -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/openProtocol">
+        <rdf:type rdf:resource="http://purl.obolibrary.org/obo/medicalProtocol"/>
+        <rdfs:label xml:lang="en">openProtocol</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/orthoKit -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/orthoKit">
+        <rdf:type rdf:resource="http://purl.obolibrary.org/obo/surgicalKit"/>
+        <rdfs:label xml:lang="en">orthoKit</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/orthopedics -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/orthopedics">
+        <rdf:type rdf:resource="http://purl.obolibrary.org/obo/medicalSpecialty"/>
+        <rdfs:label xml:lang="en">orthopedics</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/scalpel-001 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/scalpel-001">
+        <rdf:type rdf:resource="http://webprotege.stanford.edu/scalpel"/>
+        <obo:hasManufacturer rdf:resource="http://purl.obolibrary.org/obo/medTechCorp"/>
+        <obo:partOfKit rdf:resource="http://purl.obolibrary.org/obo/basicKit"/>
+        <obo:deviceMaterial>Stainless Steel</obo:deviceMaterial>
+        <obo:deviceModel>MT-1500</obo:deviceModel>
+        <obo:shelfLifeDays rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">365</obo:shelfLifeDays>
+        <rdfs:label xml:lang="en">scalpel001</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/scalpel-002 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/scalpel-002">
+        <rdf:type rdf:resource="http://webprotege.stanford.edu/scalpel"/>
+        <obo:hasManufacturer rdf:resource="http://purl.obolibrary.org/obo/surgProInc"/>
+        <obo:partOfKit rdf:resource="http://purl.obolibrary.org/obo/advancedKit"/>
+        <obo:deviceMaterial>Titanium</obo:deviceMaterial>
+        <obo:deviceModel>SP-2000</obo:deviceModel>
+        <obo:shelfLifeDays rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">180</obo:shelfLifeDays>
+        <rdfs:label xml:lang="en">scalpel002</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/scalpel-006 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/scalpel-006">
+        <rdf:type rdf:resource="http://webprotege.stanford.edu/scalpel"/>
+        <obo:hasManufacturer rdf:resource="http://purl.obolibrary.org/obo/bladeCo"/>
+        <obo:partOfKit rdf:resource="http://purl.obolibrary.org/obo/traumaKit"/>
+        <obo:deviceMaterial>Carbon Steel</obo:deviceMaterial>
+        <obo:deviceModel>BC-100</obo:deviceModel>
+        <obo:shelfLifeDays rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">500</obo:shelfLifeDays>
+        <rdfs:label xml:lang="en">scalpel006</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/scalpel-007 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/scalpel-007">
+        <rdf:type rdf:resource="http://webprotege.stanford.edu/scalpel"/>
+        <obo:hasManufacturer rdf:resource="http://purl.obolibrary.org/obo/cutEdgeLtd"/>
+        <obo:partOfKit rdf:resource="http://purl.obolibrary.org/obo/cardioKit"/>
+        <obo:deviceMaterial>Ceramic</obo:deviceMaterial>
+        <obo:deviceModel>CE-300</obo:deviceModel>
+        <obo:shelfLifeDays rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">730</obo:shelfLifeDays>
+        <rdfs:label xml:lang="en">scalpel007</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/scalpel-008 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/scalpel-008">
+        <rdf:type rdf:resource="http://webprotege.stanford.edu/scalpel"/>
+        <obo:hasManufacturer rdf:resource="http://purl.obolibrary.org/obo/steelWorks"/>
+        <obo:partOfKit rdf:resource="http://purl.obolibrary.org/obo/orthoKit"/>
+        <obo:deviceMaterial>Stainless Steel</obo:deviceMaterial>
+        <obo:deviceModel>MT-500</obo:deviceModel>
+        <obo:shelfLifeDays rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">365</obo:shelfLifeDays>
+        <rdfs:label xml:lang="en">scalpel008</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/standardProtocol -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/standardProtocol">
+        <rdf:type rdf:resource="http://purl.obolibrary.org/obo/medicalProtocol"/>
+        <rdfs:label xml:lang="en">standardProtocol</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/steelWorks -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/steelWorks">
+        <rdf:type rdf:resource="http://purl.obolibrary.org/obo/manufacturer"/>
+        <rdfs:label xml:lang="en">steelWorks</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/surgProInc -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/surgProInc">
+        <rdf:type rdf:resource="http://purl.obolibrary.org/obo/manufacturer"/>
+        <rdfs:label xml:lang="en">surgProInc</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/traumaKit -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/traumaKit">
+        <rdf:type rdf:resource="http://purl.obolibrary.org/obo/surgicalKit"/>
+        <rdfs:label xml:lang="en">traumaKit</rdfs:label>
+    </owl:NamedIndividual>
 </rdf:RDF>
 
 
 
-<!-- Generated by the OWL API (version 4.5.29) https://github.com/owlcs/owlapi -->
+<!-- Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi -->
+

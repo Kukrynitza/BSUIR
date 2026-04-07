@@ -1,0 +1,81 @@
+=== ЗАПРОС 1: SCALPEL ===
+
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX webprotege: <http://webprotege.stanford.edu/>
+PREFIX obo: <http://purl.obolibrary.org/obo/>
+
+SELECT 
+  (GROUP_CONCAT(DISTINCT REPLACE(STR(?instance), ".*[/#]", ""); SEPARATOR=", ") AS ?ID)
+  (GROUP_CONCAT(DISTINCT ?label; SEPARATOR=", ") AS ?Name)
+  (GROUP_CONCAT(DISTINCT REPLACE(STR(?kit), ".*[/#]", ""); SEPARATOR=", ") AS ?partOfKit)
+  (GROUP_CONCAT(DISTINCT REPLACE(STR(?manufacturer), ".*[/#]", ""); SEPARATOR=", ") AS ?hasManufacturer)
+  (GROUP_CONCAT(DISTINCT REPLACE(STR(?surgery), ".*[/#]", ""); SEPARATOR=", ") AS ?usedInSurgery)
+WHERE {
+  ?instance rdf:type webprotege:RScalpelLocal . 
+   FILTER(STRSTARTS(STR(?instance), "http://webprotege.stanford.edu/"))
+  OPTIONAL { ?instance rdfs:label ?label . }
+    
+  OPTIONAL { ?instance obo:partOfKit ?kit . }
+  OPTIONAL { ?instance obo:hasManufacturer ?manufacturer . }
+  OPTIONAL {?instance webprotege:RusedInSurgery ?surgery . }
+}
+GROUP BY ?instance
+ORDER BY ?ID
+
+=== ЗАПРОС 2: SURGERY ===
+
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX webprotege: <http://webprotege.stanford.edu/>
+PREFIX obo: <http://purl.obolibrary.org/obo/>
+SELECT 
+  (GROUP_CONCAT(DISTINCT REPLACE(STR(?instance), ".*[/#]", ""); SEPARATOR=", ") AS ?ID)
+  (GROUP_CONCAT(DISTINCT ?label; SEPARATOR=", ") AS ?Name)
+  (GROUP_CONCAT(DISTINCT REPLACE(STR(?surgeon), ".*[/#]", ""); SEPARATOR=", ") AS ?performedBy)
+  (GROUP_CONCAT(DISTINCT REPLACE(STR(?complication), ".*[/#]", ""); SEPARATOR=", ") AS ?hasComplication)
+  (GROUP_CONCAT(DISTINCT REPLACE(STR(?protocol), ".*[/#]", ""); SEPARATOR=", ") AS ?followsProtocol)
+  (GROUP_CONCAT(DISTINCT REPLACE(STR(?specialty), ".*[/#]", ""); SEPARATOR=", ") AS ?requiresSpecialty)
+WHERE {
+  ?instance rdf:type webprotege:RSurgeryLocal .
+  FILTER(STRSTARTS(STR(?instance), "http://webprotege.stanford.edu/"))
+  
+  OPTIONAL { ?instance rdfs:label ?label . }
+  OPTIONAL { ?instance webprotege:RperformedBy ?surgeon . }
+  OPTIONAL { ?instance webprotege:RhasComplication ?complication . }
+  OPTIONAL { ?scalpel webprotege:RusedInSurgery ?instance . }
+  OPTIONAL { ?instance obo:followsProtocol ?protocol . }
+  OPTIONAL { ?instance obo:requiresSpecialty ?specialty . }
+}
+GROUP BY ?instance
+ORDER BY ?ID
+
+
+=== ЗАПРОС 3: PATIENT ===
+
+
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX webprotege: <http://webprotege.stanford.edu/>
+PREFIX obo: <http://purl.obolibrary.org/obo/>
+SELECT 
+  (GROUP_CONCAT(DISTINCT REPLACE(STR(?instance), ".*[/#]", ""); SEPARATOR=", ") AS ?ID)
+  (GROUP_CONCAT(DISTINCT ?label; SEPARATOR=", ") AS ?Name)
+  (GROUP_CONCAT(DISTINCT REPLACE(STR(?disease), ".*[/#]", ""); SEPARATOR=", ") AS ?hasDisease)
+  (GROUP_CONCAT(DISTINCT REPLACE(STR(?diagnosis), ".*[/#]", ""); SEPARATOR=", ") AS ?isDiagnosedWith)
+  (GROUP_CONCAT(DISTINCT REPLACE(STR(?surgeon), ".*[/#]", ""); SEPARATOR=", ") AS ?assignedToSurgeon)
+  (GROUP_CONCAT(DISTINCT REPLACE(STR(?study), ".*[/#]", ""); SEPARATOR=", ") AS ?enrolledInStudy)
+  (GROUP_CONCAT(DISTINCT REPLACE(STR(?facility), ".*[/#]", ""); SEPARATOR=", ") AS ?referredByFacility)
+WHERE {
+  ?instance rdf:type webprotege:R73pcrdxTGJxwkNBGojX8KO .
+  FILTER(STRSTARTS(STR(?instance), "http://webprotege.stanford.edu/"))
+  
+  OPTIONAL { ?instance rdfs:label ?label . }
+  OPTIONAL { ?instance webprotege:RhasDisease ?disease . }
+  OPTIONAL { ?instance webprotege:RDI1o26gYHJ240QNrUocEhh ?diagnosis . }
+  OPTIONAL { ?instance webprotege:RassignedToSurgeon ?surgeon . }
+  OPTIONAL { ?instance obo:enrolledInStudy ?study . }
+  OPTIONAL { ?instance obo:referredByFacility ?facility . }
+}
+GROUP BY ?instance
+ORDER BY ?ID
