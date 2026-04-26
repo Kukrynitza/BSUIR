@@ -1,0 +1,58 @@
+@startuml
+skinparam Style strictuml
+skinparam sequenceMessageAlign center
+skinparam BoxPadding 10
+actor "Пользователь" as User
+participant "Frontend" as FE
+participant "Backend" as BE
+database "БД (SQLite)" as DB
+== 3.1 Загрузка и анализ документа ==
+User -> FE : Выбирает файл (TXT, RTF)
+FE -> BE : POST /api/documents/load
+BE -> DB : Сохранение Document
+DB --> BE : {id, title, ...}
+BE --> FE : {id, title, ...}
+FE --> User : Подтверждение загрузки
+User -> FE : Нажимает "Анализ"
+FE -> BE : POST /api/documents/{id}/analyze
+BE -> DB : Удаление старых sentences/tokens
+note over BE : analyze_document()\n(razdel -> pymorphy3 -> spaCy)
+BE -> DB : Сохранение sentences, tokens, relations
+DB --> BE : {analysis, statistics, analysis_time_ms}
+BE --> FE : {analysis, statistics, analysis_time_ms}
+FE --> User : Отображение морфологии и статистики
+User -> FE : Нажимает "Показать дерево"
+FE -> BE : GET /api/documents/{id}/dependency-tree\n(или /constituency-tree)
+BE -> DB : SELECT analysis data
+DB --> BE : Данные анализа
+BE --> FE : {trees: [...], root_token: ...}
+FE --> User : Визуализация синтаксического дерева
+== 3.2 Редактирование документа ==
+User -> FE : Просмотр документа
+FE -> BE : GET /api/documents/{id}
+BE -> DB : SELECT Document
+DB --> BE : Данные документа
+BE --> FE : {content, ...}
+FE --> User : Отображение текста
+User -> FE : Редактирует текст и нажимает "Сохранить"
+FE -> BE : PUT /api/documents/{id}\n{content}
+BE -> DB : UPDATE content
+note over BE : analyze_document()\n(Повторный полный анализ)
+BE -> DB : UPDATE analysis_time_ms
+DB --> BE : {analysis, statistics, analysis_time_ms}
+BE --> FE : {analysis, statistics, analysis_time_ms}
+FE --> User : Обновление морфологии и статистики
+User -> FE : Нажимает "Показать дерево"
+FE -> BE : GET /api/documents/{id}/dependency-tree
+BE -> DB : SELECT analysis data
+DB --> BE : Данные анализа
+BE --> FE : {trees: [...]}
+FE --> User : Обновленная визуализация дерева
+== 3.3 Экспорт данных ==
+User -> FE : Нажимает "JSON"
+FE -> BE : GET /api/documents/{id}/analysis
+BE -> DB : SELECT sentences, tokens, relations
+DB --> BE : Данные анализа
+BE --> FE : {analysis, statistics, analysis_time_ms}
+FE -> User : Скачивание файла {title}_analysis.json
+@enduml

@@ -82,6 +82,65 @@ export interface RelationsResult {
   }[];
 }
 
+export interface DependencyNode {
+  id: number;
+  token: string;
+  lemma: string;
+  pos: string;
+  pos_name: string;
+  head: number;
+  relation: string;
+  relation_ru: string;
+  syntax_role: string;
+  syntax_role_name: string;
+  children: DependencyNode[];
+}
+
+export interface DependencyTree {
+  sentence_index: number;
+  sentence_text: string;
+  tree: DependencyNode | null;
+  flat_representation: DependencyNode[];
+  root_token: string | null;
+}
+
+export interface DependencyTreeResult {
+  document_id: string;
+  trees: DependencyTree[];
+}
+
+export interface ConstituencyNode {
+  id: number;
+  label: string;
+  label_ru: string;
+  children: (ConstituencyNode | string)[];
+}
+
+export interface ConstituencyTree {
+  sentence_index: number;
+  sentence_text: string;
+  tree: ConstituencyNode | null;
+  linearized: string;
+}
+
+export interface ConstituencyTreeResult {
+  document_id: string;
+  trees: ConstituencyTree[];
+}
+
+export interface TreeAnalysisResult {
+  text: string;
+  dependency_trees: DependencyTree[];
+  constituency_trees: ConstituencyTree[];
+  statistics: {
+    total_sentences: number;
+    total_tokens: number;
+    pos_distribution: Record<string, number>;
+    syntax_role_distribution: Record<string, number>;
+  };
+  analysis_time_ms: number;
+}
+
 export const api = {
   async getDocuments(): Promise<{ documents: Document[]; total: number }> {
     const res = await fetch(`${API_BASE}/documents`);
@@ -153,6 +212,32 @@ export const api = {
       body: JSON.stringify({ content }),
     });
     if (!res.ok) throw new Error('Failed to update document');
+    return res.json();
+  },
+
+  async getDependencyTree(docId: string, sentenceIndex?: number): Promise<DependencyTreeResult> {
+    let url = `${API_BASE}/documents/${docId}/dependency-tree`;
+    if (sentenceIndex !== undefined) {
+      url += `?sentence_index=${sentenceIndex}`;
+    }
+    const res = await fetch(url);
+    if (!res.ok) throw new Error('Failed to get dependency tree');
+    return res.json();
+  },
+
+  async getConstituencyTree(docId: string, sentenceIndex?: number): Promise<ConstituencyTreeResult> {
+    let url = `${API_BASE}/documents/${docId}/constituency-tree`;
+    if (sentenceIndex !== undefined) {
+      url += `?sentence_index=${sentenceIndex}`;
+    }
+    const res = await fetch(url);
+    if (!res.ok) throw new Error('Failed to get constituency tree');
+    return res.json();
+  },
+
+  async analyzeTextTrees(text: string): Promise<TreeAnalysisResult> {
+    const res = await fetch(`${API_BASE}/text/analyze-trees?text=${encodeURIComponent(text)}`);
+    if (!res.ok) throw new Error('Failed to analyze text trees');
     return res.json();
   },
 };

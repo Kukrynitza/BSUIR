@@ -61,7 +61,12 @@ class Sentence(Base):
     created_at = Column(DateTime, default=datetime.now)
 
     document = relationship('Document', back_populates='sentences')
-    tokens = relationship('Token', back_populates='sentence', cascade='all, delete-orphan')
+    tokens = relationship(
+        'Token',
+        back_populates='sentence',
+        cascade='all, delete-orphan',
+        order_by='Token.token_index',
+    )
     relations = relationship('SyntaxRelation', back_populates='sentence', cascade='all, delete-orphan')
 
     __table_args__ = (

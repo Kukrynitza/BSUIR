@@ -8,3 +8,5 @@ chardet>=5.2.0
 pydantic>=2.5.0
 python-multipart>=0.0.6
 sqlalchemy>=2.0.0
+spacy>=3.7.0
+ru-core-news-sm==3.8.0

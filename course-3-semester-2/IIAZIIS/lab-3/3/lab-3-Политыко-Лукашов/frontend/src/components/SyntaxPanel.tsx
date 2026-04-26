@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { api, Document, AnalysisResult, Sentence, Token, SyntaxRelation, RelationsResult } from '../api/client';
+import { api, Document, AnalysisResult, Sentence, Token, RelationsResult, DependencyTree, ConstituencyTree } from '../api/client';
+import TreeVisualization from './TreeVisualization';
 
 const SYNTAX_ROLES = [
   { value: '', label: '—' },
@@ -35,6 +36,10 @@ function SyntaxPanel() {
   const [savingDoc, setSavingDoc] = useState(false);
   const [relationsPage, setRelationsPage] = useState(0);
   const [sentenceRelationsPage, setSentenceRelationsPage] = useState<Record<number, number>>({});
+  const [dependencyTrees, setDependencyTrees] = useState<DependencyTree[]>([]);
+  const [constituencyTrees, setConstituencyTrees] = useState<ConstituencyTree[]>([]);
+  const [showTrees, setShowTrees] = useState(false);
+  const [loadingTrees, setLoadingTrees] = useState(false);
   const RELATIONS_PER_PAGE = 15;
   const RELATIONS_PER_PAGE_SMALL = 4;
 
@@ -94,6 +99,18 @@ function SyntaxPanel() {
       const rels = await api.getDocumentRelations(docId);
       setRelations(rels);
       setRelationsPage(0);
+      
+      setLoadingTrees(true);
+      try {
+        const depResult = await api.getDependencyTree(docId);
+        const constResult = await api.getConstituencyTree(docId);
+        setDependencyTrees(depResult.trees || []);
+        setConstituencyTrees(constResult.trees || []);
+      } catch {
+        console.error('Failed to load trees');
+      } finally {
+        setLoadingTrees(false);
+      }
     } catch (err) {
       setError('Не удалось проанализировать документ');
     } finally {
@@ -163,8 +180,13 @@ function SyntaxPanel() {
     if (!directText.trim()) return;
     try {
       setDirectAnalyzing(true);
-      const result = await api.analyzeText(directText);
-      setDirectAnalysis(result);
+      const [analysisResult, treeResult] = await Promise.all([
+        api.analyzeText(directText),
+        api.analyzeTextTrees(directText),
+      ]);
+      setDirectAnalysis(analysisResult);
+      setDependencyTrees(treeResult.dependency_trees || []);
+      setConstituencyTrees(treeResult.constituency_trees || []);
     } catch (err) {
       setError('Не удалось проанализировать текст');
     } finally {
@@ -204,7 +226,7 @@ function SyntaxPanel() {
     }
   };
 
-  const renderSentenceTable = (sentence: Sentence, sentenceIndex: number, docId?: string) => {
+  const renderSentenceTable = (sentence: Sentence, docId?: string) => {
     const sentenceRelations = relations?.relations.filter(r => r.sentence_index === sentence.sentence_index) || [];
     const currentPage = sentenceRelationsPage[sentence.sentence_index] || 0;
     const totalPages = Math.ceil(sentenceRelations.length / RELATIONS_PER_PAGE_SMALL);
@@ -448,7 +470,7 @@ function SyntaxPanel() {
       {directAnalysis && (
         <>
           {renderStatistics(directAnalysis.statistics, directAnalysis.analysis_time_ms)}
-          {directAnalysis.analysis.map((sentence, idx) => renderSentenceTable(sentence, idx))}
+          {directAnalysis.analysis.map((sentence) => renderSentenceTable(sentence))}
         </>
       )}
 
@@ -557,7 +579,32 @@ function SyntaxPanel() {
           {showRelations && renderRelationsPanel()}
           
           {renderStatistics(analysis.statistics, analysis.analysis_time_ms)}
-          {analysis.analysis.map((sentence, idx) => renderSentenceTable(sentence, idx, analysis.document_id))}
+          {analysis.analysis.map((sentence) => renderSentenceTable(sentence, analysis.document_id))}
+        </div>
+      )}
+
+      {(showTrees && (dependencyTrees.length > 0 || constituencyTrees.length > 0)) && (
+        <div style={{ marginTop: '2rem' }}>
+          <h3>Древовидные структуры</h3>
+          {loadingTrees ? (
+            <div className="loading">Загрузка деревьев...</div>
+          ) : (
+            <TreeVisualization 
+              dependencyTrees={dependencyTrees} 
+              constituencyTrees={constituencyTrees} 
+            />
+          )}
+        </div>
+      )}
+
+      {analysis && (
+        <div style={{ marginTop: '1rem' }}>
+          <button 
+            className="tree-toggle-btn"
+            onClick={() => setShowTrees(!showTrees)}
+          >
+            {showTrees ? 'Скрыть деревья' : 'Показать деревья'}
+          </button>
         </div>
       )}
     </div>
