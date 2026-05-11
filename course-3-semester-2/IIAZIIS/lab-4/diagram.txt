@@ -1,0 +1,89 @@
+@startuml
+skinparam Style strictuml
+skinparam sequenceMessageAlign center
+skinparam BoxPadding 10
+actor "Пользователь" as User
+participant "Frontend" as FE
+participant "Backend" as BE
+database "БД (SQLite)" as DB
+participant "ConceptNet API" as CN
+== 1. Управление корпусом документов ==
+User -> FE : Загрузка файла (TXT, RTF, DOCX)
+FE -> BE : POST /api/documents/load
+BE -> DB : Сохранение Document
+DB --> BE : {id, title, ...}
+BE --> FE : {id, title, ...}
+FE --> User : Документ добавлен в список
+User -> FE : Удаление документа
+FE -> BE : DELETE /api/documents/{id}
+BE -> DB : DELETE Document (CASCADE)
+DB --> BE : Success
+BE --> FE : Подтверждение удаления
+== 2. Модуль прямого анализа ==
+User -> FE : Ввод текста в поле анализа
+FE -> BE : GET /api/text/analyze-trees
+BE -> BE : Morph -> Syntax -> Semantic
+BE -> CN : Запросы концептов (ConceptNet)
+CN --> BE : Данные концептов
+BE --> FE : {analysis, trees, semantic_analysis}
+FE --> User : Результаты в таблицах и графе
+== 3. Редактор контента ==
+User -> FE : Выбор документа -> Редактирование
+FE -> BE : GET /api/documents/{id}
+BE -> DB : SELECT content
+DB --> BE : Текст документа
+BE --> FE : {content, ...}
+User -> FE : Изменение текста -> "Сохранить"
+FE -> BE : PUT /api/documents/{id} {content}
+BE -> DB : UPDATE content
+note over BE : Повторный полный анализ текста
+BE -> DB : UPDATE results (relations, annotations)
+DB --> BE : {analysis, statistics}
+BE --> FE : {analysis, statistics}
+FE --> User : Обновление всех панелей анализа
+== 4. Результаты синтаксического анализа ==
+User -> FE : Нажимает "Анализ" (для документа)
+FE -> BE : POST /api/documents/{id}/analyze
+BE -> DB : Сохранение tokens, relations
+DB --> BE : {analysis, statistics}
+BE --> FE : {analysis, statistics}
+FE --> User : Таблица морфологии и статистика
+User -> FE : Изменение синтаксической роли (в select)
+FE -> BE : PUT /api/documents/{id}/token
+BE -> DB : UPDATE token.syntax_role
+DB --> BE : Success
+BE --> FE : {updated_analysis}
+FE --> User : Обновление роли в таблице
+== 5. Результаты семантического анализа ==
+FE -> BE : (Часть общего анализа)
+BE -> CN : Обогащение лемм через ConceptNet
+CN --> BE : Concept Label, URI
+BE -> DB : Сохранение semantic_annotations, links
+BE --> FE : Данные для SemanticPanel
+FE --> User : Таблица аннотаций + Интерактивный граф
+User -> FE : Правка роли/категории в семантике
+FE -> BE : PUT /api/documents/{id}/semantic/annotation/{ann_id}
+BE -> DB : UPDATE semantic_annotations
+DB --> BE : Success
+BE --> FE : Обновленные данные
+FE --> User : Обновление графа и таблицы
+== 6. Визуализация структур ==
+User -> FE : Переключение на вкладку "Деревья"
+FE -> BE : GET /api/documents/{id}/dependency-tree\n(или /constituency-tree)
+BE -> DB : SELECT syntax data
+DB --> BE : Данные связей
+BE --> FE : {trees: [...]}
+FE --> User : Отрисовка интерактивных деревьев
+== 7. Панель справки ==
+User -> FE : Переход во вкладку "Справка"
+FE -> BE : GET /api/help
+BE --> FE : {title, description, features, syntax_roles}
+FE --> User : Отображение инструкций и глоссария
+== Дополнительно: Экспорт ==
+User -> FE : Нажимает "Семантика (JSON)"
+FE -> BE : GET /api/documents/{id}/semantic-export
+BE -> DB : SELECT semantic_data
+DB --> BE : Данные
+BE --> FE : {json_export}
+FE -> User : Скачивание файла .json
+@enduml
