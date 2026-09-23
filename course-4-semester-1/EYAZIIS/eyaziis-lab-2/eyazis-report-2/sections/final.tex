@@ -1,0 +1,36 @@
+\sectioncentered*{Заключение}
+\addcontentsline{toc}{section}{Заключение}
+
+Реализована система автоматического распознавания языка PDF-документа для русского и немецкого языков. По варианту~13 использованы метод коротких слов, метод частотных слов и нейросетевой метод на бинарных символьных N-граммах. Система разворачивается в ЛВС средствами Docker Compose.
+
+Обучающий корпус составлен из четырнадцати медицинских текстов. Эталонная выборка из десяти фраз дала Accuracy~$1{,}000$ у всех трёх методов. На длинном документе быстрее оказывается метод частотных слов: его ПОЯ ограничен пятьюдесятью лексемами. Метод коротких слов и нейросеть обрабатывают более широкое пространство признаков и поэтому занимают больше времени.
+
+Перспективы: добавить языки с общей латиницей, где словесные профили пересекаются сильнее; подобрать глубину N-грамм под объём корпуса; вынести обучение нейросети в отдельный этап, чтобы не повторять его при каждом старте контейнера.
+
+\begin{thebibliography}{9}
+	\addcontentsline{toc}{section}{Cписок использованных источников}
+
+	\bibitem{cavnar}
+	Cavnar W., Trenkle J. N-Gram-Based Text Categorization // Proceedings of SDAIR-94. \mdash 1994. \mdash Режим доступа: \url{https://www.let.rug.nl/vannoord/TextCat/textcat.pdf}. \mdash Дата доступа: 23.09.2026.
+
+	\bibitem{scikit}
+	Pedregosa F. и др. Scikit-learn: Machine Learning in Python // Journal of Machine Learning Research. \mdash 2011. \mdash Vol.~12. \mdash P.~2825--2830.
+
+	\bibitem{fastapi}
+	FastAPI documentation [Электронный ресурс]. \mdash Режим доступа: \url{https://fastapi.tiangolo.com/}. \mdash Дата доступа: 23.09.2026.
+
+	\bibitem{pymorphy}
+	Korobov M. Morphological Analyzer and Generator for Russian and Ukrainian Languages // Analysis of Images, Social Networks and Texts. \mdash 2015. \mdash P.~320--332.
+
+	\bibitem{pypdf}
+	pypdf [Электронный ресурс]. \mdash Режим доступа: \url{https://pypdf.readthedocs.io/}. \mdash Дата доступа: 23.09.2026.
+
+	\bibitem{postgres}
+	PostgreSQL 16 Documentation [Электронный ресурс]. \mdash Режим доступа: \url{https://www.postgresql.org/docs/16/}. \mdash Дата доступа: 23.09.2026.
+
+	\bibitem{react}
+	React documentation [Электронный ресурс]. \mdash Режим доступа: \url{https://react.dev/}. \mdash Дата доступа: 23.09.2026.
+
+	\bibitem{sklearnmlp}
+	MLPClassifier [Электронный ресурс]. \mdash Режим доступа: \url{https://scikit-learn.org/stable/modules/generated/sklearn.neural_network.MLPClassifier.html}. \mdash Дата доступа: 23.09.2026.
+\end{thebibliography}
