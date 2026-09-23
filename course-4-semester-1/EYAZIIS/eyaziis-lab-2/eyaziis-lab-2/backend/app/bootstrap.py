@@ -1,4 +1,3 @@
-"""Первичная инициализация: тренировочная коллекция, профили и эталонная разметка."""
 import json
 import logging
 
@@ -116,7 +115,6 @@ def load_profiles() -> dict[str, dict] | None:
 
 
 def get_runtime(force: bool = False) -> dict:
-    """Профили языков и обученная нейросеть, кэшируются на время жизни процесса."""
     global _runtime
     if _runtime is not None and not force:
         return _runtime

@@ -1,4 +1,3 @@
-"""Предобработка русского и немецкого текста: токенизация и лемматизация."""
 import re
 from dataclasses import dataclass
 from functools import lru_cache
@@ -7,7 +6,6 @@ import pymorphy3
 
 _morph_ru = pymorphy3.MorphAnalyzer(lang="ru")
 
-# Буквы обоих языков, включая немецкие умлауты и эсцет.
 TOKEN_RE = re.compile(r"[а-яёa-zäöüß0-9]+(?:-[а-яёa-zäöüß0-9]+)*", re.IGNORECASE)
 
 CYRILLIC_RE = re.compile(r"[а-яё]", re.IGNORECASE)
@@ -28,7 +26,6 @@ class Token:
 
 
 def detect_language(text: str) -> str:
-    """Грубая оценка языка по алфавиту: кириллица — русский, латиница — немецкий."""
     if not text:
         return "русский"
     cyr = len(CYRILLIC_RE.findall(text))
@@ -52,7 +49,6 @@ def lemmatize(word: str, lang: str = "ru") -> str:
 
 
 def reset_preprocess_cache() -> None:
-    """Сбрасывает кэш лемм, чтобы замер времени метода включал предобработку."""
     lemmatize.cache_clear()
 
 
@@ -73,10 +69,8 @@ def tokenize(text: str) -> list[Token]:
 
 
 def lexemes(text: str) -> list[str]:
-    """Все лексемы документа. Стоп-слова не отбрасываются: они и есть основа ПОЯ."""
     return [token.lemma for token in tokenize(text) if token.lemma]
 
 
 def normalize(text: str) -> list[str]:
-    """Совместимый конвейер: лексемы без однобуквенных токенов."""
     return [lemma for lemma in lexemes(text) if len(lemma) >= 2]

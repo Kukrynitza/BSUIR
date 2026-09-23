@@ -1,4 +1,3 @@
-"""Хранение документов и результатов распознавания."""
 from psycopg2.extras import Json
 
 from .db import get_cursor

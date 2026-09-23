@@ -1,4 +1,3 @@
-"""Проверочные сценарии работы системы распознавания языка."""
 from app.language_model import (
     FrequentWordsRecognizer,
     NeuralNetworkRecognizer,

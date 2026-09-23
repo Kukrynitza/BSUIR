@@ -1,4 +1,3 @@
-"""Демонстрационные PDF на русском и немецком (вариант 13)."""
 from pathlib import Path
 
 from reportlab.lib.pagesizes import A4

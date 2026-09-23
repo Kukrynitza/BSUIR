@@ -1,4 +1,3 @@
-"""REST API системы распознавания языка текста."""
 import logging
 from contextlib import asynccontextmanager
 from pathlib import Path

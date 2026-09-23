@@ -1,4 +1,3 @@
-"""Модели распознавания языка: коротких слов, частотных слов, нейросетевой (MLP)."""
 import math
 import pickle
 import time
@@ -43,7 +42,6 @@ def _softmax(log_scores: dict[str, float]) -> dict[str, float]:
 
 
 def out_of_place_distance(profile_a: list[str], profile_b: list[str]) -> float:
-    """Расстояние Out-of-Place: сумма |ранг_A - ранг_B| по частотным спискам."""
     if not profile_a or not profile_b:
         return float("inf")
     pos_a = {gram: index for index, gram in enumerate(profile_a)}
@@ -56,7 +54,6 @@ def out_of_place_distance(profile_a: list[str], profile_b: list[str]) -> float:
 
 
 def extract_ngrams(text: str, n_min: int = N_GRAM_MIN, n_max: int = N_GRAM_MAX) -> Counter:
-    """Символьные N-граммы текста, включая пробелы — как в методе Канвара–Тренкла."""
     source = f" {text.lower()} "
     counts: Counter = Counter()
     for n in range(n_min, n_max + 1):
@@ -75,8 +72,6 @@ def ngram_profile(texts: list[str], limit: int = 300) -> dict[str, float]:
 
 
 class ShortWordsRecognizer:
-    """ПОЯ из лексем длиной ≤ 5, встречавшихся более трёх раз."""
-
     def build_profile(self, texts: list[str]) -> dict[str, float]:
         counts: Counter = Counter()
         for text in texts:
@@ -142,8 +137,6 @@ class ShortWordsRecognizer:
 
 
 class FrequentWordsRecognizer:
-    """ПОЯ из TOP_WORDS_COUNT самых частотных лексем обучающего корпуса."""
-
     def build_profile(self, texts: list[str]) -> dict[str, float]:
         counts: Counter = Counter()
         for text in texts:
@@ -208,8 +201,6 @@ class FrequentWordsRecognizer:
 
 
 class NeuralNetworkRecognizer:
-    """MLPClassifier на бинарных символьных N-граммах (N = 1..5)."""
-
     def __init__(self):
         self.clf: MLPClassifier | None = None
         self.label_encoder: LabelEncoder | None = None

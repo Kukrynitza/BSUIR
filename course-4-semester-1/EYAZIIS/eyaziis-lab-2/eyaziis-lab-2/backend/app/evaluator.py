@@ -1,4 +1,3 @@
-"""Оценка качества распознавания языка: метрики и графики."""
 import base64
 import io
 import json
@@ -9,7 +8,7 @@ from pathlib import Path
 import matplotlib
 
 matplotlib.use("Agg")
-import matplotlib.pyplot as plt  # noqa: E402
+import matplotlib.pyplot as plt
 
 from .config import EXPORT_DIR
 from .db import execute, fetch_all

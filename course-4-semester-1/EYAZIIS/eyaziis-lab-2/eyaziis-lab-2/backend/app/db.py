@@ -1,4 +1,3 @@
-"""Доступ к PostgreSQL: пул соединений и вспомогательные обёртки."""
 import time
 from contextlib import contextmanager
 
@@ -78,7 +77,6 @@ def execute(sql: str, params: tuple | dict | None = None) -> None:
 
 
 def save_profiles(profiles: dict[str, dict]) -> None:
-    """Булковой вставка профилей в language_profiles. Стирает старые."""
     with get_connection() as conn:
         cur = conn.cursor()
         cur.execute("DELETE FROM language_profiles")
