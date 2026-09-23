@@ -19,7 +19,7 @@ from .config import (
     MLP_RANDOM_STATE,
     UNSEEN_PROB,
 )
-from .text_processing import lexemes, reset_preprocess_cache
+from .text_processing import CYRILLIC_RE, LATIN_RE, lexemes, reset_preprocess_cache
 
 
 def _ranked(profile: dict[str, float]) -> list[str]:
@@ -39,6 +39,32 @@ def _softmax(log_scores: dict[str, float]) -> dict[str, float]:
     exps = {key: math.exp(value - top) for key, value in log_scores.items()}
     total = sum(exps.values()) or 1.0
     return {key: value / total for key, value in exps.items()}
+
+
+def _confidence(log_scores: dict[str, float], token_count: int) -> dict[str, float]:
+    count = token_count or 1
+    return _softmax({lang: score / count for lang, score in log_scores.items()})
+
+
+def _script_confidence(feature_names: list[str], present: set[str], language: str) -> float | None:
+    russian = 0
+    german = 0
+    for name in feature_names:
+        if name not in present:
+            continue
+        gram = name.split(":", 1)[-1]
+        cyrillic = CYRILLIC_RE.search(gram) is not None
+        latin = LATIN_RE.search(gram) is not None
+        if cyrillic and not latin:
+            russian += 1
+        elif latin and not cyrillic:
+            german += 1
+    total = russian + german
+    if total == 0:
+        return None
+    if language == "немецкий":
+        return german / total
+    return russian / total
 
 
 def out_of_place_distance(profile_a: list[str], profile_b: list[str]) -> float:
@@ -123,7 +149,7 @@ class ShortWordsRecognizer:
                 "distances": {},
                 "method": "short_words",
             }
-        confidence = _softmax(log_scores)
+        confidence = _confidence(log_scores, len(doc_lexemes))
         best = max(log_scores, key=log_scores.get)
         return {
             "language": best,
@@ -187,7 +213,7 @@ class FrequentWordsRecognizer:
                 "distances": {},
                 "method": "frequent_words",
             }
-        confidence = _softmax(log_scores)
+        confidence = _confidence(log_scores, len(compared))
         best = max(log_scores, key=log_scores.get)
         return {
             "language": best,
@@ -243,11 +269,13 @@ class NeuralNetworkRecognizer:
         predicted = self.clf.predict(row)[0]
         language = str(self.label_encoder.inverse_transform([predicted])[0])
         probabilities = self.clf.predict_proba(row)[0]
-        confidence = float(max(probabilities))
         by_label = {
             str(self.label_encoder.inverse_transform([index])[0]): float(prob)
             for index, prob in enumerate(probabilities)
         }
+        confidence = _script_confidence(self.feature_names, features, language)
+        if confidence is None:
+            confidence = float(max(probabilities))
         return {
             "language": language,
             "confidence": confidence,
