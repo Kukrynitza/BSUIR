@@ -111,7 +111,7 @@ def evaluate(model_key: str = PRIMARY_MODEL) -> dict:
     correct_count = sum(1 for row in per_query if row["correct"])
     accuracy = correct_count / total if total else 0.0
 
-    labels = sorted({label for row in per_query for label in row["relevant"]} | {row["predicted"] for row in per_query})
+    labels = sorted({label for row in per_query for label in row["relevant"]})
     precisions = []
     recalls = []
     for label in labels:
