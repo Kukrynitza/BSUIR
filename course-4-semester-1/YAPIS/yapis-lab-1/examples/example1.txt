@@ -1,0 +1,54 @@
+// Площадь под SIN(x) на [0, PI] методом трапеций.
+// Число отрезков удваивается, пока оценки не сойдутся.
+
+function f(x) {
+  y = SIN(x);
+  return y;
+}
+
+function trapezoid(a, b, n) {
+  steps = n::FLOAT;
+  width = (b - a) \ steps;
+  total = (f(a) + f(b)) \ 2.0;
+  i = 1;
+  while (i < n) {
+    x = a + width * i::FLOAT;
+    total = total + f(x);
+    i = i + 1;
+  }
+  area = total * width;
+  return area;
+}
+
+function integrate(a, b) {
+  n = 4;
+  previous = trapezoid(a, b, n);
+  settled = false;
+  until (settled) {
+    n = n * 2;
+    current = trapezoid(a, b, n);
+    gap = ABS(current - previous);
+    if (gap < 0.000001 OR n > 4096) {
+      settled = true;
+    } else {
+      previous = current;
+    }
+  }
+  return current;
+}
+
+function report(value) {
+  whole = FLOOR(value);
+  write(whole);
+  write(value);
+}
+
+function main() {
+  left = 0.0;
+  right = PI;
+  area = integrate(left, right);
+  report(area);
+  exact = 2.0;
+  error = ABS(area - exact);
+  write(error);
+}

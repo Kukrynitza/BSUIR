@@ -1,0 +1,59 @@
+g = 9.81; // глобальная переменная float: тип выведен из числа с точкой
+limit = 10; // глобальная переменная int: тип выведен из целого числа
+ready = true; // глобальная переменная bool
+
+function square(x) { // подпрограмма с параметром по значению
+  return x ^ 2; // возврат значения и операция степени
+}
+
+function length(ax, ay) {
+  function hypot(p, q) { // подпрограмма внутри другой подпрограммы
+    return SQRT(square(p) + square(q)); // вызов вложенной и внешней подпрограммы
+  }
+  return hypot(ax, ay); // параметры hypot снаружи length не видны
+}
+
+function demo() {
+  a = read(); // ввод; первое присваивание создаёт локальную переменную
+  b = read();
+  casted = a::INT; // явное приведение к int
+  widened = casted::FLOAT; // явное приведение к float
+  if (a > 0.0 AND b > 0.0) { // if-else и логическое AND
+    side = length(a, b); // имя создано внутри блока if
+  } else {
+    side = 0.0; // та же переменная function: блок if область не создаёт
+  }
+  write(side); // side видна после if; write выводит значение
+  if (NOT (side == 0.0) OR ready) { // NOT, сравнение == и связка OR
+    write(side);
+  } else {
+    write(0);
+  }
+  if (casted != 0 AND casted BETWEEN 1 AND limit) { // сравнение != и BETWEEN
+    write(casted);
+  } else {
+    write(limit);
+  }
+  n = 0;
+  while (n < limit) { // цикл while: проверка до тела
+    n = n + 1; // сложение
+    write(n);
+  }
+  m = 3;
+  until (m <= 0) { // цикл until: тело хотя бы один раз, проверка после тела
+    m = m - 1; // вычитание
+    write(m);
+  }
+  for (k IN 1..limit BY 2) { // цикл for от 1 до limit включительно с шагом 2
+    write(k);
+  }
+  quotient = limit \ 3; // деление
+  remainder = limit % 3; // остаток
+  product = quotient * remainder; // умножение
+  scaled = (product + 1) * 2.0 - widened; // составное выражение со скобками
+  angle = COS(0.0) + SIN(PI \ 2.0); // COS, SIN и встроенная константа PI
+  positive = ABS(scaled); // модуль
+  write(positive);
+  write(angle);
+  write(FLOOR(angle)); // округление вниз
+}

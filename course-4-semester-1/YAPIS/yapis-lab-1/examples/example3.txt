@@ -1,0 +1,8 @@
+function main() {
+  x = read();
+  if (x > 0.0) {
+    write(SQRT(x) + 1.0);
+  } else {
+    write(0.0);
+  }
+}
