@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %}Заметки{% endblock %}
+{% block content %}
+<section class="hero">
+  <p class="kicker">Публичный вход</p>
+  <h1>Заметки</h1>
+  <p>Обычные записи хранятся открытым текстом. Секреты после ввода шифруются и показываются только владельцу.</p>
+  <p class="actions">
+    <a class="btn" href="{{ url_for('register') }}">Регистрация</a>
+    <a class="btn secondary" href="{{ url_for('login') }}">Вход</a>
+  </p>
+</section>
+{% endblock %}

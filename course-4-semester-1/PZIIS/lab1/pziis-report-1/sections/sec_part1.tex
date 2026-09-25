@@ -1,0 +1,130 @@
+\section{Часть 1. Управление доступом к объектам операционных систем}
+\label{sec:part1}
+
+\textbf{Краткое описание программы.}
+Часть~1 реализована набором сценариев командной оболочки. Сценарий настройки создаёт группы, пользователей, каталоги и файлы по пунктам 1--13 методички. Три сценария проверки охватывают чтение, запись и исполнение файлов, остановку процессов шаблона \texttt{filex5} и операции в каталогах. Отдельный сценарий удаляет стенд.
+
+В модели DAC UNIX-подобных систем права владельца проверяются раньше прав группы. Поэтому каталог с режимом <<только для группы>> (\texttt{070}) нельзя отдавать пользователю \texttt{iit11} как владельцу: иначе у него окажутся нулевые биты владельца, и доступ по группе не сработает. Аналогично для режима <<только остальные>> (\texttt{007}). Принятая схема владельцев каталогов приведена в таблице~\ref{tab:p1-dirs}.
+
+\begin{table}[ht]
+	\begin{tabularx}{\textwidth}{|l|c|l|X|}
+		\hline
+		\textbf{Каталог} & \textbf{Режим} & \textbf{Владелец:группа} & \textbf{Смысл} \\
+		\hline
+		\texttt{pzs11} & 700 & \texttt{iit11:group\_iit1} & только владелец \\
+		\hline
+		\texttt{pzs12} & 070 & \texttt{root:group\_iit1} & только группа \\
+		\hline
+		\texttt{pzs13} & 007 & \texttt{root:root} & только остальные \\
+		\hline
+		\texttt{pzs14} & 777 & \texttt{iit11:group\_iit1} & все пользователи \\
+		\hline
+		\texttt{pzs15} & 700 & \texttt{root:root} & только администратор \\
+		\hline
+	\end{tabularx}
+	\caption{Каталоги \texttt{/home/pzs} и права доступа}
+	\label{tab:p1-dirs}
+\end{table}
+
+Содержимое файлов соответствует методичке: для шаблона \texttt{filex5} (\texttt{file15}, \texttt{file25}, \ldots, \texttt{file55})~\mdash  строка \texttt{read testVariable}; для остальных~\mdash  \texttt{echo "Hello World"}. Файлы \texttt{file51}--\texttt{file55} передаются администратору (\texttt{chown root:root}). Проверки доступа неразрушающие для содержимого: запись в файл выполняется с откатом; в каталогах сначала создаётся зонд, затем проверяется удаление каждого существующего \texttt{file*} с восстановлением из копии. Исполнение~\mdash  фактический запуск с тайм-аутом, а не проверка бита \texttt{test -x}: скрипту с \texttt{\#!/bin/bash} недостаточно бита \texttt{x}, интерпретатору нужно ещё и чтение. Поэтому файл режима <<только исполнение>> (\texttt{100}, \texttt{111}) при запуске даёт отказ. Каталог стенда~\mdash  \texttt{/home/pzs}: методичка путь не фиксирует, выбран каталог вне домашних каталогов учебных учёток.
+
+\textbf{Проверка политики.}
+Порядок: сначала сценарий настройки от суперпользователя, затем три сценария проверки, в конце~\mdash  очистка. Результаты пишутся в текстовые таблицы. Экспериментальный прогон выполнен 10.09.2026 на хосте с ОС Linux.
+
+Фрагмент проверки каталогов (п.~16) приведён в таблице~\ref{tab:p1-dirs-res} (значение <<ДА>> означает успешные list, create и удаление существующих \texttt{file*} с восстановлением). Для удаления важен режим каталога, а не биты самого файла: без флага sticky достаточно записи в каталог.
+
+\begin{table}[ht]
+	\begin{tabularx}{\textwidth}{|l|c|c|c|c|c|}
+		\hline
+		\textbf{Пользователь} & \texttt{pzs11} & \texttt{pzs12} & \texttt{pzs13} & \texttt{pzs14} & \texttt{pzs15} \\
+		\hline
+		\texttt{iit11} & ДА & ДА & ДА & ДА & НЕТ \\
+		\hline
+		\texttt{iit12} & НЕТ & ДА & ДА & ДА & НЕТ \\
+		\hline
+		\texttt{iit21} & НЕТ & НЕТ & ДА & ДА & НЕТ \\
+		\hline
+		\texttt{iit22} & НЕТ & НЕТ & ДА & ДА & НЕТ \\
+		\hline
+		\texttt{iit3} & НЕТ & НЕТ & ДА & ДА & НЕТ \\
+		\hline
+		\texttt{root} & ДА & ДА & ДА & ДА & ДА \\
+		\hline
+	\end{tabularx}
+	\caption{Доступ к каталогам (list / create / delete), 10.09.2026}
+	\label{tab:p1-dirs-res}
+\end{table}
+
+Результаты п.~15 (остановка процессов с телом \texttt{filex5}, запущенных от \texttt{iit11}) приведены в таблице~\ref{tab:p1-procs}. Оригиналы \texttt{file15}--\texttt{file55} имеют режимы без чтения для интерпретатора, поэтому процесс стартует обёрткой с тем же текстом и битами \texttt{r+x}: проверяется право \texttt{kill}, а не повторный разбор shebang. Учётка \texttt{iit21} входит в \texttt{sudo}, но проверка идёт без повышения прав, поэтому \texttt{kill} чужого процесса ей недоступен~\mdash  как обычному пользователю.
+
+\begin{table}[ht]
+	\begin{tabularx}{\textwidth}{|l|c|c|c|c|c|c|}
+		\hline
+		\textbf{Файл} & \texttt{iit11} & \texttt{iit12} & \texttt{iit21} & \texttt{iit22} & \texttt{iit3} & \texttt{root} \\
+		\hline
+		\texttt{file15} & ДА & НЕТ & НЕТ & НЕТ & НЕТ & ДА \\
+		\hline
+		\texttt{file25} & ДА & НЕТ & НЕТ & НЕТ & НЕТ & ДА \\
+		\hline
+		\texttt{file35} & ДА & НЕТ & НЕТ & НЕТ & НЕТ & ДА \\
+		\hline
+		\texttt{file45} & ДА & НЕТ & НЕТ & НЕТ & НЕТ & ДА \\
+		\hline
+		\texttt{file55} & ДА & НЕТ & НЕТ & НЕТ & НЕТ & ДА \\
+		\hline
+	\end{tabularx}
+	\caption{Возможность \texttt{kill} процесса \texttt{filex5} (п.~15)}
+	\label{tab:p1-procs}
+\end{table}
+
+Фрагмент проверки файлов (п.~14) для пользователя \texttt{iit11} в каталоге \texttt{pzs11}~\mdash  таблица~\ref{tab:p1-files-iit11}.
+
+\begin{table}[ht]
+	\begin{tabularx}{\textwidth}{|l|c|c|c|X|}
+		\hline
+		\textbf{Файл} & R & W & X & \textbf{Комментарий} \\
+		\hline
+		\texttt{file11} & ДА & НЕТ & НЕТ & только чтение владельца \\
+		\hline
+		\texttt{file12} & ДА & ДА & НЕТ & чтение и запись владельца \\
+		\hline
+		\texttt{file13} & НЕТ & ДА & НЕТ & только запись владельца \\
+		\hline
+		\texttt{file14} & ДА & ДА & ДА & rwx владельца \\
+		\hline
+		\texttt{file15} & НЕТ & НЕТ & НЕТ & бит \texttt{x} без чтения; shebang не запускается \\
+		\hline
+		\texttt{file21}--\texttt{file25} & НЕТ & НЕТ & НЕТ & владелец; биты owner=0 \\
+		\hline
+		\texttt{file41} & ДА & НЕТ & НЕТ & права <<для всех>> \\
+		\hline
+		\texttt{file44} & ДА & ДА & ДА & права <<для всех>> \\
+		\hline
+		\texttt{file45} & НЕТ & НЕТ & НЕТ & \texttt{111}: бит \texttt{x} без чтения \\
+		\hline
+		\texttt{file51}--\texttt{file55} & НЕТ & НЕТ & НЕТ & владелец \texttt{root} \\
+		\hline
+	\end{tabularx}
+	\caption{Доступ \texttt{iit11} к файлам в \texttt{pzs11} (READ / WRITE / EXEC)}
+	\label{tab:p1-files-iit11}
+\end{table}
+
+Ключевые фрагменты сценария настройки приведены в листингах~\ref{lst:p1-dirs} и~\ref{lst:p1-files}.
+
+\begin{lstlisting}[caption={Владельцы и режимы каталогов},label={lst:p1-dirs}]
+chown iit11:group_iit1 "${BASE}/pzs11"; chmod 700 "${BASE}/pzs11"
+chown root:group_iit1  "${BASE}/pzs12"; chmod 070 "${BASE}/pzs12"
+chown root:root        "${BASE}/pzs13"; chmod 007 "${BASE}/pzs13"
+chown iit11:group_iit1 "${BASE}/pzs14"; chmod 777 "${BASE}/pzs14"
+chown root:root        "${BASE}/pzs15"; chmod 700 "${BASE}/pzs15"
+\end{lstlisting}
+
+\begin{lstlisting}[caption={Создание файлов от имени iit11},label={lst:p1-files}]
+for d in pzs11 pzs12 pzs13 pzs14; do
+  runuser -u iit11 -- "${CREATE_HELPER}" "${BASE}/${d}"
+done
+# file51..file55 -> root
+for d in pzs11 pzs12 pzs13 pzs14; do
+  chown root:root "${BASE}/${d}/file5"{1,2,3,4,5}
+done
+\end{lstlisting}
