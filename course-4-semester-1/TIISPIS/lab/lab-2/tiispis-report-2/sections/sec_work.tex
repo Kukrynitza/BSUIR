@@ -1,0 +1,109 @@
+\section{Сценарий диалога и классы сообщений}
+\label{sec:work}
+
+Классификация по теме определяет намерение пользователя и объекты (сущности), упомянутые в реплике. По намерению система выбирает правило ответа, по сущности~\mdash  конкретный фрагмент БЗ.
+
+Для музыки выделены четыре намерения. Класс \texttt{concept\_message\_about\_entity} уже есть в NIKA и используется для вопросов <<Что такое~\ldots?>> / <<Кто такой~\ldots?>>. Три предметных класса добавлены в БЗ.
+
+\begin{table}[H]
+	\centering
+	\small
+	\begin{tabular}{|p{3.6cm}|p{3.2cm}|p{6.4cm}|}
+		\hline
+		Класс сообщения & Идентификатор & Примеры формулировок \\
+		\hline
+		сообщение о сущности & \texttt{about\_entity} & Что такое~\ldots? Кто такой~\ldots? Расскажи о~\ldots \\
+		\hline
+		сообщение об исполнителе & \texttt{about\_performer} & Кто исполняет~\ldots? Кто поёт~\ldots? \\
+		\hline
+		сообщение об авторе & \texttt{about\_author} & Кто автор~\ldots? Кто написал~\ldots? \\
+		\hline
+		сообщение об альбоме & \texttt{about\_album} & В какой альбом входит~\ldots? \\
+		\hline
+	\end{tabular}
+	\caption{Классы намерений предметной области музыки}
+	\label{tab:intents}
+\end{table}
+
+Сущности~\mdash  элементы БЗ с пометкой \texttt{concept\_wit\_entity} (понятия, экземпляры и отношения). Агент сопоставляет выделенную строку с русским \texttt{nrel\_main\_idtf} / \texttt{nrel\_idtf}. Для коротких имён добавлены синонимы: <<Моцарт>>, <<Битлз>>, <<Квин>> и другие.
+
+Каждый предметный класс включён во множество \texttt{concept\_intent\_possible\_class} и связан с идентификатором Wit.ai отношением \texttt{nrel\_wit\_ai\_idtf}. Фрагмент спецификации класса сообщений об исполнителе:
+
+\begin{lstlisting}[caption={Спецификация класса сообщений об исполнителе},label={lst:msg-performer},basicstyle=\footnotesize\ttfamily]
+concept_message_about_performer
+<- sc_node_class;
+=> nrel_wit_ai_idtf:
+	[about_performer];
+<= nrel_inclusion:
+	concept_atomic_message;;
+
+concept_intent_possible_class
+	-> concept_message_about_performer;;
+\end{lstlisting}
+
+Аналогично заданы классы \texttt{about\_author} и \texttt{about\_album}.
+
+Сценарий диалога состоит из четырёх пар <<вопрос~\mdash  ответ>> (таблица~\ref{tab:scenario}). У каждого вопроса есть класс намерения и хотя бы одна сущность.
+
+\begin{table}[H]
+	\centering
+	\small
+	\begin{tabular}{|c|p{4.4cm}|p{3.2cm}|p{4.6cm}|}
+		\hline
+		№ & Сообщение пользователя & Класс / сущность & Ответ Ники \\
+		\hline
+		1 & Что такое Bohemian Rhapsody? & \texttt{about\_entity}, Bohemian Rhapsody & Bohemian Rhapsody~\mdash  песня Queen (1975) с альбома A Night at the Opera; исполнялась на Live Aid в 1985 году. \\
+		\hline
+		2 & Кто исполняет Bohemian Rhapsody? & \texttt{about\_performer}, Bohemian Rhapsody & Bohemian Rhapsody исполняет группа Queen. Один из её участников~\mdash  Фредди Меркьюри. \\
+		\hline
+		3 & Кто автор Yesterday? & \texttt{about\_author}, Yesterday & Yesterday написал Пол Маккартни. \\
+		\hline
+		4 & В какой альбом входит Come Together? & \texttt{about\_album}, Come Together & Произведение Come Together есть на альбоме Abbey Road лейбла Apple Records, год выпуска~\mdash  1969. \\
+		\hline
+	\end{tabular}
+	\caption{Сценарий диалога (8 сообщений)}
+	\label{tab:scenario}
+\end{table}
+
+Ответы на сообщения 2--4 формируются правилами и шаблонными фразами лабораторной работы №3. В этой работе проверяется, что намерение и сущность определены верно, а для вопроса <<Что такое~\ldots?>> Ника строит ответ по \texttt{nrel\_note} / определению сущности.
+
+\section{Классификатор и тестирование}
+\label{sec:test}
+
+Локальный классификатор при старте разбирает файлы \texttt{*.scs} каталога \texttt{kb/extra}, собирает русские имена элементов с \texttt{concept\_wit\_entity} и загружает регулярные выражения намерений из \texttt{intents.json}. Запрос обрабатывается так:
+\begin{itemize}
+	\item текст нормализуется (регистр, <<ё>>, кавычки);
+	\item намерение~\mdash  первое совпавшее регулярное выражение;
+	\item сущность~\mdash  самое длинное совпадение имени с границами слов; фрагмент, занятый намерением, сущностью не считается;
+	\item если намерение не найдено, но сущность есть, используется \texttt{about\_entity};
+	\item ответ отдаётся в формате Wit.ai, чтобы штатный \texttt{MessageTopicClassificationAgent} не изменять.
+\end{itemize}
+
+\begin{lstlisting}[caption={Фрагмент формирования ответа в формате Wit.ai},label={lst:witjson},basicstyle=\footnotesize\ttfamily]
+def wit_response(raw_text):
+    _, intent, _, entities = classify(raw_text)
+    return {
+        "text": raw_text,
+        "intents": [{"id": intent, "name": intent,
+                     "confidence": 1.0}] if intent else [],
+        "entities": {
+            "rrel_entity:rrel_entity": [
+                {"role": "rrel_entity", "value": item["value"],
+                 "start": item["start"], "end": item["end"]}
+                for item in entities
+            ]
+        } if entities else {},
+        "traits": {},
+    }
+\end{lstlisting}
+
+Проверены вопросы <<Что такое~\ldots?>> для экземпляра (Bohemian Rhapsody), понятия (рок-музыка), отношения (автор) и синонима (Моцарт). Предметные вопросы сценария классифицируются как \texttt{about\_performer}, \texttt{about\_author} и \texttt{about\_album}.
+
+Тестирование сценария в интерфейсе NIKA и в sc-web показано на рисунке~\ref{fig:dialog}. Слева~\mdash  ответы Ники, справа~\mdash  сообщения пользователя; узлы автора~\mdash  участник диалога.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{dialog-scg}
+	\caption{Сценарий диалога в базе знаний (sc-web)}
+	\label{fig:dialog}
+\end{figure}
