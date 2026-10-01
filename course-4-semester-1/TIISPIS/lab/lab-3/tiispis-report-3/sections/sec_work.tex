@@ -1,0 +1,109 @@
+\section{Логические правила и фразы}
+\label{sec:work}
+
+Ответ строит агент стандартного ответа: правила берутся по приоритету (сначала~1, затем~2 и~3). Сработавшее правило указывает класс фраз. Фраза выбирается случайно; переменные шаблона заменяются содержимым ссылок из БЗ.
+
+Для каждого из трёх намерений заданы три правила. Более конкретная посылка имеет меньший номер приоритета, поэтому при полном фрагменте БЗ срабатывает подробный ответ, при неполном~\mdash  короткий или ответ <<неизвестно>>.
+
+\begin{table}[H]
+	\centering
+	\small
+	\begin{tabular}{|p{2.8cm}|p{3.8cm}|p{3.6cm}|p{3.0cm}|}
+		\hline
+		Намерение & Приоритет 1 & Приоритет 2 & Приоритет 3 \\
+		\hline
+		Исполнитель & исполнитель~\mdash  группа, известен участник & исполнитель указан & исполнитель не указан \\
+		\hline
+		Автор & автор принадлежит классу исполнителей & автор указан & автор не указан \\
+		\hline
+		Альбом & известны альбом и лейбл & известен только альбом & альбом не указан \\
+		\hline
+	\end{tabular}
+	\caption{Правила ответа и зависимость от состояния БЗ}
+	\label{tab:rules}
+\end{table}
+
+Посылка каждого правила содержит \texttt{\_message <- concept\_message\_about\_\ldots} и дугу \texttt{\_message -> rrel\_entity: \_work}. Дальше проверяются отношения экземпляра: \texttt{nrel\_performer\_of}, \texttt{nrel\_author}, \texttt{nrel\_included\_in\_album} и связанные факты (участник группы, лейбл).
+
+Фрагмент правила <<автор сам является исполнителем>>:
+
+\begin{lstlisting}[caption={Правило ответа, если автор входит в класс исполнителей},label={lst:rule-author},basicstyle=\footnotesize\ttfamily]
+@if_author_performer = [*
+	_message
+		_<- concept_message;
+		_<- concept_message_about_author;
+		_-> rrel_entity:: _work;;
+	_work _=> nrel_author:: _author;;
+	_author _<- concept_performer;;
+*];;
+
+@then_author_performer = [*
+	_message _=> nrel_reply:: _reply_message;;
+	_reply_message
+		_<- concept_message_about_author;
+		_<- concept_atomic_message;;
+*];;
+
+lr_message_about_author_performer
+<- concept_answer_on_standard_message_rule;
+<- concept_answer_on_standard_message_rule_priority_1;
+=> nrel_answer_pattern:
+	{ rrel_1: concept_phrase_about_author_performer };
+-> rrel_main_key_sc_element: @implication_author_performer;;
+\end{lstlisting}
+
+Заданы девять классов фраз, по два русских варианта в каждом (18 формулировок, без повторов). Все фразы шаблонные: подставляются имя произведения, исполнителя, участника группы, автора, альбома, лейбла и года. Это больше требуемых трёх шаблонных фраз на диалог.
+
+Примеры шаблонных фраз (подстановки~\mdash  имена из БЗ):
+\begin{itemize}
+	\item <<произведение исполняет группа~\ldots Один из её участников~\mdash  \ldots>>;
+	\item <<\ldots написал \ldots>>;
+	\item <<\ldots входит в альбом~\ldots (год), выпущенный лейблом~\ldots>>;
+	\item <<Я пока не знаю, кто исполняет~\ldots>>.
+\end{itemize}
+
+Шаблон фразы повторяет посылку соответствующего правила и снимает \texttt{nrel\_main\_idtf} с найденных узлов. Если конструкция шаблона в памяти не находится, текст не генерируется и берётся следующая фраза класса.
+
+\section{Тестирование}
+\label{sec:test}
+
+Одно и то же намерение даёт разные ответы, потому что в БЗ у произведений разный набор фактов: у Bohemian Rhapsody исполнитель~\mdash  группа Queen с участником Фредди Меркьюри; у Billie Jean исполнитель~\mdash  Майкл Джексон (не группа); у оперы <<Кармен>> исполнитель не указан. Аналогично для автора и альбома.
+
+\begin{table}[H]
+	\centering
+	\small
+	\begin{tabular}{|p{4.4cm}|p{2.6cm}|p{6.2cm}|}
+		\hline
+		Вопрос & Правило & Ответ в интерфейсе NIKA \\
+		\hline
+		Кто исполняет Bohemian Rhapsody? & группа и участник & Bohemian Rhapsody исполняет группа Queen. Один из её участников~\mdash  Фредди Меркьюри. \\
+		\hline
+		Кто исполняет Billie Jean? & исполнитель & Исполнитель произведения Billie Jean~\mdash  Майкл Джексон. \\
+		\hline
+		Кто исполняет Кармен? & неизвестен & Я пока не знаю, кто исполняет Кармен. \\
+		\hline
+		Кто автор Billie Jean? & автор-исполнитель & Автор произведения Billie Jean~\mdash  исполнитель Майкл Джексон. \\
+		\hline
+		Кто автор Yesterday? & автор & Yesterday написал Пол Маккартни. \\
+		\hline
+		Кто автор Money? & неизвестен & В базе знаний не указано, кто написал Money. \\
+		\hline
+		В какой альбом входит Come Together? & альбом и лейбл & Come Together входит в альбом Abbey Road (1969), выпущенный лейблом Apple Records. \\
+		\hline
+		В какой альбом входит Stairway to Heaven? & только альбом & Stairway to Heaven входит в альбом Led Zeppelin IV. \\
+		\hline
+		В какой альбом входит Yesterday? & неизвестен & Я не знаю, в какой альбом входит Yesterday. \\
+		\hline
+	\end{tabular}
+	\caption{Разные ответы на одно намерение в зависимости от БЗ}
+	\label{tab:tests}
+\end{table}
+
+Сценарий из четырёх пар реплик, включая шаблонные ответы лабораторной работы №3, зафиксирован в sc-web (рисунок~\ref{fig:dialog}).
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{dialog-scg}
+	\caption{Диалог пользователя с Никой в базе знаний}
+	\label{fig:dialog}
+\end{figure}
