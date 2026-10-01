@@ -8,3 +8,12 @@ LABA1.1PPOIS.vcxproj.user
 .idea
 .venv
 course-3-semester-2
+*.aux
+*.log
+*.toc
+*.out
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.bbl
+*.blg
