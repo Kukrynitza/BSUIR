@@ -1,0 +1,19 @@
+{
+  "image": "D:\\git\\bsuir-projects\\BSUIR\\course-4-semester-1\\MRZVIS\\lab3\\samples\\test.bmp",
+  "mode_description": "adaptive, norm",
+  "adaptive": true,
+  "normalize_weights": true,
+  "block_h": 8,
+  "block_w": 8,
+  "channels": 3,
+  "Q": 1024,
+  "n": 192,
+  "p": 32,
+  "Z": 5.052631578947368,
+  "alpha": "adaptive 1/(||X||^2+||Y||^2)",
+  "epochs_done": 200,
+  "final_error_E": 150.40914788110604,
+  "stopped_by_eps": false,
+  "pixel_mse": 29.5277929580005,
+  "seed": 42
+}
