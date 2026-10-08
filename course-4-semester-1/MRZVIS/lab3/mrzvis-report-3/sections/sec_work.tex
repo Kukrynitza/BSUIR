@@ -1,0 +1,103 @@
+\section{Реализация и результаты}
+\label{sec:work}
+
+Линейная рециркуляционная сеть выполняет автоассоциативное отображение вектора блока через узкий скрытый слой. Прямое распространение сжимает вектор, обратное~\mdash  восстанавливает его:
+\begin{equation}
+	Y = X W,\qquad X' = Y W',
+\end{equation}
+где $W$ имеет размер $n \times p$, $W'$~\mdash  размер $p \times n$, $p < n$.
+
+Схема преобразования показана на рисунке~\ref{fig:schema}.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.95\textwidth]{schema.png}
+	\caption{Схема линейной рециркуляционной сети}
+	\label{fig:schema}
+\end{figure}
+
+Обучение выполняется по правилу коррекции ошибки. Для каждого эталона вычисляется $\varepsilon = X' - X$, после чего обновляются веса. В реализованном варианте коэффициент обучения адаптивный:
+\begin{equation}
+	\alpha = \frac{1}{\|X\|^2 + \|Y\|^2}.
+\end{equation}
+После обновления выполняется нормирование столбцов матрицы $W$ и строк матрицы $W'$ к единичной длине.
+
+Суммарная ошибка эпохи
+\begin{equation}
+	E = \frac{1}{2}\sum_{k=1}^{Q}\|X'_k - X_k\|^2.
+\end{equation}
+Обучение продолжается до достижения порога $E \le \varepsilon$ либо до исчерпания лимита эпох.
+
+Коэффициент сжатия рассчитывается по формуле методических указаний:
+\begin{equation}
+	Z(Q,n,p) = \frac{Q \cdot n}{(n + Q) \cdot p}.
+\end{equation}
+Требуется $Z > 1$.
+
+Программа реализована на языке Python с использованием библиотек NumPy, Pillow и Matplotlib. Структура модулей:
+\begin{itemize}
+	\item \texttt{image\_processing.py}~\mdash  загрузка BMP, нарезка блоков, нормализация и денормализация, расчёт $Z$;
+	\item \texttt{network.py}~\mdash  модель сети, обучение, сжатие и восстановление;
+	\item \texttt{main.py}~\mdash  интерактивный ввод параметров и сохранение результатов.
+\end{itemize}
+
+Ключевые фрагменты обучения приведены в листингах~\ref{lst:train-sample} и~\ref{lst:alpha}.
+
+\begin{lstlisting}[caption={Шаг обучения на одном блоке},label={lst:train-sample}]
+def _train_sample(self, X: np.ndarray) -> float:
+    Y = X @ self.W
+    Xp = Y @ self.Wp
+    err = Xp - X
+    alpha = self._alpha_for_sample(X, Y)
+    dWp = -alpha * np.outer(Y, err)
+    dW = -alpha * np.outer(X, err @ self.Wp.T)
+    self.Wp = self.Wp + dWp
+    self.W = self.W + dW
+    if NORMALIZE_WEIGHTS:
+        self._normalize_weights()
+    return float(np.dot(err, err))
+\end{lstlisting}
+
+\begin{lstlisting}[caption={Адаптивный коэффициент обучения},label={lst:alpha}]
+def _alpha_for_sample(self, X: np.ndarray, Y: np.ndarray) -> float:
+    if not ADAPTIVE:
+        return self.alpha
+    denom = float(np.dot(X, X) + np.dot(Y, Y))
+    return 1.0 / max(denom, 1e-12)
+\end{lstlisting}
+
+Эксперимент выполнен на тестовом цветном изображении $256 \times 256$. Параметры: $r = m = 8$, $p = 32$, максимум $200$ эпох, $\varepsilon = 0.01$. Получено $Q = 1024$ блоков, $n = 192$, коэффициент сжатия $Z \approx 5{,}05 > 1$.
+
+Пример работы консольного интерфейса показан на рисунке~\ref{fig:console}.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.92\textwidth]{console.png}
+	\caption{Пример запуска программы}
+	\label{fig:console}
+\end{figure}
+
+Исходный фрагмент изображения и результат восстановления приведены на рисунках~\ref{fig:original} и~\ref{fig:restored}. График суммарной ошибки по эпохам~\mdash  на рисунке~\ref{fig:error}.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.55\textwidth]{original.png}
+	\caption{Исходное изображение (обрезанная область)}
+	\label{fig:original}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.55\textwidth]{restored.png}
+	\caption{Восстановленное изображение}
+	\label{fig:restored}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.92\textwidth]{error_curve.png}
+	\caption{Зависимость суммарной ошибки $E$ от номера эпохи}
+	\label{fig:error}
+\end{figure}
+
+По результатам прогона: $E \approx 150{,}4$, средняя ошибка по пикселям $\mathrm{MSE} \approx 29{,}5$. Ошибка быстро убывает в начале обучения и выходит на плато, что соответствует сходимости модели при выбранном $p$. Визуально восстановленное изображение сохраняет крупные цветовые области и контуры фигур при допустимых искажениях, обусловленных сжатием с потерями ($p < n$).
