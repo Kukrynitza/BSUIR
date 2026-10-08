@@ -3,7 +3,7 @@
 
 Классификация по теме определяет намерение пользователя и объекты (сущности), упомянутые в реплике. По намерению система выбирает правило ответа, по сущности~\mdash  конкретный фрагмент БЗ.
 
-Для музыки выделены четыре намерения. Класс \texttt{concept\_message\_about\_entity} уже есть в NIKA и используется для вопросов <<Что такое~\ldots?>> / <<Кто такой~\ldots?>>. Три предметных класса добавлены в БЗ.
+Для музыки выделены семь намерений. Класс \texttt{concept\_message\_about\_entity} уже есть в NIKA и используется для вопросов <<Что такое~\ldots?>> / <<Кто такой~\ldots?>>. Шесть предметных классов добавлены в БЗ.
 
 \begin{table}[H]
 	\centering
@@ -19,6 +19,12 @@
 		сообщение об авторе & \texttt{about\_author} & Кто автор~\ldots? Кто написал~\ldots? \\
 		\hline
 		сообщение об альбоме & \texttt{about\_album} & В какой альбом входит~\ldots? \\
+		\hline
+		сообщение о жанре & \texttt{about\_genre} & Какой жанр у~\ldots? К какому стилю относится~\ldots? \\
+		\hline
+		сообщение об инструменте & \texttt{about\_instrument} & На каком инструменте~\ldots? На чём исполняется~\ldots? \\
+		\hline
+		сообщение о годе & \texttt{about\_year} & В каком году~\ldots? Когда премьера~\ldots? \\
 		\hline
 	\end{tabular}
 	\caption{Классы намерений предметной области музыки}
@@ -41,14 +47,14 @@ concept_intent_possible_class
 	-> concept_message_about_performer;;
 \end{lstlisting}
 
-Аналогично заданы классы \texttt{about\_author} и \texttt{about\_album}.
+Аналогично заданы классы \texttt{about\_author}, \texttt{about\_album}, \texttt{about\_genre}, \texttt{about\_instrument} и \texttt{about\_year}.
 
-Сценарий диалога состоит из четырёх пар <<вопрос~\mdash  ответ>> (таблица~\ref{tab:scenario}). У каждого вопроса есть класс намерения и хотя бы одна сущность.
+Сценарий диалога состоит из восьми пар <<вопрос~\mdash  ответ>> (таблица~\ref{tab:scenario}), то есть из шестнадцати сообщений. У каждого вопроса есть класс намерения и хотя бы одна сущность.
 
 \begin{table}[H]
 	\centering
-	\small
-	\begin{tabular}{|c|p{4.4cm}|p{3.2cm}|p{4.6cm}|}
+	\scriptsize
+	\begin{tabular}{|c|p{3.8cm}|p{2.6cm}|p{5.0cm}|}
 		\hline
 		№ & Сообщение пользователя & Класс / сущность & Ответ Ники \\
 		\hline
@@ -58,14 +64,22 @@ concept_intent_possible_class
 		\hline
 		3 & Кто автор Yesterday? & \texttt{about\_author}, Yesterday & Yesterday написал Пол Маккартни. \\
 		\hline
-		4 & В какой альбом входит Come Together? & \texttt{about\_album}, Come Together & Произведение Come Together есть на альбоме Abbey Road лейбла Apple Records, год выпуска~\mdash  1969. \\
+		4 & В какой альбом входит Come Together? & \texttt{about\_album}, Come Together & Come Together входит в альбом Abbey Road (1969), выпущенный лейблом Apple Records. \\
+		\hline
+		5 & Какой жанр у Bohemian Rhapsody? & \texttt{about\_genre}, Bohemian Rhapsody & Bohemian Rhapsody относится к жанру рок-музыка; исполняет Queen. \\
+		\hline
+		6 & На каком инструменте исполняется Лунная соната? & \texttt{about\_instrument}, Лунная соната & Лунная соната исполняется на инструменте фортепиано. \\
+		\hline
+		7 & В каком году премьера Лебединое озеро? & \texttt{about\_year}, Лебединое озеро & Премьера произведения Лебединое озеро состоялась в 1877 году. \\
+		\hline
+		8 & В каком году вышла Come Together? & \texttt{about\_year}, Come Together & Come Together вышла в 1969 году в составе альбома Abbey Road. \\
 		\hline
 	\end{tabular}
-	\caption{Сценарий диалога (8 сообщений)}
+	\caption{Сценарий диалога (16 сообщений)}
 	\label{tab:scenario}
 \end{table}
 
-Ответы на сообщения 2--4 формируются правилами и шаблонными фразами лабораторной работы №3. В этой работе проверяется, что намерение и сущность определены верно, а для вопроса <<Что такое~\ldots?>> Ника строит ответ по \texttt{nrel\_note} / определению сущности.
+Ответы на сообщения 2--8 формируются правилами и шаблонными фразами лабораторной работы №3. В этой работе проверяется, что намерение и сущность определены верно, а для вопроса <<Что такое~\ldots?>> Ника строит ответ по \texttt{nrel\_note} / определению сущности.
 
 \section{Классификатор и тестирование}
 \label{sec:test}
@@ -97,7 +111,7 @@ def wit_response(raw_text):
     }
 \end{lstlisting}
 
-Проверены вопросы <<Что такое~\ldots?>> для экземпляра (Bohemian Rhapsody), понятия (рок-музыка), отношения (автор) и синонима (Моцарт). Предметные вопросы сценария классифицируются как \texttt{about\_performer}, \texttt{about\_author} и \texttt{about\_album}.
+Проверены вопросы <<Что такое~\ldots?>> для экземпляра (Bohemian Rhapsody), понятия (рок-музыка), отношения (автор) и синонима (Моцарт). Предметные вопросы сценария классифицируются как \texttt{about\_performer}, \texttt{about\_author}, \texttt{about\_album}, \texttt{about\_genre}, \texttt{about\_instrument} и \texttt{about\_year}.
 
 Тестирование сценария в интерфейсе NIKA и в sc-web показано на рисунке~\ref{fig:dialog}. Слева~\mdash  ответы Ники, справа~\mdash  сообщения пользователя; узлы автора~\mdash  участник диалога.
 
