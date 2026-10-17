@@ -1,0 +1,105 @@
+\section{Документация агента}
+\label{sec:agent}
+
+Агент обогащения музыкальных сущностей (\texttt{MusicEntityEnrichmentAgent}) восполняет недостающие факты о сущностях предметной области музыки из Википедии. Если у сущности, названной в вопросе пользователя, в БЗ нет заметки (\texttt{nrel\_note}), агент находит соответствующую статью Википедии и записывает её вступление в БЗ. Новые знания выводятся на основе уже погруженных сущностей: к узлу сущности добавляются отношения \texttt{nrel\_note} и (при отсутствии) \texttt{nrel\_main\_idtf} на русском языке, после чего логическое правило ответа строит по ним фразу.
+
+\subsection{Условие инициирования и результат}
+
+Класс действия~\mdash  \texttt{action\_enrich\_music\_entity} (атомарное действие класса \texttt{information\_action}), задан в файле \texttt{kb/extra/section\_subject\_domain\_of\_music/... \newline /concepts/action\_enrich\_music\_entity.scs}.
+
+Инициирование происходит непосредственно из агента стандартного ответа на сообщения (\texttt{StandardMessageReplyAgent}, C++): перед генерацией ответа он проверяет, что сообщение принадлежит классу \texttt{concept\_message\_about\_entity}, извлекает сущность по роли \texttt{rrel\_entity} и убеждается, что у сущности нет факта \texttt{nrel\_note}. Лишь при выполнении всех условий создаётся действие \texttt{action\_enrich\_music\_entity} с аргументом~\mdash  сообщением; C++-агент ожидает завершения обогащения (до 15~с), затем продолжает построение ответа.
+
+Результат работы агента:
+\begin{itemize}
+	\item \texttt{SC\_RESULT\_OK}~\mdash  действие завершено; при успехе поиска у сущности созданы отношения \texttt{nrel\_note} (вступление статьи, \texttt{lang\_ru}) и, если отсутствовал, \texttt{nrel\_main\_idtf}; при пропуске (заметка уже есть, сообщение не о сущности, сущность не найдена)~\mdash  изменения в БЗ не вносятся;
+	\item при сетевых ошибках, таймауте или отсутствии статьи агент логирует предупреждение и также завершает работу успешно~\mdash  ответ строится по имеющимся в БЗ данным.
+\end{itemize}
+
+\subsection{Входы и выходы}
+
+Входы агента:
+\begin{itemize}
+	\item элемент действия \texttt{action\_enrich\_music\_entity}, аргумент по роли \texttt{rrel\_1}~\mdash  сообщение класса \texttt{concept\_message} $\wedge$ \texttt{concept\_message\_about\_entity};
+	\item сущность, связанная с сообщением отношением \texttt{rrel\_entity};
+	\item внешний источник~\mdash  HTTPS-запрос к \texttt{ru.wikipedia.org/w/api.php} (формат JSON, таймаут 15~с, заголовок User-Agent <<NIKA/1.0>>).
+\end{itemize}
+
+Выходы агента:
+\begin{itemize}
+	\item SC-структуры в БЗ: \texttt{сущность} $\xrightarrow{\text{nrel\_note}}$ [\texttt{вступление статьи}] ($\leftarrow$ \texttt{lang\_ru}); при необходимости~\mdash  \texttt{сущность} $\xrightarrow{\text{nrel\_main\_idtf}}$ [\texttt{заголовок статьи}] ($\leftarrow$ \texttt{lang\_ru});
+	\item статус действия в форме \texttt{nrel\_status} (успешно / неуспешно), устанавливаемый обёрткой агента.
+\end{itemize}
+
+\subsection{Функционал агента}
+
+Процедуры агента приведены в таблице~\ref{tab:procedures}.
+
+\begin{table}[H]
+	\centering
+	\small
+	\begin{tabular}{|p{4.0cm}|p{10.4cm}|}
+		\hline
+		Процедура & Назначение \\
+		\hline
+		\texttt{on\_event} & Точка входа по событию действия: запускает \texttt{run}, фиксирует статус завершения действия \\
+		\hline
+		\texttt{run} & Основной алгоритм: проверяет класс сообщения, находит сущность, проверяет наличие \texttt{nrel\_note}, извлекает имя, выполняет поиск и обогащение \\
+		\hline
+		\texttt{get\_entity\_addr} & Поиск сущности: шаблон $message \xrightarrow{rrel\_entity} entity$ \\
+		\hline
+		\texttt{get\_entity\_name} & Получение русского имени сущности по \texttt{nrel\_main\_idtf} с учётом \texttt{lang\_ru}; иначе~\mdash  системный идентификатор \\
+		\hline
+		\texttt{search\_wikipedia} & Два запроса к MediaWiki API: \texttt{list=search} (заголовок статьи) и \texttt{prop=extracts} (вступление); возвращает заголовок и текст либо \texttt{None} \\
+		\hline
+		\texttt{enrich\_entity} & Запись в БЗ: при отсутствии русского имени~\mdash  \texttt{nrel\_main\_idtf} с заголовком статьи; всегда~\mdash  \texttt{nrel\_note} с вступлением; оба контейнера помечаются \texttt{lang\_ru} \\
+		\hline
+		\texttt{get\_ru\_idtf} & Проверка наличия русского \texttt{nrel\_main\_idtf} у сущности \\
+		\hline
+	\end{tabular}
+	\caption{Процедуры агента обогащения сущностей}
+	\label{tab:procedures}
+\end{table}
+
+\subsection{Схема алгоритма агента}
+
+Алгоритм агента показан на рисунке~\ref{fig:algorithm}.
+
+\begin{figure}[H]
+	\centering
+	\begin{tikzpicture}[
+		font=\footnotesize,
+		node distance=0.55cm and 1.1cm,
+		startstop/.style={rectangle, rounded corners, minimum width=2.6cm, minimum height=0.7cm, align=center, draw=black, fill=gray!12},
+		proc/.style={rectangle, minimum width=3.4cm, minimum height=0.7cm, align=center, draw=black, fill=white},
+		decision/.style={diamond, aspect=2.6, minimum width=2.4cm, align=center, draw=black, fill=white, inner sep=1pt},
+		ext/.style={rectangle, minimum width=2.8cm, minimum height=0.7cm, align=center, draw=black, fill=blue!8},
+	 arrow/.style={-{Stealth[length=2.1mm]}, semithick}
+	]
+		\node[startstop] (start) {Начало};
+		\node[proc, below=of start] (msg) {Получить сообщение\\из аргумента действия};
+		\node[decision, below=of msg] (cls) {Сообщение\\о сущности?};
+		\node[proc, below=of cls] (entity) {Найти сущность\\по \texttt{rrel\_entity}};
+		\node[decision, below=of entity] (note) {Есть\\ \texttt{nrel\_note}?};
+		\node[proc, below=of note] (name) {Получить имя сущности\\(\texttt{nrel\_main\_idtf}, \texttt{lang\_ru})};
+		\node[ext, below=of name] (search) {Запрос к MediaWiki API:\\поиск статьи, вступление};
+		\node[decision, below=of search] (found) {Статья\\найдена?};
+		\node[proc, below=of found] (write) {Записать \texttt{nrel\_note}\\(и \texttt{nrel\_main\_idtf})};
+		\node[startstop, below=of write] (ok) {Конец: OK};
+		\node[startstop, right=2.2cm of note] (skip) {Конец: пропуск};
+
+		\draw[arrow] (start) -- (msg);
+		\draw[arrow] (msg) -- (cls);
+		\draw[arrow] (cls) -- node[anchor=east] {да} (entity);
+		\draw[arrow] (cls.east) -- ++(0.9,0) -| node[anchor=south] {нет} (skip.north);
+		\draw[arrow] (entity) -- (note);
+		\draw[arrow] (note) -- node[anchor=east] {нет} (name);
+		\draw[arrow] (note.east) -- node[anchor=south] {да} (skip.west);
+		\draw[arrow] (name) -- (search);
+		\draw[arrow] (search) -- (found);
+		\draw[arrow] (found) -- node[anchor=east] {да} (write);
+		\draw[arrow] (found.east) -- ++(0.7,0) |- node[anchor=south] {нет} (ok.east);
+		\draw[arrow] (write) -- (ok);
+	\end{tikzpicture}
+	\caption{Схема алгоритма агента обогащения сущностей}
+	\label{fig:algorithm}
+\end{figure}

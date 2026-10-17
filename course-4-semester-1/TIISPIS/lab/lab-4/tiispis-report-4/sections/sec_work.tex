@@ -1,0 +1,95 @@
+\section{Интеграция и работа модуля в системе}
+\label{sec:work}
+
+Агент интегрирован в общую программу обработки сообщений NIKA. Python-модуль \texttt{MessageProcessingModule} регистрирует \texttt{MusicEntityEnrichmentAgent} наравне с агентом прогноза погоды:
+
+\begin{lstlisting}[caption={Регистрация агента в Python-модуле},label={lst:module},basicstyle=\footnotesize\ttfamily]
+class MessageProcessingModule(ScModule):
+    def __init__(self):
+        super().__init__(WeatherAgent(), MusicEntityEnrichmentAgent())
+\end{lstlisting}
+
+Класс действия \texttt{action\_enrich\_music\_entity} описан в БЗ как атомарное действие класса \texttt{information\_action} с русским и английским идентификаторами (см. раздел~\ref{sec:agent}).
+
+Вызов обогащения встроен в агента стандартного ответа (\texttt{StandardMessageReplyAgent.cpp}): если сообщение~\mdash  о сущности и у сущности нет \texttt{nrel\_note}, создаётся действие и ожидается его завершение:
+
+\begin{lstlisting}[caption={Фрагмент StandardMessageReplyAgent: инициирование обогащения},label={lst:cpp},basicstyle=\footnotesize\ttfamily]
+void StandardMessageReplyAgent::enrichMusicEntityIfNeeded(
+    const ScAddr & messageNode)
+{
+  // is the message about an entity (concept_message_about_entity),
+  // does it carry an entity via rrel_entity, and is nrel_note missing?
+  if (!isAboutEntityWithMissingNote(messageNode))
+    return;
+  ScAddr enrichAction = AgentUtils::initAgent(
+      &m_memoryCtx, MessageKeynodes::action_enrich_music_entity,
+      {messageNode});
+  ActionUtils::waitAction(&m_memoryCtx, enrichAction, 15000);
+}
+\end{lstlisting}
+
+Ключевой фрагмент Python-агента~\mdash  запрос к MediaWiki API и запись результата в БЗ:
+
+\begin{lstlisting}[caption={Фрагмент MusicEntityEnrichmentAgent: поиск и запись},label={lst:py},basicstyle=\footnotesize\ttfamily]
+search_params = {"action": "query", "list": "search",
+                 "srsearch": entity_name, "format": "json"}
+resp = requests.get(WIKI_API, params=search_params, timeout=15)
+page_title = resp.json()["query"]["search"][0]["title"]
+extract_params = {"action": "query", "prop": "extracts",
+                  "exintro": True, "explaintext": True,
+                  "titles": page_title, "format": "json"}
+summary = requests.get(WIKI_API, params=extract_params,
+                       timeout=15).json() ... ["extract"]
+
+note_link = create_link(summary, sc_types.LINK_CONST)
+note_edge = create_edge(sc_types.EDGE_D_COMMON_CONST,
+                        entity_addr, note_link)
+create_edge(sc_types.EDGE_ACCESS_CONST_POS_PERM,
+            nrel_note, note_edge)
+create_edge(sc_types.EDGE_ACCESS_CONST_POS_PERM,
+            lang_ru, note_link)
+\end{lstlisting}
+% The two create_edge calls above attach the note text to the entity
+% under nrel_note and mark the link as Russian (lang_ru).
+
+Классификация сообщения выполняется модулем witai-shim: намерение \texttt{about\_entity} определяется по шаблонам <<что такое>>, <<кто такой>>, <<расскажи о ...>> из файла \texttt{classification/intents.json}, сущность распознаётся по словарю \texttt{concept\_wit\_entity} предметной области.
+
+На основе погруженных знаний система выводит ответ: логическое правило \texttt{lr\_message\_about\_entity} находит сущность с \texttt{nrel\_note}, а шаблон фразы \texttt{concept\_phrase\_about\_entity} подставляет имя и заметку:
+
+\begin{lstlisting}[caption={Шаблон фразы ответа},label={lst:phrase},basicstyle=\footnotesize\ttfamily]
+${_entity_note_name} - ${_note}.
+\end{lstlisting}
+
+Полный поток обработки сообщения показан на рисунке~\ref{fig:flow}.
+
+\begin{figure}[H]
+	\centering
+	\begin{tikzpicture}[
+		font=\footnotesize,
+		node distance=0.55cm,
+		box/.style={rectangle, rounded corners, minimum width=6.4cm, minimum height=0.8cm, align=center, draw=black, fill=white},
+		agent/.style={rectangle, rounded corners, minimum width=6.4cm, minimum height=0.8cm, align=center, draw=black, fill=gray!12},
+		ext/.style={rectangle, rounded corners, minimum width=4.0cm, minimum height=0.8cm, align=center, draw=black, fill=blue!8},
+		arrow/.style={-{Stealth[length=2.1mm]}, semithick}
+	]
+		\node[box] (user) {Пользователь};
+		\node[agent, below=of user] (cls) {Классификатор сообщений (witai-shim):\\намерение \texttt{about\_entity} + сущность};
+		\node[agent, below=of cls] (std) {StandardMessageReplyAgent (C++):\\класс сообщения, \texttt{rrel\_entity}, проверка \texttt{nrel\_note}};
+		\node[agent, below=of std] (music) {MusicEntityEnrichmentAgent (Python):\\найти имя, запросить статью, записать заметку};
+		\node[ext, right=1.3cm of music] (wiki) {MediaWiki API\\(Википедия)};
+		\node[agent, below=of music] (kb) {БЗ: сущность\\+ \texttt{nrel\_note}};
+		\node[agent, below=of kb] (rule) {Правило и фраза \texttt{lr\_message\_about\_entity}};
+		\node[box, below=of rule] (reply) {Ответ в интерфейсе NIKA};
+
+		\draw[arrow] (user) -- (cls);
+		\draw[arrow] (cls) -- (std);
+		\draw[arrow] (std) -- node[anchor=east] {нет \texttt{nrel\_note}} (music);
+		\draw[arrow] (music) -- (wiki);
+		\draw[arrow] (wiki) -- (music);
+		\draw[arrow] (music) -- (kb);
+		\draw[arrow] (kb) -- (rule);
+		\draw[arrow] (rule) -- (reply);
+	\end{tikzpicture}
+	\caption{Иллюстрация работы модуля адаптации знаний в системе NIKA}
+	\label{fig:flow}
+\end{figure}

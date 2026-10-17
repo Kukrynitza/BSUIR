@@ -1,0 +1,26 @@
+\sectioncentered*{Заключение}
+\addcontentsline{toc}{section}{Заключение}
+
+В лабораторной работе разработан модуль адаптации знаний для системы NIKA~\mdash  агент \texttt{MusicEntityEnrichmentAgent} на языке Python. Агент получает знания из внешнего источника (MediaWiki API Википедии, формат JSON), обрабатывает их процедурной моделью и погружает в базу знаний: к сущности без описания добавляются отношения \texttt{nrel\_note} и при необходимости \texttt{nrel\_main\_idtf}. На основе погруженных знаний система выводит новые~\mdash  логическое правило и шаблон фразы строят ответ на вопрос пользователя <<Что такое ...?>> из заметки сущности.
+
+Агент интегрирован с общей программой обработки сообщений: классификация сообщения о сущности выполняется модулем witai-shim, инициирование обогащения~\mdash  агентом стандартного ответа \texttt{StandardMessageReplyAgent}, регистрация~\mdash  модулем \texttt{MessageProcessingModule}. Обогащение выполняется один раз: при наличии \texttt{nrel\_note} в БЗ обращения к внешнему источнику не происходит.
+
+Тестирование в диалоге показало, что сущности, отсутствующие в локальной БЗ с описанием (альбом Thriller, <<Волшебная флейта>>, <<The Dark Side of the Moon>>), получают заметку из Википедии и служат основой ответа системы, а сущности с готовой заметкой (Bohemian Rhapsody) обогащению не подвергаются.
+
+Индивидуальный вариант: внешние сервисы (Internet) / JSON / процедурные модели / Python.
+
+\begin{thebibliography}{9}
+	\addcontentsline{toc}{section}{Список использованных источников}
+
+	\bibitem{nika}
+	NIKA: Intelligent Knowledge-driven Assistant [Электронный ресурс]. \mdash  Режим доступа: \url{https://github.com/ostis-apps/nika}. \mdash  Дата доступа: 15.10.2026.
+
+	\bibitem{ostis}
+	OSTIS: Open Semantic Technology for Intelligent Systems [Электронный ресурс]. \mdash  Режим доступа: \url{https://ostis.net/}. \mdash  Дата доступа: 15.10.2026.
+
+	\bibitem{scs}
+	SC-код. Руководство пользователя [Электронный ресурс]. \mdash  Режим доступа: \url{https://ostis-dev.github.io/sc-machine/}. \mdash  Дата доступа: 15.10.2026.
+
+	\bibitem{wiki}
+	MediaWiki API [Электронный ресурс]. \mdash  Режим доступа: \url{https://www.mediawiki.org/wiki/API:Main\_page}. \mdash  Дата доступа: 15.10.2026.
+\end{thebibliography}
