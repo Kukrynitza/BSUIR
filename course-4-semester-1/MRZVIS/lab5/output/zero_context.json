@@ -1,0 +1,38 @@
+[
+  {
+    "arch": "elman",
+    "zero_context": true,
+    "mse": 2.351800826422535e-05,
+    "final_loss": 4.518253668775368e-06
+  },
+  {
+    "arch": "jordan",
+    "zero_context": true,
+    "mse": 0.00017200232931512078,
+    "final_loss": 2.6815976649308823e-06
+  },
+  {
+    "arch": "jordan_elman",
+    "zero_context": true,
+    "mse": 2.4727657423426167e-06,
+    "final_loss": 2.5047006311384155e-06
+  },
+  {
+    "arch": "elman",
+    "zero_context": false,
+    "mse": 0.00011674588925334671,
+    "final_loss": 7.334859483112316e-06
+  },
+  {
+    "arch": "jordan",
+    "zero_context": false,
+    "mse": 0.00018865475441399047,
+    "final_loss": 2.579679369158457e-06
+  },
+  {
+    "arch": "jordan_elman",
+    "zero_context": false,
+    "mse": 0.23566896505282256,
+    "final_loss": 9.142604771793803e-06
+  }
+]

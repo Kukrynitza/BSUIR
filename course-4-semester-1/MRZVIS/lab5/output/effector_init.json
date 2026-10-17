@@ -1,0 +1,42 @@
+[
+  {
+    "arch": "jordan",
+    "effector_init": null,
+    "mse": 0.00017200232931512078
+  },
+  {
+    "arch": "jordan",
+    "effector_init": 0.0,
+    "mse": 2.423635019605461e-07
+  },
+  {
+    "arch": "jordan",
+    "effector_init": 0.1,
+    "mse": 4.523720244458731e-07
+  },
+  {
+    "arch": "jordan",
+    "effector_init": 0.5,
+    "mse": 2.8929766646129636e-06
+  },
+  {
+    "arch": "jordan_elman",
+    "effector_init": null,
+    "mse": 2.4727657423426167e-06
+  },
+  {
+    "arch": "jordan_elman",
+    "effector_init": 0.0,
+    "mse": 4.578703920200262e-06
+  },
+  {
+    "arch": "jordan_elman",
+    "effector_init": 0.1,
+    "mse": 2.251317868616969e-06
+  },
+  {
+    "arch": "jordan_elman",
+    "effector_init": 0.5,
+    "mse": 7.422862054278522e-06
+  }
+]

@@ -1,0 +1,86 @@
+[
+  {
+    "seq": "geometric_0.5",
+    "arch": "rnn",
+    "act": "elu",
+    "mse_n": 5.208381328739218e-08,
+    "mse": 1.3020953309721337e-08
+  },
+  {
+    "seq": "harmonic",
+    "arch": "elman",
+    "act": "tanh",
+    "mse_n": 3.478338851422506e-06,
+    "mse": 8.160848721232974e-07
+  },
+  {
+    "seq": "geometric_0.2",
+    "arch": "rnn",
+    "act": "leaky_relu",
+    "mse_n": 8.167215294221878e-11,
+    "mse": 2.0418038235554695e-11
+  },
+  {
+    "seq": "periodic",
+    "arch": "rnn",
+    "act": "leaky_relu",
+    "mse_n": 1.0523360302939892e-14,
+    "mse": 2.6308400757349734e-15
+  },
+  {
+    "seq": "aperiodic",
+    "arch": "gru",
+    "act": "elu",
+    "mse_n": 0.4445232251653155,
+    "mse": 0.11113080629132888
+  },
+  {
+    "seq": "arithmetic",
+    "arch": "rnn",
+    "act": "asinh",
+    "mse_n": 0.00018527487901332708,
+    "mse": 0.044512289682951935
+  },
+  {
+    "seq": "squares",
+    "arch": "jordan_elman",
+    "act": "asinh",
+    "mse_n": 0.0005146010596545404,
+    "mse": 134.63623308980192
+  },
+  {
+    "seq": "odds",
+    "arch": "rnn",
+    "act": "asinh",
+    "mse_n": 0.00018527487901332708,
+    "mse": 0.17804915873180774
+  },
+  {
+    "seq": "geometric_2",
+    "arch": "jordan_elman",
+    "act": "tanh",
+    "mse_n": 0.6337166448159602,
+    "mse": 7.306255469551716e+17
+  },
+  {
+    "seq": "bell",
+    "arch": "jordan_elman",
+    "act": "asinh",
+    "mse_n": 0.4844667753745659,
+    "mse": 1.2832705936533565e+49
+  },
+  {
+    "seq": "factorial",
+    "arch": "jordan_elman",
+    "act": "asinh",
+    "mse_n": 0.4833477106778611,
+    "mse": 8.170397991503362e+66
+  },
+  {
+    "seq": "fibonacci",
+    "arch": "elman",
+    "act": "elu",
+    "mse_n": 0.7053478874964224,
+    "mse": 836723470961.3163
+  }
+]

@@ -1,0 +1,74 @@
+[
+  {
+    "arch": "jordan",
+    "linear_out": true,
+    "mse": 0.00017200232931512078,
+    "final_loss": 2.6815976649308823e-06
+  },
+  {
+    "arch": "jordan",
+    "linear_out": false,
+    "mse": 0.00035152196660558104,
+    "final_loss": 6.848151836070243e-06
+  },
+  {
+    "arch": "elman",
+    "linear_out": true,
+    "mse": 2.351800826422535e-05,
+    "final_loss": 4.518253668775368e-06
+  },
+  {
+    "arch": "elman",
+    "linear_out": false,
+    "mse": 1.3125441151317129e-05,
+    "final_loss": 5.397257407831286e-06
+  },
+  {
+    "arch": "jordan_elman",
+    "linear_out": true,
+    "mse": 2.4727657423426167e-06,
+    "final_loss": 2.5047006311384155e-06
+  },
+  {
+    "arch": "jordan_elman",
+    "linear_out": false,
+    "mse": 2.8415295593769552e-05,
+    "final_loss": 1.549862761457749e-05
+  },
+  {
+    "arch": "rnn",
+    "linear_out": true,
+    "mse": 9.802926407466372e-07,
+    "final_loss": 4.2544249258532264e-06
+  },
+  {
+    "arch": "rnn",
+    "linear_out": false,
+    "mse": 1.3149415325801388e-06,
+    "final_loss": 7.926491098892123e-06
+  },
+  {
+    "arch": "lstm",
+    "linear_out": true,
+    "mse": 0.00014827893240945513,
+    "final_loss": 0.00016215333437954356
+  },
+  {
+    "arch": "lstm",
+    "linear_out": false,
+    "mse": 0.00014827893240945513,
+    "final_loss": 0.00016215333437954356
+  },
+  {
+    "arch": "gru",
+    "linear_out": true,
+    "mse": 8.506596317467944e-05,
+    "final_loss": 0.00012416963869758084
+  },
+  {
+    "arch": "gru",
+    "linear_out": false,
+    "mse": 8.506596317467944e-05,
+    "final_loss": 0.00012416963869758084
+  }
+]
