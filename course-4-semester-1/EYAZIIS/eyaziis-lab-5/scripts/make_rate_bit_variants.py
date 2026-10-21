@@ -15,8 +15,8 @@ import soundfile as sf
 from scipy.signal import resample_poly
 
 ROOT = Path(__file__).resolve().parents[1]
-SRC = ROOT / "audio" / "lab1" / "test.wav"
-OUT_DIR = ROOT / "audio" / "lab1" / "rate_depth"
+SRC = ROOT / "audio" / "lab1" / "1.2_test" / "test.wav"
+OUT_DIR = ROOT / "audio" / "lab1" / "1.3_rate_depth" / "derived"
 PNG_DIR = ROOT / "eyazis-report-5" / "png"
 
 RATES = [4000, 8000, 16000, 32000]

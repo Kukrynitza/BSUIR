@@ -18,7 +18,7 @@ import soundfile as sf
 from scipy.signal import find_peaks, hilbert
 
 ROOT = Path(__file__).resolve().parents[1]
-AUDIO = ROOT / "audio" / "lab1"
+AUDIO = ROOT / "audio" / "lab1" / "1.4.1_vowels"
 PNG = ROOT / "eyazis-report-5" / "png"
 
 VOWELS = ["а", "о", "у", "э", "ы", "и"]
