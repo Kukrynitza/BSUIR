@@ -4,9 +4,7 @@ from dataclasses import dataclass
 
 import numpy as np
 
-ACTIVATIONS = ("asinh", "tanh", "elu", "leaky_relu", "linear")
-ELU_ALPHA = 1.0
-LEAKY_SLOPE = 0.01
+ACTIVATIONS = ("asinh",)
 
 
 def act_asinh(u: np.ndarray) -> np.ndarray:
@@ -17,54 +15,8 @@ def dact_asinh(u: np.ndarray) -> np.ndarray:
     return 1.0 / np.hypot(1.0, u)
 
 
-def act_tanh(u: np.ndarray) -> np.ndarray:
-    return np.tanh(u)
-
-
-def dact_tanh(u: np.ndarray) -> np.ndarray:
-    t = np.tanh(u)
-    return 1.0 - t * t
-
-
-def act_elu(u: np.ndarray) -> np.ndarray:
-    return np.where(u >= 0.0, u, ELU_ALPHA * (np.exp(np.minimum(u, 0.0)) - 1.0))
-
-
-def dact_elu(u: np.ndarray) -> np.ndarray:
-    return np.where(u >= 0.0, 1.0, ELU_ALPHA * np.exp(np.minimum(u, 0.0)))
-
-
-def act_leaky_relu(u: np.ndarray) -> np.ndarray:
-    return np.where(u >= 0.0, u, LEAKY_SLOPE * u)
-
-
-def dact_leaky_relu(u: np.ndarray) -> np.ndarray:
-    return np.where(u >= 0.0, 1.0, LEAKY_SLOPE)
-
-
-def act_linear(u: np.ndarray) -> np.ndarray:
-    return u
-
-
-def dact_linear(u: np.ndarray) -> np.ndarray:
-    return np.ones_like(u)
-
-
-_FORWARD = {
-    "asinh": act_asinh,
-    "tanh": act_tanh,
-    "elu": act_elu,
-    "leaky_relu": act_leaky_relu,
-    "linear": act_linear,
-}
-
-_DERIV = {
-    "asinh": dact_asinh,
-    "tanh": dact_tanh,
-    "elu": dact_elu,
-    "leaky_relu": dact_leaky_relu,
-    "linear": dact_linear,
-}
+_FORWARD = {"asinh": act_asinh}
+_DERIV = {"asinh": dact_asinh}
 
 
 @dataclass(frozen=True)

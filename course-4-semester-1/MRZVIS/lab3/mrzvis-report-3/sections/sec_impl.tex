@@ -1,0 +1,81 @@
+\section{Описание реализации}
+\label{sec:impl}
+
+\subsection{Структуры данных и модули}
+
+Программа реализована на языке Python с использованием библиотек NumPy, Pillow и Matplotlib. Основные компоненты приведены в таблице~\ref{tab:modules}.
+
+\begin{table}[H]
+	\centering
+	\caption{Основные компоненты реализации}
+	\label{tab:modules}
+	\begin{tabularx}{\textwidth}{@{}lX@{}}
+		\hline
+		Компонент & Назначение \\
+		\hline
+		\texttt{image\_processing.py} & загрузка BMP, нормировка, построение позиций блоков, извлечение векторов, сборка изображения с усреднением перекрытий, формулы $Z$ и $K$; \\
+		\texttt{network.py} & класс \texttt{RecirculationNetwork}: прямое распространение, адаптивный шаг, обновление весов, обучение по эпохам; \\
+		\texttt{main.py} & интерактивный ввод параметров, опорный запуск, сохранение BMP, весов, метрик и графика ошибки; \\
+		\texttt{experiments.py} & серии A--D, сравнение перекрытия, сохранение JSON и графиков для отчёта; \\
+		\texttt{generate\_samples.py} & генерация трёх воспроизводимых BMP-примеров. \\
+		\hline
+	\end{tabularx}
+\end{table}
+
+Основные структуры данных:
+\begin{itemize}
+	\item \texttt{img\_array}~--- массив формы $(h,w,c)$;
+	\item \texttt{positions}~--- список координат $(y,x)$ левых верхних углов блоков;
+	\item $X$~--- матрица нормированных блоков размера $Q \times n$;
+	\item $W$, $W'$~--- матрицы кодера и декодера размеров $n \times p$ и $p \times n$;
+	\item $Y$~--- матрица сжатых представлений $Q \times p$;
+	\item \texttt{errors}~--- история суммарной ошибки по эпохам;
+	\item \texttt{metrics.json}, \texttt{experiments.json}~--- параметры, ошибки, $Z$, $K$, времена и результаты серий.
+\end{itemize}
+
+\subsection{Схема алгоритма обучения}
+
+Схема реализованного алгоритма приведена на рисунке~\ref{fig:algorithm}.
+
+\begin{figure}[H]
+	\centering
+	\begin{tikzpicture}[
+		node distance=7mm,
+		box/.style={draw, rounded corners, align=center, text width=9.2cm, inner sep=4pt, font=\small},
+		dec/.style={draw, align=center, text width=8.4cm, inner sep=4pt, font=\small},
+		arr/.style={-{Latex[length=2mm]}, thick}
+	]
+		\node[box] (load) {Загрузка BMP, нормирование пикселей в $[-1,1]$};
+		\node[box, below=of load] (blocks) {Формирование позиций блоков (полное покрытие) и матрицы $X$};
+		\node[box, below=of blocks] (init) {Инициализация $W$ и $W'$ случайными значениями};
+		\node[box, below=of init] (epoch) {Новая эпоха: перемешивание порядка блоков};
+		\node[box, below=of epoch] (sample) {Для очередного блока: $y=xW$, $\hat{x}=yW'$, $e=\hat{x}-x$, $\alpha=\beta/(\|x\|^2+\|y\|^2)$};
+		\node[box, below=of sample] (update) {Обновление $W' \leftarrow W'-\alpha y^{\mathsf{T}}e$, \; $W \leftarrow W-\alpha x^{\mathsf{T}}\delta$};
+		\node[dec, below=of update] (all) {Все блоки эпохи обработаны?};
+		\node[box, below=of all] (err) {Вычисление $E$ по всей выборке};
+		\node[dec, below=of err] (stop) {$E \le \varepsilon$ или $T=T_{\max}$?};
+		\node[box, below=of stop] (finish) {Восстановление изображения, расчёт MSE, PSNR, $Z$, $K$; сохранение результатов};
+
+		\draw[arr] (load) -- (blocks);
+		\draw[arr] (blocks) -- (init);
+		\draw[arr] (init) -- (epoch);
+		\draw[arr] (epoch) -- (sample);
+		\draw[arr] (sample) -- (update);
+		\draw[arr] (update) -- (all);
+		\draw[arr] (all) -- (err);
+		\draw[arr] (err) -- (stop);
+		\draw[arr] (stop) -- (finish);
+
+		\draw[arr] (all.east) -- ++(1.2,0) |- node[pos=0.25, right, font=\scriptsize] {нет} (sample.east);
+		\draw[arr] (stop.east) -- ++(1.2,0) |- node[pos=0.25, right, font=\scriptsize] {нет} (epoch.east);
+		\node[right=1.35cm of stop, font=\scriptsize, align=left] {да};
+	\end{tikzpicture}
+	\caption{Схема алгоритма обучения}
+	\label{fig:algorithm}
+\end{figure}
+
+\subsection{Порядок выполнения}
+
+Загрузка изображения и построение позиций блоков выполняются один раз на запуск. Внутри эпохи веса изменяются после каждого блока; ошибка проверяется только после полного прохода по выборке. При достижении порога или лимита эпох формируется восстановленное изображение, вычисляются метрики и сохраняются веса, коды и график ошибки.
+
+Модуль \texttt{experiments.py} использует ту же реализацию сети и отличается только организацией серий: для каждого набора параметров создаётся новая сеть, обучение выполняется с фиксированным seed, а результаты агрегируются в \texttt{experiments.json}. Порог $\varepsilon$ для серий A--C фиксируется по траектории опорного запуска (значение ошибки на 10-й эпохе), чтобы сравнивать варианты при одинаковом требовании к каждому изображению.

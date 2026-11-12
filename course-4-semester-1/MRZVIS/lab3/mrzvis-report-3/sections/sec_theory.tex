@@ -1,0 +1,158 @@
+\section{Теоретические сведения}
+\label{sec:theory}
+
+\subsection{Линейное кодирование и восстановление}
+\label{sec:theory-code}
+
+Линейная рециркуляционная сеть является двухслойной автоассоциативной сетью. Для вектора-строки $x_k$:
+\begin{equation}
+	y_k = x_k W, \qquad \hat{x}_k = y_k W',
+	\label{eq:forward}
+\end{equation}
+где $W \in \mathbb{R}^{n \times p}$, $W' \in \mathbb{R}^{p \times n}$, $0<p<n$. При $p<n$ скрытое представление $y_k$ содержит меньше компонент, чем вход, поэтому первый слой выполняет сжатие, а второй~--- восстановление. Оба слоя линейны, смещения и нелинейные активации отсутствуют~\cite{haykin}.
+
+Для всей выборки сразу:
+\begin{equation}
+	Y = XW, \qquad \hat{X} = YW',
+\end{equation}
+где $X \in \mathbb{R}^{Q \times n}$, $Y \in \mathbb{R}^{Q \times p}$, $\hat{X} \in \mathbb{R}^{Q \times n}$.
+
+При перекрытии блоков один пиксель входит в несколько блоков. При сборке изображения значения перекрывающихся блоков усредняются, что уменьшает видимость швов на границах.
+
+\subsection{Нормализация и денормализация пикселей}
+\label{sec:theory-norm}
+
+Исходные значения каналов лежат в диапазоне $[0,C_{\max}]$, $C_{\max}=255$. Нормировка~\eqref{eq:norm} переводит их в $[-1,\,1]$. После работы сети выполняется обратное преобразование с ограничением диапазона:
+\begin{equation}
+	C' = \frac{C_{\max}\bigl(\min(1,\max(-1,\hat{c}))+1\bigr)}{2}.
+	\label{eq:denorm}
+\end{equation}
+Ограничение необходимо, поскольку линейный выход сети может выйти за пределы $[-1,\,1]$. Ошибка нормированных блоков и ошибка готового BMP после округления и сборки вычисляются отдельно.
+
+\subsection{Вывод градиентов}
+\label{sec:theory-grad}
+
+Запишем прямой проход покомпонентно:
+\begin{equation}
+	y_{k,j} = \sum_{i=1}^{n} x_{k,i} W_{ij}, \qquad
+	\hat{x}_{k,i} = \sum_{j=1}^{p} y_{k,j} W'_{ji}.
+	\label{eq:forward-comp}
+\end{equation}
+Ошибка одного образа:
+\begin{equation}
+	E_k = \frac{1}{2}\sum_{i=1}^{n}\bigl(\hat{x}_{k,i}-x_{k,i}\bigr)^2
+	    = \frac{1}{2}\sum_{i=1}^{n} e_{k,i}^2 .
+	\label{eq:ek}
+\end{equation}
+
+По правилу цепочки:
+\begin{equation}
+	\frac{\partial E_k}{\partial W'_{ji}}
+	  = \frac{\partial E_k}{\partial \hat{x}_{k,i}}
+	    \cdot \frac{\partial \hat{x}_{k,i}}{\partial W'_{ji}}
+	  = e_{k,i}\,y_{k,j}.
+	\label{eq:grad-wb}
+\end{equation}
+Следовательно, градиент по декодеру для одного образа есть внешнее произведение
+\begin{equation}
+	\nabla_{W'}E_k = y_k^{\mathsf{T}} e_k .
+\end{equation}
+
+Для кодера сначала перенесём ошибку в скрытый слой:
+\begin{equation}
+	\delta_{k,j} = \frac{\partial E_k}{\partial y_{k,j}}
+	  = \sum_{i=1}^{n} \frac{\partial E_k}{\partial \hat{x}_{k,i}}
+	    \cdot \frac{\partial \hat{x}_{k,i}}{\partial y_{k,j}}
+	  = \sum_{i=1}^{n} e_{k,i} W'_{ji}
+	  = \bigl(e_k W'^{\mathsf{T}}\bigr)_j .
+	\label{eq:delta}
+\end{equation}
+Тогда
+\begin{equation}
+	\frac{\partial E_k}{\partial W_{ij}}
+	  = \frac{\partial E_k}{\partial y_{k,j}}
+	    \cdot \frac{\partial y_{k,j}}{\partial W_{ij}}
+	  = \delta_{k,j}\,x_{k,i},
+	\qquad
+	\nabla_W E_k = x_k^{\mathsf{T}} \delta_k .
+	\label{eq:grad-wf}
+\end{equation}
+
+В матричной форме для одного образа:
+\begin{equation}
+	\nabla_{W'}E_k = y_k^{\mathsf{T}} e_k, \qquad
+	\nabla_W E_k = x_k^{\mathsf{T}} \bigl(e_k W'^{\mathsf{T}}\bigr).
+	\label{eq:grads}
+\end{equation}
+
+\subsection{Дельта-правило и адаптивный коэффициент обучения}
+\label{sec:theory-delta}
+
+Обучение выполняется стохастическим градиентным спуском: веса обновляются после каждого образа в порядке, который на каждой эпохе перемешивается. Для варианта 2 используется адаптивный шаг~\eqref{eq:alpha}. С учётом~\eqref{eq:grads}:
+\begin{equation}
+	W' \leftarrow W' - \alpha_k\, y_k^{\mathsf{T}} e_k,
+	\qquad
+	W \leftarrow W - \alpha_k\, x_k^{\mathsf{T}} \delta_k .
+	\label{eq:update}
+\end{equation}
+
+Нормировка весов после обновления \textbf{не выполняется}: матрицы $W$ и $W'$ сохраняются в том масштабе, который получился в ходе обучения. Это принципиальное отличие варианта 2 от варианта 11.
+
+Адаптивный шаг~\eqref{eq:alpha} нормирует поправку полной энергией входа и скрытого представления. Если все значения образа умножить на постоянный множитель, числитель и знаменатель изменятся согласованно, поэтому направление и относительная величина обновления сохраняются. Параметр $\beta$ задаёт компромисс между устойчивостью и скоростью: при малых $\beta$ обучение медленное, при слишком больших~--- возможно расхождение.
+
+Для локального квадратичного приближения ошибки в окрестности минимума
+\begin{equation}
+	E(w) \approx \frac{1}{2}(w-w^*)^{\mathsf{T}} H (w-w^*),
+\end{equation}
+где $H$~--- симметричная матрица Гессе. Тогда отклонение от минимума эволюционирует как
+\begin{equation}
+	w(t+1)-w^* = \bigl(I-\alpha H\bigr)\bigl(w(t)-w^*\bigr).
+\end{equation}
+По спектральной теореме для симметричных матриц~\cite{gantmacher} в собственном базисе $H=V\Lambda V^{\mathsf{T}}$ компоненты затухают независимо:
+\begin{equation}
+	z_i(t+1) = (1-\alpha\lambda_i)z_i(t), \qquad i=1,\ldots,n.
+	\label{eq:eigen}
+\end{equation}
+Условие устойчивости $|1-\alpha\lambda_i|<1$ для всех $i$ даёт
+\begin{equation}
+	0 < \alpha < \frac{2}{\lambda_{\max}} .
+	\label{eq:stability}
+\end{equation}
+Для линейного слоя с квадратичной ошибкой матрица кривизны пропорциональна $X^{\mathsf{T}}X$, поэтому $\lambda_{\max}>0$ при ненулевых вариациях данных. Адаптивный шаг~\eqref{eq:alpha} является практической оценкой допустимого масштаба; условие~\eqref{eq:stability} объясняет, почему при увеличении $\beta$ сверх критического значения метод расходится.
+
+\subsection{Ошибка и критерий остановки}
+\label{sec:theory-stop}
+
+После каждой эпохи вычисляется суммарная ошибка~\eqref{eq:loss} по всем образам с текущими весами. Обучение прекращается при $E \le \varepsilon$ либо при исчерпании лимита $T_{\max}$. Ошибки прошлых эпох не накапливаются.
+
+Средняя ошибка нормированных блоков связана с $E$:
+\begin{equation}
+	\mathrm{MSE}_n = \frac{2E}{Q\,n}.
+	\label{eq:mse-n}
+\end{equation}
+Отдельно вычисляется $\mathrm{MSE}$ готового BMP в шкале $0\ldots255$:
+\begin{equation}
+	\mathrm{MSE}_{\mathrm{pix}} = \frac{1}{h\,w\,|S|}
+	  \sum_{i,j,c}\bigl(C_{ijc}-C'_{ijc}\bigr)^2,
+	\qquad
+	\mathrm{PSNR} = 10\lg\frac{255^2}{\mathrm{MSE}_{\mathrm{pix}}}.
+	\label{eq:psnr}
+\end{equation}
+Эти величины не смешиваются: первая характеризует ошибку до ограничения и сборки, вторая~--- качество итогового изображения.
+
+\subsection{Коэффициент сжатия}
+\label{sec:theory-comp}
+
+По методическим указаниям коэффициент сжатия равен
+\begin{equation}
+	Z(Q,n,p) = \frac{Q\,n}{2+(n+Q)\,p}.
+	\label{eq:Z-theory}
+\end{equation}
+Числитель $Qn$~--- объём исходных данных выборки блоков. В знаменателе $Qp$~--- объём скрытых кодов, $np$~--- объём общей матрицы декодера, а слагаемое $2$ соответствует двум служебным размерностям $n$ и $p$. Формула предполагает одинаковую разрядность исходных и сохранённых значений.
+
+В программе исходные каналы хранятся в \texttt{uint8} (1 байт), а коды и декодер~--- в \texttt{float64} (8 байт). Поэтому дополнительно рассчитывается байтовый коэффициент
+\begin{equation}
+	K = \frac{Q\,n \cdot 1}{Q\,p \cdot 8 + p\,n \cdot 8 + 8}.
+	\label{eq:K-byte}
+\end{equation}
+Здесь $8$ в конце~--- два служебных значения \texttt{uint32}. Величина $K$ может быть меньше единицы даже при $Z>1$: это означает, что переход от \texttt{uint8} к \texttt{float64} увеличивает объём, и коэффициент сжатия сам по себе ещё не гарантирует экономии байтов. В отчёте приводятся обе величины: $Z$~--- по методике, $K$~--- как уточнённая байтовая оценка.

@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import time
 from dataclasses import dataclass
 from pathlib import Path
 
@@ -10,6 +11,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 from image_processing import (
+    byte_compression_ratio,
     compression_ratio,
     denormalize,
     extract_blocks,
@@ -18,7 +20,7 @@ from image_processing import (
     save_bmp,
     vectors_to_image,
 )
-from network import ADAPTIVE, NORMALIZE_WEIGHTS, RecirculationNetwork
+from network import RecirculationNetwork
 
 
 @dataclass
@@ -26,19 +28,15 @@ class RunConfig:
     image: Path
     block_h: int
     block_w: int
+    step_h: int
+    step_w: int
     hidden: int
-    alpha: float
     epochs: int
     eps: float
     seed: int
     out_dir: Path
     shuffle: bool
-
-
-def mode_description() -> str:
-    rate = "adaptive" if ADAPTIVE else "constant"
-    weights = "norm" if NORMALIZE_WEIGHTS else "raw"
-    return f"{rate}, {weights}"
+    lr_scale: float = 1.0
 
 
 def ask_str(prompt: str, default: str | None = None) -> str:
@@ -82,7 +80,7 @@ def ask_yes_no(prompt: str, default: bool = True) -> bool:
 
 
 def interactive_config() -> RunConfig:
-    print(f"Режим: {mode_description()}")
+    print("Вариант 2: адаптивный коэффициент обучения, ненормированные веса")
     print("Enter = по умолчанию\n")
 
     image = Path(ask_str("BMP", "samples/test.bmp"))
@@ -90,16 +88,15 @@ def interactive_config() -> RunConfig:
         print("Файл не найден.")
         image = Path(ask_str("BMP"))
 
-    block_h = ask_int("r", default=8, min_value=4)
-    block_w = ask_int("m", default=8, min_value=4)
-    hidden = ask_int("p", default=32, min_value=1)
-
-    alpha = 0.01
-    if not ADAPTIVE:
-        alpha = ask_float("alpha", default=0.01)
+    block_h = ask_int("r", default=16, min_value=4)
+    block_w = ask_int("m", default=16, min_value=4)
+    step_h = ask_int("шаг по вертикали sh", default=block_h, min_value=1)
+    step_w = ask_int("шаг по горизонтали sw", default=block_w, min_value=1)
+    hidden = ask_int("p", default=48, min_value=1)
 
     epochs = ask_int("эпохи", default=200, min_value=1)
     eps = ask_float("eps", default=1e-2)
+    beta = ask_float("масштаб адаптивного шага beta", 1.0)
     shuffle = ask_yes_no("shuffle", default=True)
     seed = ask_int("seed", default=42, min_value=0)
 
@@ -107,13 +104,15 @@ def interactive_config() -> RunConfig:
         image=image,
         block_h=block_h,
         block_w=block_w,
+        step_h=step_h,
+        step_w=step_w,
         hidden=hidden,
-        alpha=alpha,
         epochs=epochs,
         eps=eps,
         seed=seed,
         out_dir=Path("output"),
         shuffle=shuffle,
+        lr_scale=beta,
     )
 
 
@@ -137,29 +136,37 @@ def run(config: RunConfig) -> int:
     height, width, channels = pixels.shape
     print(f"\nimg {width}x{height} c={channels}")
 
-    vectors_raw, h_used, w_used, channels = extract_blocks(
-        pixels, config.block_h, config.block_w
+    started = time.perf_counter()
+    vectors_raw, positions, channels = extract_blocks(
+        pixels,
+        config.block_h,
+        config.block_w,
+        step_h=config.step_h,
+        step_w=config.step_w,
     )
-    rows = h_used // config.block_h
-    cols = w_used // config.block_w
     q, n = vectors_raw.shape
     p = config.hidden
 
     z = compression_ratio(q, n, p)
+    k_bytes = byte_compression_ratio(q, n, p)
     if z <= 1:
-        print(f"Z={z:.4f} <= 1, уменьши p")
+        print(f"Z={z:.4f} <= 1, уменьшите p")
+    if k_bytes <= 1:
+        print(f"K(byte)={k_bytes:.4f} <= 1, уменьшите p или перекрытие")
 
     samples = normalize(vectors_raw)
-    print(f"{config.block_h}x{config.block_w} Q={q} n={n} p={p} Z={z:.4f}")
-    print(f"режим: {mode_description()}")
+    print(f"{config.block_h}x{config.block_w} step={config.step_h}x{config.step_w} "
+          f"Q={q} n={n} p={p} Z={z:.4f} K={k_bytes:.4f}")
+    print("режим: адаптивный шаг, ненормированные веса")
     print("train...")
 
     net = RecirculationNetwork(
         n=n,
         p=p,
-        alpha=config.alpha,
         seed=config.seed,
+        lr_scale=config.lr_scale,
     )
+    train_start = time.perf_counter()
     result = net.train(
         samples,
         max_epochs=config.epochs,
@@ -167,51 +174,69 @@ def run(config: RunConfig) -> int:
         shuffle=config.shuffle,
         seed=config.seed,
     )
+    train_time = time.perf_counter() - train_start
 
     compressed = net.encode(samples)
     restored_norm = net.decode(compressed)
     restored_pixels = denormalize(restored_norm)
+
+    assemble_start = time.perf_counter()
     restored_image = vectors_to_image(
         restored_pixels,
+        positions,
         config.block_h,
         config.block_w,
-        rows,
-        cols,
+        height,
+        width,
         channels,
     )
+    assemble_time = time.perf_counter() - assemble_start
 
-    original_crop = pixels[:h_used, :w_used]
-    save_bmp(out_dir / "original_crop.bmp", original_crop)
+    save_bmp(out_dir / "original_crop.bmp", pixels)
     save_bmp(out_dir / "restored.bmp", restored_image)
 
     plot_error_curve(
         result.errors,
         out_dir / "error_curve.png",
-        title=f"E ({mode_description()})",
+        title="E (адаптивный шаг, ненормированные веса)",
     )
 
-    mse_pixels = float(np.mean((original_crop - restored_image) ** 2))
+    mse_norm = float(np.mean((restored_norm - samples) ** 2))
+    mse_pixels = float(np.mean((pixels - restored_image) ** 2))
+    psnr = float("inf") if mse_pixels == 0 else float(
+        10.0 * np.log10(255.0**2 / mse_pixels)
+    )
+
     meta = {
         "image": str(config.image.resolve()),
-        "mode_description": mode_description(),
-        "adaptive": ADAPTIVE,
-        "normalize_weights": NORMALIZE_WEIGHTS,
+        "variant": 2,
+        "learning_rate": "adaptive 1/(||X||^2+||Y||^2), scaled by beta",
+        "lr_scale": config.lr_scale,
+        "normalize_weights": False,
         "block_h": config.block_h,
         "block_w": config.block_w,
+        "step_h": config.step_h,
+        "step_w": config.step_w,
         "channels": channels,
         "Q": q,
         "n": n,
         "p": p,
         "Z": z,
-        "alpha": config.alpha if not ADAPTIVE else "adaptive 1/(||X||^2+||Y||^2)",
+        "K_bytes": k_bytes,
         "epochs_done": result.epochs_done,
+        "QT": q * result.epochs_done,
         "final_error_E": result.final_error,
         "stopped_by_eps": result.stopped_by_eps,
+        "mse_norm": mse_norm,
         "pixel_mse": mse_pixels,
+        "psnr_db": psnr,
+        "train_time_s": train_time,
+        "assemble_time_s": assemble_time,
+        "total_time_s": time.perf_counter() - started,
         "seed": config.seed,
     }
     (out_dir / "metrics.json").write_text(
-        json.dumps(meta, ensure_ascii=False, indent=2),
+        json.dumps(meta, ensure_ascii=False, indent=2, default=str),
         encoding="utf-8",
     )
     np.save(out_dir / "compressed.npy", compressed)
@@ -220,7 +245,7 @@ def run(config: RunConfig) -> int:
 
     print(
         f"epochs={result.epochs_done} E={result.final_error:.6f} "
-        f"mse={mse_pixels:.4f}"
+        f"mse={mse_pixels:.4f} psnr={psnr:.2f} Z={z:.4f} K={k_bytes:.4f}"
     )
     print(f"out: {out_dir.resolve()}")
     return 0

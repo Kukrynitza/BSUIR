@@ -4,9 +4,6 @@ from dataclasses import dataclass
 
 import numpy as np
 
-ADAPTIVE = True
-NORMALIZE_WEIGHTS = True
-
 
 @dataclass
 class TrainResult:
@@ -17,33 +14,29 @@ class TrainResult:
 
 
 class RecirculationNetwork:
+    """Линейная рециркуляционная сеть, вариант 2.
+
+    Адаптивный коэффициент обучения, веса не нормируются.
+    """
+
     def __init__(
         self,
         n: int,
         p: int,
-        alpha: float = 0.01,
         seed: int | None = 42,
+        lr_scale: float = 1.0,
     ) -> None:
         if p <= 0 or p >= n:
             raise ValueError(f"bad p: n={n}, p={p}")
+        if lr_scale <= 0.0:
+            raise ValueError(f"lr_scale must be positive, got {lr_scale}")
         self.n = n
         self.p = p
-        self.alpha = alpha
+        self.lr_scale = float(lr_scale)
 
         rng = np.random.default_rng(seed)
         self.W = rng.normal(0.0, 0.1, size=(n, p))
         self.Wp = rng.normal(0.0, 0.1, size=(p, n))
-        if NORMALIZE_WEIGHTS:
-            self._normalize_weights()
-
-    def _normalize_weights(self) -> None:
-        w_norm = np.linalg.norm(self.W, axis=0, keepdims=True)
-        w_norm = np.maximum(w_norm, 1e-12)
-        self.W = self.W / w_norm
-
-        wp_norm = np.linalg.norm(self.Wp, axis=1, keepdims=True)
-        wp_norm = np.maximum(wp_norm, 1e-12)
-        self.Wp = self.Wp / wp_norm
 
     def encode(self, X: np.ndarray) -> np.ndarray:
         return X @ self.W
@@ -55,10 +48,8 @@ class RecirculationNetwork:
         return self.decode(self.encode(X))
 
     def _alpha_for_sample(self, X: np.ndarray, Y: np.ndarray) -> float:
-        if not ADAPTIVE:
-            return self.alpha
         denom = float(np.dot(X, X) + np.dot(Y, Y))
-        return 1.0 / max(denom, 1e-12)
+        return self.lr_scale / max(denom, 1e-12)
 
     def _train_sample(self, X: np.ndarray) -> float:
         Y = X @ self.W
@@ -71,9 +62,6 @@ class RecirculationNetwork:
 
         self.Wp = self.Wp + dWp
         self.W = self.W + dW
-
-        if NORMALIZE_WEIGHTS:
-            self._normalize_weights()
 
         return float(np.dot(err, err))
 

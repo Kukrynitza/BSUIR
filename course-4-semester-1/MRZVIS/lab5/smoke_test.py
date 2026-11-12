@@ -4,7 +4,7 @@ import numpy as np
 
 import sequences as seqmod
 from activations import ACTIVATIONS
-from network import ARCHS, RecurrentNetwork
+from network import RecurrentNetwork
 
 
 def test_sequences():
@@ -38,8 +38,8 @@ def test_sequences():
 def test_activations():
     print("== ACTIVATIONS ==")
     u = np.linspace(-3, 3, 13)
+    from activations import get_activation
     for name in ACTIVATIONS:
-        from activations import get_activation
         act = get_activation(name)
         v = act.forward(u)
         assert v.shape == u.shape
@@ -54,23 +54,20 @@ def test_activations():
 
 def test_network_train_and_forecast():
     print("== NETWORK ==")
-    rng = np.random.default_rng(0)
     base = seqmod.geometric(0.5, 40)
     norm, lo, hi = seqmod.normalize(base)
     X, y = seqmod.make_windows(norm, window=6)
-    for arch in ARCHS:
-        for act_name in ("asinh", "tanh"):
-            net = RecurrentNetwork(
-                arch=arch, hidden_size=8, context_size=4, window=6,
-                act=act_name, linear_out=True, seed=1,
-            )
-            res = net.train(X, y, epochs=40, lr=0.05, zero_context=True)
-            assert len(res.losses) == 40
-            assert all(np.isfinite(l) for l in res.losses)
-            preds = net.forecast(norm[-6:], steps=5)
-            assert preds.shape == (5,)
-            assert np.all(np.isfinite(preds))
-            print(f"  {arch:12s}/{act_name:10s} loss {res.losses[0]:.4f} -> {res.losses[-1]:.4f}")
+    net = RecurrentNetwork(
+        hidden_size=8, context_size=4, window=6,
+        linear_out=True, seed=1,
+    )
+    res = net.train(X, y, epochs=40, lr=0.05, zero_context=True)
+    assert len(res.losses) == 40
+    assert all(np.isfinite(l) for l in res.losses)
+    preds = net.forecast(norm[-6:], steps=5)
+    assert preds.shape == (5,)
+    assert np.all(np.isfinite(preds))
+    print(f"  elman/asinh  loss {res.losses[0]:.4f} -> {res.losses[-1]:.4f}")
     print("  OK")
 
 

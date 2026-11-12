@@ -100,6 +100,18 @@ def get_sequence(name: str, n: int = 32) -> np.ndarray:
 def normalize(seq: np.ndarray) -> tuple[np.ndarray, float, float]:
     lo = float(seq.min())
     hi = float(seq.max())
+    return normalize_with_bounds(seq, lo, hi)
+
+
+def normalize_with_bounds(
+    seq: np.ndarray, lo: float, hi: float
+) -> tuple[np.ndarray, float, float]:
+    """Apply the [-1, 1] min--max mapping using training-set bounds.
+
+    Values outside ``[lo, hi]`` are intentionally mapped outside ``[-1, 1]``;
+    no clipping is performed, so future values remain distinguishable.
+    """
+    seq = np.asarray(seq, dtype=np.float64)
     if hi - lo < 1e-12:
         return np.zeros_like(seq), lo, hi
     scaled = 2.0 * (seq - lo) / (hi - lo) - 1.0
