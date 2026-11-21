@@ -1,4 +1,4 @@
-"""Общие утилиты для анализа речевых записей лабораторной работы №1."""
+"""Общие утилиты для анализа речевых записей лабораторной работы (часть 2)."""
 
 from pathlib import Path
 
@@ -7,8 +7,8 @@ import soundfile as sf
 from scipy.signal import find_peaks
 
 ROOT = Path(__file__).resolve().parents[1]
-AUDIO_ROOT = ROOT / "audio" / "lab1"
-PNG_DIR = ROOT / "eyazis-report-5" / "png"
+AUDIO_ROOT = ROOT / "audio" / "lab2"
+PNG_DIR = ROOT / "eyazis-report-6" / "png"
 
 MIN_DUR = 0.15  # с
 MERGE_GAP = 0.15  # с
